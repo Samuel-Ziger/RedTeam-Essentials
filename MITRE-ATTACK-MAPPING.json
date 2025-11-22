@@ -1,0 +1,538 @@
+{
+  "name": "RedTeam-Essentials Coverage",
+  "versions": {
+    "attack": "14",
+    "navigator": "4.9.4",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Mapeamento de técnicas MITRE ATT&CK cobertas pelo repositório RedTeam-Essentials",
+  "filters": {
+    "platforms": [
+      "windows",
+      "linux",
+      "macos",
+      "network",
+      "cloud"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "average",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1590",
+      "tactic": "reconnaissance",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 01-Recon: dns_enum.ps1, passive_recon_cheatsheet.md",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "01-Recon"
+        },
+        {
+          "name": "Recursos",
+          "value": "dns_enum.ps1, passive_recon_cheatsheet.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1592",
+      "tactic": "reconnaissance",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 01-Recon: Reconhecimento passivo de hosts e infraestrutura",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "01-Recon"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1596",
+      "tactic": "reconnaissance",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 01-Recon: DNS enumeration, consultas públicas",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "01-Recon"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1593",
+      "tactic": "reconnaissance",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 02-OSINT: osint_automation.ps1, osint-tools-list.md",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "02-OSINT"
+        },
+        {
+          "name": "Recursos",
+          "value": "osint_automation.ps1"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1594",
+      "tactic": "reconnaissance",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 02-OSINT: Pesquisa em sites de organizações alvo",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "02-OSINT"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1598",
+      "tactic": "reconnaissance",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 02-OSINT: Teoria de phishing para informações (não prático)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "02-OSINT"
+        },
+        {
+          "name": "Tipo",
+          "value": "Teórico"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1087",
+      "tactic": "discovery",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 03-AD-Notes: ad_enum_commands.md - Enumeração de contas",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "03-AD-Notes"
+        },
+        {
+          "name": "Recursos",
+          "value": "ad_enum_commands.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1069",
+      "tactic": "discovery",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 03-AD-Notes: Discovery de grupos e permissões",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "03-AD-Notes"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1482",
+      "tactic": "discovery",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 03-AD-Notes: Domain trust discovery",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "03-AD-Notes"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1558.003",
+      "tactic": "credential-access",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 03-AD-Notes: kerberoasting_teoria.md - Kerberoasting completo",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "03-AD-Notes"
+        },
+        {
+          "name": "Recursos",
+          "value": "kerberoasting_teoria.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1558.004",
+      "tactic": "credential-access",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 03-AD-Notes: AS-REP Roasting (parcial)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "03-AD-Notes"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1078",
+      "tactic": "persistence",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 06-Cheatsheets: Uso de credenciais válidas",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1068",
+      "tactic": "privilege-escalation",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: linux_privesc_teoria.md - Exploitation para privesc",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        },
+        {
+          "name": "Recursos",
+          "value": "linux_privesc_teoria.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1548",
+      "tactic": "privilege-escalation",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: Abuse de SUDO/SUID",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1021.001",
+      "tactic": "lateral-movement",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: windows_lateral_movement_teoria.md - RDP",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        },
+        {
+          "name": "Recursos",
+          "value": "windows_lateral_movement_teoria.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1021.002",
+      "tactic": "lateral-movement",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: SMB/Admin Shares",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1021.006",
+      "tactic": "lateral-movement",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: Windows Remote Management (WinRM)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1550",
+      "tactic": "lateral-movement",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: Pass-the-Hash, Pass-the-Ticket",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1003",
+      "tactic": "credential-access",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 05-DFIR: Teoria de dump de credenciais (perspectiva forense)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "05-DFIR"
+        },
+        {
+          "name": "Tipo",
+          "value": "Detecção"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1059.001",
+      "tactic": "execution",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: powershell_cheatsheet.md - Execução via PowerShell",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        },
+        {
+          "name": "Recursos",
+          "value": "powershell_cheatsheet.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1059.004",
+      "tactic": "execution",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulo 06-Cheatsheets: Execução via Bash/Shell",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1083",
+      "tactic": "discovery",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 04-Automation: organize_logs.ps1 - File and Directory Discovery",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "04-Automation"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1119",
+      "tactic": "collection",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 04-Automation: Automated collection (logs)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "04-Automation"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1070",
+      "tactic": "defense-evasion",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 05-DFIR: Teoria de limpeza de artefatos (perspectiva defensiva)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "05-DFIR"
+        },
+        {
+          "name": "Tipo",
+          "value": "Teoria/Detecção"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1562",
+      "tactic": "defense-evasion",
+      "score": 25,
+      "color": "#d9f0a3",
+      "comment": "Planejado: Módulo de Evasion (futuro)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Status",
+          "value": "Planejado"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1027",
+      "tactic": "defense-evasion",
+      "score": 25,
+      "color": "#d9f0a3",
+      "comment": "Planejado: Obfuscation techniques (futuro)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Status",
+          "value": "Planejado"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1055",
+      "tactic": "defense-evasion",
+      "score": 25,
+      "color": "#d9f0a3",
+      "comment": "Planejado: Process Injection (futuro)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Status",
+          "value": "Planejado"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1105",
+      "tactic": "command-and-control",
+      "score": 25,
+      "color": "#d9f0a3",
+      "comment": "Planejado: Ingress Tool Transfer (futuro)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Status",
+          "value": "Planejado"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1041",
+      "tactic": "exfiltration",
+      "score": 25,
+      "color": "#d9f0a3",
+      "comment": "Planejado: Exfiltration Over C2 Channel (futuro)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Status",
+          "value": "Planejado"
+        }
+      ]
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#d9f0a3",
+      "#addd8e",
+      "#74c476",
+      "#31a354",
+      "#006d2c"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    {
+      "label": "Cobertura Completa (100%)",
+      "color": "#31a354"
+    },
+    {
+      "label": "Cobertura Parcial (75%)",
+      "color": "#74c476"
+    },
+    {
+      "label": "Cobertura Básica (50%)",
+      "color": "#addd8e"
+    },
+    {
+      "label": "Planejado/Teórico (25%)",
+      "color": "#d9f0a3"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "Projeto",
+      "value": "RedTeam-Essentials"
+    },
+    {
+      "name": "Autor",
+      "value": "Samuel Ziger"
+    },
+    {
+      "name": "Versão",
+      "value": "1.0.0"
+    },
+    {
+      "name": "Data",
+      "value": "2025-11-22"
+    },
+    {
+      "name": "Repositório",
+      "value": "https://github.com/Samuel-Ziger/RedTeam-Essentials"
+    }
+  ],
+  "links": [
+    {
+      "label": "Visualizar no ATT&CK Navigator",
+      "url": "https://mitre-attack.github.io/attack-navigator/"
+    },
+    {
+      "label": "Documentação MITRE ATT&CK",
+      "url": "https://attack.mitre.org/"
+    }
+  ]
+}

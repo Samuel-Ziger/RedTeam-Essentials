@@ -1,6 +1,6 @@
 # 🎯 RedTeam Essentials
 
-> Um repositório educacional completo sobre Red Team, focado em aprendizado ético, teoria aprofundada e automação segura.
+> Um repositório educacional completo sobre Red Team, focado em aprendizado ético, teoria aprofundada e automação segura com mapeamento MITRE ATT&CK.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Educational](https://img.shields.io/badge/Purpose-Educational-green.svg)]()
@@ -9,12 +9,21 @@
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue.svg)]()
 [![Bash](https://img.shields.io/badge/Bash-4.0%2B-green.svg)]()
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK-red.svg)](https://attack.mitre.org/)
+[![ATT&CK Coverage](https://img.shields.io/badge/ATT%26CK_Coverage-28%2B_Techniques-orange.svg)]()
 
 ---
 
 ## 📚 Sobre o Projeto
 
 Este repositório foi criado com o objetivo de fornecer um **guia educacional completo** para quem está aprendendo sobre Red Team, segurança ofensiva e pentesting de forma **ética e responsável**.
+
+**Novidades da v1.1:**
+- ✅ Mapeamento completo MITRE ATT&CK ([veja layer JSON](MITRE-ATTACK-MAPPING.json))
+- ✅ Templates profissionais de relatórios forenses
+- ✅ Playbooks práticos de resposta a incidentes
+- ✅ Scripts com validação robusta e modo dry-run
+- ✅ Recursos externos consolidados (CVE, Shodan, mapas de ameaças)
+- ✅ Documentação de governança (Contributing, Code of Conduct)
 
 Desenvolvido por **Samuel Ziger** como recurso educacional para a comunidade de segurança da informação.
 
@@ -92,7 +101,9 @@ RedTeam-Essentials/
 ├── 🔬 05-DFIR/
 │   ├── windows_event_logs.md           # Análise de logs do Windows
 │   ├── forensics_artifacts.md          # Artefatos forenses importantes
-│   └── memory_analysis_teoria.md       # Teoria de análise de memória
+│   ├── memory_analysis_teoria.md       # Teoria de análise de memória
+│   ├── FORENSIC_REPORT_TEMPLATE.md     # Template profissional de relatório forense
+│   └── PLAYBOOK_RANSOMWARE.md          # Playbook de resposta a ransomware
 │
 └── 📝 06-Cheatsheets/
     ├── powershell_cheatsheet.md        # Comandos PowerShell essenciais
@@ -104,13 +115,25 @@ RedTeam-Essentials/
 
 ## 📖 Documentação Expandida
 
-### Novos Recursos Disponíveis
+### 📚 Governança e Processos
 
-- 📍 **[ROADMAP.md](ROADMAP.md)** - Trilha completa de estudos (Tier 1 → Tier 4) com integração MITRE ATT&CK
+- 🗺️ **[ROADMAP.md](ROADMAP.md)** - Trilha completa de estudos (Tier 1 → Tier 4) com integração MITRE ATT&CK
 - 🤝 **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guia detalhado para contribuições com templates e padrões
+- 📜 **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** - Código de conduta e uso ético
+- 📝 **[CHANGELOG.md](CHANGELOG.md)** - Histórico de mudanças e versões
 - 🧪 **[LAB-SETUP.md](LAB-SETUP.md)** - Configuração de laboratório completo (VMs, AD, plataformas online)
 - 📄 **[REPORT-TEMPLATE.md](REPORT-TEMPLATE.md)** - Template profissional para relatórios Red Team
 - ✅ **[validate_scripts.ps1](validate_scripts.ps1)** - Sistema de validação automatizada de scripts
+
+### 🌐 Recursos Técnicos
+
+- 🎯 **[MITRE-ATTACK-MAPPING.json](MITRE-ATTACK-MAPPING.json)** - Layer do ATT&CK Navigator com cobertura de técnicas
+- 🔗 **[RESOURCES.md](RESOURCES.md)** - Links para:
+  - Mapas globais de ameaças (Kaspersky, Radware, NetScout)
+  - CVE Database e bancos de vulnerabilidades
+  - Shodan e motores de busca de segurança
+  - Plataformas de treinamento (TryHackMe, HTB, etc)
+  - Ferramentas e frameworks essenciais
 
 ---
 
@@ -472,9 +495,137 @@ Este projeto foi inspirado e utiliza conhecimento de:
 - [Pull Requests](https://github.com/Samuel-Ziger/RedTeam-Essentials/pulls) - Contribua com código
 
 ### Recursos Externos
-- [MITRE ATT&CK](https://attack.mitre.org/)
-- [OWASP](https://owasp.org/)
-- [TryHackMe](https://tryhackme.com/)
+- 🎯 [MITRE ATT&CK Framework](https://attack.mitre.org/)
+- 🗺️ [Kaspersky Threat Map](https://cybermap.kaspersky.com/)
+- 🗺️ [Radware Threat Map](https://livethreatmap.radware.com/)
+- 🗺️ [NetScout Cyber Horizon](https://horizon.netscout.com/)
+- 🔓 [CVE Database](https://www.cve.org/)
+- 🔍 [Shodan](https://www.shodan.io/)
+- 🎓 [TryHackMe](https://tryhackme.com/)
+- 🎓 [HackTheBox](https://www.hackthebox.com/)
+- 🌐 [OWASP](https://owasp.org/)
+
+**Veja lista completa em:** [RESOURCES.md](RESOURCES.md)
+
+---
+
+## 🎯 Integração MITRE ATT&CK
+
+Este repositório está completamente mapeado para o **MITRE ATT&CK Framework**, permitindo que você:
+
+### Como Usar o Mapeamento
+
+1. **Visualizar Cobertura:**
+   ```bash
+   # 1. Acesse https://mitre-attack.github.io/attack-navigator/
+   # 2. Clique em "Open Existing Layer"
+   # 3. Faça upload do arquivo MITRE-ATTACK-MAPPING.json
+   # 4. Veja as 28+ técnicas cobertas pelo repositório
+   ```
+
+2. **Estudar por Tática:**
+   - **Reconnaissance** (TA0043): Módulo 01-Recon, 02-OSINT
+   - **Discovery** (TA0007): Módulo 03-AD-Notes
+   - **Credential Access** (TA0006): Kerberoasting, AS-REP Roasting
+   - **Lateral Movement** (TA0008): Módulo 06-Cheatsheets
+   - **Privilege Escalation** (TA0004): Linux/Windows Privesc
+
+3. **Mapear seus Estudos:**
+   - Cada técnica estudada tem ID oficial (ex: T1558.003)
+   - Use os IDs em suas notas e relatórios
+   - Correlacione com APTs reais da matriz ATT&CK
+
+### Técnicas Cobertas
+
+| Tática | Técnicas Cobertas | Módulos |
+|--------|-------------------|---------|
+| **Reconnaissance** | T1590, T1592, T1593, T1594, T1596, T1598 | 01-Recon, 02-OSINT |
+| **Execution** | T1059.001, T1059.004 | 06-Cheatsheets |
+| **Credential Access** | T1003, T1558.003, T1558.004 | 03-AD-Notes |
+| **Discovery** | T1069, T1083, T1087, T1482 | 03-AD-Notes |
+| **Lateral Movement** | T1021.001, T1021.002, T1021.006, T1550 | 06-Cheatsheets |
+| **Collection** | T1119 | 04-Automation |
+| **Defense Evasion** | T1027, T1055, T1070, T1562 | Planejado |
+
+**Total:** 28+ técnicas mapeadas e documentadas
+
+---
+
+## 🛡️ Segurança e Melhores Práticas
+
+### ⚠️ Antes de Executar Scripts
+
+```powershell
+# 1. SEMPRE valide scripts primeiro
+.\validate_scripts.ps1
+
+# 2. Execute em ambiente ISOLADO
+# - VM dedicada
+# - Rede segmentada
+# - Snapshots configurados
+
+# 3. Nunca execute em produção
+# 4. Sempre use modo dry-run quando disponível
+```
+
+### 🔒 Proteções Implementadas
+
+Todos os scripts neste repositório incluem:
+
+✅ **Validação de Entrada:** Parâmetros são validados antes da execução  
+✅ **Tratamento de Erros:** Try/Catch em todas as operações críticas  
+✅ **Logging Detalhado:** Ações são registradas com timestamps  
+✅ **Disclaimers Éticos:** Avisos sobre uso autorizado  
+✅ **Modo Dry-Run:** Simulação antes de executar (quando aplicável)  
+✅ **Documentação Inline:** Comentários explicando cada passo
+
+### 📋 Checklist de Segurança
+
+Antes de usar qualquer técnica deste repositório:
+
+- [ ] Você tem **autorização por escrito** para testar o sistema?
+- [ ] Você está em um **ambiente de laboratório isolado**?
+- [ ] Você tem **backups** de sistemas que vai testar?
+- [ ] Você documentou o **escopo** do teste?
+- [ ] Você conhece as **leis locais** sobre testes de penetração?
+- [ ] Você tem um **plano de rollback** se algo der errado?
+
+---
+
+## 🚨 Resposta a Incidentes (DFIR)
+
+### Playbooks Disponíveis
+
+Este repositório agora inclui playbooks profissionais de resposta a incidentes:
+
+📘 **[PLAYBOOK_RANSOMWARE.md](05-DFIR/PLAYBOOK_RANSOMWARE.md)**
+- Resposta completa a incidentes de ransomware
+- Timeline de 0-72 horas
+- Checklist de contenção e recuperação
+- Decisão sobre pagamento
+- Lições aprendidas
+
+### Templates Forenses
+
+📄 **[FORENSIC_REPORT_TEMPLATE.md](05-DFIR/FORENSIC_REPORT_TEMPLATE.md)**
+- Template completo de relatório forense
+- Chain of custody
+- Análise de IOCs
+- Recomendações priorizadas
+- Baseado em NIST SP 800-61
+
+### Uso dos Playbooks
+
+```bash
+# 1. Em caso de incidente, acesse o playbook relevante
+# 2. Siga os passos na ordem indicada
+# 3. Documente TODAS as ações tomadas
+# 4. Use os templates para gerar relatórios
+```
+
+---
+
+## 🌟 Destaques do Projeto
 - [HackTheBox](https://www.hackthebox.com/)
 
 ---
