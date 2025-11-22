@@ -5,6 +5,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Educational](https://img.shields.io/badge/Purpose-Educational-green.svg)]()
 [![Ethical](https://img.shields.io/badge/Content-Ethical-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)]()
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue.svg)]()
+[![Bash](https://img.shields.io/badge/Bash-4.0%2B-green.svg)]()
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK-red.svg)](https://attack.mitre.org/)
 
 ---
 
@@ -12,12 +16,29 @@
 
 Este repositório foi criado com o objetivo de fornecer um **guia educacional completo** para quem está aprendendo sobre Red Team, segurança ofensiva e pentesting de forma **ética e responsável**.
 
+Desenvolvido por **Samuel Ziger** como recurso educacional para a comunidade de segurança da informação.
+
 ### 🎓 Para quem é este repositório?
 
-- **Iniciantes** que querem entender os fundamentos de Red Team
-- **Estudantes** de segurança da informação buscando material de estudo
-- **Profissionais** que desejam revisar conceitos e comandos
-- **Entusiastas** que querem aprender sobre segurança ofensiva de forma legal
+**TIER 1 - Iniciantes:**
+- Fundamentos de Red Team e reconhecimento
+- Primeiros passos em OSINT
+- Scripts básicos de automação
+
+**TIER 2 - Intermediário:**
+- Active Directory avançado
+- Privilege escalation
+- Lateral movement
+
+**TIER 3 - Avançado:**
+- Evasion techniques
+- Custom tooling
+- Full Red Team operations
+
+**TIER 4 - Profissional:**
+- C2 Infrastructure
+- Professional reporting
+- Real-world engagements
 
 ---
 
@@ -81,11 +102,23 @@ RedTeam-Essentials/
 
 ---
 
+## 📖 Documentação Expandida
+
+### Novos Recursos Disponíveis
+
+- 📍 **[ROADMAP.md](ROADMAP.md)** - Trilha completa de estudos (Tier 1 → Tier 4) com integração MITRE ATT&CK
+- 🤝 **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guia detalhado para contribuições com templates e padrões
+- 🧪 **[LAB-SETUP.md](LAB-SETUP.md)** - Configuração de laboratório completo (VMs, AD, plataformas online)
+- 📄 **[REPORT-TEMPLATE.md](REPORT-TEMPLATE.md)** - Template profissional para relatórios Red Team
+- ✅ **[validate_scripts.ps1](validate_scripts.ps1)** - Sistema de validação automatizada de scripts
+
+---
+
 ## 🚀 Como Usar Este Repositório
 
 ### 1️⃣ Clone o Repositório
 ```bash
-git clone https://github.com/seu-usuario/RedTeam-Essentials.git
+git clone https://github.com/Samuel-Ziger/RedTeam-Essentials.git
 cd RedTeam-Essentials
 ```
 
@@ -99,19 +132,43 @@ Cada pasta contém conteúdo específico sobre um tópico. Comece pela ordem num
 5. **05-DFIR**: Aprenda sobre forense digital e resposta a incidentes
 6. **06-Cheatsheets**: Consulte guias rápidos de referência
 
-### 3️⃣ Execute os Scripts com Segurança
+### 3️⃣ Siga a Trilha de Aprendizado
+
+**Recomendado:** Siga o [ROADMAP.md](ROADMAP.md) para aprendizado estruturado
+
+```
+Semana 1-2: TIER 1 - Fundamentos
+├─ Módulo 01: Reconhecimento
+├─ Módulo 02: OSINT
+└─ Configurar laboratório (LAB-SETUP.md)
+
+Semana 3-8: TIER 2 - Intermediário
+├─ Módulo 03: Active Directory
+├─ Módulo 06: Privilege Escalation
+└─ Praticar em labs online
+
+Semana 9+: TIER 3 e 4 - Avançado
+├─ Técnicas de evasion
+├─ Full engagement simulations
+└─ Preparação para certificações (OSCP, CRTP)
+```
+
+### 4️⃣ Execute os Scripts com Segurança
 Todos os scripts foram desenvolvidos para serem executados **apenas em ambientes controlados**:
 
 ```powershell
-# Windows PowerShell
+# Windows PowerShell - Validar scripts primeiro
+.\validate_scripts.ps1  # Valida todos os scripts
+
+# Executar script específico
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\nome-do-script.ps1
+.\01-Recon\dns_enum.ps1 -Domain "exemplo.com"
 ```
 
 ```bash
 # Linux
 chmod +x script.sh
-./script.sh
+./04-Automation/linux_postinstall.sh
 ```
 
 ---
@@ -170,10 +227,21 @@ chmod +x script.sh
 - **Active Directory Lab** (opcional, mas recomendado)
 - **Conexão à Internet** (para OSINT)
 
-### Recursos Adicionais
-- [HackTheBox](https://www.hackthebox.com/) - Laboratórios práticos
-- [TryHackMe](https://tryhackme.com/) - Aprendizado guiado
-- [VulnHub](https://www.vulnhub.com/) - Máquinas vulneráveis para prática
+### Recursos Adicionais e Labs Online
+
+**Plataformas Gratuitas:**
+- 🎓 [TryHackMe](https://tryhackme.com/) - Aprendizado guiado com labs interativos
+- 🏴‍☠️ [HackTheBox](https://www.hackthebox.com/) - Máquinas realistas (Free tier disponível)
+- 🧃 [OWASP Juice Shop](https://juice-shop.herokuapp.com/) - Web app vulnerável
+- 🌐 [PortSwigger Web Security Academy](https://portswigger.net/web-security) - 100% gratuito
+- 📚 [VulnHub](https://www.vulnhub.com/) - VMs vulneráveis para download
+
+**Plataformas Pagas (com free tier):**
+- 🏢 [PentesterLab](https://pentesterlab.com/) - Exercícios práticos
+- 🔍 [Root-Me](https://www.root-me.org/) - Challenges categorizados
+- 🎯 [CyberDefenders](https://cyberdefenders.org/) - Blue Team / DFIR
+
+**Veja guia completo:** [LAB-SETUP.md](LAB-SETUP.md)
 
 ---
 
@@ -200,20 +268,59 @@ chmod +x script.sh
 
 ## 🤝 Contribuindo
 
-Contribuições são muito bem-vindas! Se você tem sugestões, correções ou quer adicionar conteúdo:
+Contribuições são muito bem-vindas! Este projeto cresce com a comunidade.
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/NovoConteudo`)
-3. Commit suas mudanças (`git commit -m 'Adiciona novo conteúdo sobre X'`)
-4. Push para a branch (`git push origin feature/NovoConteudo`)
-5. Abra um Pull Request
+**Antes de contribuir, leia:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
-### Regras para Contribuição
-- ✅ Conteúdo deve ser **educacional** e **ético**
-- ✅ Scripts devem ter **comentários detalhados**
-- ✅ Documentação deve ser **clara** e **didática**
-- ❌ Nada de ferramentas ofensivas diretas
-- ❌ Nada que viole leis ou políticas
+### Processo de Contribuição
+
+1. **Fork** o projeto
+2. **Clone** seu fork: `git clone https://github.com/seu-usuario/RedTeam-Essentials.git`
+3. **Crie uma branch:** `git checkout -b feature/NovoConteudo`
+4. **Faça suas alterações** seguindo os padrões de código
+5. **Valide scripts:** `.\validate_scripts.ps1`
+6. **Commit:** `git commit -m "feat: Adiciona novo conteúdo sobre X"`
+7. **Push:** `git push origin feature/NovoConteudo`
+8. **Abra um Pull Request** usando o template
+
+### Padrões de Qualidade
+
+**Scripts PowerShell:**
+- ✅ Header completo com `.SYNOPSIS`, `.DESCRIPTION`, `.EXAMPLE`
+- ✅ Tratamento de erros (`try/catch`)
+- ✅ Validação de parâmetros
+- ✅ Logging adequado
+- ✅ Disclaimer de segurança
+
+**Scripts Bash:**
+- ✅ Shebang `#!/bin/bash`
+- ✅ `set -euo pipefail`
+- ✅ Funções de logging com cores
+- ✅ Validação de ambiente
+- ✅ Cleanup em caso de erro
+
+**Documentação:**
+- ✅ Markdown bem formatado
+- ✅ Exemplos práticos
+- ✅ Referências externas
+- ✅ Mapeamento MITRE ATT&CK (quando aplicável)
+
+### Sistema de Testes
+
+```powershell
+# Validar todos os scripts
+.\validate_scripts.ps1
+
+# Validar script específico
+.\validate_scripts.ps1 -ScriptPath ".\01-Recon\dns_enum.ps1"
+```
+
+### Regras de Ouro
+- ✅ Conteúdo **educacional** e **ético**
+- ✅ Scripts **comentados linha por linha**
+- ✅ Documentação **clara e didática**
+- ❌ Exploits ofensivos prontos para uso malicioso
+- ❌ Conteúdo que viole leis ou políticas
 
 ---
 
@@ -259,14 +366,116 @@ Agradeço a todos que compartilham conhecimento de forma aberta e ética, contri
 ## 📊 Status do Projeto
 
 ```
-[████████████████████] 100% Completo
+[████████████████████] v1.0.0 - Lançamento Completo
 
-✅ Todos os módulos implementados
-✅ Documentação completa
+✅ Todos os módulos implementados (01-06)
+✅ Documentação completa e expandida
 ✅ Scripts comentados linha por linha
+✅ ROADMAP com integração MITRE ATT&CK
+✅ Guia de configuração de laboratório
+✅ Template profissional de relatórios
+✅ Sistema de validação automatizada
+✅ Guia de contribuição detalhado
 ✅ Conteúdo revisado e testado
 ✅ Pronto para uso educacional
 ```
+
+### 🗓️ Roadmap Futuro
+
+**Q1 2026:**
+- [ ] Expandir módulo de evasion techniques
+- [ ] Adicionar módulo de Cloud Red Team (AWS, Azure)
+- [ ] Criar vídeos tutoriais para cada módulo
+- [ ] Implementar CI/CD para validação automática
+
+**Q2 2026:**
+- [ ] Labs automatizados com Terraform/Ansible
+- [ ] CTF baseado no repositório
+- [ ] Playbooks de engagements reais (anonimizados)
+- [ ] Integração com plataformas de treinamento
+
+**Q3 2026:**
+- [ ] Módulo de post-exploitation avançado
+- [ ] Templates de relatórios em múltiplos formatos
+- [ ] Comunidade Discord oficial
+- [ ] Certificação própria (opcional)
+
+### 📈 Estatísticas
+
+- **Scripts PowerShell:** 5 (totalmente documentados)
+- **Scripts Bash:** 1 (com validações completas)
+- **Documentos Markdown:** 15+ (teoria e guias)
+- **Técnicas MITRE ATT&CK Cobertas:** 30+
+- **Exercícios Práticos:** 10+
+- **Horas de Conteúdo:** 40+ horas de estudo
+
+---
+
+## 👥 Créditos e Agradecimentos
+
+### Autor Principal
+**Samuel Ziger**  
+GitHub: [@Samuel-Ziger](https://github.com/Samuel-Ziger)  
+Repositório: [RedTeam-Essentials](https://github.com/Samuel-Ziger/RedTeam-Essentials)
+
+### Contribuidores
+Agradecimentos especiais a todos que contribuíram com código, documentação e feedback.
+
+*Veja a lista completa em [Contributors](https://github.com/Samuel-Ziger/RedTeam-Essentials/graphs/contributors)*
+
+### Recursos e Inspirações
+Este projeto foi inspirado e utiliza conhecimento de:
+- MITRE ATT&CK Framework
+- OWASP Testing Guide
+- PTES (Penetration Testing Execution Standard)
+- Comunidade InfoSec global
+
+---
+
+## 📜 Versionamento
+
+**Versão Atual:** 1.0.0 (Novembro 2025)
+
+### Changelog
+
+**v1.0.0 - 22/11/2025**
+- ✨ Lançamento inicial completo
+- ✨ Adicionado ROADMAP com 4 tiers de aprendizado
+- ✨ Criado CONTRIBUTING.md com padrões detalhados
+- ✨ Implementado LAB-SETUP.md com guias de VM e plataformas
+- ✨ Template profissional de relatórios Red Team
+- ✨ Sistema de validação automatizada de scripts
+- ✨ READMEs individuais para cada módulo
+- ✨ Mapeamento completo com MITRE ATT&CK
+- 🐛 Correções de bugs em scripts existentes
+- 📚 Documentação expandida em todos os módulos
+
+**v0.1.0 - 01/11/2025**
+- 🎉 Versão inicial do repositório
+- 📁 Estrutura básica de módulos (01-06)
+- 📝 Scripts PowerShell e Bash iniciais
+- 📖 Documentação básica
+
+---
+
+## 🔗 Links Úteis
+
+### Documentação
+- [ROADMAP Completo](ROADMAP.md)
+- [Guia de Contribuição](CONTRIBUTING.md)
+- [Configuração de Laboratório](LAB-SETUP.md)
+- [Template de Relatório](REPORT-TEMPLATE.md)
+
+### Comunidade
+- [Issues](https://github.com/Samuel-Ziger/RedTeam-Essentials/issues) - Reporte bugs ou sugira melhorias
+- [Discussions](https://github.com/Samuel-Ziger/RedTeam-Essentials/discussions) - Tire dúvidas e compartilhe conhecimento
+- [Pull Requests](https://github.com/Samuel-Ziger/RedTeam-Essentials/pulls) - Contribua com código
+
+### Recursos Externos
+- [MITRE ATT&CK](https://attack.mitre.org/)
+- [OWASP](https://owasp.org/)
+- [TryHackMe](https://tryhackme.com/)
+- [HackTheBox](https://www.hackthebox.com/)
 
 ---
 
@@ -282,8 +491,15 @@ Agradeço a todos que compartilham conhecimento de forma aberta e ética, contri
 
 **🔄 Compartilhe com quem está aprendendo segurança ofensiva**
 
+**🤝 Contribua e ajude a construir este recurso educacional**
+
 ---
 
-*Desenvolvido com 💙 para a comunidade de InfoSec*
+*Desenvolvido com 💙 por **Samuel Ziger** para a comunidade de InfoSec*
+
+*Copyright © 2025 RedTeam Essentials - Licença MIT*
+
+[![Stargazers](https://img.shields.io/github/stars/Samuel-Ziger/RedTeam-Essentials?style=social)](https://github.com/Samuel-Ziger/RedTeam-Essentials/stargazers)
+[![Forks](https://img.shields.io/github/forks/Samuel-Ziger/RedTeam-Essentials?style=social)](https://github.com/Samuel-Ziger/RedTeam-Essentials/network/members)
 
 </div>
