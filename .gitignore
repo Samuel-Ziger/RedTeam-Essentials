@@ -1,0 +1,119 @@
+# ================================================================
+# .gitignore for RedTeam-Essentials Repository
+# ================================================================
+
+# ===== Arquivos de Sistema =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+
+# ===== IDEs e Editores =====
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+*.iml
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ===== Arquivos Temporários =====
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+
+# ===== Logs e Outputs =====
+*.log
+logs/
+*.evtx
+*.pcap
+*.pcapng
+
+# ===== Credenciais e Dados Sensíveis =====
+# NUNCA commitar credenciais!
+credentials.txt
+passwords.txt
+*.hashes
+*.ntds
+*.dmp
+lsass.dmp
+sam.hive
+system.hive
+
+# ===== Ferramentas e Exploits =====
+# Não versionar binários grandes
+*.exe
+*.dll
+*.so
+*.dylib
+mimikatz/
+bloodhound/
+sharphound/
+
+# ===== Resultados de Scans =====
+nmap_results/
+scan_output/
+*_scan.xml
+*_scan.gnmap
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+venv/
+env/
+
+# ===== PowerShell =====
+*.ps1xml
+PSReadLine*/
+
+# ===== Dados de Labs =====
+# Evitar commitar dados sensíveis de labs
+*_lab_data/
+*_evidence/
+*_memory_dump/
+
+# ===== Certificados e Chaves =====
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+
+# ===== Arquivos Grandes =====
+*.iso
+*.vmdk
+*.ova
+*.zip
+*.tar.gz
+*.7z
+
+# ===== Documentos Privados =====
+# Manter apenas exemplos públicos
+private_notes/
+client_reports/
+
+# ===== Exceções (forçar inclusão) =====
+# Se precisar incluir algum arquivo específico:
+# !important_file.exe
