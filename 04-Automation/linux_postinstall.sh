@@ -1,115 +1,139 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# ============================================================================
+# linux_postinstall.sh - Configuracao pos-instalacao para distros pentest
+#
+# Suporta Debian/Ubuntu/Kali/Parrot. Faz update, instala stack do operador,
+# cria estrutura ~/Pentest, baixa wordlists basicas (SecLists), configura
+# aliases.
+#
+# Opcoes:
+#   --dry-run           Apenas mostra o que faria.
+#   --skip-update       Pula apt update/upgrade.
+#   --skip-wordlists    Pula download do SecLists.
+#   --extra "pkg1 pkg2" Instala pacotes adicionais.
+#   -h | --help         Ajuda.
+#
+# Exemplo:
+#   sudo ./linux_postinstall.sh --extra "ghidra radare2"
+#
+# Autor:   Samuel Ziger - RedTeam Essentials
+# Versao:  2.0.0
+# Licenca: MIT
+# ============================================================================
+set -euo pipefail
 
-# ================================================================
-# Script: Linux Post-Install Automation
-# Descrição: Configuração automatizada pós-instalação para Kali/Ubuntu
-# Autor: RedTeam Essentials
-# Versão: 1.0
-# Data: 2025
-# ================================================================
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=../lib/bash/rte_common.sh
+source "$SCRIPT_DIR/../lib/bash/rte_common.sh"
+rte::install_traps
 
-# Cores para output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-CYAN='\033[0;36m'
-NC='\033[0m' # No Color
+SKIP_UPDATE=0
+SKIP_WORDLISTS=0
+EXTRA_PKGS=""
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --dry-run)        RTE_DRYRUN=1 ;;
+        --skip-update)    SKIP_UPDATE=1 ;;
+        --skip-wordlists) SKIP_WORDLISTS=1 ;;
+        --extra)          EXTRA_PKGS="$2"; shift ;;
+        -h|--help)
+            grep -E '^# ' "$0" | sed 's/^# //'
+            exit 0
+            ;;
+        *) rte::fatal "Argumento desconhecido: $1" ;;
+    esac
+    shift
+done
 
-# Banner
-echo -e "${CYAN}"
-echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║      Linux Post-Install - RedTeam Essentials             ║"
-echo "║      Configuração Automatizada v1.0                       ║"
-echo "╚═══════════════════════════════════════════════════════════╝"
-echo -e "${NC}"
+rte::banner "Linux Post-Install" "2.0.0"
+rte::require_root
+rte::require_cmd apt
 
-# Verifica se está rodando como root
-if [[ $EUID -ne 0 ]]; then
-   echo -e "${YELLOW}[!] Este script precisa ser executado como root${NC}"
-   echo -e "${YELLOW}[*] Execute: sudo ./linux_postinstall.sh${NC}"
-   exit 1
+DISTRO="$(. /etc/os-release && echo "${ID,,}")"
+PRETTY="$(. /etc/os-release && echo "$PRETTY_NAME")"
+rte::info "Distro detectada: $PRETTY ($DISTRO)"
+case "$DISTRO" in
+    kali|parrot|debian|ubuntu|pop) ;;
+    *) rte::warn "Distro $DISTRO nao testada. Prosseguindo por sua conta e risco." ;;
+esac
+
+if (( SKIP_UPDATE == 0 )); then
+    rte::info "Atualizando indice de pacotes..."
+    rte::run apt-get update -y
+    rte::info "Aplicando upgrade..."
+    DEBIAN_FRONTEND=noninteractive rte::run apt-get upgrade -y
 fi
 
-echo -e "${GREEN}[✓] Executando como root${NC}"
-echo ""
+ESSENTIALS=(
+    git vim tmux zsh curl wget jq xclip build-essential
+    python3 python3-pip python3-venv golang-go default-jdk
+    nmap netcat-openbsd socat tcpdump dnsutils whois traceroute
+    hydra john hashcat sqlmap nikto whatweb dirb gobuster
+    docker.io docker-compose
+    binwalk foremost exiftool
+)
+rte::info "Instalando pacotes essenciais (${#ESSENTIALS[@]} pkgs)..."
+DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends "${ESSENTIALS[@]}"
 
-# ================================================================
-# ATUALIZAÇÃO DO SISTEMA
-# ================================================================
-
-echo -e "${CYAN}═══ Atualizando Sistema ═══${NC}"
-apt update && apt upgrade -y
-apt dist-upgrade -y
-echo -e "${GREEN}[+] Sistema atualizado${NC}"
-echo ""
-
-# ================================================================
-# INSTALAÇÃO DE FERRAMENTAS ESSENCIAIS
-# ================================================================
-
-echo -e "${CYAN}═══ Instalando Ferramentas Essenciais ═══${NC}"
-
-# Ferramentas de desenvolvimento
-apt install -y git vim curl wget build-essential python3-pip
-
-# Ferramentas de rede
-apt install -y nmap netcat-traditional tcpdump wireshark
-
-# Ferramentas de pentest (se Kali)
-if grep -q "kali" /etc/os-release; then
-    echo -e "${CYAN}[*] Kali Linux detectado - instalando ferramentas adicionais${NC}"
-    apt install -y metasploit-framework burpsuite zaproxy sqlmap
+if [[ "$DISTRO" == "kali" || "$DISTRO" == "parrot" ]]; then
+    KALI_EXTRAS=(metasploit-framework burpsuite zaproxy bloodhound impacket-scripts crackmapexec responder)
+    rte::info "Instalando extras de pentest ${DISTRO^}..."
+    DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends "${KALI_EXTRAS[@]}" || \
+        rte::warn "Alguns extras nao puderam ser instalados (podem nao estar no repo)."
 fi
 
-echo -e "${GREEN}[+] Ferramentas instaladas${NC}"
-echo ""
+if [[ -n "$EXTRA_PKGS" ]]; then
+    rte::info "Instalando extras: $EXTRA_PKGS"
+    # shellcheck disable=SC2086
+    DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends $EXTRA_PKGS
+fi
 
-# ================================================================
-# CONFIGURAÇÃO DO SISTEMA
-# ================================================================
+USER_HOME="$(getent passwd "${SUDO_USER:-$USER}" | cut -d: -f6)"
+PENTEST="$USER_HOME/Pentest"
+rte::info "Criando estrutura em $PENTEST"
+for d in Tools Scripts Wordlists Exploits Notes Labs Reports Logs Evidence; do
+    rte::run mkdir -p "$PENTEST/$d"
+done
+rte::run chown -R "${SUDO_USER:-$USER}:${SUDO_USER:-$USER}" "$PENTEST" || true
 
-echo -e "${CYAN}═══ Configurando Sistema ═══${NC}"
+if (( SKIP_WORDLISTS == 0 )); then
+    if [[ -d /usr/share/seclists ]]; then
+        rte::info "SecLists ja instalada em /usr/share/seclists"
+    else
+        rte::info "Clonando SecLists em $PENTEST/Wordlists/SecLists"
+        rte::run git clone --depth 1 https://github.com/danielmiessler/SecLists.git \
+            "$PENTEST/Wordlists/SecLists" || rte::warn "Falha ao clonar SecLists."
+    fi
+fi
 
-# Criar estrutura de pastas
-PENTEST_DIR="$HOME/Pentest"
-mkdir -p "$PENTEST_DIR"/{Tools,Scripts,Wordlists,Exploits,Notes,Labs,Reports,Logs}
-echo -e "${GREEN}[+] Estrutura de pastas criada em $PENTEST_DIR${NC}"
+RCFILE="$USER_HOME/.bashrc"
+if [[ -f "$USER_HOME/.zshrc" ]]; then
+    RCFILE="$USER_HOME/.zshrc"
+fi
 
-# Configurar aliases úteis
-cat >> "$HOME/.bashrc" << 'EOF'
+if ! grep -q "RTE_ALIASES_START" "$RCFILE" 2>/dev/null; then
+    rte::info "Instalando aliases em $RCFILE"
+    if [[ "$RTE_DRYRUN" == "1" ]]; then
+        rte::warn "[DRY-RUN] aliases pulados"
+    else
+        cat >> "$RCFILE" <<'RTE_ALIAS_BLOCK'
 
-# RedTeam Essentials Aliases
+# >>> RTE_ALIASES_START >>>
 alias ll='ls -lah'
-alias update='sudo apt update && sudo apt upgrade -y'
-alias ports='netstat -tulanp'
-alias myip='curl -s ifconfig.me'
+alias myip='curl -s ifconfig.me; echo'
+alias ports='ss -tulpn'
 alias serve='python3 -m http.server 8000'
-EOF
+alias nmapfast='nmap -T4 -F'
+alias nmapfull='nmap -sV -sC -p- --min-rate=1000'
+# <<< RTE_ALIASES_END <<<
+RTE_ALIAS_BLOCK
+    fi
+fi
 
-echo -e "${GREEN}[+] Aliases configurados${NC}"
-echo ""
+rte::info "Limpando cache do apt..."
+rte::run apt-get autoremove -y
+rte::run apt-get autoclean -y
 
-# ================================================================
-# LIMPEZA
-# ================================================================
-
-echo -e "${CYAN}═══ Limpeza do Sistema ═══${NC}"
-apt autoremove -y
-apt autoclean -y
-echo -e "${GREEN}[+] Limpeza concluída${NC}"
-echo ""
-
-# ================================================================
-# RESUMO
-# ================================================================
-
-echo -e "${CYAN}═══════════════════════════════════════════════════════════${NC}"
-echo -e "${GREEN}  CONFIGURAÇÃO CONCLUÍDA${NC}"
-echo -e "${CYAN}═══════════════════════════════════════════════════════════${NC}"
-echo ""
-echo -e "${CYAN}Próximos passos:${NC}"
-echo -e "  1. Execute: ${YELLOW}source ~/.bashrc${NC}"
-echo -e "  2. Estrutura criada em: ${YELLOW}$PENTEST_DIR${NC}"
-echo -e "  3. Teste os aliases: ${YELLOW}ll${NC}"
-echo ""
-echo -e "${GREEN}Script finalizado!${NC}"
+rte::success "Configuracao concluida."
+rte::info "Aplique aliases com: source $RCFILE"
+rte::info "Estrutura em: $PENTEST"

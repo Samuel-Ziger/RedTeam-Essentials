@@ -114,6 +114,21 @@ PSReadLine*/
 private_notes/
 client_reports/
 
+# ===== Java (12-Java-Tools) =====
+12-Java-Tools/build/
+12-Java-Tools/target/
+*.class
+
+# ===== Docker Lab =====
+docker-lab/shared/*
+!docker-lab/shared/.gitkeep
+
+# ===== Output das ferramentas (v2.0) =====
+output/
+**/output/
+*.session
+*.dat
+
 # ===== Exceções (forçar inclusão) =====
 # Se precisar incluir algum arquivo específico:
 # !important_file.exe

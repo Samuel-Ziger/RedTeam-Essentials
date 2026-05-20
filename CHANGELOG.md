@@ -7,6 +7,62 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [2.0.0] - 2026-05-20
+
+### Major upgrade - estrutura, stack poliglota e cobertura ampliada
+
+#### Adicionado
+
+##### Biblioteca comum (`lib/`)
+- `lib/powershell/RTECommon.psm1` - logger com niveis, validacao (dominio/IPv4), banner, retries, export JSON/CSV/TXT, helper de autorizacao etica, `Test-RTEAdmin` cross-platform.
+- `lib/bash/rte_common.sh` - logger colorido, traps de cleanup/ERR, `require_cmd`, `require_root`, validacoes, `run_cmd` com suporte a dry-run via `RTE_DRYRUN=1`.
+- `lib/python/rte_common.py` - logging colorido, `RTEContext`, `confirm_authorization`, `export_json`, sem dependencias externas.
+
+##### Novos modulos
+- **07-Web-AppSec** - OWASP Top 10 (2021), API Security Checklist (OWASP API Top 10:2023), recon web pratico (subfinder/httpx/katana/nuclei), XSS deep dive (Trusted Types, CSP bypasses, polyglots), padroes de auth bypass.
+- **08-Cloud-RedTeam** - AWS (IMDS, IAM privesc com Pacu, S3, KMS), Azure (device code, ROADtools, AzureHound, Managed Identity), GCP (metadata, SA impersonation, GCS, Workload Identity), comparativo de ferramentas.
+- **09-C2-Evasion** (teoria apenas) - frameworks (Sliver, Mythic, Havoc, Cobalt Strike), AMSI/ETW/EDR fundamentals, OpSec checklist.
+- **10-Container-Sec** - tecnicas de Docker escape (privileged, socket, capabilities), Kubernetes attack paths (RBAC, kubelet, etcd, SSRF -> metadata), hardening baseline (PSS restricted, NetworkPolicy, Kyverno).
+- **11-Python-Tools** - subdomain_enum (crt.sh + HackerTarget + OTX + asyncio resolve), port_scanner (asyncio TCP + banner grab), jwt_analyzer (analise estatica + HS\* bruteforce), hash_identifier.
+- **12-Java-Tools** - PayloadGenerator (XSS/SQLi/CMDi/SSTI/SSRF/LFI/XXE com encoding URL/Base64 e amostragem aleatoria).
+
+##### Lab Docker (`docker-lab/`)
+- docker-compose com DVWA, Juice Shop, bWAPP, WebGoat, VulnerableWordPress, NodeGoat, VAmPI e estacao Kali atacante em rede isolada `172.28.0.0/24`.
+- Dockerfile.kali-pentest com ferramentas pre-instaladas.
+- README com exemplos de sessao end-to-end.
+
+##### CI/CD (`.github/workflows/`)
+- `powershell.yml` - PSScriptAnalyzer + parser syntax check.
+- `bash.yml` - ShellCheck + `bash -n`.
+- `python.yml` - Ruff (lint + format) + py_compile em Python 3.10/3.11/3.12.
+- `java.yml` - javac com `-Xlint:all -Werror` + smoke test.
+- `markdown.yml` - markdownlint-cli2 + Lychee link check.
+- `.markdownlint.json` na raiz.
+
+##### Conteudo atualizado (2024-2026)
+- `03-AD-Notes/modern-ad-attacks-2026.md` - ADCS (ESC1, ESC8), RBCD, Shadow Credentials, SCCM abuse, PKINIT, KrbRelayUp.
+- `06-Cheatsheets/linux_privesc_modern.md` - CVEs kernel 2022-2026 (DirtyPipe, OverlayFS, nf_tables UAF), capabilities modernas, eBPF post-exploitation.
+- `01-Recon/dns_enum.sh` - alternativa Linux do dns_enum.ps1 com dig + crt.sh.
+- `04-Automation/ad_recon.sh` - wrapper Linux para nmap + NetExec + Impacket (GetNPUsers, GetUserSPNs).
+
+#### Modificado
+
+- **`01-Recon/dns_enum.ps1`** - reescrito v2.0: cross-platform (Resolve-DnsName em Windows, dig fallback em Linux), Certificate Transparency via crt.sh, exportacao JSON estruturada, retries com backoff, dry-run real, validacao de dominio rigorosa.
+- **`04-Automation/organize_logs.ps1`** - INDEX.md gerado com SHA-256 de cada arquivo, suporte -CopyMode, -DryRun, classificacao por regex + extensao.
+- **`04-Automation/windows_setup_clean.ps1`** - integracao Chocolatey, dry-run, ExtraPackages, tweaks Explorer, validacao de admin.
+- **`04-Automation/linux_postinstall.sh`** - deteccao de distro (Kali/Parrot/Ubuntu/Debian), pacotes essenciais expandidos, SecLists clone, aliases idempotentes, dry-run.
+- **`validate_scripts.ps1`** - usa PSScriptAnalyzer real (instalado on-demand), severity configuravel, custom rules pluggable.
+- **`README.md`** - reescrito para refletir v2.0, com tabela completa de modulos, ATT&CK coverage expandida, quick start poliglota.
+- **`03-AD-Notes/kerberoasting_teoria.md`** - typo "Cracke\n\nar" corrigido; adicionada secao "Atualizacao 2024-2026" com etypes AES vs RC4 e tools modernas.
+
+#### Corrigido
+
+- Bug de quebra de linha em `kerberoasting_teoria.md`.
+- Operadores `??` e `?:` (PS 7-only) substituidos por `if/else` para compatibilidade PS 5.1.
+- Encoding consistente (UTF-8 sem BOM) em todos os arquivos.
+
+---
+
 ## [1.0.0] - 2025-11-22
 
 ### 🎉 Lançamento Inicial Completo

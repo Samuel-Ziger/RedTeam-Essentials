@@ -1,176 +1,126 @@
 <#
 .SYNOPSIS
-    Script de validação para testes automatizados dos scripts PowerShell
+    Validador de scripts do RedTeam-Essentials usando PSScriptAnalyzer.
 
 .DESCRIPTION
-    Este script valida a sintaxe e funcionalidade básica dos scripts
-    PowerShell no repositório RedTeam Essentials.
+    Executa:
+      1. Parse sintatico via [System.Management.Automation.Language.Parser].
+      2. Lint completo via PSScriptAnalyzer (instalado on-demand).
+      3. Checagens custom (header .SYNOPSIS, disclaimer etico, etc.).
 
-.PARAMETER ScriptPath
-    Caminho do script a ser testado
+    Sai com codigo 0 se tudo passar, 1 se houver erros.
 
-.PARAMETER RunTests
-    Executa testes funcionais (modo dry-run)
+.PARAMETER Path        Script especifico (default: todos *.ps1/.psm1 do repo).
+.PARAMETER Severity    Severidade minima do PSSA: Error|Warning|Information.
+.PARAMETER NoCustom    Pula as checagens customizadas (lint puro).
+.PARAMETER InstallDeps Forca (re)instalacao de PSScriptAnalyzer.
 
 .EXAMPLE
-    .\validate_scripts.ps1 -ScriptPath ".\01-Recon\dns_enum.ps1"
+    ./validate_scripts.ps1
+
+.EXAMPLE
+    ./validate_scripts.ps1 -Path ./01-Recon/dns_enum.ps1 -Severity Warning
 
 .NOTES
-    Autor: RedTeam Essentials
-    Versão: 1.0
+    Autor:   Samuel Ziger - RedTeam Essentials
+    Versao:  2.0.0
+    Licenca: MIT
 #>
-
+[CmdletBinding()]
 param(
-    [Parameter(Mandatory=$false)]
-    [string]$ScriptPath = "",
-    
-    [Parameter(Mandatory=$false)]
-    [switch]$RunTests
+    [string]$Path,
+    [ValidateSet('Error','Warning','Information')][string]$Severity = 'Warning',
+    [switch]$NoCustom,
+    [switch]$InstallDeps
 )
 
-# Cores para output
-$ColorSuccess = "Green"
-$ColorInfo = "Cyan"
-$ColorWarning = "Yellow"
-$ColorError = "Red"
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
 
-# Banner
-Clear-Host
-Write-Host "╔═══════════════════════════════════════════════════════════╗" -ForegroundColor $ColorInfo
-Write-Host "║      Script Validator - RedTeam Essentials               ║" -ForegroundColor $ColorInfo
-Write-Host "╚═══════════════════════════════════════════════════════════╝" -ForegroundColor $ColorInfo
-Write-Host ""
+Import-Module (Join-Path $PSScriptRoot "lib/powershell/RTECommon.psm1") -Force
+Write-RTEBanner -Title "Script Validator" -Version "2.0.0"
 
-# Função para validar sintaxe de PowerShell
-function Test-PowerShellSyntax {
-    param([string]$FilePath)
-    
-    Write-Host "[*] Validando sintaxe de: $FilePath" -ForegroundColor $ColorInfo
-    
-    try {
-        # Tenta fazer parse do script
-        $null = [System.Management.Automation.PSParser]::Tokenize((Get-Content $FilePath -Raw), [ref]$null)
-        Write-Host "[✓] Sintaxe válida" -ForegroundColor $ColorSuccess
-        return $true
-    } catch {
-        Write-Host "[!] Erro de sintaxe: $_" -ForegroundColor $ColorError
+# --- 1. PSScriptAnalyzer ----------------------------------------------------
+function Ensure-PSScriptAnalyzer {
+    if ((Get-Module -ListAvailable PSScriptAnalyzer) -and -not $InstallDeps) {
+        return
+    }
+    Write-RTELog -Level INFO -Message "Instalando PSScriptAnalyzer (CurrentUser)..."
+    Install-Module PSScriptAnalyzer -Scope CurrentUser -Force -SkipPublisherCheck
+}
+Ensure-PSScriptAnalyzer
+Import-Module PSScriptAnalyzer -Force
+
+# --- 2. Coleta scripts ------------------------------------------------------
+if ($Path) {
+    if (-not (Test-Path $Path)) { Write-RTELog -Level FATAL -Message "Nao existe: $Path"; exit 1 }
+    $scripts = @((Get-Item $Path))
+} else {
+    $scripts = Get-ChildItem -Path $PSScriptRoot -Recurse -Include *.ps1,*.psm1 |
+        Where-Object { $_.FullName -notmatch '\\\.git\\' }
+}
+Write-RTELog -Level INFO -Message "Scripts a validar: $($scripts.Count)"
+
+# --- 3. Funcoes auxiliares --------------------------------------------------
+function Test-Syntax {
+    param([string]$File)
+    $errors = $null
+    [System.Management.Automation.Language.Parser]::ParseFile($File, [ref]$null, [ref]$errors) | Out-Null
+    if ($errors -and $errors.Count -gt 0) {
+        foreach ($e in $errors) {
+            Write-RTELog -Level ERROR -Message ("Sintaxe: L{0}: {1}" -f $e.Extent.StartLineNumber, $e.Message)
+        }
         return $false
     }
+    return $true
 }
 
-# Função para verificar boas práticas
-function Test-BestPractices {
-    param([string]$FilePath)
-    
-    Write-Host "[*] Verificando boas práticas..." -ForegroundColor $ColorInfo
-    
-    $content = Get-Content $FilePath -Raw
+function Test-CustomRules {
+    param([string]$File)
+    $c = Get-Content -Path $File -Raw
     $issues = @()
-    
-    # Verifica se tem header de documentação
-    if ($content -notmatch '\.SYNOPSIS') {
-        $issues += "Falta .SYNOPSIS no header"
+    if ($c -notmatch '\.SYNOPSIS')                    { $issues += 'Falta .SYNOPSIS' }
+    if ($c -notmatch '\.DESCRIPTION')                 { $issues += 'Falta .DESCRIPTION' }
+    if ($c -notmatch 'IMPORTANTE|WARNING|AVISO|etico|ethical') {
+        $issues += 'Falta disclaimer etico'
     }
-    
-    # Verifica se tem CmdletBinding
-    if ($content -notmatch '\[CmdletBinding\(\)\]') {
-        $issues += "Falta [CmdletBinding()] para funções avançadas"
-    }
-    
-    # Verifica se tem tratamento de erros
-    if ($content -notmatch 'try\s*\{' -and $content -notmatch '\$ErrorActionPreference') {
-        $issues += "Falta tratamento de erros (try/catch ou ErrorActionPreference)"
-    }
-    
-    # Verifica disclaimer de segurança
-    if ($content -notmatch 'IMPORTANTE|WARNING|AVISO') {
-        $issues += "Falta disclaimer de segurança/ético"
-    }
-    
-    if ($issues.Count -eq 0) {
-        Write-Host "[✓] Todas as boas práticas seguidas" -ForegroundColor $ColorSuccess
-        return $true
-    } else {
-        Write-Host "[!] Problemas encontrados:" -ForegroundColor $ColorWarning
-        foreach ($issue in $issues) {
-            Write-Host "    - $issue" -ForegroundColor $ColorWarning
-        }
-        return $false
-    }
+    if ($c -notmatch 'Set-StrictMode')                { $issues += 'Falta Set-StrictMode' }
+    return $issues
 }
 
-# Função principal
-function Invoke-Validation {
-    param([string]$Path)
-    
-    if ($Path -eq "") {
-        # Testa todos os scripts .ps1 no repositório
-        Write-Host "[*] Buscando todos os scripts PowerShell..." -ForegroundColor $ColorInfo
-        $scripts = Get-ChildItem -Path "." -Filter "*.ps1" -Recurse | Where-Object { $_.Name -ne "validate_scripts.ps1" }
-        
-        Write-Host "[*] Encontrados $($scripts.Count) scripts" -ForegroundColor $ColorInfo
-        Write-Host ""
-        
-        $totalPassed = 0
-        $totalFailed = 0
-        
-        foreach ($script in $scripts) {
-            Write-Host "═══════════════════════════════════════════════════════════" -ForegroundColor $ColorInfo
-            Write-Host "Testando: $($script.FullName)" -ForegroundColor $ColorInfo
-            Write-Host "═══════════════════════════════════════════════════════════" -ForegroundColor $ColorInfo
-            
-            $syntaxOK = Test-PowerShellSyntax -FilePath $script.FullName
-            $practicesOK = Test-BestPractices -FilePath $script.FullName
-            
-            if ($syntaxOK -and $practicesOK) {
-                Write-Host "[✓] $($script.Name) PASSOU em todos os testes" -ForegroundColor $ColorSuccess
-                $totalPassed++
-            } else {
-                Write-Host "[!] $($script.Name) FALHOU em alguns testes" -ForegroundColor $ColorError
-                $totalFailed++
-            }
-            Write-Host ""
-        }
-        
-        # Resumo
-        Write-Host "═══════════════════════════════════════════════════════════" -ForegroundColor $ColorInfo
-        Write-Host "RESUMO DOS TESTES" -ForegroundColor $ColorInfo
-        Write-Host "═══════════════════════════════════════════════════════════" -ForegroundColor $ColorInfo
-        Write-Host "Total de scripts testados: $($scripts.Count)" -ForegroundColor $ColorInfo
-        Write-Host "Passaram: $totalPassed" -ForegroundColor $ColorSuccess
-        Write-Host "Falharam: $totalFailed" -ForegroundColor $(if ($totalFailed -eq 0) { $ColorSuccess } else { $ColorError })
-        
-        if ($totalFailed -eq 0) {
-            Write-Host ""
-            Write-Host "[✓] TODOS OS SCRIPTS ESTÃO VÁLIDOS!" -ForegroundColor $ColorSuccess
-            exit 0
-        } else {
-            Write-Host ""
-            Write-Host "[!] ALGUNS SCRIPTS PRECISAM DE CORREÇÃO" -ForegroundColor $ColorError
-            exit 1
-        }
-        
-    } else {
-        # Testa apenas o script especificado
-        if (Test-Path $Path) {
-            $syntaxOK = Test-PowerShellSyntax -FilePath $Path
-            $practicesOK = Test-BestPractices -FilePath $Path
-            
-            if ($syntaxOK -and $practicesOK) {
-                Write-Host ""
-                Write-Host "[✓] Script válido e segue boas práticas!" -ForegroundColor $ColorSuccess
-                exit 0
-            } else {
-                Write-Host ""
-                Write-Host "[!] Script precisa de correções" -ForegroundColor $ColorError
-                exit 1
-            }
-        } else {
-            Write-Host "[!] Script não encontrado: $Path" -ForegroundColor $ColorError
-            exit 1
+# --- 4. Execucao ------------------------------------------------------------
+$total = $scripts.Count
+$passed = 0; $failed = 0
+$detailed = @()
+
+foreach ($s in $scripts) {
+    Write-Host ""
+    Write-RTELog -Level INFO -Message ("=== {0}" -f $s.FullName)
+    $ok = $true
+
+    if (-not (Test-Syntax -File $s.FullName)) { $ok = $false }
+
+    $pssa = Invoke-ScriptAnalyzer -Path $s.FullName -Severity $Severity -ErrorAction SilentlyContinue
+    foreach ($issue in $pssa) {
+        $lvl = if ($issue.Severity -eq 'Error') { 'ERROR' } else { 'WARN' }
+        Write-RTELog -Level $lvl -Message ("PSSA {0}: L{1} {2}" -f $issue.RuleName, $issue.Line, $issue.Message)
+        if ($issue.Severity -eq 'Error') { $ok = $false }
+    }
+
+    if (-not $NoCustom) {
+        $custom = Test-CustomRules -File $s.FullName
+        foreach ($c in $custom) {
+            Write-RTELog -Level WARN -Message "Custom: $c"
         }
     }
+
+    if ($ok) { Write-RTELog -Level SUCCESS -Message "OK"; $passed++ }
+    else     { Write-RTELog -Level ERROR   -Message "FAIL"; $failed++ }
+
+    $detailed += [pscustomobject]@{ file = $s.FullName; ok = $ok; pssaCount = $pssa.Count }
 }
 
-# Executa validação
-Invoke-Validation -Path $ScriptPath
+# --- 5. Resumo --------------------------------------------------------------
+Write-Host ""
+Write-Host ("Resumo: {0} passaram, {1} falharam de {2}." -f $passed, $failed, $total) -ForegroundColor Cyan
+if ($failed -gt 0) { exit 1 } else { exit 0 }

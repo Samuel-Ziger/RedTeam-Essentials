@@ -1,0 +1,62 @@
+name: PowerShell Lint
+
+on:
+  push:
+    paths:
+      - '**/*.ps1'
+      - '**/*.psm1'
+      - 'validate_scripts.ps1'
+      - '.github/workflows/powershell.yml'
+  pull_request:
+    paths:
+      - '**/*.ps1'
+      - '**/*.psm1'
+
+jobs:
+  pssa:
+    name: PSScriptAnalyzer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Install-Module PSScriptAnalyzer -Scope CurrentUser -Force -SkipPublisherCheck
+
+      - name: Lint all PowerShell files
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Recurse -Include *.ps1,*.psm1 |
+                   Where-Object { $_.FullName -notmatch '\.git' }
+          Write-Host "Analisando $($files.Count) arquivos..."
+          $errors = @()
+          foreach ($f in $files) {
+            $r = Invoke-ScriptAnalyzer -Path $f.FullName -Severity Error
+            foreach ($issue in $r) {
+              $errors += "$($f.FullName):$($issue.Line): $($issue.RuleName) - $($issue.Message)"
+            }
+          }
+          if ($errors.Count -gt 0) {
+            Write-Host "Erros encontrados:"
+            $errors | ForEach-Object { Write-Host "  $_" }
+            exit 1
+          }
+          Write-Host "Sem erros PSSA (Severity=Error)."
+
+      - name: Syntax check
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse -Include *.ps1,*.psm1 |
+            Where-Object { $_.FullName -notmatch '\.git' } |
+            ForEach-Object {
+              $errors = $null
+              [System.Management.Automation.Language.Parser]::ParseFile(
+                $_.FullName, [ref]$null, [ref]$errors) | Out-Null
+              if ($errors.Count -gt 0) {
+                Write-Host "::error file=$($_.FullName)::Syntax errors: $($errors.Count)"
+                $errors | ForEach-Object { Write-Host "  L$($_.Extent.StartLineNumber): $($_.Message)" }
+                exit 1
+              }
+            }
+          Write-Host "Sintaxe OK."

@@ -1,0 +1,123 @@
+###############################################################################
+# RedTeam Essentials - Lab local docker-compose
+#
+# Sobe uma rede isolada com alvos classicos para praticar pentest web e
+# uma estacao Kali com ferramentas comuns.
+#
+# Uso:
+#   cd docker-lab
+#   docker compose up -d
+#   docker compose ps
+#   docker compose down -v   # destruir tudo
+#
+# AVISO: Rede isolada (sem expor para a internet). Apenas para LAB local.
+###############################################################################
+version: "3.9"
+
+networks:
+  rte-lab:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+
+services:
+
+  # ---- DVWA: Damn Vulnerable Web Application ----
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: rte-dvwa
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.10
+    ports:
+      - "127.0.0.1:8081:80"
+    restart: unless-stopped
+
+  # ---- OWASP Juice Shop ----
+  juiceshop:
+    image: bkimminich/juice-shop:latest
+    container_name: rte-juice-shop
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.11
+    ports:
+      - "127.0.0.1:8082:3000"
+    restart: unless-stopped
+
+  # ---- bWAPP ----
+  bwapp:
+    image: raesene/bwapp:latest
+    container_name: rte-bwapp
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.12
+    ports:
+      - "127.0.0.1:8083:80"
+    restart: unless-stopped
+
+  # ---- WebGoat (Java) ----
+  webgoat:
+    image: webgoat/webgoat:latest
+    container_name: rte-webgoat
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.13
+    ports:
+      - "127.0.0.1:8084:8080"
+      - "127.0.0.1:9090:9090"
+    environment:
+      - TZ=America/Sao_Paulo
+    restart: unless-stopped
+
+  # ---- VulnerableWP (WordPress com plugins ruins) ----
+  vulnerable-wordpress:
+    image: wpscanteam/vulnerablewordpress:latest
+    container_name: rte-vuln-wp
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.14
+    ports:
+      - "127.0.0.1:8085:80"
+    restart: unless-stopped
+
+  # ---- API vulneravel (NodeGoat) ----
+  nodegoat:
+    image: owasp/nodegoat:latest
+    container_name: rte-nodegoat
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.15
+    ports:
+      - "127.0.0.1:8086:4000"
+    restart: unless-stopped
+
+  # ---- VAmPI: Vulnerable API (OWASP API Top 10) ----
+  vampi:
+    image: erev0s/vampi:latest
+    container_name: rte-vampi
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.16
+    ports:
+      - "127.0.0.1:8087:5000"
+    restart: unless-stopped
+
+  # ---- Estacao atacante (Kali rolling, sem GUI) ----
+  attacker:
+    image: kalilinux/kali-rolling:latest
+    container_name: rte-attacker
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.100
+    volumes:
+      - ./shared:/shared
+    command: >
+      bash -c "apt-get update &&
+               apt-get install -y --no-install-recommends
+                 nmap nikto sqlmap dirb gobuster wget curl iputils-ping
+                 netcat-traditional jq python3-pip dnsutils &&
+               echo 'Attacker container pronto. docker exec -it rte-attacker bash' &&
+               tail -f /dev/null"
+    tty: true
+    restart: unless-stopped

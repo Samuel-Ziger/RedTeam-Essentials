@@ -11,10 +11,15 @@
 ### Por que funciona?
 - 🎫 Qualquer usuário autenticado pode solicitar tickets Kerberos
 - 🔐 Tickets de serviço são criptografados com a senha da conta de serviço
-- 💻 Cracke
-
-ar pode ser feito offline (sem gerar alertas)
+- 💻 Crackear pode ser feito offline (sem gerar alertas)
 - ⏰ Sem limite de tentativas ou lockout
+
+### Atualizacao moderna (2024-2026)
+
+- `RC4_HMAC` (etype 23) ainda e o caminho preferido por atacantes porque hashcat tem modo `13100` rapido. Microsoft anunciou *deprecation* mas muitos ambientes mantem fallback.
+- `AES256_CTS_HMAC_SHA1_96` (etype 18) cracking e ordens de magnitude mais lento (`-m 19700` no hashcat).
+- Tools modernas: `GetUserSPNs.py` (Impacket), `nxc ldap --kerberoasting` (NetExec), `Rubeus.exe kerberoast`.
+- Deteccao moderna: `4769` com `Ticket Encryption Type=0x17 (RC4)` em logon servers + correlacao com Service Account.
 
 ⚠️ **IMPORTANTE**: Este conteúdo é puramente educacional. Use apenas em ambientes autorizados!
 
