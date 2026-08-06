@@ -11,7 +11,10 @@
 | [linux_privesc_teoria.md](linux_privesc_teoria.md) | Privilege escalation Linux: SUID, sudo, capabilities, cron, kernel. |
 | [linux_privesc_modern.md](linux_privesc_modern.md) | Privesc Linux moderno: containers, Polkit, systemd, CVEs recentes. |
 | [windows_lateral_movement_teoria.md](windows_lateral_movement_teoria.md) | Movimento lateral Windows: WinRM, PsExec, WMI, RDP, relays. |
-| [windows_privesc_teoria.md](windows_privesc_teoria.md) | **(novo)** Privilege escalation Windows: tokens, servicos, UAC, AlwaysInstallElevated. |
+| [windows_privesc_teoria.md](windows_privesc_teoria.md) | Privilege escalation Windows: tokens, servicos, UAC, AlwaysInstallElevated. |
+| [windows_privesc_metodologia.md](windows_privesc_metodologia.md) | Checklist pos-foothold (adaptado HexSec, PT). |
+| [windows_privesc_cheatsheet.md](windows_privesc_cheatsheet.md) | Comandos densos de enum Windows privesc (adaptado HexSec, PT). |
+| [linux_path_hijacking.md](linux_path_hijacking.md) | PATH hijacking + lab minimo SUID (adaptado HexSec, PT). |
 
 ## Fluxo recomendado
 
@@ -22,8 +25,8 @@ Foothold  -->  PrivEsc host (Windows/Linux)  -->  Lateral movement  -->  AD / Cl
 ```
 
 1. **Cheatsheet PS** - [powershell_cheatsheet.md](powershell_cheatsheet.md) para enum rapida no Windows.
-2. **PrivEsc Windows** - [windows_privesc_teoria.md](windows_privesc_teoria.md) ate Admin/SYSTEM local.
-3. **PrivEsc Linux** - [linux_privesc_teoria.md](linux_privesc_teoria.md) + [linux_privesc_modern.md](linux_privesc_modern.md).
+2. **PrivEsc Windows** - metodologia → teoria → [windows_privesc_cheatsheet.md](windows_privesc_cheatsheet.md).
+3. **PrivEsc Linux** - [linux_privesc_teoria.md](linux_privesc_teoria.md) + [linux_path_hijacking.md](linux_path_hijacking.md) + modern.
 4. **Lateral** - [windows_lateral_movement_teoria.md](windows_lateral_movement_teoria.md); depois paths AD no modulo 03.
 5. **DFIR** - revisar [05-DFIR](../05-DFIR/) para saber quais artefatos voce deixa.
 

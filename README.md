@@ -53,6 +53,7 @@ RedTeam-Essentials/
 ├── README.md                          (voce esta aqui)
 ├── CHANGELOG.md / ROADMAP.md / CONTRIBUTING.md / CODE_OF_CONDUCT.md / LICENSE
 ├── RESOURCES.md / REPORT-TEMPLATE.md / LAB-SETUP.md
+├── report/                            (generate-pdf.sh → PDF via pandoc)
 ├── ATTACK_MAPPING_GUIDE.md / MITRE-ATTACK-MAPPING.json
 ├── validate_scripts.ps1               (lint + PSSA + checagens custom)
 │
@@ -251,6 +252,7 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md). Resumo:
 - 🗺️ **[ROADMAP.md](ROADMAP.md)** - Trilha de estudos (Tier 1 - 4) com MITRE ATT&CK.
 - 🧪 **[LAB-SETUP.md](LAB-SETUP.md)** - VMs, AD lab, plataformas online.
 - 📄 **[REPORT-TEMPLATE.md](REPORT-TEMPLATE.md)** - Template profissional de relatorio Red Team.
+- 🖨️ **[report/](report/)** - Gerar PDF (pandoc + eisvogel) a partir do template.
 - 🔗 **[RESOURCES.md](RESOURCES.md)** - Mapas de ameacas, CVE DBs, plataformas de treino.
 - 🎯 **[ATTACK_MAPPING_GUIDE.md](ATTACK_MAPPING_GUIDE.md)** - Como usar o layer ATT&CK.
 

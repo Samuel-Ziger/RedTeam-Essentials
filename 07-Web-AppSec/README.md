@@ -9,9 +9,11 @@
 | [owasp-top10-2021.md](owasp-top10-2021.md) | OWASP Top 10 (2021) com como detectar e mitigar cada item. |
 | [api-security-checklist.md](api-security-checklist.md) | Checklist de pentest para APIs REST/GraphQL (OWASP API Top 10). |
 | [recon-web-pratico.md](recon-web-pratico.md) | Recon web pratico: ffuf, gobuster, katana, nuclei, gowitness. |
+| [enum-web-avancado.md](enum-web-avancado.md) | Enum avancada: dirs/vhosts/params (gobuster/ferox/wfuzz) + AXFR em lab. |
 | [xss-deep-dive.md](xss-deep-dive.md) | XSS: contextos, bypasses de WAF, payloads modernos (Trusted Types). |
 | [sqli-deep-dive.md](sqli-deep-dive.md) | SQL Injection: tipos, deteccao, sqlmap em lab, defesa (T1190). |
 | [ssrf-deep-dive.md](ssrf-deep-dive.md) | SSRF: tipos, risco IMDS, bypass overview, labs e defesa. |
+| [path-traversal-lfi.md](path-traversal-lfi.md) | Path traversal / LFI (wrappers PHP, defesa, lab DVWA/WebGoat). |
 | [auth-bypass-patterns.md](auth-bypass-patterns.md) | Padroes de bypass de autenticacao/autorizacao (BOLA/IDOR). |
 
 ### Labs guiados (`docker-lab`)
@@ -30,15 +32,17 @@
 1. **Recon passivo** - subdominios, JS analysis, Github dorks (modulo 01-02).
 2. **Recon ativo** - port scan, virtual hosts, technology fingerprint (`whatweb`, `wappalyzer`).
 3. **Surface mapping** - crawl com `katana` ou `gospider`; salve URLs unicas. Ver [recon-web-pratico.md](recon-web-pratico.md).
-4. **Vuln scan** - `nuclei -t cves/ -t exposures/` em low rate.
-5. **Fundamentos OWASP** - [owasp-top10-2021.md](owasp-top10-2021.md) + [api-security-checklist.md](api-security-checklist.md).
-6. **Deep dives manuais** (teoria → lab):
+4. **Enum avancada** - dirs/vhosts/params e (se autorizado) AXFR. Ver [enum-web-avancado.md](enum-web-avancado.md).
+5. **Vuln scan** - `nuclei -t cves/ -t exposures/` em low rate.
+6. **Fundamentos OWASP** - [owasp-top10-2021.md](owasp-top10-2021.md) + [api-security-checklist.md](api-security-checklist.md).
+7. **Deep dives manuais** (teoria → lab):
    1. XSS → [xss-deep-dive.md](xss-deep-dive.md) → [labs/lab-02-juice-xss.md](labs/lab-02-juice-xss.md)
    2. SQLi → [sqli-deep-dive.md](sqli-deep-dive.md) → [labs/lab-01-dvwa-sqli.md](labs/lab-01-dvwa-sqli.md) (WebGoat `:8084` no deep dive)
    3. SSRF → [ssrf-deep-dive.md](ssrf-deep-dive.md) (Juice Shop / VAmPI / rede compose)
-   4. AuthZ → [auth-bypass-patterns.md](auth-bypass-patterns.md) → [labs/lab-03-vampi-api.md](labs/lab-03-vampi-api.md)
-7. **Manual avancado** - logica de negocio, file upload, encadeamentos.
-8. **Report** - usar [`REPORT-TEMPLATE.md`](../REPORT-TEMPLATE.md) da raiz (evidencias minimas; sem dumps massivos).
+   4. Path traversal / LFI → [path-traversal-lfi.md](path-traversal-lfi.md) (DVWA File Inclusion / WebGoat)
+   5. AuthZ → [auth-bypass-patterns.md](auth-bypass-patterns.md) → [labs/lab-03-vampi-api.md](labs/lab-03-vampi-api.md)
+8. **Manual avancado** - logica de negocio, file upload, encadeamentos.
+9. **Report** - [`REPORT-TEMPLATE.md`](../REPORT-TEMPLATE.md) + PDF via [`report/README.md`](../report/README.md) (evidencias minimas; sem dumps massivos).
 
 ## MITRE ATT&CK (parcial)
 

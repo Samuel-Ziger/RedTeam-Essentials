@@ -11,9 +11,12 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 - **06-Cheatsheets/windows_privesc_teoria.md** - Windows Privilege Escalation (enum, UAC, services, tokens, checklist, defesa).
+- **06-Cheatsheets** - metodologia + cheatsheet Windows e PATH hijacking Linux (adaptado HexSec/MIT, PT).
 - **07-Web-AppSec** - deep-dives SQLi/SSRF + labs guiados DVWA, Juice Shop e VAmPI (`labs/`).
+- **07-Web-AppSec** - enum web avancado (dirs/vhosts/params/AXFR) e path traversal/LFI (adaptado HexSec/MIT, PT).
 - **13-Initial-Access** - phishing teorico (T1566) e servicos externos (VPN/RDP/OWA/T1190).
 - **14-Post-Exploitation** - collection/exfil e persistencia overview eticos.
+- **report/** - `generate-pdf.sh` (pandoc/eisvogel) para PDF a partir do template.
 - READMEs de modulo para 02-OSINT, 03-AD-Notes, 05-DFIR, 06-Cheatsheets.
 - Exercicios praticos e checklists em Cloud (08) e Container (10).
 - MITRE ATT&CK layer expandido para modulos 07-14 (v2.1 coverage).
