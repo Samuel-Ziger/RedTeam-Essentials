@@ -351,12 +351,12 @@ tag:ics
 
 | Ferramenta | URL | Descrição |
 |------------|-----|-----------|
-| **BloodHound** | https://github.com/BloodHoundAD/BloodHound | Visualização de AD |
+| **BloodHound CE** | https://github.com/SpecterOps/BloodHound | Visualização de AD (SpecterOps) |
 | **Mimikatz** | https://github.com/gentilkiwi/mimikatz | Extração de credenciais |
 | **Rubeus** | https://github.com/GhostPack/Rubeus | Kerberos attacks |
 | **PowerView** | https://github.com/PowerShellMafia/PowerSploit | AD enumeration |
 | **Impacket** | https://github.com/fortra/impacket | Protocols network |
-| **CrackMapExec** | https://github.com/byt3bl33d3r/CrackMapExec | AD Swiss Army Knife |
+| **NetExec** | https://github.com/Pennyw0rth/NetExec | AD Swiss Army Knife (`nxc`; sucessor do CME) |
 
 ### Post-Exploitation
 

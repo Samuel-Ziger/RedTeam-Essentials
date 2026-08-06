@@ -157,3 +157,21 @@ CVE-2024-21626 (Leaky Vessels): file descriptors do runC vazam para o container.
 
 - [Container Threat Model - Aqua](https://www.aquasec.com/cloud-native-academy/container-security/)
 - [NCC Group - Cloud Native Threat Modeling](https://www.nccgroup.com/uk/research/blog/)
+
+## Exercicios praticos
+
+Labs **apenas** em Docker local / VM propria — nunca escape em hosts compartilhados ou cloud de terceiros.
+
+1. Subir container sem hardening e outro com `--cap-drop=ALL` + non-root; comparar saida de `amicontained` / `capsh --print`.
+2. Montar cenarios de lab: (a) docker.sock montado; (b) `--privileged`; documentar impacto e mitigacao — depois destruir os containers.
+3. Aplicar o checklist de hardening deste arquivo a uma imagem propria e revalidar com Trivy.
+4. Opcional: repetir em VM descartavel (VirtualBox/Hyper-V) para nao arriscar o host de trabalho.
+
+## Checklist de engajamento
+
+- [ ] Host/lab e proprio ou VM isolada
+- [ ] Nao montar docker.sock em ambientes compartilhados
+- [ ] Sem `--privileged` fora do lab controlado
+- [ ] Snapshots / docker compose down apos o exercicio
+- [ ] Evidencias minimas (caps, mounts) sem tocar dados pessoais do host
+- [ ] Imagens e volumes de teste removidos

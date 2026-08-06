@@ -174,3 +174,21 @@ Procurar `Principal: *` ou `AWS: *` na policy - permite decrypt sem cross-accoun
 - [Hacking the Cloud](https://hackingthe.cloud/)
 - [AWS Customer Security Incident Response Guide](https://docs.aws.amazon.com/whitepapers/latest/aws-security-incident-response-guide/)
 - [MITRE ATT&CK Cloud Matrix](https://attack.mitre.org/matrices/enterprise/cloud/)
+
+## Exercicios praticos
+
+Labs **apenas** em conta AWS propria / LocalStack / CloudGoat — nunca em contas de terceiros.
+
+1. Subir LocalStack (ou conta sandbox com billing alert) e criar um role IAM propositalmente fraco; enumerar com `enumerate-iam` ou CloudFox.
+2. Simular SSRF contra metadata: em lab, comparar resposta IMDSv1 vs IMDSv2 (hop limit / token header).
+3. Criar bucket S3 com ACL/policy permissiva no lab; provar list/get e depois corrigir (Block Public Access).
+4. Mapear um caminho de privilege escalation IAM documentado (ex.: `iam:PassRole` + `ec2:RunInstances`) e registrar evidencias minimas no report.
+
+## Checklist de engajamento
+
+- [ ] Conta / LocalStack e 100% propria ou autorizada por escrito
+- [ ] Billing alert / spend limit configurado
+- [ ] Escopo IAM e regioes documentados no RoE
+- [ ] Nenhuma credencial real de cliente em scripts versionados
+- [ ] Evidencias minimas (screenshot/CLI) — sem dump massivo de dados
+- [ ] Cleanup: roles, buckets, keys e instancias de teste removidos

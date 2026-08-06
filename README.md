@@ -1,11 +1,11 @@
-# 🎯 RedTeam Essentials v2.0
+# 🎯 RedTeam Essentials v2.1
 
 > Repositorio educacional completo sobre Red Team, pentest e seguranca defensiva. Conteudo etico, scripts profissionais e mapeamento MITRE ATT&CK.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Educational](https://img.shields.io/badge/Purpose-Educational-green.svg)]()
 [![Ethical](https://img.shields.io/badge/Content-Ethical-brightgreen.svg)]()
-[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.1.0-blue.svg)]()
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B%20%7C%207%2B-blue.svg)]()
 [![Bash](https://img.shields.io/badge/Bash-4.0%2B-green.svg)]()
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)]()
@@ -31,17 +31,16 @@ Voce e responsavel por suas acoes. Respeite leis locais (LGPD, GDPR, CFAA, etc.)
 
 ---
 
-## 📚 O que mudou na v2.0
+## 📚 O que mudou na v2.1
 
-Comparado a v1.x:
+Alem da base v2.0 (stack poliglota, `lib/`, CI, docker-lab):
 
-- **Cross-platform.** Scripts PowerShell rodam em Windows e Linux (PowerShell 7+).
-- **Lib comum** (`lib/`): logging unificado, validacao etica, export padronizado.
-- **Novos modulos**: Web AppSec, Cloud Red Team, C2/Evasion (teoria), Container Security.
-- **Stack poliglota**: alem de PowerShell + Bash, agora Python e Java.
-- **Lab Docker** local (`docker-lab/`) com DVWA, Juice Shop, WebGoat, VAmPI, NodeGoat + estacao Kali.
-- **CI/CD** completo: PSScriptAnalyzer, ShellCheck, Ruff, Markdownlint, Lychee.
-- **Conteudo atualizado** para tecnicas 2024-2026: ADCS, RBCD, Shadow Credentials, CVEs kernel recentes.
+- **Windows Privilege Escalation** (`06-Cheatsheets/windows_privesc_teoria.md`).
+- **Initial Access** (modulo 13) e **Post-Exploitation** (modulo 14).
+- **Web deep-dives** SQLi/SSRF + labs guiados DVWA / Juice Shop / VAmPI.
+- **BloodHound CE + NetExec** na documentacao operacional (substitui CME legado).
+- **MITRE layer** expandido para modulos 07-14.
+- READMEs em todos os modulos; ROADMAP/CHANGELOG sincronizados.
 
 Veja [CHANGELOG.md](CHANGELOG.md) para diff completo.
 
@@ -89,47 +88,31 @@ RedTeam-Essentials/
 ├── 06-Cheatsheets/
 │   ├── powershell_cheatsheet.md
 │   ├── linux_privesc_teoria.md
-│   ├── linux_privesc_modern.md        NOVO (CVEs 2022-2026, eBPF, namespaces)
+│   ├── linux_privesc_modern.md
+│   ├── windows_privesc_teoria.md      NOVO v2.1
 │   └── windows_lateral_movement_teoria.md
 │
-├── 07-Web-AppSec/                     NOVO modulo
-│   ├── owasp-top10-2021.md
-│   ├── api-security-checklist.md
-│   ├── recon-web-pratico.md
-│   ├── xss-deep-dive.md
-│   └── auth-bypass-patterns.md
-├── 08-Cloud-RedTeam/                  NOVO modulo
-│   ├── aws-attack-paths.md
-│   ├── azure-attack-paths.md
-│   ├── gcp-attack-paths.md
-│   └── cloud-recon-tools.md
-├── 09-C2-Evasion/                     NOVO modulo (apenas teoria)
-│   ├── c2-overview.md
-│   ├── evasion-fundamentals.md
-│   └── opsec-checklist.md
-├── 10-Container-Sec/                  NOVO modulo
-│   ├── docker-escape-techniques.md
-│   ├── kubernetes-attack-paths.md
-│   └── hardening-baseline.md
-├── 11-Python-Tools/                   NOVO modulo
-│   ├── subdomain_enum.py              (crt.sh + HackerTarget + OTX + asyncio resolve)
-│   ├── port_scanner.py                (asyncio TCP scan + banner grab)
-│   ├── jwt_analyzer.py                (static analysis + HS* bruteforce)
-│   └── hash_identifier.py
-├── 12-Java-Tools/                     NOVO modulo
-│   └── src/main/java/io/redteam/essentials/PayloadGenerator.java
+├── 07-Web-AppSec/
+│   ├── owasp-top10-2021.md / api-security-checklist.md / recon-web-pratico.md
+│   ├── xss-deep-dive.md / sqli-deep-dive.md / ssrf-deep-dive.md
+│   ├── auth-bypass-patterns.md
+│   └── labs/                          (DVWA SQLi, Juice XSS, VAmPI API)
+├── 08-Cloud-RedTeam/                  (AWS / Azure / GCP + exercicios)
+├── 09-C2-Evasion/                     (apenas teoria)
+├── 10-Container-Sec/                  (Docker / K8s + exercicios)
+├── 11-Python-Tools/
+├── 12-Java-Tools/
+├── 13-Initial-Access/                 NOVO v2.1
+├── 14-Post-Exploitation/              NOVO v2.1
 │
-├── docker-lab/                        NOVO
-│   ├── docker-compose.yml             (DVWA, Juice Shop, WebGoat, VAmPI, NodeGoat, Kali)
-│   ├── Dockerfile.kali-pentest
+├── docker-lab/
+│   ├── docker-compose.yml
+│   ├── Dockerfile.kali-pentest        (build do attacker)
 │   └── README.md
 │
-└── .github/workflows/                 NOVO (CI/CD)
-    ├── powershell.yml (PSScriptAnalyzer)
-    ├── bash.yml       (ShellCheck)
-    ├── python.yml     (Ruff + py_compile)
-    ├── java.yml       (javac -Xlint:all -Werror)
-    └── markdown.yml   (markdownlint + Lychee link check)
+└── .github/workflows/
+    ├── powershell.yml / bash.yml / python.yml / java.yml
+    └── markdown.yml
 ```
 
 ---
@@ -151,13 +134,19 @@ docker compose up -d
 docker compose ps
 ```
 
-Acesse:
+Acesse (somente localhost):
 
-- DVWA -> http://127.0.0.1:8081
-- Juice Shop -> http://127.0.0.1:8082
-- WebGoat -> http://127.0.0.1:8084
+| Alvo | URL |
+|------|-----|
+| DVWA | http://127.0.0.1:8081 |
+| Juice Shop | http://127.0.0.1:8082 |
+| bWAPP | http://127.0.0.1:8083 |
+| WebGoat | http://127.0.0.1:8084 |
+| Vulnerable WordPress | http://127.0.0.1:8085 |
+| NodeGoat | http://127.0.0.1:8086 |
+| VAmPI (API) | http://127.0.0.1:8087 |
 
-Conecte na estacao Kali do lab:
+Labs guiados: `07-Web-AppSec/labs/`. Conecte na estacao Kali:
 
 ```bash
 docker exec -it rte-attacker bash
@@ -203,10 +192,10 @@ java -cp build io.redteam.essentials.PayloadGenerator --type xss --count 20
 
 | Tier | Foco | Modulos | Tempo |
 |------|------|---------|-------|
-| **1 - Iniciante** | Recon, OSINT, conceitos | 01, 02, RESOURCES.md | 2-3 semanas |
-| **2 - Intermediario** | AD, privesc, lateral, web | 03, 06, 07 | 6-8 semanas |
+| **1 - Iniciante** | Recon, OSINT, automacao | 01, 02, 04 | 4-6 semanas |
+| **2 - Intermediario** | AD, privesc, lateral, web, initial access, post-ex | 03, 06, 07, 13, 14 | 8-12 semanas |
 | **3 - Avancado** | Cloud, container, DFIR | 05, 08, 10 | 8-12 semanas |
-| **4 - Profissional** | C2 (teoria), full engagement | 09, REPORT-TEMPLATE | continuo |
+| **4 - Profissional** | C2 (teoria), reporting, engagement | 09, 11, 12, REPORT-TEMPLATE | continuo |
 
 Veja **[ROADMAP.md](ROADMAP.md)** para detalhes por semana.
 
@@ -230,16 +219,17 @@ Veja **[ROADMAP.md](ROADMAP.md)** para detalhes por semana.
 | Tatica | Tecnicas | Modulos |
 |--------|----------|---------|
 | Reconnaissance (TA0043) | T1590, T1592, T1593, T1594, T1596, T1598 | 01, 02 |
-| Initial Access (TA0001) | T1078, T1133, T1190, T1199, T1566 | 07, 08 |
+| Initial Access (TA0001) | T1078, T1133, T1190, T1566 | 07, 13 |
 | Execution (TA0002) | T1059, T1610 | 06, 10 |
-| Persistence (TA0003) | T1098, T1136, T1547, T1543 | 03, 09 |
-| Privilege Escalation (TA0004) | T1078, T1611, T1068 | 06, 10 |
-| Defense Evasion (TA0005) | T1027, T1055, T1070, T1140, T1562 | 09 |
+| Persistence (TA0003) | T1098, T1547, T1053, T1543 | 03, 14 |
+| Privilege Escalation (TA0004) | T1078, T1611, T1068, T1548, T1134 | 06, 10 |
+| Defense Evasion (TA0005) | T1027, T1055, T1070, T1562 | 09 |
 | Credential Access (TA0006) | T1003, T1110, T1552, T1558.003, T1558.004 | 03, 07 |
-| Discovery (TA0007) | T1069, T1083, T1087, T1482, T1580 | 03, 08, 10 |
+| Discovery (TA0007) | T1069, T1083, T1087, T1482, T1580, T1613 | 03, 08, 10 |
 | Lateral Movement (TA0008) | T1021, T1550 | 06 |
-| Collection (TA0009) | T1119, T1530 | 04, 08 |
-| Command & Control (TA0011) | T1071, T1573 | 09 |
+| Collection (TA0009) | T1119, T1530, T1005 | 04, 08, 14 |
+| Exfiltration (TA0010) | T1041, T1048 | 14 |
+| Command & Control (TA0011) | T1071, T1573, T1090 | 09, 14 |
 
 Layer JSON pronto para o **ATT&CK Navigator**: [`MITRE-ATTACK-MAPPING.json`](MITRE-ATTACK-MAPPING.json). Detalhes em [`ATTACK_MAPPING_GUIDE.md`](ATTACK_MAPPING_GUIDE.md).
 

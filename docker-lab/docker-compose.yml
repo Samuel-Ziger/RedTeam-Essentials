@@ -2,11 +2,11 @@
 # RedTeam Essentials - Lab local docker-compose
 #
 # Sobe uma rede isolada com alvos classicos para praticar pentest web e
-# uma estacao Kali com ferramentas comuns.
+# uma estacao Kali custom (Dockerfile.kali-pentest).
 #
 # Uso:
 #   cd docker-lab
-#   docker compose up -d
+#   docker compose up -d --build
 #   docker compose ps
 #   docker compose down -v   # destruir tudo
 #
@@ -103,21 +103,18 @@ services:
       - "127.0.0.1:8087:5000"
     restart: unless-stopped
 
-  # ---- Estacao atacante (Kali rolling, sem GUI) ----
+  # ---- Estacao atacante (imagem custom) ----
   attacker:
-    image: kalilinux/kali-rolling:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.kali-pentest
+    image: rte/kali-pentest:latest
     container_name: rte-attacker
     networks:
       rte-lab:
         ipv4_address: 172.28.0.100
     volumes:
       - ./shared:/shared
-    command: >
-      bash -c "apt-get update &&
-               apt-get install -y --no-install-recommends
-                 nmap nikto sqlmap dirb gobuster wget curl iputils-ping
-                 netcat-traditional jq python3-pip dnsutils &&
-               echo 'Attacker container pronto. docker exec -it rte-attacker bash' &&
-               tail -f /dev/null"
+    command: tail -f /dev/null
     tty: true
     restart: unless-stopped

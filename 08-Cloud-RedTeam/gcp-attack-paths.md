@@ -150,3 +150,21 @@ gcloud sql instances list --format="table(name,settings.ipConfiguration.authoriz
 
 - [Google Cloud Threat Intelligence](https://services.google.com/fh/files/blogs/threat_horizons_report_q3_2024.pdf)
 - [GCP Best Practices](https://cloud.google.com/security/best-practices)
+
+## Exercicios praticos
+
+Labs **apenas** em projeto GCP proprio / free tier / GCPGoat — nunca em projetos de terceiros.
+
+1. Criar service account com binding excessivo; enumerar IAM e praticar impersonation controlada no lab.
+2. Consultar metadata server a partir de uma VM/GCE de teste; comparar acesso com/sem restricoes.
+3. Criar bucket GCS com IAM aberto (`allUsers` ou similar) no lab; provar acesso e fechar com policy correta.
+4. Opcional: subir GCPGoat ou lab equivalente e mapear 2 paths ate privilegio de projeto/org.
+
+## Checklist de engajamento
+
+- [ ] Projeto GCP e 100% proprio ou lab autorizado
+- [ ] Billing / quotas limitados
+- [ ] Escopo de APIs e pastas/org documentado
+- [ ] Sem brute de buckets de terceiros
+- [ ] Evidencias minimas; sem exfiltrar datasets reais
+- [ ] Cleanup: SAs, keys, bindings e buckets de teste removidos

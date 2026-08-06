@@ -76,10 +76,22 @@ rte::info "Instalando pacotes essenciais (${#ESSENTIALS[@]} pkgs)..."
 DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends "${ESSENTIALS[@]}"
 
 if [[ "$DISTRO" == "kali" || "$DISTRO" == "parrot" ]]; then
-    KALI_EXTRAS=(metasploit-framework burpsuite zaproxy bloodhound impacket-scripts crackmapexec responder)
+    # netexec instalado em passo separado para nao derrubar o lote se o pacote faltar
+    KALI_EXTRAS=(metasploit-framework burpsuite zaproxy bloodhound impacket-scripts responder)
     rte::info "Instalando extras de pentest ${DISTRO^}..."
     DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends "${KALI_EXTRAS[@]}" || \
         rte::warn "Alguns extras nao puderam ser instalados (podem nao estar no repo)."
+    # NetExec (nxc) sucede CrackMapExec; pacote apt no Kali moderno
+    if DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends netexec; then
+        rte::info "netexec instalado via apt."
+    else
+        rte::warn "Pacote netexec ausente/falhou no apt. Fallback sugerido:"
+        rte::warn "  apt-get install -y pipx && pipx install git+https://github.com/Pennyw0rth/NetExec"
+        # Descomente para instalar automaticamente via pipx:
+        # DEBIAN_FRONTEND=noninteractive rte::run apt-get install -y --no-install-recommends pipx || true
+        # rte::run pipx install git+https://github.com/Pennyw0rth/NetExec || \
+        #     rte::warn "Falha no fallback pipx do NetExec."
+    fi
 fi
 
 if [[ -n "$EXTRA_PKGS" ]]; then

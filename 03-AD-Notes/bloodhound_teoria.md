@@ -4,6 +4,16 @@
 
 ---
 
+## Atualizacao 2026: BloodHound CE (recomendado)
+
+BloodHound Community Edition (SpecterOps) e o sucessor. O fluxo classico Neo4j + Electron abaixo permanece como referencia historica.
+
+Instalacao CE (resumo): Docker/compose oficial SpecterOps ou instalador; coletores SharpHound / bloodhound-python / AzureHound; import via UI CE.
+Links: https://github.com/SpecterOps/BloodHound
+Queries novas cobrem ADCS, RBCD, etc. Ver tambem modern-ad-attacks-2026.md
+
+---
+
 ## 📚 O que é BloodHound?
 
 **BloodHound** é uma ferramenta de análise de Active Directory que usa teoria de grafos para revelar relacionamentos ocultos e caminhos de ataque (attack paths) dentro de ambientes AD.
@@ -114,6 +124,8 @@ Domain Admins (Group)
 
 ## 🔧 Instalação e Configuração
 
+> **Legado (BloodHound clássico / Electron + Neo4j).** Para uso atual, prefira **BloodHound CE** (SpecterOps) — ver seção no topo. O fluxo abaixo permanece como referência histórica.
+
 ### 1. Instalar Neo4j
 
 #### Windows
@@ -140,6 +152,14 @@ sudo apt update
 sudo apt install openjdk-11-jre
 
 # Baixar e instalar Neo4j
+#
+# NOTA (legado): `apt-key` está deprecated. Prefira keyring + signed-by:
+#   curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key \
+#     | sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
+#   echo 'deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable latest' \
+#     | sudo tee /etc/apt/sources.list.d/neo4j.list
+#
+# Fluxo clássico (ainda encontrado em tutoriais antigos — não use em hosts novos):
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
 echo 'deb https://debian.neo4j.com stable latest' | sudo tee /etc/apt/sources.list.d/neo4j.list
 sudo apt update
@@ -156,10 +176,10 @@ sudo neo4j start
 ### 2. Instalar BloodHound
 
 ```powershell
-# Baixar do GitHub
-# https://github.com/BloodHoundAD/BloodHound/releases
+# Preferido (2026): BloodHound CE — https://github.com/SpecterOps/BloodHound
+# Legado (Electron + Neo4j): releases antigas / empacotamento distro
 
-# Executar (Windows)
+# Executar (Windows — legado)
 .\BloodHound.exe
 
 # Conectar ao Neo4j
@@ -173,10 +193,13 @@ Password: [sua senha]
 ### 3. Download SharpHound
 
 ```powershell
-# SharpHound.exe (compilado)
+# Coletor ativo (SpecterOps SharpHound):
+# https://github.com/SpecterOps/SharpHound
+
+# Legado — Collectors embutidos no BloodHoundAD clássico:
 # https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors
 
-# SharpHound.ps1 (PowerShell)
+# SharpHound.ps1 (PowerShell — caminho legado BloodHoundAD)
 IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Collectors/SharpHound.ps1')
 ```
 
@@ -710,8 +733,9 @@ TryHackMe:
 
 ### Documentação Oficial
 
-- [BloodHound Docs](https://bloodhound.readthedocs.io/)
-- [SharpHound GitHub](https://github.com/BloodHoundAD/SharpHound)
+- [BloodHound CE (SpecterOps)](https://github.com/SpecterOps/BloodHound)
+- [BloodHound Docs (CE)](https://bloodhound.specterops.io/)
+- [SharpHound GitHub](https://github.com/SpecterOps/SharpHound) (coletor ativo; legado: BloodHoundAD/SharpHound)
 - [Cypher Query Language](https://neo4j.com/docs/cypher-manual/)
 
 ---

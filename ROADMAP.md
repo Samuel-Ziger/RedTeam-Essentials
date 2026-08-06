@@ -195,20 +195,21 @@ Este documento apresenta uma roadmap completa para estudar Red Team de forma gra
   - Abusar de privilégios
 
 - **Conteúdo:**
-  - `linux_privesc_teoria.md` - Escalação Linux
-  - Adicional: Windows Privesc (a criar)
+  - `linux_privesc_teoria.md` / `linux_privesc_modern.md` - Escalação Linux
+  - `windows_privesc_teoria.md` - Escalação Windows (enum, UAC, services, tokens)
 
 - **MITRE ATT&CK Mapping:**
   - TA0004 - Privilege Escalation
     - T1068 - Exploitation for Privilege Escalation
     - T1548 - Abuse Elevation Control Mechanism
     - T1078 - Valid Accounts
+    - T1134 - Access Token Manipulation
 
 - **Tarefas Práticas:**
-  1. ✅ Enumerar sistema para vetores de privesc
-  2. ✅ Explorar SUID/SUDO em Linux
-  3. ✅ Abusar de serviços mal configurados
-  4. ✅ Escalar privilégios via kernel exploits
+  1. [ ] Enumerar sistema para vetores de privesc (Linux e Windows)
+  2. [ ] Explorar SUID/SUDO em Linux
+  3. [ ] Identificar serviços/unquoted paths/AlwaysInstallElevated em Windows
+  4. [ ] Praticar em THM PrivEsc / HTB / GOAD (ambiente autorizado)
 
 - **Recursos de Prática:**
   - TryHackMe: "Linux PrivEsc", "Windows PrivEsc"
@@ -245,17 +246,40 @@ Este documento apresenta uma roadmap completa para estudar Red Team de forma gra
 
 ---
 
-### Módulo 2.4: Post-Exploitation
+### Módulo 2.4: Post-Exploitation (14-Post-Exploitation)
 - **Duração:** 2 semanas
 - **Objetivos de Aprendizado:**
-  - Manter acesso
-  - Coletar credenciais
-  - Exfiltrar dados de forma segura
+  - Manter acesso de forma documentada e etica
+  - Coletar e staging de evidencias
+  - Exfiltrar dados de forma controlada em lab
+
+- **Conteúdo:**
+  - `collection-exfil.md` - staging, tunnels (chisel/ligolo), OPSEC de loot
+  - `persistence-overview.md` - Run keys, tasks, cron/systemd; ponte para AD
 
 - **MITRE ATT&CK Mapping:**
   - TA0009 - Collection
+  - TA0003 - Persistence
   - TA0010 - Exfiltration
-  - TA0011 - Command and Control
+
+- **Tarefas Práticas:**
+  1. [ ] Montar tunnel lab (chisel ou ligolo-ng) entre duas VMs suas
+  2. [ ] Documentar loot com checklist de cleanup
+  3. [ ] Mapear persistencia encontrada vs deteccao (Sysmon)
+
+### Módulo 2.5: Initial Access (13-Initial-Access)
+- **Duração:** 1-2 semanas
+- **Objetivos de Aprendizado:**
+  - Compreender vetores T1566 / T1190 / T1133 sem weaponization
+  - Avaliar superfícies externas (VPN/RDP/OWA) com ética
+  - Ligar web public-facing ao módulo 07
+
+- **Conteúdo:**
+  - `phishing-teoria.md`
+  - `external-services.md`
+
+- **MITRE ATT&CK Mapping:**
+  - TA0001 - Initial Access (T1566, T1190, T1133, T1078)
 
 - **Tarefas Práticas:**
   1. ✅ Configurar persistência
@@ -362,11 +386,14 @@ Este documento apresenta uma roadmap completa para estudar Red Team de forma gra
 
 ### Módulo 4.4: Specialized Tracks
 - **Duração:** Variável
-- **Opções:**
-  - Cloud Red Teaming (AWS, Azure, GCP)
+- **Já no repo:**
+  - Cloud Red Teaming → `08-Cloud-RedTeam/`
+  - Web Application Security → `07-Web-AppSec/` (+ labs)
+  - Container Security → `10-Container-Sec/`
+- **Em aberto (sem modulo ainda):**
   - Mobile Pentesting
   - IoT / OT Security
-  - Web Application Security avançada
+  - Wireless
 
 ---
 
@@ -429,9 +456,11 @@ TIER 1 - Fundamentos
 
 TIER 2 - Intermediário
 [ ] Módulo 2.1: Active Directory
-[ ] Módulo 2.2: Privilege Escalation
+[ ] Módulo 2.2: Privilege Escalation (Linux + Windows)
 [ ] Módulo 2.3: Lateral Movement
-[ ] Módulo 2.4: Post-Exploitation
+[ ] Módulo 2.4: Post-Exploitation (14)
+[ ] Módulo 2.5: Initial Access (13)
+[ ] Módulo 2.6: Web AppSec + labs docker (07)
 
 TIER 3 - Avançado
 [ ] Módulo 3.1: Evasion Techniques
@@ -448,21 +477,20 @@ TIER 4 - Profissional
 
 ---
 
-## 🔄 Próximos Passos (Planejamento Futuro)
+## 🔄 Proximos Passos (planejamento realista)
 
-### Q1 2025
-- ✅ Expandir conteúdo de evasion
-- ✅ Adicionar módulo de Cloud Red Team
-- ✅ Criar labs automatizados com Terraform
+### Feito na v2.0 / v2.1
+- [x] Modulos Cloud, Web, C2 (teoria), Container, Python/Java tools
+- [x] Lab Docker web/API
+- [x] Windows Privesc, Initial Access, Post-Exploitation
+- [x] Labs guiados Web (DVWA / Juice / VAmPI)
+- [x] Sync NetExec + BloodHound CE + MITRE expandido
 
-### Q2 2025
-- ✅ Adicionar vídeos tutoriais
-- ✅ Criar CTF baseado no repositório
-- ✅ Playbooks de engagements reais (anonimizados)
-
-### Q3 2025
-- ✅ Integração com plataformas de treinamento
-- ✅ Certificação própria (opcional)
+### Em aberto
+- [ ] Labs IaC (Terraform/Ansible) quando houver codigo no repo
+- [ ] Mobile / Wireless tracks
+- [ ] Purple-team exercises pareados
+- [ ] CTF / videos proprios (somente com artefatos versionados)
 
 ---
 

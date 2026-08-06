@@ -197,3 +197,21 @@ EOF
 - [Kubernetes Security Whitepaper](https://kubernetes.io/docs/concepts/security/)
 - [Kubernetes ATT&CK Matrix - Microsoft](https://www.microsoft.com/en-us/security/blog/2020/04/02/attack-matrix-kubernetes/)
 - [O'Reilly Container Security book](https://learning.oreilly.com/library/view/container-security/9781492056690/)
+
+## Exercicios praticos
+
+Labs **apenas** em `kind` ou `minikube` (cluster local) — nunca em clusters de terceiros / producao.
+
+1. Criar cluster `kind` ou `minikube`; aplicar um Deployment com SA default e listar permissoes com `kubectl auth can-i --list`.
+2. Criar RoleBinding excessivo de proposito no lab; obter token de SA e chamar a API — depois remover o binding.
+3. Aplicar NetworkPolicy default-deny + PSS `restricted` em um namespace de teste; validar que pods inseguros falham ao criar.
+4. Rodar `kube-bench` (ou equivalente) no cluster local e anotar 3 findings com remediacao.
+
+## Checklist de engajamento
+
+- [ ] Cluster e kind/minikube local (ou lab autorizado)
+- [ ] kubeconfig aponta para o lab — nao para prod
+- [ ] Sem scan/ataque a API servers externos
+- [ ] Tokens e kubeconfigs de teste nao commitados
+- [ ] Evidencias minimas; sem dados reais de clientes no etcd
+- [ ] Cleanup: `kind delete cluster` / `minikube delete` ao terminar

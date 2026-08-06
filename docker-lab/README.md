@@ -21,7 +21,7 @@
 | Vulnerable WordPress | `wpscanteam/vulnerablewordpress` | http://127.0.0.1:8085 | CMS + plugins ruins |
 | NodeGoat | `owasp/nodegoat` | http://127.0.0.1:8086 | Node + Express insecure |
 | VAmPI | `erev0s/vampi` | http://127.0.0.1:8087 | OWASP API Top 10 |
-| Attacker (Kali) | `kalilinux/kali-rolling` | --- | Estacao atacante na rede interna |
+| Attacker (Kali) | build `Dockerfile.kali-pentest` (`rte/kali-pentest`) | --- | Estacao atacante (nmap, sqlmap, NetExec, Impacket) |
 
 Rede interna: `172.28.0.0/24`. Da estacao atacante voce alcanca os alvos por IP fixo:
 
@@ -32,14 +32,16 @@ Rede interna: `172.28.0.0/24`. Da estacao atacante voce alcanca os alvos por IP 
 ## Comandos uteis
 
 ```bash
-# Subir tudo
-cd docker-lab && docker compose up -d
+# Subir tudo (build da imagem Kali custom na primeira vez)
+cd docker-lab && docker compose up -d --build
 
 # Status
 docker compose ps
 
 # Entrar no atacante
 docker exec -it rte-attacker bash
+
+# Labs guiados: ../07-Web-AppSec/labs/
 
 # Logs de um servico
 docker compose logs -f juiceshop

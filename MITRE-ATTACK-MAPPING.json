@@ -6,7 +6,7 @@
     "layer": "4.5"
   },
   "domain": "enterprise-attack",
-  "description": "Mapeamento de técnicas MITRE ATT&CK cobertas pelo repositório RedTeam-Essentials",
+  "description": "Mapeamento MITRE ATT&CK (v2.1) — cobertura RedTeam-Essentials modulos 01-14",
   "filters": {
     "platforms": [
       "windows",
@@ -108,18 +108,18 @@
     {
       "techniqueID": "T1598",
       "tactic": "reconnaissance",
-      "score": 50,
-      "color": "#addd8e",
-      "comment": "Módulo 02-OSINT: Teoria de phishing para informações (não prático)",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulos 02-OSINT + 13-Initial-Access: phishing for information",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "02-OSINT"
+          "value": "13-Initial-Access"
         },
         {
-          "name": "Tipo",
-          "value": "Teórico"
+          "name": "Recursos",
+          "value": "phishing-teoria.md"
         }
       ]
     },
@@ -220,7 +220,7 @@
       "tactic": "privilege-escalation",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: linux_privesc_teoria.md - Exploitation para privesc",
+      "comment": "Módulo 06: linux_privesc + windows_privesc_teoria.md",
       "enabled": true,
       "metadata": [
         {
@@ -229,7 +229,7 @@
         },
         {
           "name": "Recursos",
-          "value": "linux_privesc_teoria.md"
+          "value": "windows_privesc_teoria.md, linux_privesc_teoria.md"
         }
       ]
     },
@@ -238,12 +238,16 @@
       "tactic": "privilege-escalation",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: Abuse de SUDO/SUID",
+      "comment": "Módulo 06: UAC/sudo abuse (Linux+Windows)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
           "value": "06-Cheatsheets"
+        },
+        {
+          "name": "Recursos",
+          "value": "windows_privesc_teoria.md"
         }
       ]
     },
@@ -374,14 +378,14 @@
     {
       "techniqueID": "T1119",
       "tactic": "collection",
-      "score": 50,
-      "color": "#addd8e",
-      "comment": "Módulo 04-Automation: Automated collection (logs)",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulos 04 + 14: automated collection / staging",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "04-Automation"
+          "value": "14-Post-Exploitation"
         }
       ]
     },
@@ -406,70 +410,444 @@
     {
       "techniqueID": "T1562",
       "tactic": "defense-evasion",
-      "score": 25,
-      "color": "#d9f0a3",
-      "comment": "Planejado: Módulo de Evasion (futuro)",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 09-C2-Evasion: evasion-fundamentals.md / opsec-checklist.md",
       "enabled": true,
       "metadata": [
         {
-          "name": "Status",
-          "value": "Planejado"
+          "name": "Módulo",
+          "value": "09-C2-Evasion"
+        },
+        {
+          "name": "Recursos",
+          "value": "evasion-fundamentals.md"
         }
       ]
     },
     {
       "techniqueID": "T1027",
       "tactic": "defense-evasion",
-      "score": 25,
-      "color": "#d9f0a3",
-      "comment": "Planejado: Obfuscation techniques (futuro)",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 09-C2-Evasion: ofuscacao (teoria)",
       "enabled": true,
       "metadata": [
         {
-          "name": "Status",
-          "value": "Planejado"
+          "name": "Módulo",
+          "value": "09-C2-Evasion"
         }
       ]
     },
     {
       "techniqueID": "T1055",
       "tactic": "defense-evasion",
-      "score": 25,
-      "color": "#d9f0a3",
-      "comment": "Planejado: Process Injection (futuro)",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 09-C2-Evasion: process injection (teoria)",
       "enabled": true,
       "metadata": [
         {
-          "name": "Status",
-          "value": "Planejado"
+          "name": "Módulo",
+          "value": "09-C2-Evasion"
         }
       ]
     },
     {
       "techniqueID": "T1105",
       "tactic": "command-and-control",
-      "score": 25,
-      "color": "#d9f0a3",
-      "comment": "Planejado: Ingress Tool Transfer (futuro)",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 09/14: ingress tool transfer (teoria/lab tunnels)",
       "enabled": true,
       "metadata": [
         {
-          "name": "Status",
-          "value": "Planejado"
+          "name": "Módulo",
+          "value": "09-C2-Evasion"
         }
       ]
     },
     {
       "techniqueID": "T1041",
       "tactic": "exfiltration",
-      "score": 25,
-      "color": "#d9f0a3",
-      "comment": "Planejado: Exfiltration Over C2 Channel (futuro)",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 14-Post-Exploitation: collection-exfil.md",
       "enabled": true,
       "metadata": [
         {
-          "name": "Status",
-          "value": "Planejado"
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        },
+        {
+          "name": "Recursos",
+          "value": "collection-exfil.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1566",
+      "tactic": "initial-access",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 13: phishing-teoria.md (sem weaponization)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "13-Initial-Access"
+        },
+        {
+          "name": "Recursos",
+          "value": "phishing-teoria.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1190",
+      "tactic": "initial-access",
+      "score": 100,
+      "color": "#31a354",
+      "comment": "Módulos 07/13: exploit public-facing + labs docker",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "07-Web-AppSec"
+        },
+        {
+          "name": "Recursos",
+          "value": "sqli-deep-dive.md, labs/"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1133",
+      "tactic": "initial-access",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 13: external-services.md (VPN/RDP/OWA)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "13-Initial-Access"
+        },
+        {
+          "name": "Recursos",
+          "value": "external-services.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1134",
+      "tactic": "privilege-escalation",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 06: token privileges / potato family (teoria)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "06-Cheatsheets"
+        },
+        {
+          "name": "Recursos",
+          "value": "windows_privesc_teoria.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1053",
+      "tactic": "persistence",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 14: scheduled tasks persistence overview",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        },
+        {
+          "name": "Recursos",
+          "value": "persistence-overview.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1547",
+      "tactic": "persistence",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 14: registry Run keys overview",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        },
+        {
+          "name": "Recursos",
+          "value": "persistence-overview.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1543",
+      "tactic": "persistence",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 14: services persistence overview",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1005",
+      "tactic": "collection",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 14: data from local system / loot OPSEC",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        },
+        {
+          "name": "Recursos",
+          "value": "collection-exfil.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1048",
+      "tactic": "exfiltration",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 14: exfil over alt protocol (DNS/HTTPS concepts)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1090",
+      "tactic": "command-and-control",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 14: tunnels/proxy (chisel, ligolo-ng overview)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "14-Post-Exploitation"
+        },
+        {
+          "name": "Recursos",
+          "value": "collection-exfil.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1071",
+      "tactic": "command-and-control",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 09: C2 over app protocols (teoria)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "09-C2-Evasion"
+        },
+        {
+          "name": "Recursos",
+          "value": "c2-overview.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1573",
+      "tactic": "command-and-control",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 09: encrypted channel (teoria)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "09-C2-Evasion"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1552",
+      "tactic": "credential-access",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulos 07/10: unsecured credentials (JWT, container)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "07-Web-AppSec"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1110",
+      "tactic": "credential-access",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 13: password spraying concepts (rate/lockout)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "13-Initial-Access"
+        },
+        {
+          "name": "Recursos",
+          "value": "external-services.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1580",
+      "tactic": "discovery",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 08: cloud infrastructure discovery",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "08-Cloud-RedTeam"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1530",
+      "tactic": "collection",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 08: data from cloud storage",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "08-Cloud-RedTeam"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1078.004",
+      "tactic": "initial-access",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 08: valid cloud accounts",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "08-Cloud-RedTeam"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1098",
+      "tactic": "persistence",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 08: account manipulation cloud",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "08-Cloud-RedTeam"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1610",
+      "tactic": "execution",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 10: deploy container",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "10-Container-Sec"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1611",
+      "tactic": "privilege-escalation",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 10: escape to host",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "10-Container-Sec"
+        },
+        {
+          "name": "Recursos",
+          "value": "docker-escape-techniques.md"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1613",
+      "tactic": "discovery",
+      "score": 75,
+      "color": "#74c476",
+      "comment": "Módulo 10: container and resource discovery",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "10-Container-Sec"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1552.007",
+      "tactic": "credential-access",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 10: container API credentials",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "10-Container-Sec"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1199",
+      "tactic": "initial-access",
+      "score": 50,
+      "color": "#addd8e",
+      "comment": "Módulo 08: trusted relationship / federation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Módulo",
+          "value": "08-Cloud-RedTeam"
         }
       ]
     }
@@ -514,11 +892,11 @@
     },
     {
       "name": "Versão",
-      "value": "1.0.0"
+      "value": "2.1.0"
     },
     {
       "name": "Data",
-      "value": "2025-11-22"
+      "value": "2026-08-06"
     },
     {
       "name": "Repositório",

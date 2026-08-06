@@ -63,26 +63,29 @@ Ao completar este módulo, você será capaz de:
 
 ---
 
-### 2. Scripts e Automação
+### 2. Scripts e Automação (v2)
 
 #### [`dns_enum.ps1`](dns_enum.ps1)
-**Descrição:** Script PowerShell para enumeração DNS automatizada  
-**Funcionalidades:**
-- Consulta de registros A, AAAA, MX, TXT, NS, SOA
-- Validação de formato de domínio
-- Geração de relatórios
-- Logging completo
+**Descrição:** Enumeração DNS cross-platform (PS 5.1 / 7+) com crt.sh e export JSON.  
+**Parâmetros principais:** `-Domain`, `-IncludeSubdomains`, `-OutputDir`, `-Format json|txt`, `-DnsServer`, `-DryRun`, `-RecordTypes`.
 
-**Uso:**
 ```powershell
-# Básico
-.\dns_enum.ps1 -Domain "exemplo.com"
-
-# Com relatório
-.\dns_enum.ps1 -Domain "exemplo.com" -OutputFile "C:\relatorio.txt"
+Import-Module ../lib/powershell/RTECommon.psm1
+.\dns_enum.ps1 -Domain "exemplo.com" -IncludeSubdomains -Format json
+.\dns_enum.ps1 -Domain "exemplo.com" -RecordTypes A,MX,TXT -DnsServer 1.1.1.1 -DryRun
 ```
 
-**MITRE ATT&CK:** T1590 - Gather Victim Network Information
+#### [`dns_enum.sh`](dns_enum.sh)
+**Descrição:** Alternativa Bash (`dig` + crt.sh + WHOIS opcional).
+
+```bash
+./dns_enum.sh -d exemplo.com --subs --whois -o ./output
+./dns_enum.sh -d exemplo.com --dry-run
+```
+
+**MITRE ATT&CK:** T1590 / T1596
+
+**Relacionado:** recon web avançado em [`07-Web-AppSec/recon-web-pratico.md`](../07-Web-AppSec/recon-web-pratico.md).
 
 ---
 

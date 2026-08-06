@@ -1,8 +1,12 @@
-# 📋 Resumo das Melhorias Implementadas - v1.1
+# 📋 Resumo das Melhorias Implementadas - v1.1 (HISTORICO)
+
+> **Status:** documento historico da era v1.1. Para o estado atual do projeto, use
+> [`CHANGELOG.md`](CHANGELOG.md) e o [`README.md`](README.md) (v2.1+).
+> Nao use este arquivo como fonte de status de entrega.
 
 ## ✅ Análise Técnica Profunda Implementada
 
-Este documento resume todas as melhorias implementadas baseadas na análise técnica detalhada fornecida.
+Este documento resume melhorias da v1.1 (legado).
 
 ---
 

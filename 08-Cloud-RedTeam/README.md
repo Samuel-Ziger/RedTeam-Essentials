@@ -6,10 +6,27 @@
 
 | Documento | Tema |
 |-----------|------|
-| [aws-attack-paths.md](aws-attack-paths.md) | Vetores comuns: IMDSv1 SSRF, IAM privilege escalation, S3 misconfig. |
-| [azure-attack-paths.md](azure-attack-paths.md) | Entra ID (Azure AD), device code phishing, App roles, Storage SAS. |
-| [gcp-attack-paths.md](gcp-attack-paths.md) | Service account impersonation, IAM bindings, metadata, Workload Identity. |
+| [aws-attack-paths.md](aws-attack-paths.md) | Vetores comuns: IMDSv1 SSRF, IAM privilege escalation, S3 misconfig. Inclui **Exercicios praticos** e checklist (LocalStack / conta propria). |
+| [azure-attack-paths.md](azure-attack-paths.md) | Entra ID (Azure AD), device code phishing, App roles, Storage SAS. Inclui **Exercicios praticos** (tenant / Azure free). |
+| [gcp-attack-paths.md](gcp-attack-paths.md) | Service account impersonation, IAM bindings, metadata, Workload Identity. Inclui **Exercicios praticos** (projeto proprio / GCPGoat). |
 | [cloud-recon-tools.md](cloud-recon-tools.md) | Pacu, CloudFox, ScoutSuite, ROADtools, BloodHound for Azure. |
+
+## Fluxo recomendado
+
+1. Escolher um cloud (AWS / Azure / GCP) e ler o attack-paths correspondente.
+2. Fazer os **Exercicios praticos** no final de cada arquivo — so em conta/lab proprio.
+3. Usar [cloud-recon-tools.md](cloud-recon-tools.md) para enum defensiva/ofensiva em lab.
+4. Documentar paths e mitigacoes; cruzar com [07-Web-AppSec](../07-Web-AppSec/) (SSRF→IMDS) quando aplicavel.
+
+## Labs sugeridos
+
+| Lab | Uso |
+|-----|-----|
+| **LocalStack** / conta AWS sandbox | Exercicios de [aws-attack-paths.md](aws-attack-paths.md) |
+| **Azure free** / Learn sandbox | Exercicios de [azure-attack-paths.md](azure-attack-paths.md) |
+| **GCP free tier** / GCPGoat | Exercicios de [gcp-attack-paths.md](gcp-attack-paths.md) |
+
+Nunca atacar contas, buckets ou tenants de terceiros.
 
 ## MITRE ATT&CK Cloud Matrix
 
@@ -31,4 +48,4 @@ Tecnicas mais relevantes:
 
 ## Etica
 
-Cloud red team sem autorizacao escrita pode ser violacao do ToS do provider e crime (LGPD/GDPR/CFAA). Sempre confirme escopo e RoE antes de qualquer comando.
+Cloud red team sem autorizacao escrita pode ser violacao do ToS do provider e crime (LGPD/GDPR/CFAA). Sempre confirme escopo e RoE antes de qualquer comando. Use apenas os labs da secao acima e o checklist no final de cada attack-paths.

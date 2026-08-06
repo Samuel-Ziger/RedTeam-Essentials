@@ -106,8 +106,12 @@ sudo apt update && sudo apt full-upgrade -y
 sudo apt install -y kali-linux-large
 
 # Configurar ferramentas essenciais
-sudo apt install -y bloodhound neo4j crackmapexec impacket-scripts \
+# NetExec (nxc) sucede CrackMapExec; BloodHound CE preferivel ao pacote legado
+sudo apt install -y bloodhound neo4j netexec impacket-scripts \
                     responder proxychains4 chisel ligolo-ng
+# Alternativa se apt nao tiver netexec:
+#   pipx install git+https://github.com/Pennyw0rth/NetExec
+# BloodHound CE (recomendado): https://github.com/SpecterOps/BloodHound
 ```
 
 **Parrot Security OS** (Alternativa)
@@ -557,7 +561,7 @@ sudo apt install -y metasploit-framework exploitdb
 sudo apt install -y burpsuite gobuster ffuf nikto sqlmap
 
 # AD
-sudo apt install -y bloodhound crackmapexec evil-winrm impacket-scripts
+sudo apt install -y bloodhound netexec evil-winrm impacket-scripts
 
 # Post-Exploitation
 sudo apt install -y chisel ligolo-ng socat
@@ -571,8 +575,11 @@ sudo apt install -y hashcat john hydra
 
 ### Configuração do BloodHound
 
+> **Recomendado (2026):** [BloodHound CE](https://github.com/SpecterOps/BloodHound) via Docker/compose SpecterOps (coletores SharpHound / bloodhound-python / AzureHound; import na UI CE).
+> Abaixo: fluxo **legado** Neo4j + app Electron (ainda útil em labs com pacotes distro).
+
 ```bash
-# Instalar Neo4j
+# Legado: Neo4j + BloodHound clássico (apt)
 sudo apt install -y neo4j bloodhound
 
 # Iniciar Neo4j
@@ -581,7 +588,7 @@ sudo neo4j start
 # Acessar: http://localhost:7474
 # Credenciais iniciais: neo4j / neo4j (mudar na primeira vez)
 
-# Iniciar BloodHound
+# Iniciar BloodHound (legado)
 bloodhound
 ```
 

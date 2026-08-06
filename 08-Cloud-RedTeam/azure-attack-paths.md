@@ -156,3 +156,21 @@ Servidor de Azure AD Connect tem credenciais de sincronizacao com Entra. Comprom
 - [Microsoft Threat Intelligence blog](https://www.microsoft.com/en-us/security/blog/topic/threat-intelligence/)
 - [Adsec.es Azure AD red team](https://www.adsec.es/)
 - [ROADtools docs](https://github.com/dirkjanm/ROADtools)
+
+## Exercicios praticos
+
+Labs **apenas** em tenant Azure proprio / Azure free / Microsoft Learn sandbox — nunca em tenants de terceiros.
+
+1. Criar app registration de teste no Entra ID; enumerar com ROADtools ou AzureHound (lab) e desenhar um path ate privilegio alto.
+2. Praticar leitura de Storage com SAS de curta duracao (gerado por voce); depois revogar e validar falha.
+3. Revisar Conditional Access de lab: identificar exclusoes perigosas (legacy clients / named locations) sem alterar producao.
+4. Documentar um cenario de device code phishing **somente em lab proprio** (contas de teste), com foco em deteccao (sign-in logs).
+
+## Checklist de engajamento
+
+- [ ] Tenant / subscription e proprio ou sandbox autorizado
+- [ ] Contas de teste isoladas (sem MFA bypass em producao)
+- [ ] RoE cobre Graph API, Storage e Entra enumeration
+- [ ] Sem phishing / device code contra usuarios reais fora do lab
+- [ ] Evidencias minimas; sem exportar PII do directory
+- [ ] Cleanup: apps, SPNs, SAS, role assignments de teste removidos

@@ -47,7 +47,18 @@ Você verá um heatmap com cores:
 
 ---
 
-## 📊 Técnicas Cobertas (28+)
+## 📊 Técnicas Cobertas (50+)
+
+Layer atualizado na **v2.1** (modulos 01-14). Resumo das areas novas:
+
+| Area | Modulos | Exemplos |
+|------|---------|----------|
+| Initial Access | 13, 07 | T1566, T1190, T1133 |
+| Windows Privesc | 06 | T1548, T1134, T1068 |
+| Web AppSec labs | 07 | T1190 (SQLi/SSRF/XSS) |
+| Cloud / Containers | 08, 10 | T1580, T1611, T1610 |
+| Post-Ex / Exfil | 14 | T1041, T1005, T1090 |
+| C2 / Evasion (teoria) | 09 | T1071, T1562, T1027 |
 
 ### Reconnaissance (TA0043) - 6 técnicas
 
@@ -58,7 +69,7 @@ Você verá um heatmap com cores:
 | **T1596** | Search Open Technical Databases | 100% | 01-Recon | DNS enumeration |
 | **T1593** | Search Open Websites/Domains | 100% | 02-OSINT | osint_automation.ps1 |
 | **T1594** | Search Victim-Owned Websites | 100% | 02-OSINT | Pesquisa em sites |
-| **T1598** | Phishing for Information | 50% | 02-OSINT | Teoria (não prático) |
+| **T1598** | Phishing for Information | 75% | 02 + 13 | phishing-teoria.md |
 
 ### Discovery (TA0007) - 4 técnicas
 
@@ -86,12 +97,14 @@ Você verá um heatmap com cores:
 | **T1021.006** | Windows Remote Management | 100% | 06-Cheatsheets | WinRM usage |
 | **T1550** | Use Alternate Authentication Material | 100% | 06-Cheatsheets | Pass-the-Hash, PtT |
 
-### Privilege Escalation (TA0004) - 3 técnicas
+### Privilege Escalation (TA0004)
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1068** | Exploitation for Privilege Escalation | 100% | 06-Cheatsheets | linux_privesc_teoria.md |
-| **T1548** | Abuse Elevation Control Mechanism | 100% | 06-Cheatsheets | SUDO/SUID abuse |
+| **T1068** | Exploitation for Privilege Escalation | 100% | 06-Cheatsheets | linux + windows_privesc |
+| **T1548** | Abuse Elevation Control Mechanism | 100% | 06-Cheatsheets | SUDO/UAC |
+| **T1134** | Access Token Manipulation | 75% | 06-Cheatsheets | windows_privesc_teoria.md |
+| **T1611** | Escape to Host | 75% | 10-Container-Sec | docker-escape-techniques.md |
 | **T1078** | Valid Accounts | 50% | 06-Cheatsheets | Uso de credenciais |
 
 ### Execution (TA0002) - 2 técnicas
@@ -107,14 +120,24 @@ Você verá um heatmap com cores:
 |----|---------|-------|--------|----------|
 | **T1119** | Automated Collection | 50% | 04-Automation | organize_logs.ps1 |
 
-### Defense Evasion (TA0005) - 4 técnicas (Planejadas)
+### Defense Evasion (TA0005) - teoria (09-C2-Evasion)
 
 | ID | Técnica | Score | Status |
 |----|---------|-------|--------|
 | **T1070** | Indicator Removal | 50% | Teoria DFIR |
-| **T1562** | Impair Defenses | 25% | Planejado |
-| **T1027** | Obfuscated Files or Information | 25% | Planejado |
-| **T1055** | Process Injection | 25% | Planejado |
+| **T1562** | Impair Defenses | 75% | 09-C2-Evasion |
+| **T1027** | Obfuscated Files or Information | 50% | 09 (teoria) |
+| **T1055** | Process Injection | 50% | 09 (teoria) |
+
+### Initial Access / Exfiltration (novos na v2.1)
+
+| ID | Técnica | Score | Módulo |
+|----|---------|-------|--------|
+| **T1566** | Phishing | 75% | 13-Initial-Access |
+| **T1190** | Exploit Public-Facing Application | 100% | 07-Web-AppSec |
+| **T1133** | External Remote Services | 75% | 13-Initial-Access |
+| **T1041** | Exfiltration Over C2 Channel | 75% | 14-Post-Exploitation |
+| **T1090** | Proxy | 75% | 14 (tunnels) |
 
 ---
 

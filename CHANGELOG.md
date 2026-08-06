@@ -7,6 +7,26 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased]
+
+### Adicionado
+- **06-Cheatsheets/windows_privesc_teoria.md** - Windows Privilege Escalation (enum, UAC, services, tokens, checklist, defesa).
+- **07-Web-AppSec** - deep-dives SQLi/SSRF + labs guiados DVWA, Juice Shop e VAmPI (`labs/`).
+- **13-Initial-Access** - phishing teorico (T1566) e servicos externos (VPN/RDP/OWA/T1190).
+- **14-Post-Exploitation** - collection/exfil e persistencia overview eticos.
+- READMEs de modulo para 02-OSINT, 03-AD-Notes, 05-DFIR, 06-Cheatsheets.
+- Exercicios praticos e checklists em Cloud (08) e Container (10).
+- MITRE ATT&CK layer expandido para modulos 07-14 (v2.1 coverage).
+
+### Modificado
+- ROADMAP alinhado a v2.1 (Windows Privesc, Initial Access, Post-Ex; removidos checkmarks sem artefato).
+- BloodHound CE (SpecterOps) documentado; CrackMapExec -> NetExec (`nxc`) em docs/scripts/lab.
+- `docker-lab`: attacker usa build `Dockerfile.kali-pentest`; README raiz lista todos os alvos.
+- CI Lychee com `fail: true`.
+- `IMPLEMENTATION_SUMMARY.md` marcado como historico (ver CHANGELOG).
+
+---
+
 ## [2.0.0] - 2026-05-20
 
 ### Major upgrade - estrutura, stack poliglota e cobertura ampliada
@@ -274,33 +294,13 @@ Este é o primeiro lançamento oficial do RedTeam Essentials com documentação 
 
 ---
 
-## [Unreleased] - Roadmap Futuro
+## Planejado (pos-v2.1)
 
-### 🔮 Planejado para Próximas Versões
-
-#### v1.1.0 - Q1 2026
-- [ ] Módulo de Evasion Techniques expandido
-- [ ] Módulo de Cloud Red Team (AWS, Azure, GCP)
-- [ ] Vídeos tutoriais para cada módulo
-- [ ] CI/CD com GitHub Actions
-
-#### v1.2.0 - Q2 2026
-- [ ] Labs automatizados com Terraform/Ansible
-- [ ] CTF baseado no repositório
-- [ ] Playbooks de engagements reais (anonimizados)
-- [ ] Integração com plataformas de treinamento
-
-#### v1.3.0 - Q3 2026
-- [ ] Módulo de post-exploitation avançado
-- [ ] Templates de relatórios em múltiplos formatos (HTML, PDF)
-- [ ] Comunidade Discord oficial
-- [ ] Certificação própria (opcional)
-
-#### v2.0.0 - 2027
-- [ ] Restruturação completa para multi-idioma
-- [ ] Plataforma web interativa
-- [ ] Sistema de badges e gamificação
-- [ ] Marketplace de scripts comunitários
+- [ ] Labs Terraform/Ansible para AD/cloud (quando houver codigo no repo)
+- [ ] Deep-dives adicionais (deserialization, IDOR avancado)
+- [ ] Mobile / Wireless tracks
+- [ ] Purple-team exercises pareados ataque/deteccao
+- [ ] Videos / CTF proprio (somente apos artefatos existirem)
 
 ---
 
