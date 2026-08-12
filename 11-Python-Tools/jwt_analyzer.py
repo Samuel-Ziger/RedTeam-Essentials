@@ -17,6 +17,7 @@ Autor:    Samuel Ziger - RedTeam Essentials
 Versao:   2.0.0
 Licenca:  MIT
 """
+
 from __future__ import annotations
 
 import argparse
@@ -162,10 +163,13 @@ def main() -> int:
     if args.bruteforce_secrets and alg in _HMAC_ALGS:
         cracked = try_secrets(token, alg, Path(args.bruteforce_secrets))
         if cracked is not None:
-            findings.append({
-                "severity": "CRITICAL", "code": "JWT-CRACK",
-                "message": f"Secret encontrado por bruteforce: {cracked!r}",
-            })
+            findings.append(
+                {
+                    "severity": "CRITICAL",
+                    "code": "JWT-CRACK",
+                    "message": f"Secret encontrado por bruteforce: {cracked!r}",
+                }
+            )
 
     output = {
         "metadata": {"tool": "jwt_analyzer.py", "version": "2.0.0"},

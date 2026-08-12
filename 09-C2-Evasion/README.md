@@ -2,6 +2,17 @@
 
 > Conteudo **teorico** sobre Command-and-Control (C2) e tecnicas de evasion modernas. **Nao incluimos exploits ou implants prontos** - apenas conceitos, mapeamento ATT&CK e mitigacoes.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes avançados e equipes purple team. |
+| Pré-requisitos | Módulos 00, 05 e 14; laboratório isolado. |
+| Tempo estimado | 6 horas de teoria e 4 horas de análise defensiva. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Diagrama conceitual, hipótese de detecção e plano de cleanup. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Sumario
 
 | Documento | Tema |

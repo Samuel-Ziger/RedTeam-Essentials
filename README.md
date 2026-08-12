@@ -57,6 +57,7 @@ RedTeam-Essentials/
 ├── ATTACK_MAPPING_GUIDE.md / MITRE-ATTACK-MAPPING.json
 ├── validate_scripts.ps1               (lint + PSSA + checagens custom)
 │
+├── 00-Fundamentos/                    (redes, sistemas, identidade, RoE e lab seguro)
 ├── lib/                               NOVO em v2.0
 │   ├── powershell/RTECommon.psm1      (logging, validacao, export)
 │   ├── bash/rte_common.sh             (logging, traps, helpers)
@@ -105,6 +106,16 @@ RedTeam-Essentials/
 ├── 12-Java-Tools/
 ├── 13-Initial-Access/                 NOVO v2.1
 ├── 14-Post-Exploitation/              NOVO v2.1
+├── 15-Hybrid-Identity/                 (AD + Entra + workload identities)
+├── 16-CICD-Supply-Chain/               (pipelines, OIDC, artefatos e provenance)
+├── 17-macOS-Security/                   (endpoint, TCC, MDM e DFIR)
+├── 18-Mobile-Security/                  (Android/iOS, MASVS e privacidade)
+├── 19-Wireless-Security/                (Wi-Fi defensivo e análise offline)
+├── 20-Offensive-Labs/                   (operações ofensivas integradas e seguras)
+├── 21-Network-Pivoting/                 (rotas, segmentação e teardown)
+├── 22-Secure-Code-Review/               (source-to-sink e autorização)
+├── 23-Threat-Intel-Emulation/           (CTI orientada a hipóteses)
+├── 24-Lateral-Movement/                 (attack paths, protocolos e telemetria)
 │
 ├── docker-lab/
 │   ├── docker-compose.yml
@@ -191,12 +202,25 @@ java -cp build io.redteam.essentials.PayloadGenerator --type xss --count 20
 
 ## 🎓 Trilha de Aprendizado
 
+Comece pelo **[Módulo 00](00-Fundamentos/README.md)** se ainda não domina redes,
+terminal, identidade, escopo e operação segura do laboratório.
+
 | Tier | Foco | Modulos | Tempo |
 |------|------|---------|-------|
 | **1 - Iniciante** | Recon, OSINT, automacao | 01, 02, 04 | 4-6 semanas |
 | **2 - Intermediario** | AD, privesc, lateral, web, initial access, post-ex | 03, 06, 07, 13, 14 | 8-12 semanas |
 | **3 - Avancado** | Cloud, container, DFIR | 05, 08, 10 | 8-12 semanas |
 | **4 - Profissional** | C2 (teoria), reporting, engagement | 09, 11, 12, REPORT-TEMPLATE | continuo |
+
+### Trilhas por objetivo
+
+| Objetivo | Ordem sugerida |
+|----------|----------------|
+| Red Team geral | 00 → 01 → 02 → 04 → 07 → 06 → 03 → 13 → 14 → 09 |
+| AppSec e APIs | 00 → 01 → 07 → 11 → 12 → REPORT-TEMPLATE |
+| Active Directory | 00 → 04 → 06 → 03 → 05 → 14 |
+| Cloud e containers | 00 → 01 → 07 → 08 → 10 → 05 |
+| Purple Team / DFIR | 00 → 05 → 03 → 07 → 09 → 13 → 14 |
 
 Veja **[ROADMAP.md](ROADMAP.md)** para detalhes por semana.
 
@@ -249,6 +273,8 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md). Resumo:
 
 ## 📚 Documentacao Expandida
 
+- 🔎 **[PROJECT-AUDIT.md](PROJECT-AUDIT.md)** - Diagnostico do conteudo atual e backlog priorizado de melhorias e novos temas.
+- ⚔️ **[docs/OFFENSIVE-CONTENT-ROADMAP.md](docs/OFFENSIVE-CONTENT-ROADMAP.md)** - Entregas e próximos labs ofensivos seguros.
 - 🗺️ **[ROADMAP.md](ROADMAP.md)** - Trilha de estudos (Tier 1 - 4) com MITRE ATT&CK.
 - 🧪 **[LAB-SETUP.md](LAB-SETUP.md)** - VMs, AD lab, plataformas online.
 - 📄 **[REPORT-TEMPLATE.md](REPORT-TEMPLATE.md)** - Template profissional de relatorio Red Team.

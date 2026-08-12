@@ -3,6 +3,17 @@
 > Modulo de enumeracao, Kerberoasting, attack paths (BloodHound CE) e tecnicas modernas de AD.
 > Labs: GOAD, DetectionLab, HTB Pro Labs ou AD proprio — **nunca** dominio de terceiros sem RoE.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários de Windows e identidade. |
+| Pré-requisitos | Módulos 00 e 06; AD próprio, GOAD ou plataforma autorizada. |
+| Tempo estimado | 12 horas de leitura e 12 horas de laboratório. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Caminho de ataque, evidências mínimas, detecção e remediação. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Documento | Tema |

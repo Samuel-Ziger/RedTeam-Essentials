@@ -28,3 +28,6 @@ jobs:
             bash -n "$f" || { echo "::error file=$f::syntax error"; exit 1; }
           done
           echo "Sintaxe Bash OK."
+
+      - name: Offline library tests
+        run: bash tests/bash/test_rte_common.sh

@@ -1,0 +1,7 @@
+timestamp_utc,host,event_id,user,source_ip,result,detail
+2026-08-12T10:00:01Z,DC01,4625,LAB\\student,10.10.10.25,failure,bad_password
+2026-08-12T10:00:03Z,DC01,4625,LAB\\student,10.10.10.25,failure,bad_password
+2026-08-12T10:00:08Z,DC01,4624,LAB\\student,10.10.10.25,success,logon_type_3
+2026-08-12T10:00:09Z,WS01,4672,LAB\\student,10.10.10.25,success,special_privileges
+2026-08-12T10:04:00Z,DC01,4634,LAB\\student,10.10.10.25,success,session_closed
+

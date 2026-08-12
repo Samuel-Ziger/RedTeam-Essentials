@@ -1,0 +1,30 @@
+name: Repository Metadata
+
+on:
+  push:
+    paths:
+      - 'MITRE-ATTACK-MAPPING.json'
+      - 'scripts/validate_attack_mapping.py'
+      - 'tests/python/test_attack_mapping.py'
+      - 'docker-lab/docker-compose.yml'
+      - 'scripts/validate_compose_policy.py'
+      - '.github/workflows/metadata.yml'
+  pull_request:
+    paths:
+      - 'MITRE-ATTACK-MAPPING.json'
+      - 'scripts/validate_attack_mapping.py'
+      - 'tests/python/test_attack_mapping.py'
+      - 'docker-lab/docker-compose.yml'
+      - 'scripts/validate_compose_policy.py'
+
+jobs:
+  attack-layer:
+    name: Validate ATT&CK Navigator layer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_attack_mapping.py
+      - run: python scripts/validate_compose_policy.py

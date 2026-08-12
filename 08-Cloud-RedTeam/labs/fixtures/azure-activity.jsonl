@@ -1,0 +1,3 @@
+{"eventTimestamp":"2026-08-12T12:10:00Z","operationName":{"value":"Microsoft.Storage/storageAccounts/listKeys/action"},"status":{"value":"Succeeded"},"caller":"reader@lab.invalid","resourceGroupName":"rte-lab","properties":{}}
+{"eventTimestamp":"2026-08-12T12:11:00Z","operationName":{"value":"Microsoft.Authorization/roleAssignments/write"},"status":{"value":"Succeeded"},"caller":"admin@lab.invalid","resourceGroupName":"rte-lab","properties":{"roleDefinitionName":"Owner","principalId":"00000000-0000-0000-0000-000000000002"}}
+

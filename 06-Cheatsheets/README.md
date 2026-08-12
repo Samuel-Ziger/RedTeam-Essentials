@@ -3,6 +3,17 @@
 > Referencias rapidas e teoria de privesc / movimento lateral para lab e engagements autorizados.
 > Use apos foothold ([13-Initial-Access](../13-Initial-Access/)) e antes / durante [14-Post-Exploitation](../14-Post-Exploitation/) e [03-AD-Notes](../03-AD-Notes/).
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários de Linux e Windows. |
+| Pré-requisitos | Módulo 00; VM vulnerável própria e snapshots. |
+| Tempo estimado | 12 horas de leitura e prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Árvore de decisão com evidência, detecção, correção e cleanup. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Documento | Tema |

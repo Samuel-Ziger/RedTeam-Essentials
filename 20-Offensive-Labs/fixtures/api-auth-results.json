@@ -1,0 +1,7 @@
+[
+  {"principal":"user-a","role":"user","owner":"user-a","resource":"/orders/100","function":"user","status":200},
+  {"principal":"user-a","role":"user","owner":"user-b","resource":"/orders/200","function":"user","status":200},
+  {"principal":"user-a","role":"user","owner":"","resource":"/admin/export","function":"admin","status":200},
+  {"principal":"user-a","role":"user","owner":"user-b","resource":"/orders/201","function":"user","status":403}
+]
+

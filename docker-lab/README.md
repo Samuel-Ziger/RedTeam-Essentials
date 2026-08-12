@@ -32,11 +32,14 @@ Rede interna: `172.28.0.0/24`. Da estacao atacante voce alcanca os alvos por IP 
 ## Comandos uteis
 
 ```bash
-# Subir tudo (build da imagem Kali custom na primeira vez)
+# Subir o perfil básico (DVWA, Juice Shop e atacante)
 cd docker-lab && docker compose up -d --build
 
 # Status
 docker compose ps
+
+# Diagnosticar Compose, containers e endpoints HTTP
+bash lab-doctor.sh
 
 # Entrar no atacante
 docker exec -it rte-attacker bash
@@ -52,6 +55,40 @@ docker compose down -v
 # Atualizar imagens
 docker compose pull && docker compose up -d
 ```
+
+### Perfis de serviços
+
+O perfil básico não exige flag. Os demais são declarados no Compose:
+
+```bash
+# Web básico: DVWA + Juice Shop + estação atacante
+docker compose up -d --build
+
+# APIs: VAmPI + NodeGoat e estação atacante
+docker compose --profile api up -d --build
+
+# Alvos web adicionais: bWAPP + WebGoat + WordPress
+docker compose --profile extended up -d --build
+
+# Ambiente completo
+docker compose --profile full up -d --build
+```
+
+Serviços iniciados explicitamente continuam na mesma rede isolada. Use
+`docker compose down -v` antes de trocar de conjunto para evitar estado antigo.
+
+Cada serviço possui healthcheck e limites locais de CPU/memória. WebGoat pode
+levar até 90 segundos para iniciar; acompanhe com `docker compose ps --format
+json` ou `bash lab-doctor.sh`.
+
+Antes de baixar imagens, é possível validar somente a configuração:
+
+```bash
+bash lab-doctor.sh --config-only
+```
+
+O diagnóstico retorna código diferente de zero quando uma dependência, serviço
+ou endpoint falha, permitindo seu uso em smoke tests locais.
 
 ## Exemplo de sessao
 

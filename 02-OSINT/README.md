@@ -3,6 +3,17 @@
 > Modulo de **Open Source Intelligence**: coleta etica de informacoes publicas, ferramentas e automacao leve em PowerShell.
 > Complementa [01-Recon](../01-Recon/) e alimenta vetores de [13-Initial-Access](../13-Initial-Access/).
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Iniciantes após os módulos 00 e 01. |
+| Pré-requisitos | Módulos 00 e 01; fontes públicas e conta de laboratório. |
+| Tempo estimado | 3 horas de leitura e 3 horas de prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Dossiê sintético com fontes, limitações e PII minimizada. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Documento / Script | Tema |

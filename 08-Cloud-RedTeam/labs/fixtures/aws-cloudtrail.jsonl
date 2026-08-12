@@ -1,0 +1,3 @@
+{"eventTime":"2026-08-12T12:00:00Z","eventSource":"s3.amazonaws.com","eventName":"ListBuckets","userIdentity":{"arn":"arn:aws:iam::111122223333:user/lab-reader"},"sourceIPAddress":"192.0.2.10","responseElements":null}
+{"eventTime":"2026-08-12T12:01:00Z","eventSource":"iam.amazonaws.com","eventName":"AttachUserPolicy","userIdentity":{"arn":"arn:aws:iam::111122223333:user/lab-admin"},"sourceIPAddress":"192.0.2.20","requestParameters":{"userName":"lab-student","policyArn":"arn:aws:iam::aws:policy/AdministratorAccess"},"responseElements":null}
+

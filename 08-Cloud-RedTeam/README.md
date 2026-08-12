@@ -2,6 +2,17 @@
 
 > Tecnicas, comandos e mapeamentos para Red Team em AWS, Azure e GCP. Conteudo educacional.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários de IAM e APIs. |
+| Pré-requisitos | Módulo 00; conta sandbox com billing limitado. |
+| Tempo estimado | 12 horas por provedor escolhido. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Attack path, logs, mitigação e confirmação de teardown. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Sumario
 
 | Documento | Tema |
@@ -10,6 +21,7 @@
 | [azure-attack-paths.md](azure-attack-paths.md) | Entra ID (Azure AD), device code phishing, App roles, Storage SAS. Inclui **Exercicios praticos** (tenant / Azure free). |
 | [gcp-attack-paths.md](gcp-attack-paths.md) | Service account impersonation, IAM bindings, metadata, Workload Identity. Inclui **Exercicios praticos** (projeto proprio / GCPGoat). |
 | [cloud-recon-tools.md](cloud-recon-tools.md) | Pacu, CloudFox, ScoutSuite, ROADtools, BloodHound for Azure. |
+| [labs/](labs/README.md) | Fixtures IAM sintéticas AWS/Azure/GCP, analisador offline e respostas orientativas. |
 
 ## Fluxo recomendado
 

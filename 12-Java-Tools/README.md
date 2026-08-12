@@ -2,6 +2,17 @@
 
 > Utilitarios em Java 17+ que complementam Python/PowerShell/Bash.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Desenvolvedores com Java básico e contexto de AppSec. |
+| Pré-requisitos | Módulos 00 e 07; JDK 17+. |
+| Tempo estimado | 3 horas de leitura, build e testes. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Build limpo, teste offline e saída sanitizada explicada. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Sumario
 
 | Classe | Descricao |

@@ -15,6 +15,7 @@ Autor:    Samuel Ziger - RedTeam Essentials
 Versao:   2.0.0
 Licenca:  MIT
 """
+
 from __future__ import annotations
 
 import argparse
@@ -38,26 +39,31 @@ class Sig:
 
 
 SIGS: list[Sig] = [
-    Sig("MD5",            0,     "raw-md5",      re.compile(r"^[a-f0-9]{32}$", re.I)),
-    Sig("SHA-1",          100,   "raw-sha1",     re.compile(r"^[a-f0-9]{40}$", re.I)),
-    Sig("SHA-256",        1400,  "raw-sha256",   re.compile(r"^[a-f0-9]{64}$", re.I)),
-    Sig("SHA-512",        1700,  "raw-sha512",   re.compile(r"^[a-f0-9]{128}$", re.I)),
-    Sig("NTLM",           1000,  "NT",           re.compile(r"^[a-f0-9]{32}$", re.I)),
-    Sig("LM",             3000,  "LM",           re.compile(r"^[a-f0-9]{32}$", re.I)),
-    Sig("MySQL >= 4.1",   300,   "mysql-sha1",   re.compile(r"^\*?[A-F0-9]{40}$", re.I)),
-    Sig("bcrypt",         3200,  "bcrypt",       re.compile(r"^\$2[abxy]?\$\d{2}\$[./A-Za-z0-9]{53}$")),
-    Sig("sha512crypt",    1800,  "sha512crypt",  re.compile(r"^\$6\$[^$]+\$[./A-Za-z0-9]{86}$")),
-    Sig("sha256crypt",    7400,  "sha256crypt",  re.compile(r"^\$5\$[^$]+\$[./A-Za-z0-9]{43}$")),
-    Sig("md5crypt",       500,   "md5crypt",     re.compile(r"^\$1\$[^$]+\$[./A-Za-z0-9]{22}$")),
-    Sig("PHPass",         400,   "phpass",       re.compile(r"^\$P\$[./A-Za-z0-9]{31}$")),
-    Sig("Argon2",         None,  "argon2",       re.compile(r"^\$argon2(id|i|d)\$.+$")),
+    Sig("MD5", 0, "raw-md5", re.compile(r"^[a-f0-9]{32}$", re.I)),
+    Sig("SHA-1", 100, "raw-sha1", re.compile(r"^[a-f0-9]{40}$", re.I)),
+    Sig("SHA-256", 1400, "raw-sha256", re.compile(r"^[a-f0-9]{64}$", re.I)),
+    Sig("SHA-512", 1700, "raw-sha512", re.compile(r"^[a-f0-9]{128}$", re.I)),
+    Sig("NTLM", 1000, "NT", re.compile(r"^[a-f0-9]{32}$", re.I)),
+    Sig("LM", 3000, "LM", re.compile(r"^[a-f0-9]{32}$", re.I)),
+    Sig("MySQL >= 4.1", 300, "mysql-sha1", re.compile(r"^\*?[A-F0-9]{40}$", re.I)),
+    Sig("bcrypt", 3200, "bcrypt", re.compile(r"^\$2[abxy]?\$\d{2}\$[./A-Za-z0-9]{53}$")),
+    Sig("sha512crypt", 1800, "sha512crypt", re.compile(r"^\$6\$[^$]+\$[./A-Za-z0-9]{86}$")),
+    Sig("sha256crypt", 7400, "sha256crypt", re.compile(r"^\$5\$[^$]+\$[./A-Za-z0-9]{43}$")),
+    Sig("md5crypt", 500, "md5crypt", re.compile(r"^\$1\$[^$]+\$[./A-Za-z0-9]{22}$")),
+    Sig("PHPass", 400, "phpass", re.compile(r"^\$P\$[./A-Za-z0-9]{31}$")),
+    Sig("Argon2", None, "argon2", re.compile(r"^\$argon2(id|i|d)\$.+$")),
     Sig("PBKDF2-HMAC-SHA256", 10900, "pbkdf2-hmac-sha256", re.compile(r"^pbkdf2_sha256\$\d+\$.+$")),
     Sig("Kerberos 5 TGS (Kerberoast)", 13100, "krb5tgs", re.compile(r"^\$krb5tgs\$23\$.+$")),
     Sig("Kerberos 5 ASREP (AS-REP Roast)", 18200, "krb5asrep", re.compile(r"^\$krb5asrep\$23\$.+$")),
-    Sig("NetNTLMv2",      5600,  "netntlmv2",    re.compile(r"^[^:]+::[^:]+:[a-f0-9]+:[a-f0-9]+:[a-f0-9]+$", re.I)),
-    Sig("NetNTLMv1",      5500,  "netntlm",      re.compile(r"^[^:]+::[^:]+:[a-f0-9]+:[a-f0-9]+:[a-f0-9]+$", re.I)),
-    Sig("WPA-PMKID",      16800, "wpa-pmkid",    re.compile(r"^[a-f0-9]{32}\*[a-f0-9]{12}\*[a-f0-9]{12}\*[a-f0-9]+$", re.I)),
-    Sig("JWT (HS*)",      None,  "jwt",          re.compile(r"^eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$")),
+    Sig("NetNTLMv2", 5600, "netntlmv2", re.compile(r"^[^:]+::[^:]+:[a-f0-9]+:[a-f0-9]+:[a-f0-9]+$", re.I)),
+    Sig("NetNTLMv1", 5500, "netntlm", re.compile(r"^[^:]+::[^:]+:[a-f0-9]+:[a-f0-9]+:[a-f0-9]+$", re.I)),
+    Sig(
+        "WPA-PMKID",
+        16800,
+        "wpa-pmkid",
+        re.compile(r"^[a-f0-9]{32}\*[a-f0-9]{12}\*[a-f0-9]{12}\*[a-f0-9]+$", re.I),
+    ),
+    Sig("JWT (HS*)", None, "jwt", re.compile(r"^eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$")),
 ]
 
 

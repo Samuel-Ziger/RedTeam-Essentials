@@ -3,6 +3,17 @@
 > Modulo educacional sobre **acesso inicial** (MITRE TA0001): phishing, servicos externos e superficies publicas.
 > Foco em **teoria, deteccao e labs eticos**. Nao inclui malware, implants ou scripts de phishing weaponizados.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários e equipes de awareness/purple team. |
+| Pré-requisitos | Módulos 00, 01 e 02; contas e SMTP somente de laboratório. |
+| Tempo estimado | 6 horas de teoria e 4 horas de simulação. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Plano de campanha canário, métricas, detecções e debrief. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Disclaimer etico
 
 Todo conteudo deste modulo e para uso em:
