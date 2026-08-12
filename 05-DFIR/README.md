@@ -3,6 +3,17 @@
 > Modulo de **Digital Forensics & Incident Response**: artefatos Windows, Event Logs, memoria, playbook de ransomware e template de laudo.
 > Complementa a visao ofensiva dos modulos 03, 09 e 14 — o que o blue team vera apos o ataque.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Analistas iniciantes/intermediários e praticantes purple team. |
+| Pré-requisitos | Módulo 00; Windows/Linux básico e cópias de evidência. |
+| Tempo estimado | 10 horas de leitura e 8 horas de prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Timeline, hashes, hipóteses e relatório forense. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Documento | Tema |
@@ -12,6 +23,7 @@
 | [memory_analysis_teoria.md](memory_analysis_teoria.md) | Analise de memoria: Volatility, processos, handles, injects. |
 | [PLAYBOOK_RANSOMWARE.md](PLAYBOOK_RANSOMWARE.md) | Playbook de resposta a incidente de ransomware. |
 | [FORENSIC_REPORT_TEMPLATE.md](FORENSIC_REPORT_TEMPLATE.md) | Template de relatorio forense / IR. |
+| [labs/](labs/README.md) | Timeline reproduzível com eventos de autenticação sintéticos e resposta orientativa. |
 
 ## Fluxo forense recomendado
 

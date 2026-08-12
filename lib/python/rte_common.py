@@ -4,12 +4,13 @@ RTE Common - utilidades compartilhadas pelos scripts Python do RedTeam-Essential
 Logging colorido com niveis, validacao etica, helpers de export
 e checagens reutilizaveis. Mantemos o codigo deliberadamente pequeno
 (stdlib + opcionalmente colorama/rich nao sao obrigatorios) para que
-qualquer Python 3.9+ rode sem dependencias.
+qualquer Python 3.10+ rode sem dependencias de execucao.
 
 Autor:    Samuel Ziger - RedTeam Essentials
 Versao:   2.0.0
 Licenca:  MIT
 """
+
 from __future__ import annotations
 
 import json
@@ -17,10 +18,11 @@ import logging
 import os
 import re
 import sys
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 __all__ = [
     "get_logger",
@@ -41,17 +43,17 @@ ETHICAL_DISCLAIMER = (
 # --- ANSI logging -----------------------------------------------------------
 class _ColorFormatter(logging.Formatter):
     COLORS = {
-        logging.DEBUG:    "\033[0;90m",  # gray
-        logging.INFO:     "\033[0;36m",  # cyan
-        logging.WARNING:  "\033[1;33m",  # yellow
-        logging.ERROR:    "\033[0;31m",  # red
+        logging.DEBUG: "\033[0;90m",  # gray
+        logging.INFO: "\033[0;36m",  # cyan
+        logging.WARNING: "\033[1;33m",  # yellow
+        logging.ERROR: "\033[0;31m",  # red
         logging.CRITICAL: "\033[1;31m",  # bright red
     }
     GLYPHS = {
-        logging.DEBUG:    "[~]",
-        logging.INFO:     "[*]",
-        logging.WARNING:  "[!]",
-        logging.ERROR:    "[x]",
+        logging.DEBUG: "[~]",
+        logging.INFO: "[*]",
+        logging.WARNING: "[!]",
+        logging.ERROR: "[x]",
         logging.CRITICAL: "[X]",
     }
     RESET = "\033[0m"
@@ -90,6 +92,7 @@ def log_success(logger: logging.Logger, msg: str) -> None:
 @dataclass
 class RTEContext:
     """Contexto de execucao basico para scripts."""
+
     tool: str
     version: str = "2.0.0"
     output_dir: Path = Path("./output")
@@ -110,9 +113,7 @@ class RTEContext:
 
 
 # --- Validacoes -------------------------------------------------------------
-_DOMAIN_RE = re.compile(
-    r"^(?=.{1,253}$)([a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$"
-)
+_DOMAIN_RE = re.compile(r"^(?=.{1,253}$)([a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$")
 _IPV4_RE = re.compile(r"^(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d)$")
 
 
@@ -130,9 +131,7 @@ def confirm_authorization(force: bool = False) -> None:
     if force or os.environ.get("RTE_SKIP_AUTH") == "1":
         return
     sys.stderr.write(
-        "\033[1;33m"
-        "Voce tem autorizacao por escrito para testar este alvo?\n"
-        "Digite AUTORIZADO para prosseguir: \033[0m"
+        "\033[1;33mVoce tem autorizacao por escrito para testar este alvo?\nDigite AUTORIZADO para prosseguir: \033[0m"
     )
     answer = sys.stdin.readline().strip()
     if answer != "AUTORIZADO":
@@ -154,6 +153,13 @@ def export_json(data: Any, output_dir: Path | str, basename: str) -> Path:
 
 # --- Iter helper ------------------------------------------------------------
 def chunks(iterable: Iterable[Any], size: int) -> Iterable[list[Any]]:
+    """Divide um iteravel em listas de tamanho ``size``.
+
+    ``size`` invalido e rejeitado explicitamente para evitar um resultado
+    silenciosamente incorreto em consumidores que calculam o tamanho do lote.
+    """
+    if size <= 0:
+        raise ValueError("size deve ser positivo")
     bucket: list[Any] = []
     for item in iterable:
         bucket.append(item)

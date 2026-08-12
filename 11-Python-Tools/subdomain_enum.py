@@ -18,6 +18,7 @@ Autor:    Samuel Ziger - RedTeam Essentials
 Versao:   2.0.0
 Licenca:  MIT
 """
+
 from __future__ import annotations
 
 import argparse

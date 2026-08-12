@@ -2,6 +2,17 @@
 
 > Pentest e hardening de Docker e Kubernetes. Conteudo educacional.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários de Docker e Kubernetes. |
+| Pré-requisitos | Módulo 00; Docker e kind/minikube locais. |
+| Tempo estimado | 10 horas de leitura e 8 horas de prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Manifesto vulnerável/corrigido, eventos e teardown confirmado. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Sumario
 
 | Documento | Tema |
@@ -9,6 +20,7 @@
 | [docker-escape-techniques.md](docker-escape-techniques.md) | Tecnicas de escape do container para o host (capabilities, mounts, sockets). Inclui **Exercicios praticos** e checklist em Docker/VM local. |
 | [kubernetes-attack-paths.md](kubernetes-attack-paths.md) | Recon de cluster, RBAC abuse, pod escape, kubelet API. Inclui **Exercicios praticos** em **kind/minikube**. |
 | [hardening-baseline.md](hardening-baseline.md) | Hardening pratico: rootless, seccomp, AppArmor, NetworkPolicy, OPA/Kyverno. |
+| [labs/](labs/README.md) | Detecção offline de pod privilegiado em Kubernetes audit log sintético. |
 
 ## Fluxo recomendado
 

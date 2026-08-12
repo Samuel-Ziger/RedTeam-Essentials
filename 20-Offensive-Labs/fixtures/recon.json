@@ -1,0 +1,6 @@
+[
+  {"host":"app.lab.local","ip":"192.0.2.10","asn":"AS64500","source":"dns","technology":"nginx"},
+  {"host":"app.lab.local","ip":"192.0.2.10","asn":"AS64500","source":"certificate-transparency","technology":"oauth"},
+  {"host":"api.lab.local","ip":"192.0.2.11","asn":"AS64500","source":"dns","technology":"graphql"}
+]
+

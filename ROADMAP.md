@@ -32,7 +32,8 @@ Este documento apresenta uma roadmap completa para estudar Red Team de forma gra
 
 ## 🎯 TIER 1: Fundamentos (Iniciantes)
 
-**Pré-requisitos:** Conhecimento básico de redes e sistemas operacionais  
+**Pré-requisitos:** Concluir o [Módulo 00](00-Fundamentos/README.md) ou demonstrar
+os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório seguro.
 **Tempo estimado:** 4-6 semanas  
 **Objetivo:** Compreender os fundamentos de reconhecimento e coleta de informações
 
@@ -385,6 +386,17 @@ Este documento apresenta uma roadmap completa para estudar Red Team de forma gra
 ---
 
 ### Módulo 4.4: Specialized Tracks
+
+Trilhas especializadas implementadas inicialmente:
+
+- [15-Hybrid-Identity](15-Hybrid-Identity/README.md) — AD, Entra ID, federação e workloads.
+- [16-CICD-Supply-Chain](16-CICD-Supply-Chain/README.md) — pipelines, OIDC, artifacts e provenance.
+- [APIs modernas](07-Web-AppSec/api-moderna-oauth-graphql-grpc.md) — OAuth/OIDC, GraphQL e gRPC.
+- [Microemulação Purple Team](docs/PURPLE-TEAM-MICRO-EMULATION.md) — cenário offline reproduzível.
+- [21-Network-Pivoting](21-Network-Pivoting/README.md) — caminhos de rede e segmentação.
+- [22-Secure-Code-Review](22-Secure-Code-Review/README.md) — data-flow e autorização.
+- [23-Threat-Intel-Emulation](23-Threat-Intel-Emulation/README.md) — CTI para hipóteses testáveis.
+- [24-Lateral-Movement](24-Lateral-Movement/README.md) — caminhos laterais, precondições e detecção.
 - **Duração:** Variável
 - **Já no repo:**
   - Cloud Red Teaming → `08-Cloud-RedTeam/`

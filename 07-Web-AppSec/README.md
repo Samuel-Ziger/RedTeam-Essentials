@@ -2,6 +2,17 @@
 
 > Modulo focado em recon, exploitation e validacao de vulnerabilidades em aplicacoes web modernas (SPA, REST/GraphQL, microsservicos).
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários com fundamentos de HTTP, terminal e escopo. |
+| Pré-requisitos | Módulos [00](../00-Fundamentos/README.md) e [01](../01-Recon/README.md). |
+| Tempo estimado | 12 horas de leitura e 8 horas nos três labs guiados. |
+| Ambiente | Exclusivamente os alvos locais do `docker-lab`. |
+| Evidência final | Três achados sanitizados com requisição, resposta, impacto e correção. |
+| Critério de conclusão | Concluir os três labs, relacionar telemetria e executar o reset do ambiente. |
+
 ## Conteudo
 
 | Documento | Tema |
@@ -15,6 +26,7 @@
 | [ssrf-deep-dive.md](ssrf-deep-dive.md) | SSRF: tipos, risco IMDS, bypass overview, labs e defesa. |
 | [path-traversal-lfi.md](path-traversal-lfi.md) | Path traversal / LFI (wrappers PHP, defesa, lab DVWA/WebGoat). |
 | [auth-bypass-patterns.md](auth-bypass-patterns.md) | Padroes de bypass de autenticacao/autorizacao (BOLA/IDOR). |
+| [api-moderna-oauth-graphql-grpc.md](api-moderna-oauth-graphql-grpc.md) | OAuth/OIDC, GraphQL e gRPC: validação, autorização, limites e telemetria. |
 
 ### Labs guiados (`docker-lab`)
 
@@ -23,6 +35,9 @@
 | [labs/lab-01-dvwa-sqli.md](labs/lab-01-dvwa-sqli.md) | http://127.0.0.1:8081 | DVWA SQLi Low → Medium |
 | [labs/lab-02-juice-xss.md](labs/lab-02-juice-xss.md) | http://127.0.0.1:8082 | Juice Shop XSS / DOM (Score Board) |
 | [labs/lab-03-vampi-api.md](labs/lab-03-vampi-api.md) | http://127.0.0.1:8087 | VAmPI BOLA / auth bypass |
+
+Depois da tentativa, use a [rubrica e respostas orientativas](labs/answers/README.md)
+para revisar evidência, causa, mitigação, telemetria e falsos positivos.
 
 > Use a wordlist [`SecLists`](https://github.com/danielmiessler/SecLists) - instalada por `linux_postinstall.sh`.
 > Lab: [`docker-lab/README.md`](../docker-lab/README.md) — `cd docker-lab && docker compose up -d --build`.
@@ -59,3 +74,24 @@ Apenas em aplicacoes com autorizacao formal e escopo definido. Para treino deste
 - Endpoints de pagamento - jamais teste em ambiente de producao sem aval.
 - Rate limit - configure no Burp/ffuf para nao derrubar o servico.
 - Dumps - prove impacto com evidencia minima; nao exfiltre bases inteiras.
+
+## Resultado esperado, telemetria e cleanup
+
+Cada lab deve terminar com uma evidência reproduzível e não destrutiva. Registre
+requisição, resposta, usuário de teste, horário UTC e limitação. Correlacione a
+ação com logs HTTP/reverse proxy, logs da aplicação e eventos de autenticação;
+explique pelo menos um falso positivo possível e uma mitigação verificável.
+
+```bash
+cd docker-lab
+docker compose logs --since=10m <servico>
+docker compose down -v
+```
+
+### Autoavaliação
+
+- [ ] Concluí SQLi, XSS e BOLA somente nos alvos locais indicados.
+- [ ] Diferenciei autenticação de autorização no achado de API.
+- [ ] Coletei evidência mínima e removi tokens/dados desnecessários.
+- [ ] Relacionei cada ação a uma fonte de telemetria e mitigação.
+- [ ] Destruí volumes e confirmei que as portas do lab foram fechadas.

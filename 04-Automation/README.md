@@ -2,6 +2,17 @@
 
 > Scripts de setup e organizacao para labs Windows/Linux. Uso somente em ambientes autorizados.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes que automatizam preparação e evidências de labs. |
+| Pré-requisitos | Módulo 00; Bash ou PowerShell e VM descartável. |
+| Tempo estimado | 4 horas de leitura e prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Execução dry-run, log reproduzível e teste de erro. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Script | Plataforma | Tema |
