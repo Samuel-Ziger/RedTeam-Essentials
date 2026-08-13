@@ -167,7 +167,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.kali-pentest
-    image: rte/kali-pentest:latest
     container_name: rte-attacker
     networks:
       rte-lab:

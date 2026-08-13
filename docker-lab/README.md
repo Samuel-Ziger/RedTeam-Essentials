@@ -35,6 +35,12 @@ Rede interna: `172.28.0.0/24`. Da estacao atacante voce alcanca os alvos por IP 
 # Subir o perfil básico (DVWA, Juice Shop e atacante)
 cd docker-lab && docker compose up -d --build
 
+# Se houver erro "pull access denied" para `rte/kali-pentest`, execute antes:
+#
+# ```bash
+# docker compose build attacker
+# ```
+
 # Status
 docker compose ps
 
