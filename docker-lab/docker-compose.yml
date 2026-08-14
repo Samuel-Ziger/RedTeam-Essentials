@@ -12,8 +12,6 @@
 #
 # AVISO: Rede isolada (sem expor para a internet). Apenas para LAB local.
 ###############################################################################
-version: "3.9"
-
 networks:
   rte-lab:
     driver: bridge
@@ -32,6 +30,14 @@ services:
         ipv4_address: 172.28.0.10
     ports:
       - "127.0.0.1:8081:80"
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://127.0.0.1/') === false ? 1 : 0);"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    mem_limit: 512m
+    cpus: 0.75
     restart: unless-stopped
 
   # ---- OWASP Juice Shop ----
@@ -43,22 +49,40 @@ services:
         ipv4_address: 172.28.0.11
     ports:
       - "127.0.0.1:8082:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 45s
+    mem_limit: 768m
+    cpus: 1.0
     restart: unless-stopped
 
   # ---- bWAPP ----
   bwapp:
     image: raesene/bwapp:latest
+    profiles: ["extended", "full"]
     container_name: rte-bwapp
     networks:
       rte-lab:
         ipv4_address: 172.28.0.12
     ports:
       - "127.0.0.1:8083:80"
+    healthcheck:
+      test: ["CMD-SHELL", "php -r \"exit(@file_get_contents('http://127.0.0.1/') === false ? 1 : 0);\""]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    mem_limit: 512m
+    cpus: 0.75
     restart: unless-stopped
 
   # ---- WebGoat (Java) ----
   webgoat:
     image: webgoat/webgoat:latest
+    profiles: ["extended", "full"]
     container_name: rte-webgoat
     networks:
       rte-lab:
@@ -68,39 +92,74 @@ services:
       - "127.0.0.1:9090:9090"
     environment:
       - TZ=America/Sao_Paulo
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/127.0.0.1/8080'"]
+      interval: 20s
+      timeout: 5s
+      retries: 15
+      start_period: 90s
+    mem_limit: 1536m
+    cpus: 1.5
     restart: unless-stopped
 
   # ---- VulnerableWP (WordPress com plugins ruins) ----
   vulnerable-wordpress:
     image: wpscanteam/vulnerablewordpress:latest
+    profiles: ["extended", "full"]
     container_name: rte-vuln-wp
     networks:
       rte-lab:
         ipv4_address: 172.28.0.14
     ports:
       - "127.0.0.1:8085:80"
+    healthcheck:
+      test: ["CMD-SHELL", "php -r \"exit(@file_get_contents('http://127.0.0.1/') === false ? 1 : 0);\""]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 45s
+    mem_limit: 768m
+    cpus: 1.0
     restart: unless-stopped
 
   # ---- API vulneravel (NodeGoat) ----
   nodegoat:
     image: owasp/nodegoat:latest
+    profiles: ["api", "full"]
     container_name: rte-nodegoat
     networks:
       rte-lab:
         ipv4_address: 172.28.0.15
     ports:
       - "127.0.0.1:8086:4000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:4000/',r=>process.exit(r.statusCode<500?0:1)).on('error',()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 45s
+    mem_limit: 768m
+    cpus: 1.0
     restart: unless-stopped
 
   # ---- VAmPI: Vulnerable API (OWASP API Top 10) ----
   vampi:
     image: erev0s/vampi:latest
+    profiles: ["api", "full"]
     container_name: rte-vampi
     networks:
       rte-lab:
         ipv4_address: 172.28.0.16
     ports:
       - "127.0.0.1:8087:5000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    mem_limit: 512m
+    cpus: 0.75
     restart: unless-stopped
 
   # ---- Estacao atacante (imagem custom) ----
@@ -108,7 +167,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.kali-pentest
-    image: rte/kali-pentest:latest
     container_name: rte-attacker
     networks:
       rte-lab:
@@ -116,5 +174,13 @@ services:
     volumes:
       - ./shared:/shared
     command: tail -f /dev/null
+    healthcheck:
+      test: ["CMD-SHELL", "test -d /shared && command -v curl >/dev/null"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    mem_limit: 2048m
+    cpus: 2.0
     tty: true
     restart: unless-stopped

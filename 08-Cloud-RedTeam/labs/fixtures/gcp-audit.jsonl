@@ -1,0 +1,3 @@
+{"timestamp":"2026-08-12T12:20:00Z","protoPayload":{"methodName":"storage.buckets.get","authenticationInfo":{"principalEmail":"reader@rte-lab.invalid"},"status":{"code":0}}}
+{"timestamp":"2026-08-12T12:21:00Z","protoPayload":{"methodName":"SetIamPolicy","authenticationInfo":{"principalEmail":"admin@rte-lab.invalid"},"status":{"code":0},"serviceData":{"policyDelta":{"bindingDeltas":[{"action":"ADD","role":"roles/owner","member":"user:student@rte-lab.invalid"}]}}}}
+

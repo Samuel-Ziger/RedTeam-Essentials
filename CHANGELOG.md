@@ -10,6 +10,29 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ## [Unreleased]
 
 ### Adicionado
+- **Vídeos por módulo** - curadoria de cinco vídeos em português incorporada a
+  cada README dos módulos 00–24.
+- **Módulo 25** - catálogo exclusivo de cursos completos, iniciado com as
+  trilhas da Solyd e DESEC e preparado para inclusões futuras.
+- **Validador de vídeos** - teste offline das 25 seções distribuídas e do mínimo
+  de cinco vídeos distintos por módulo.
+- **00-Fundamentos** - redes, sistemas, identidade, RoE, laboratório seguro e autoavaliação.
+- **Testes Python** - suite pytest offline para biblioteca comum, parsers e ferramentas.
+- **Testes Bash, PowerShell e Java** - validações offline das bibliotecas e do gerador.
+- **Validador ATT&CK** - invariantes do layer JSON verificadas localmente e no CI.
+- **Labs reproduzíveis** - respostas/rubrica para três labs Web e datasets sintéticos para DFIR e Kubernetes.
+- **Detecção verificável** - padrão comum e exemplos para AD, Web/API, cloud e containers.
+- **Cloud offline** - fixtures IAM AWS/Azure/GCP, analisador normalizado e respostas orientativas sem contas ou custos.
+- **Compose seguro** - healthchecks, limites de CPU/memória, profiles e validador de bindings localhost.
+- **Trilhas avançadas** - identidade híbrida, APIs modernas, CI/CD supply chain e microemulação Purple Team offline.
+- **Novas trilhas defensivas** - macOS, mobile e wireless com exercícios seguros e cleanup.
+- **Métricas** - inventário reproduzível de módulos, contratos, testes e fixtures.
+- **Operações ofensivas** - scope guard, correlação de recon, matriz BOLA/BFLA e roteiro integrado de cinco operações.
+- **Módulos 21–23** - pivoting offline, code review ofensivo e threat-intel/adversary emulation.
+- **Módulo 24** - movimentação lateral com grafo sintético, precondições, telemetria e cleanup.
+- **Movimentação lateral Linux** - SSH/certificados, bastion, sudo, NFS, automação e sockets com path offline.
+- **Contrato editorial** - template reutilizável em `docs/MODULE-TEMPLATE.md`.
+- **Lab doctor** - diagnóstico do Compose, containers e endpoints HTTP locais.
 - **06-Cheatsheets/windows_privesc_teoria.md** - Windows Privilege Escalation (enum, UAC, services, tokens, checklist, defesa).
 - **06-Cheatsheets** - metodologia + cheatsheet Windows e PATH hijacking Linux (adaptado HexSec/MIT, PT).
 - **07-Web-AppSec** - deep-dives SQLi/SSRF + labs guiados DVWA, Juice Shop e VAmPI (`labs/`).
@@ -22,6 +45,11 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - MITRE ATT&CK layer expandido para modulos 07-14 (v2.1 coverage).
 
 ### Modificado
+- Python padronizado em 3.10+; CI agora executa os testes offline.
+- Scanner valida faixas invertidas/vazias e a lista `top100` contém exatamente 100 portas.
+- `PayloadGenerator` compila no Java 17 sem autorreferência nos valores do enum.
+- README inclui trilhas por objetivo e direciona iniciantes ao módulo 00.
+- Todos os READMEs de módulo agora declaram público, pré-requisitos, tempo, ambiente, evidência e conclusão.
 - ROADMAP alinhado a v2.1 (Windows Privesc, Initial Access, Post-Ex; removidos checkmarks sem artefato).
 - BloodHound CE (SpecterOps) documentado; CrackMapExec -> NetExec (`nxc`) em docs/scripts/lab.
 - `docker-lab`: attacker usa build `Dockerfile.kali-pentest`; README raiz lista todos os alvos.

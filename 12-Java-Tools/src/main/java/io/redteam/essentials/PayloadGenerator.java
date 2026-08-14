@@ -123,7 +123,13 @@ public final class PayloadGenerator {
     };
 
     private enum PType {
-        XSS(XSS), SQLI(SQLI), CMDI(CMDI), SSTI(SSTI), SSRF(SSRF), LFI(LFI), XXE(XXE);
+        XSS(PayloadGenerator.XSS),
+        SQLI(PayloadGenerator.SQLI),
+        CMDI(PayloadGenerator.CMDI),
+        SSTI(PayloadGenerator.SSTI),
+        SSRF(PayloadGenerator.SSRF),
+        LFI(PayloadGenerator.LFI),
+        XXE(PayloadGenerator.XXE);
         final String[] payloads;
         PType(String[] p) { this.payloads = p; }
     }

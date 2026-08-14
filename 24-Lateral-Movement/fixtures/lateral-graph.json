@@ -1,0 +1,27 @@
+{
+  "scope": ["student", "workstation", "jumpbox", "fileserver", "helpdesk", "linux-operator", "bastion-linux", "app-linux", "backup-linux"],
+  "nodes": [
+    {"id": "student", "type": "principal"},
+    {"id": "helpdesk", "type": "principal"},
+    {"id": "workstation", "type": "host"},
+    {"id": "jumpbox", "type": "host"},
+    {"id": "fileserver", "type": "host"},
+    {"id": "dc01", "type": "host"},
+    {"id": "linux-operator", "type": "principal"},
+    {"id": "bastion-linux", "type": "host"},
+    {"id": "app-linux", "type": "host"},
+    {"id": "backup-linux", "type": "host"},
+    {"id": "prod-secrets", "type": "resource"}
+  ],
+  "edges": [
+    {"from": "student", "to": "workstation", "protocol": "interactive-session", "precondition": "conta canário local", "enabled": true},
+    {"from": "workstation", "to": "jumpbox", "protocol": "winrm", "precondition": "JEA role autorizada", "enabled": true},
+    {"from": "jumpbox", "to": "fileserver", "protocol": "smb", "precondition": "share ACL de leitura", "enabled": true},
+    {"from": "helpdesk", "to": "workstation", "protocol": "rdp", "precondition": "Remote Desktop Users", "enabled": true},
+    {"from": "fileserver", "to": "dc01", "protocol": "smb", "precondition": "admin de domínio", "enabled": false},
+    {"from": "linux-operator", "to": "bastion-linux", "protocol": "ssh-certificate", "precondition": "certificado canário de curta duração", "enabled": true},
+    {"from": "bastion-linux", "to": "app-linux", "protocol": "ssh-restricted", "precondition": "AllowGroups e origem bastion", "enabled": true},
+    {"from": "app-linux", "to": "backup-linux", "protocol": "nfs-readonly", "precondition": "export de lab com root_squash", "enabled": true},
+    {"from": "app-linux", "to": "prod-secrets", "protocol": "unix-socket", "precondition": "grupo privilegiado", "enabled": false}
+  ]
+}

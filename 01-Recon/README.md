@@ -8,6 +8,17 @@
 
 O **reconhecimento** (recon) é a primeira fase de qualquer operação Red Team ou penetration test. Nesta etapa, você coleta o máximo de informações possíveis sobre o alvo **sem interagir diretamente** com seus sistemas.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Iniciantes que concluíram o módulo 00 ou dominam DNS, HTTP e terminal. |
+| Pré-requisitos | [Módulo 00](../00-Fundamentos/README.md), Bash ou PowerShell básico. |
+| Tempo estimado | 4 horas de leitura e 4 horas de prática. |
+| Ambiente | Domínio próprio/documental para passivo; lab local para ações ativas. |
+| Evidência final | Mapa de infraestrutura e relatório com fontes, horários e limitações. |
+| Critério de conclusão | Executar os três exercícios sem sair do escopo e explicar passivo versus ativo. |
+
 ### 🎯 Objetivos de Aprendizado
 
 Ao completar este módulo, você será capaz de:
@@ -163,6 +174,23 @@ Import-Module ../lib/powershell/RTECommon.psm1
 2. **Use VPN/Tor quando apropriado:** Privacidade é importante
 3. **Respeite rate limits:** Não sobrecarregue servidores
 4. **Obtenha autorização:** Mesmo para recon passivo em contextos corporativos
+
+### Resultado esperado, detecção e cleanup
+
+- O resultado separa dados observados, inferências e fontes que falharam.
+- Consultas ativas ficam visíveis em DNS, proxy, firewall e logs do serviço;
+  registre essa telemetria quando usar o lab.
+- Não mantenha PII ou segredos coletados por engano. Remova saídas do diretório
+  de trabalho após produzir uma evidência sanitizada e confirme que nenhum
+  processo de enumeração permaneceu ativo.
+
+### Autoavaliação
+
+- [ ] Diferenciei consulta pública de interação direta com o alvo.
+- [ ] Registrei escopo, horário UTC, fonte e limitações.
+- [ ] Produzi uma evidência mínima sem dados pessoais desnecessários.
+- [ ] Expliquei quais logs uma ação ativa poderia gerar.
+- [ ] Concluí o cleanup das saídas e processos do exercício.
 
 ---
 
@@ -337,3 +365,13 @@ Encontrou um erro ou quer melhorar este módulo?
 **Próximo:** [02-OSINT →](../02-OSINT/README.md)
 
 </div>
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Como usar o Nmap como um hacker de verdade](https://www.youtube.com/watch?v=UjM8NBs_NiY) — **Solyd Offensive Security**.
+2. [Aula 5 - Reconhecimento com Nmap - Analisando o alvo](https://www.youtube.com/watch?v=wG9u-gd78KY) — **Solyd Offensive Security**.
+3. [Aula05 - Executando um Pentest - Fase de Reconhecimento](https://www.youtube.com/watch?v=2RBirahlaoE) — **Ricardo Longatto**.
+4. [Escaneando Redes e Vulnerabilidades com NMAP - Ethical Hacker](https://www.youtube.com/watch?v=SbTmxD1aUgs) — **Francisco G P Neto**.
+5. [Nmap - Brasil Pentest](https://www.youtube.com/watch?v=V4lIVAd8i1o) — **Brasil Pentest**.

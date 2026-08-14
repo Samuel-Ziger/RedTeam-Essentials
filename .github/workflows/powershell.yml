@@ -23,6 +23,7 @@ jobs:
         shell: pwsh
         run: |
           Install-Module PSScriptAnalyzer -Scope CurrentUser -Force -SkipPublisherCheck
+          Install-Module Pester -MinimumVersion 5.0 -Scope CurrentUser -Force -SkipPublisherCheck
 
       - name: Lint all PowerShell files
         shell: pwsh
@@ -60,3 +61,7 @@ jobs:
               }
             }
           Write-Host "Sintaxe OK."
+
+      - name: Offline module tests
+        shell: pwsh
+        run: Invoke-Pester -Path tests/powershell -CI

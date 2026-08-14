@@ -2,6 +2,17 @@
 
 > Scripts de setup e organizacao para labs Windows/Linux. Uso somente em ambientes autorizados.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes que automatizam preparação e evidências de labs. |
+| Pré-requisitos | Módulo 00; Bash ou PowerShell e VM descartável. |
+| Tempo estimado | 4 horas de leitura e prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Execução dry-run, log reproduzível e teste de erro. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Script | Plataforma | Tema |
@@ -72,3 +83,13 @@ Proximo passo tipico: coletar com SharpHound / bloodhound-python e importar no *
 ## Etica
 
 Apenas em VMs/labs seus ou com autorizacao escrita. Nao rode setup em maquinas de producao.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Python  Automação de Segurança](https://www.youtube.com/watch?v=E-0bK5H00Yo) — **Cyber Diário**.
+2. [Automação com PowerShell](https://www.youtube.com/watch?v=G1TN1DH7kFA) — **Cyber Diário**.
+3. [Python para Automação de SOC](https://www.youtube.com/watch?v=uTpYoOJSKnM) — **Cyber Diário**.
+4. [Automação de Redes com Python na prática: Colete dados em Segundos.](https://www.youtube.com/watch?v=VAx9g35QQbQ) — **Python4Networking - Glaucio Giesen**.
+5. [Automação no Windows - Criação de Scripts PowerShell para Tarefas Administrativas 💻🚀](https://www.youtube.com/watch?v=6mLQflekSAA) — **webmundi.com**.

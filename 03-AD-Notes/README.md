@@ -3,6 +3,17 @@
 > Modulo de enumeracao, Kerberoasting, attack paths (BloodHound CE) e tecnicas modernas de AD.
 > Labs: GOAD, DetectionLab, HTB Pro Labs ou AD proprio — **nunca** dominio de terceiros sem RoE.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Estudantes intermediários de Windows e identidade. |
+| Pré-requisitos | Módulos 00 e 06; AD próprio, GOAD ou plataforma autorizada. |
+| Tempo estimado | 12 horas de leitura e 12 horas de laboratório. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Caminho de ataque, evidências mínimas, detecção e remediação. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Documento | Tema |
@@ -49,3 +60,13 @@ enum (ad_enum)  -->  roast (kerberoasting)  -->  paths (BloodHound CE)  -->  mod
 - Kerberoasting e coleta BloodHound geram ruido e tickets — alinhar janela com o cliente.
 - Nao dumpar NTDS.dit / hashes fora do RoE; prove impacto com evidencia minima.
 - Preferir contas de teste; cleanup de SPNs, certs e paths criados no lab.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [10 melhores práticas de SEGURANÇA do Active Directory](https://www.youtube.com/watch?v=H95nNr_Inus) — **Daniel Donda**.
+2. [Pentest em Active Directory - Lucas Farias | Faculdade Vincit](https://www.youtube.com/watch?v=NACW_5mJX7c) — **Faculdade Facint**.
+3. [Entenda Microsoft Active Directory | Baseado no curso oficial Microsoft | AD DS](https://www.youtube.com/watch?v=8ppOS_3ld7U) — **Sandro Alex**.
+4. [Auditoria de Segurança no Active Directory: Testando PingCastle e Purple Knight](https://www.youtube.com/watch?v=ktL48yNrPk0) — **Daniel Donda**.
+5. [🎓 CURSO: Hacking Active Directory](https://www.youtube.com/watch?v=7ZVvFvahcuU) — **Empire Cybersecurity TV**.

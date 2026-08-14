@@ -19,14 +19,15 @@ Autor:    Samuel Ziger - RedTeam Essentials
 Versao:   2.0.0
 Licenca:  MIT
 """
+
 from __future__ import annotations
 
 import argparse
 import asyncio
 import socket
 import sys
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib" / "python"))
 from rte_common import (  # noqa: E402
@@ -43,21 +44,115 @@ LOG = get_logger("rte.portscan")
 
 # Top portas mais comuns (extraido do nmap-services).
 TOP_100 = [
-    7,9,13,21,22,23,25,26,37,53,79,80,81,88,106,110,111,113,119,135,139,143,144,179,199,
-    389,427,443,444,445,465,513,514,515,543,544,548,554,587,631,636,646,873,990,993,995,
-    1025,1026,1027,1028,1029,1110,1433,1720,1723,1755,1900,2000,2001,2049,2121,2717,3000,
-    3128,3306,3389,3986,4899,5000,5009,5051,5060,5101,5190,5357,5432,5631,5666,5800,5900,
-    6000,6001,6646,7070,8000,8008,8009,8080,8081,8443,8888,9100,9999,10000,32768,49152,
-    49153,49154,49155,49156,49157,
+    7,
+    9,
+    13,
+    21,
+    22,
+    23,
+    25,
+    26,
+    37,
+    53,
+    79,
+    80,
+    81,
+    88,
+    106,
+    110,
+    111,
+    113,
+    119,
+    135,
+    139,
+    143,
+    144,
+    179,
+    199,
+    389,
+    427,
+    443,
+    444,
+    445,
+    465,
+    513,
+    514,
+    515,
+    543,
+    544,
+    548,
+    554,
+    587,
+    631,
+    636,
+    646,
+    873,
+    990,
+    993,
+    995,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1110,
+    1433,
+    1720,
+    1723,
+    1755,
+    1900,
+    2000,
+    2001,
+    2049,
+    2121,
+    2717,
+    3000,
+    3128,
+    3306,
+    3389,
+    3986,
+    4899,
+    5000,
+    5009,
+    5051,
+    5060,
+    5101,
+    5190,
+    5357,
+    5432,
+    5631,
+    5666,
+    5800,
+    5900,
+    6000,
+    6001,
+    6646,
+    7070,
+    8000,
+    8008,
+    8009,
+    8080,
+    8081,
+    8443,
+    8888,
+    9100,
+    9999,
+    10000,
+    32768,
+    49152,
+    49153,
+    49154,
+    49155,
+    49156,
 ]
 TOP_1000 = TOP_100 + list(range(1, 1001))  # superset suficiente para o didatico
 
 PROBES = {
-    80:  b"GET / HTTP/1.0\r\nHost: localhost\r\n\r\n",
+    80: b"GET / HTTP/1.0\r\nHost: localhost\r\n\r\n",
     443: b"",
-    21:  b"",
-    22:  b"",
-    25:  b"EHLO scanner.local\r\n",
+    21: b"",
+    22: b"",
+    25: b"EHLO scanner.local\r\n",
 }
 
 
@@ -75,10 +170,16 @@ def parse_ports(spec: str) -> list[int]:
             continue
         if "-" in part:
             a, b = part.split("-", 1)
-            out.update(range(int(a), int(b) + 1))
+            start, end = int(a), int(b)
+            if start > end:
+                raise ValueError(f"faixa de portas invertida: {part}")
+            out.update(range(start, end + 1))
         else:
             out.add(int(part))
-    return sorted(p for p in out if 1 <= p <= 65535)
+    ports = sorted(p for p in out if 1 <= p <= 65535)
+    if not ports:
+        raise ValueError("nenhuma porta valida informada")
+    return ports
 
 
 async def scan_port(host: str, port: int, timeout: float, do_banner: bool) -> dict | None:
@@ -159,15 +260,16 @@ def main() -> int:
     ports = parse_ports(args.ports)
     LOG.info("Escaneando %d portas em %s ...", len(ports), args.target)
 
-    results = asyncio.run(
-        run_scan(args.target, ports, args.concurrency, args.timeout, args.banner)
-    )
+    results = asyncio.run(run_scan(args.target, ports, args.concurrency, args.timeout, args.banner))
 
     output = {
         "metadata": {
-            "tool": "port_scanner.py", "version": "2.0.0",
-            "target": args.target, "resolved": resolved,
-            "ports_scanned": len(ports), "concurrency": args.concurrency,
+            "tool": "port_scanner.py",
+            "version": "2.0.0",
+            "target": args.target,
+            "resolved": resolved,
+            "ports_scanned": len(ports),
+            "concurrency": args.concurrency,
         },
         "open_ports": results,
         "summary": {"open_count": len(results)},

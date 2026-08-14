@@ -1,0 +1,9 @@
+{
+  "nodes": ["operator", "web", "database", "management"],
+  "edges": [
+    {"from": "operator", "to": "web", "ports": [22, 443, 5432]},
+    {"from": "web", "to": "database", "ports": [5432]},
+    {"from": "web", "to": "management", "ports": [5985]}
+  ]
+}
+

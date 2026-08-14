@@ -1,0 +1,3 @@
+{"timestamp":"2026-08-12T11:00:00Z","verb":"get","user":{"username":"system:serviceaccount:lab:reader"},"objectRef":{"resource":"pods","namespace":"lab","name":"web"},"responseStatus":{"code":200},"annotations":{"authorization.k8s.io/decision":"allow"}}
+{"timestamp":"2026-08-12T11:01:00Z","verb":"create","user":{"username":"student@lab.local"},"objectRef":{"resource":"pods","namespace":"lab","name":"debug"},"requestObject":{"spec":{"containers":[{"name":"debug","securityContext":{"privileged":true}}]}},"responseStatus":{"code":201},"annotations":{"authorization.k8s.io/decision":"allow"}}
+

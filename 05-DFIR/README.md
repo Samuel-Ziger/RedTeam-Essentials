@@ -3,6 +3,17 @@
 > Modulo de **Digital Forensics & Incident Response**: artefatos Windows, Event Logs, memoria, playbook de ransomware e template de laudo.
 > Complementa a visao ofensiva dos modulos 03, 09 e 14 — o que o blue team vera apos o ataque.
 
+## Contrato do módulo
+
+| Campo | Definição |
+|-------|-----------|
+| Público | Analistas iniciantes/intermediários e praticantes purple team. |
+| Pré-requisitos | Módulo 00; Windows/Linux básico e cópias de evidência. |
+| Tempo estimado | 10 horas de leitura e 8 horas de prática. |
+| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
+| Evidência final | Timeline, hashes, hipóteses e relatório forense. |
+| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+
 ## Conteudo
 
 | Documento | Tema |
@@ -12,6 +23,7 @@
 | [memory_analysis_teoria.md](memory_analysis_teoria.md) | Analise de memoria: Volatility, processos, handles, injects. |
 | [PLAYBOOK_RANSOMWARE.md](PLAYBOOK_RANSOMWARE.md) | Playbook de resposta a incidente de ransomware. |
 | [FORENSIC_REPORT_TEMPLATE.md](FORENSIC_REPORT_TEMPLATE.md) | Template de relatorio forense / IR. |
+| [labs/](labs/README.md) | Timeline reproduzível com eventos de autenticação sintéticos e resposta orientativa. |
 
 ## Fluxo forense recomendado
 
@@ -48,3 +60,13 @@ Tecnicas frequentemente evidenciadas nos artefatos deste modulo:
 - Nao altere sistema em producao sem processo de IR acordado.
 - Em labs, use VMs descartaveis; preserve snapshots para repetir a analise.
 - Red Team: use este modulo para entender deteccao e reduzir ruido desnecessario no engagement.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Resposta a Incidentes: O Papel do CSIRT e do DFIR na Defesa Cibernética](https://www.youtube.com/watch?v=9boBUPsvkUk) — **Daniel Donda**.
+2. [Tsurugi Linux para dar suporte a investigações de Forense Digital e Resposta a Incidentes (DFIR)](https://www.youtube.com/watch?v=wItPe0EldzM) — **Fetha Tutoriais ⭐**.
+3. [Webinar: Resposta a Incidentes de segurança da informação, Com o Prof.  Marcelo Nagy e Prof. Renan](https://www.youtube.com/watch?v=qgKQPh9sZwk) — **Academia de Forense Digital**.
+4. [Resposta a Incidente e Forense Digital - Um estudo de Caso | Jefferson Sampaio](https://www.youtube.com/watch?v=bGQu4x8FTgI) — **Roadsec**.
+5. [Sobre o treinamento - Resposta a Incidentes](https://www.youtube.com/watch?v=q-tdsm2JlM4) — **Academia de Forense Digital**.

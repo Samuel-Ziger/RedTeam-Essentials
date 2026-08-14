@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - '12-Java-Tools/**'
+      - 'tests/java/**'
       - '.github/workflows/java.yml'
   pull_request:
     paths:
       - '12-Java-Tools/**'
+      - 'tests/java/**'
 
 jobs:
   javac:
@@ -32,3 +34,6 @@ jobs:
       - name: Smoke test (PayloadGenerator --list)
         working-directory: 12-Java-Tools
         run: java -cp build io.redteam.essentials.PayloadGenerator --list
+
+      - name: Offline behavior tests
+        run: bash tests/java/test_payload_generator.sh
