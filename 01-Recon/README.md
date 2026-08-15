@@ -365,3 +365,13 @@ Encontrou um erro ou quer melhorar este módulo?
 **Próximo:** [02-OSINT →](../02-OSINT/README.md)
 
 </div>
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Como usar o Nmap como um hacker de verdade](https://www.youtube.com/watch?v=UjM8NBs_NiY) — **Solyd Offensive Security**.
+2. [Aula 5 - Reconhecimento com Nmap - Analisando o alvo](https://www.youtube.com/watch?v=wG9u-gd78KY) — **Solyd Offensive Security**.
+3. [Aula05 - Executando um Pentest - Fase de Reconhecimento](https://www.youtube.com/watch?v=2RBirahlaoE) — **Ricardo Longatto**.
+4. [Escaneando Redes e Vulnerabilidades com NMAP - Ethical Hacker](https://www.youtube.com/watch?v=SbTmxD1aUgs) — **Francisco G P Neto**.
+5. [Nmap - Brasil Pentest](https://www.youtube.com/watch?v=V4lIVAd8i1o) — **Brasil Pentest**.

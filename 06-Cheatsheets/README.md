@@ -58,3 +58,13 @@ Foothold  -->  PrivEsc host (Windows/Linux)  -->  Lateral movement  -->  AD / Cl
 - PrivEsc e lateral movement geram Event Logs / EDR alerts — alinhar com o cliente.
 - Nao deixar persistencia nao documentada; cleanup ao final.
 - Em containers/cloud, preferir labs isolados (`kind`/`minikube`, contas proprias) — ver modulos 08 e 10.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Escalação de privilégios Linux - Explorando binários SUID](https://www.youtube.com/watch?v=DIsBdvFaiX0) — **Solyd Offensive Security**.
+2. [Curso GRATUITO de pentest:  ESCALAÇÃO DE PRIVILÉGIOS!](https://www.youtube.com/watch?v=2XKiy2P3BGQ) — **Kraken Academy**.
+3. [Resolvendo Pentest - Escalando privilégios!](https://www.youtube.com/watch?v=_-_x9fzw8Pg) — **TRW SYSTEM Tecnologia e Segurança da Informação**.
+4. [Privilege Escalation em Linux: Como pentesters escalam privilégios na prática](https://www.youtube.com/watch?v=Sz8Sfqk9lQA) — **Hacking Club**.
+5. [Aproveitando de permissões para escalar privilégios no Linux](https://www.youtube.com/watch?v=qZcgf2S_4wc) — **Ricardo Longatto**.

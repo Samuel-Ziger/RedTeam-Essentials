@@ -93,3 +93,13 @@ Ao concluir este modulo voce deve ser capaz de:
 - [GoPhish](https://getgophish.com/) - framework open source para campanhas de awareness (lab proprio)
 - [Microsoft Safe Links](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about)
 - TryHackMe: salas de phishing / social engineering (buscar catalogo atualizado)
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [UM FUNCIONÁRIO DO RED TEAM PODE REALIZAR UM ATAQUE DE ENGENHARIA SOCIAL? | CORTES](https://www.youtube.com/watch?v=zkY4Z8IrKJQ) — **Blue Team Academy**.
+2. [O que é Engenharia Social e como se prevenir dessa ameaça de segurança](https://www.youtube.com/watch?v=NI_Kdo443es) — **Bóson Treinamentos**.
+3. [Engenharia Social e Phishing como proteger sua empresa de ataques](https://www.youtube.com/watch?v=8KerwybZfcs) — **Introduce Tecnologia para Crescer**.
+4. [O que é Engenharia Social?](https://www.youtube.com/watch?v=z8pOtf2xCRU) — **David Avelino Consultor**.
+5. [O QUE É ENGENHARIA SOCIAL? VEJA EXEMPLOS DE ENGENHARIA SOCIAL](https://www.youtube.com/watch?v=Ha_r7ArqGEY) — **TI-informa**.

@@ -76,3 +76,15 @@ Marque somente depois de demonstrar cada item:
 - Trilha AppSec: [07 Web AppSec](../07-Web-AppSec/README.md).
 - Trilha defensiva: [05 DFIR](../05-DFIR/README.md).
 
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Aula 1 - Como ser um Hacker - O que é um Pentest?](https://www.youtube.com/watch?v=RxxCan33CbA) — **Solyd Offensive Security**.
+2. [Como COMEÇAR no Hacking (da forma certa 😉)](https://www.youtube.com/watch?v=qg7nuuI0EM0) — **YuriRDev**.
+3. [FUNDAMENTOS DE PENTEST WEB: O GUIA COMPLETO PARA VOCÊ COMEÇAR A HACKEAR SITES (DO ZERO)](https://www.youtube.com/watch?v=yBNlFWnUXfI) — **Cybersegurançanapratica**.
+4. [PARTE I: Curso Completo - Ethical Hacking e Pentest (14 horas de Vídeo Gratuito)](https://www.youtube.com/watch?v=u9bvt-IvvQs) — **Empire Cybersecurity TV**.
+5. [01# Curso de Hacker Ético e Pentest - Montando seu Ambiente de Hacking🔥(Kali Linux e Metasploitable)](https://www.youtube.com/watch?v=9ou4L9IdTlA) — **Códigos Ocultos**.
+=======
+

@@ -47,3 +47,12 @@ somente o trecho mínimo, teste e patch necessários.
 Remova branches/fixtures temporárias, tokens canário e builds; confirme que o
 teste vulnerável falha após o patch e que nenhuma credencial entrou no histórico.
 
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Como Começar em AppSec do Zero | Guia Rápido de Segurança da Informação](https://www.youtube.com/watch?v=j6OKF3DFzi8) — **HackSafeBR**.
+2. [Você confia nos seus logs? Código Seguro #082 | Cássio B. Pereira](https://www.youtube.com/watch?v=SvMTUKlKdsQ) — **Cássio Batista Pereira**.
+3. [Tendências de AppSec para 2026 | AppSec Webinar](https://www.youtube.com/watch?v=5xgHsnhc7As) — **Conviso Application Security**.
+4. [O profissional de appsec programa no dia a dia?](https://www.youtube.com/watch?v=IZjie0THS50) — **Ben-Hur Ott**.
+5. [O que é AppSec?](https://www.youtube.com/watch?v=R49E7efhoDA) — **AppSecBR**.

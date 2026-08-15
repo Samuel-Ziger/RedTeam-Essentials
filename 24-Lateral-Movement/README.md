@@ -97,3 +97,13 @@ lab, valide listeners e entregue a kill list. Não apague logs do alvo.
 - [ ] Um destino bloqueado permaneceu bloqueado.
 - [ ] Relacionei protocolo a fontes de telemetria e falsos positivos.
 - [ ] Usei evidência mínima, conta canário e cleanup verificável.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [5 Ataques ao Active Directory e suas ferramentas](https://www.youtube.com/watch?v=UmTJy46Y9Yk) — **Daniel Donda**.
+2. [Como reduzir ataques laterais em ambientes Windows com o ADAudit Plus | Descomplica TI](https://www.youtube.com/watch?v=LqgIMXsuSXw) — **ManageEngine Brasil**.
+3. [Pentest de Active Directory Ep. 1: Arquitetura do AD e Configuração de Laboratório Hacker](https://www.youtube.com/watch?v=Rgn35OXzDAY) — **BountyShell**.
+4. [Invadindo o Game Of Active Directory Parte 5 | Persistência e Movimentação Lateral](https://www.youtube.com/watch?v=e9YquqY2EYQ) — **I.T Security Labs**.
+5. [EP.2 — Pentest em Active Directory | Resolução máquina Administrator do HTB [RETIRED]](https://www.youtube.com/watch?v=C8SalvkKhzw) — **Avocado Toast with $hell**.

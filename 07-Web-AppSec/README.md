@@ -95,3 +95,16 @@ docker compose down -v
 - [ ] Coletei evidência mínima e removi tokens/dados desnecessários.
 - [ ] Relacionei cada ação a uma fonte de telemetria e mitigação.
 - [ ] Destruí volumes e confirmei que as portas do lab foram fechadas.
+
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Metodologia OWASP para Pentest: Garantindo a Segurança das Aplicações Web](https://www.youtube.com/watch?v=DOQdWHtjMT4) — **Perícia Hacker**.
+2. [OWASP TOP 10: As Falhas MAIS CRÍTICAS em Aplicações Web](https://www.youtube.com/watch?v=n8nI_IsH7rM) — **HackStation**.
+3. [OWASP ASVS - O que é e como aumentar a segurança em Aplicações WEB #1](https://www.youtube.com/watch?v=BxeJgKalsiE) — **Sistema Inseguro**.
+4. [Como utilizar o OWASP para realizar pentest](https://www.youtube.com/watch?v=ouERLpaCvbQ) — **Redbelt Security**.
+5. [💀 TOP 10 Ameaças de Segurança em Aplicações Web - DICAS DE PREVENÇÃO!](https://www.youtube.com/watch?v=OzBy8nYLY-I) — **Código Fonte TV**.
+=======
+

@@ -44,3 +44,15 @@ exposto, preserve logs mínimos e siga resposta a incidente.
 Remova environments, tokens, artifacts e caches de teste; destrua runner
 descartável e confirme que nenhuma credencial de longa duração foi criada.
 
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [DevSecOps (Segurança no Ciclo de Desenvolvimento de Software) // Dicionário do Programador](https://www.youtube.com/watch?v=CCp30BD9uRo) — **Código Fonte TV**.
+2. [Top 10 CI/CD Security - Protegendo a Cadeia de Suprimentos de Software](https://www.youtube.com/watch?v=GzxTiLYY69Y) — **GoHacking**.
+3. [DevSecOps: Aplicando segurança em seu CI/CD com Gitlab e Horusec](https://www.youtube.com/watch?v=TuDaEBGSACs) — **Samuel Gonçalves**.
+4. [Aulão de DevSecOps (Segurança em DevOps) na prática](https://www.youtube.com/watch?v=5yyy1TGvcpQ) — **TBX Tech**.
+5. [CI/CD, deploy automatizado e DevSecOps: como estruturamos isso na UEEK](https://www.youtube.com/watch?v=sc3LVX3E7RI) — **UEEK Soluções Digitais**.
+=======
+

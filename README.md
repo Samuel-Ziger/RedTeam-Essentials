@@ -116,6 +116,7 @@ RedTeam-Essentials/
 ├── 22-Secure-Code-Review/               (source-to-sink e autorização)
 ├── 23-Threat-Intel-Emulation/           (CTI orientada a hipóteses)
 ├── 24-Lateral-Movement/                 (attack paths, protocolos e telemetria)
+├── 25-Cursos/                            (cursos completos em português)
 │
 ├── docker-lab/
 │   ├── docker-compose.yml
@@ -223,6 +224,13 @@ terminal, identidade, escopo e operação segura do laboratório.
 | Purple Team / DFIR | 00 → 05 → 03 → 07 → 09 → 13 → 14 |
 
 Veja **[ROADMAP.md](ROADMAP.md)** para detalhes por semana.
+
+### Cursos e conteúdo em vídeo
+
+Cada módulo de 00 a 24 contém uma seção com pelo menos cinco vídeos em português
+sobre seu próprio tema. O **[Módulo 25 — Cursos em português](25-Cursos/README.md)**
+centraliza cursos completos, começando pelas trilhas da Solyd Offensive Security
+e da DESEC Security.
 
 ---
 

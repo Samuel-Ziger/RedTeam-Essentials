@@ -55,3 +55,12 @@ comuns; use identidade, janela e destino para contexto.
 Encerre processos, remova routes/listeners temporários, valide portas abertas,
 destrua a rede de lab e anexe a confirmação à kill list.
 
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [COMO OS PENTESTERS INVADAM REDES INTERNAS COM PIVOTING (DO ZERO AO AVANÇADO)](https://www.youtube.com/watch?v=Lbrn4H7a5wA) — **Cybersegurançanapratica**.
+2. [Aula 13 - Pivoting - Comprometendo toda a rede](https://www.youtube.com/watch?v=DhEDUzVO88k) — **Solyd Offensive Security**.
+3. [[Aula Pentest] - Tunelamento com socat](https://www.youtube.com/watch?v=_WKiZr5ZF6k) — **Ricardo Longatto**.
+4. [Pivoting - De uma simples shell ao servidor principal](https://www.youtube.com/watch?v=kJ7-6qukgM8) — **Ricardo Longatto**.
+5. [Aula 11 - Pivoting em redes - Introdução ao Hacking e Pentest - Solyd](https://www.youtube.com/watch?v=FBr-1R8lz_0) — **Solyd Offensive Security**.

@@ -10,6 +10,13 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ## [Unreleased]
 
 ### Adicionado
+
+- **Vídeos por módulo** - curadoria de cinco vídeos em português incorporada a
+  cada README dos módulos 00–24.
+- **Módulo 25** - catálogo exclusivo de cursos completos, iniciado com as
+  trilhas da Solyd e DESEC e preparado para inclusões futuras.
+- **Validador de vídeos** - teste offline das 25 seções distribuídas e do mínimo
+  de cinco vídeos distintos por módulo.
 - **00-Fundamentos** - redes, sistemas, identidade, RoE, laboratório seguro e autoavaliação.
 - **Testes Python** - suite pytest offline para biblioteca comum, parsers e ferramentas.
 - **Testes Bash, PowerShell e Java** - validações offline das bibliotecas e do gerador.

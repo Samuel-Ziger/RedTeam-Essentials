@@ -43,3 +43,14 @@ risco de negócio.
 Apague dados do app, destrua o emulador/snapshot, revogue tokens de laboratório
 e confirme que nenhum proxy ou certificado de teste permaneceu instalado.
 
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [iPhone vs Android: Qual é o mais seguro? #hardwarehacking](https://www.youtube.com/watch?v=0tAamNaPGAg) — **Cortes TecMundo [OFICIAL]**.
+2. [Android ou iPhone (iOS): Qual é o MAIS SEGURO?](https://www.youtube.com/watch?v=T4lLXfJLIew) — **Cyber Novas**.
+3. [Android ou iPhone: qual é mais seguro? Hacker responde](https://www.youtube.com/watch?v=vpKMEg-Nja4) — **Cortes TecMundo [OFICIAL]**.
+4. [Como Proteger seu Celular de Hackers – 10 Dicas Essenciais para Android e iPhone](https://www.youtube.com/watch?v=t_EMKgIoGx8) — **Cyber Alerta**.
+5. [🤔É Realmente NECESSÁRIO usar Antivírus no Celular? (Android e iOS)](https://www.youtube.com/watch?v=bZVr2m6cj4o) — **Mestres da Informática**.
+

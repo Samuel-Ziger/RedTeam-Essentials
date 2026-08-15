@@ -62,3 +62,13 @@ OSINT usa fontes **publicas**, mas ainda exige:
 - Nunca usar achados para atacar sistemas sem autorizacao escrita.
 
 Links uteis: [01-Recon](../01-Recon/) · [13-Initial-Access](../13-Initial-Access/).
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Introdução à OSINT: Inteligência de Fontes Abertas e Investigação Digital.](https://www.youtube.com/watch?v=nWsOw63AWRY) — **O Igor Doin**.
+2. [Caso Real de Investigação Digital e OSINT | Aulão 03](https://www.youtube.com/watch?v=-eaoa6KJyek) — **Aulão com Bruno Fraga**.
+3. [Encontrando informações de um site | Desafio de Investigação Digital | Ep 01](https://www.youtube.com/watch?v=RkT4GQJeuLY) — **Bruno Fraga**.
+4. [4 Segredos para uma Investigação Digital em Fontes Abertas (OSINT) | Aulão 01](https://www.youtube.com/watch?v=gFT_PdHTgMg) — **Aulão com Bruno Fraga**.
+5. [Como Usar Ferramentas OSINT na Prática | Aulão 039](https://www.youtube.com/watch?v=PHdstrh6SNU) — **Aulão com Bruno Fraga**.

@@ -90,3 +90,12 @@ Falha no gate significa **parar**, não contornar a validação.
 - [ ] Telemetria e falso positivo foram documentados.
 - [ ] Kill list e cleanup foram verificados.
 
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Estabelecendo Conexão VPN no TryHackMe de Forma Rápida e Sem Complicação!!!](https://www.youtube.com/watch?v=EMH5dL3KoAQ) — **Cybersecurity With Mateus Novaes**.
+2. [Qual plataforma é melhor: TryHackMe ou Hack The Box?](https://www.youtube.com/watch?v=fu10bMuNHKw) — **Tyler Ramsbey - Hack Smarter**.
+3. [Hack The Box vs TryHackMe - para INICIANTES](https://www.youtube.com/watch?v=84lDcEDP5_U) — **SkillsBuild Security**.
+4. [Pentest básico - Passo a passo completo | TryHackMe | CTF para hackers](https://www.youtube.com/watch?v=iaCfgtUF9-o) — **HackHunt**.
+5. [TryHackMe vs Hack The Box A melhor plataforma revelada!](https://www.youtube.com/watch?v=OTMZM_znVh8) — **InfoSec Pat**.

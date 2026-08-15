@@ -60,3 +60,13 @@ Tecnicas frequentemente evidenciadas nos artefatos deste modulo:
 - Nao altere sistema em producao sem processo de IR acordado.
 - Em labs, use VMs descartaveis; preserve snapshots para repetir a analise.
 - Red Team: use este modulo para entender deteccao e reduzir ruido desnecessario no engagement.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Resposta a Incidentes: O Papel do CSIRT e do DFIR na Defesa Cibernética](https://www.youtube.com/watch?v=9boBUPsvkUk) — **Daniel Donda**.
+2. [Tsurugi Linux para dar suporte a investigações de Forense Digital e Resposta a Incidentes (DFIR)](https://www.youtube.com/watch?v=wItPe0EldzM) — **Fetha Tutoriais ⭐**.
+3. [Webinar: Resposta a Incidentes de segurança da informação, Com o Prof.  Marcelo Nagy e Prof. Renan](https://www.youtube.com/watch?v=qgKQPh9sZwk) — **Academia de Forense Digital**.
+4. [Resposta a Incidente e Forense Digital - Um estudo de Caso | Jefferson Sampaio](https://www.youtube.com/watch?v=bGQu4x8FTgI) — **Roadsec**.
+5. [Sobre o treinamento - Resposta a Incidentes](https://www.youtube.com/watch?v=q-tdsm2JlM4) — **Academia de Forense Digital**.

@@ -57,3 +57,13 @@ Nunca praticar escape ou RBAC abuse em clusters de terceiros ou producao.
 ## Etica
 
 Escape de container e abuso de RBAC sem autorizacao sao ilegais e podem comprometer hosts compartilhados. Use apenas kind/minikube ou VMs proprias; siga o checklist no final de cada documento de ataque.
+
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [Containers, Docker e Kubernetes com Giovanni Bassi | #HipstersPontoTube](https://www.youtube.com/watch?v=wxLvvMxzc1Q) — **Alura**.
+2. [O que são Containers, Docker e Kubernetes](https://www.youtube.com/watch?v=Xb9e4XY1ix8) — **Simplificando TI**.
+3. [Explicando Docker, Kubernetes e Infra as Code ( em 2 minutos )](https://www.youtube.com/watch?v=CVO6GOF5F24) — **Programador Python**.
+4. [Entendendo Funcionamento de Containers](https://www.youtube.com/watch?v=85k8se4Zo70) — **Fabio Akita**.
+5. [Introdução em Segurança de Containers Docker - Keven Lopes](https://www.youtube.com/watch?v=nZe0Y1Mmdfg) — **Faculdade Facint**.

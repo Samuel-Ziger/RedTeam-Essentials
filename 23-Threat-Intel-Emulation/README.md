@@ -48,3 +48,12 @@
 Execute a [microemulação Purple Team](../docs/PURPLE-TEAM-MICRO-EMULATION.md),
 adicione um intelligence requirement e registre confiança/limitações no debrief.
 
+## Vídeos em português
+
+Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+
+1. [USANDO MITRE ATT&CK - TUTORIAL COMPLETO!](https://www.youtube.com/watch?v=1mf3De-UZkA) — **Gustavo Bessa**.
+2. [O que é o MITRE ATT&CK? TTPs & A Pirâmide da Dor - Parte 1/3](https://www.youtube.com/watch?v=TYlx5JSLC-s) — **Flávio Costa - Segurança Descomplicada**.
+3. [MITRE ATT&CK® Framework, Com o Prof. Thiago Cunha](https://www.youtube.com/watch?v=BKNNlqxbiS4) — **Academia de Forense Digital**.
+4. [Cyber Kill Chain e MITRE ATT&CK na Prática: Como Usar no Dia a Dia](https://www.youtube.com/watch?v=DCzgq9SYte4) — **SecDay**.
+5. [Cyber Threat Intelligence e Threat Hunting: O que Aprendi em 10 Dias?](https://www.youtube.com/watch?v=TV6d17bfO1k) — **Kraken Academy**.
