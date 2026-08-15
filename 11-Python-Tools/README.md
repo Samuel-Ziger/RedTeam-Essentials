@@ -77,6 +77,7 @@ atalho contra sistemas externos.
 - [ ] `pytest`, Ruff e `compileall` passaram.
 - [ ] Removi processos locais e saídas temporárias.
 
+
 ## Vídeos em português
 
 Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
@@ -86,3 +87,5 @@ Use estes materiais como complemento à leitura e aos exercícios do módulo. Ex
 3. [NOVO CURSO - 25 Ferramentas para PenTest](https://www.youtube.com/watch?v=ITEEL3OKt8U) — **Guia Anônima**.
 4. [PYTHON PARA HACKERS: O CURSO QUE VAI TE PREPARAR PARA A SEGURANÇA DIGITAL EM 2026](https://www.youtube.com/watch?v=tJkczJvosvA) — **CyberHive Academy**.
 5. [Python para Pentest | Michelle Mesquita](https://www.youtube.com/watch?v=VdjrmZTRhx4) — **Roadsec**.
+=======
+

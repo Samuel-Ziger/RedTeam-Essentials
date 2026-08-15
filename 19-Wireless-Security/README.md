@@ -41,6 +41,7 @@ recuperar chaves, identificar pessoas ou correlacionar dispositivos externos.
 Remova cópias derivadas e identificadores desnecessários. Em AP próprio, reverta
 SSID/canal/credenciais de teste e confirme segmentação e logging esperados.
 
+
 ## Vídeos em português
 
 Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
@@ -50,3 +51,4 @@ Use estes materiais como complemento à leitura e aos exercícios do módulo. Ex
 3. [WEP WPA WPA2 WPA3 WPS](https://www.youtube.com/watch?v=tr7LiVrVk5o) — **Dicionário de Informática**.
 4. [Pentest em Redes  Wi-Fi Como Funciona o Ataque de Deauth RedByte Security](https://www.youtube.com/watch?v=RvHDSi13PoU) — **Perícia Hacker**.
 5. [WiFi e a segurança nas redes sem fio](https://www.youtube.com/watch?v=RucNhKGR224) — **Dicionário de Informática**.
+

@@ -96,6 +96,7 @@ docker compose down -v
 - [ ] Relacionei cada ação a uma fonte de telemetria e mitigação.
 - [ ] Destruí volumes e confirmei que as portas do lab foram fechadas.
 
+
 ## Vídeos em português
 
 Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
@@ -105,3 +106,5 @@ Use estes materiais como complemento à leitura e aos exercícios do módulo. Ex
 3. [OWASP ASVS - O que é e como aumentar a segurança em Aplicações WEB #1](https://www.youtube.com/watch?v=BxeJgKalsiE) — **Sistema Inseguro**.
 4. [Como utilizar o OWASP para realizar pentest](https://www.youtube.com/watch?v=ouERLpaCvbQ) — **Redbelt Security**.
 5. [💀 TOP 10 Ameaças de Segurança em Aplicações Web - DICAS DE PREVENÇÃO!](https://www.youtube.com/watch?v=OzBy8nYLY-I) — **Código Fonte TV**.
+=======
+

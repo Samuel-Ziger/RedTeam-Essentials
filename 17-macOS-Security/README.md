@@ -43,6 +43,7 @@ necessita contexto. Proponha uma consulta de detecção e um falso positivo.
 O inventário não deve alterar controles. Remova apenas arquivos derivados e
 confirme que SIP, Gatekeeper, FileVault, TCC e perfis permaneceram inalterados.
 
+
 ## Vídeos em português
 
 Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
@@ -52,3 +53,4 @@ Use estes materiais como complemento à leitura e aos exercícios do módulo. Ex
 3. [Curso Apple Mac - Navegar com Segurança no Safari](https://www.youtube.com/watch?v=7P3n1Fadq5M) — **Doctor Apple**.
 4. [Como melhorar a proteção do Mac](https://www.youtube.com/watch?v=BQgAL7ge0Bo) — **Canal da Lu - Magalu**.
 5. [4 Pilares Importantes de Segurança no Mac - Passo a Passo!](https://www.youtube.com/watch?v=EDvnYX4KmoI) — **Super Apple**.
+

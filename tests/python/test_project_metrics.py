@@ -13,6 +13,7 @@ SPEC.loader.exec_module(metrics)
 def test_all_modules_have_contracts() -> None:
     result = metrics.collect(ROOT)
     assert result["modules"] == 26
+    assert result["modules"] == 25
     assert result["modules_with_contract"] == result["modules"]
     assert result["test_files"] >= 10
     assert result["fixture_files"] >= 5

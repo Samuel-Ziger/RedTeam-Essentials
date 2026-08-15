@@ -10,6 +10,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ## [Unreleased]
 
 ### Adicionado
+
 - **Vídeos por módulo** - curadoria de cinco vídeos em português incorporada a
   cada README dos módulos 00–24.
 - **Módulo 25** - catálogo exclusivo de cursos completos, iniciado com as
