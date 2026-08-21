@@ -190,6 +190,7 @@ sherlock usuario123 -o usuario_results.txt
 | Ferramenta | Descrição | Tipo |
 |------------|-----------|------|
 | **ExifTool** | Extrai metadados EXIF | CLI |
+| **[Metadata Remover Viewer](https://metadataremover.ai/metadata-viewer)** | Analisa EXIF/IPTC/XMP localmente no navegador; confirme achados importantes com outra ferramenta | Web |
 | **Jeffrey's Image Metadata Viewer** | Análise online | Web |
 | **Geo Imager** | Localização via EXIF | Web |
 
