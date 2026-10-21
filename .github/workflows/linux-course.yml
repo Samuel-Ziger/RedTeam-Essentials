@@ -1,0 +1,51 @@
+name: Linux course
+
+on:
+  push:
+    paths:
+      - "06-Cheatsheets/linux-do-zero-ao-avancado/**"
+      - "06-Cheatsheets/README.md"
+      - "MODULE-CATALOG.json"
+      - "STUDY-CONTENT.json"
+      - "study-app/scripts/build_catalog.py"
+      - "study-app/scripts/tests/test_module06_curriculum.py"
+      - ".github/workflows/linux-course.yml"
+  pull_request:
+    paths:
+      - "06-Cheatsheets/linux-do-zero-ao-avancado/**"
+      - "06-Cheatsheets/README.md"
+      - "MODULE-CATALOG.json"
+      - "STUDY-CONTENT.json"
+      - "study-app/scripts/build_catalog.py"
+      - "study-app/scripts/tests/test_module06_curriculum.py"
+      - ".github/workflows/linux-course.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linux-course-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.13"
+
+      - name: Install static analysis tools
+        run: sudo apt-get update && sudo apt-get install --yes shellcheck
+
+      - name: Validate executable examples and local links
+        run: bash 06-Cheatsheets/linux-do-zero-ao-avancado/testar-curso.sh
+
+      - name: Validate curriculum route and lab gates
+        run: python -m unittest study-app/scripts/tests/test_module06_curriculum.py -v

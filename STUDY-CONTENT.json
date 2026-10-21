@@ -1,0 +1,2709 @@
+{
+  "schemaVersion": 2,
+  "collections": [
+    {
+      "id": "formacao-principal",
+      "order": 0,
+      "kind": "curriculum",
+      "title": "Formação principal",
+      "description": "Percurso progressivo dos módulos 00 a 40: base obrigatória de 00 a 26 e especialização avançada de 27 a 40."
+    },
+    {
+      "id": "acervo-seguranca",
+      "order": 1,
+      "kind": "library",
+      "title": "Acervo de segurança",
+      "description": "Materiais complementares que ainda não pertencem a uma rota curricular."
+    },
+    {
+      "id": "laboratorios-projetos",
+      "order": 2,
+      "kind": "practice",
+      "title": "Laboratórios e projetos",
+      "description": "Práticas guiadas, projetos integradores, fixtures e soluções."
+    },
+    {
+      "id": "ferramentas-codigo",
+      "order": 3,
+      "kind": "resources",
+      "title": "Ferramentas e código",
+      "description": "Código-fonte, configurações, datasets, testes e utilitários seguros."
+    },
+    {
+      "id": "documentacao-global",
+      "order": 4,
+      "kind": "documentation",
+      "title": "Documentação do projeto",
+      "description": "Guias globais, ética, laboratório, recursos e governança."
+    }
+  ],
+  "courses": [
+    {
+      "moduleId": "00",
+      "courseRoot": "00-Fundamentos/programacao",
+      "overviewPath": "00-Fundamentos/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "00-Fundamentos/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/00-como-estudar.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/01-logica-algoritmos.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/02-ambiente-terminal-git.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/GUIA-DEPURACAO.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/03-fundamentos-comuns.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/linguagens/python.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/04-estruturas-dados-algoritmos.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/linguagens/java.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/linguagens/csharp.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/05-engenharia-software.md",
+          "order": 13,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/linguagens/c.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/linguagens/javascript.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/06-web-http-bancos.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/07-sistemas-concorrencia.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/08-docker-nginx.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/CADERNO-PRATICAS.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/09-projetos.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/projetos/taskboard/README.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/labs/lab-01-logica-controle-fluxo.md",
+          "order": 8,
+          "required": true,
+          "prerequisitePaths": [
+            "00-Fundamentos/programacao/00-como-estudar.md",
+            "00-Fundamentos/programacao/01-logica-algoritmos.md",
+            "00-Fundamentos/programacao/02-ambiente-terminal-git.md",
+            "00-Fundamentos/programacao/linguagens/python.md"
+          ]
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/labs/lab-02-cli-git-duas-linguagens.md",
+          "order": 11,
+          "required": true,
+          "prerequisitePaths": [
+            "00-Fundamentos/programacao/00-como-estudar.md",
+            "00-Fundamentos/programacao/01-logica-algoritmos.md",
+            "00-Fundamentos/programacao/02-ambiente-terminal-git.md",
+            "00-Fundamentos/programacao/03-fundamentos-comuns.md",
+            "00-Fundamentos/programacao/linguagens/python.md",
+            "00-Fundamentos/programacao/linguagens/java.md"
+          ]
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/labs/lab-03-agenda-persistencia-testes.md",
+          "order": 14,
+          "required": true,
+          "prerequisitePaths": [
+            "00-Fundamentos/programacao/02-ambiente-terminal-git.md",
+            "00-Fundamentos/programacao/GUIA-DEPURACAO.md",
+            "00-Fundamentos/programacao/03-fundamentos-comuns.md",
+            "00-Fundamentos/programacao/linguagens/python.md",
+            "00-Fundamentos/programacao/04-estruturas-dados-algoritmos.md",
+            "00-Fundamentos/programacao/05-engenharia-software.md"
+          ]
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/labs/lab-04-http-api-sqlite.md",
+          "order": 18,
+          "required": true,
+          "prerequisitePaths": [
+            "00-Fundamentos/programacao/GUIA-DEPURACAO.md",
+            "00-Fundamentos/programacao/linguagens/python.md",
+            "00-Fundamentos/programacao/05-engenharia-software.md",
+            "00-Fundamentos/programacao/06-web-http-bancos.md"
+          ]
+        },
+        {
+          "sourcePath": "00-Fundamentos/programacao/labs/lab-05-taskboard-docker-nginx.md",
+          "order": 24,
+          "required": true,
+          "prerequisitePaths": [
+            "00-Fundamentos/programacao/GUIA-DEPURACAO.md",
+            "00-Fundamentos/programacao/06-web-http-bancos.md",
+            "00-Fundamentos/programacao/07-sistemas-concorrencia.md",
+            "00-Fundamentos/programacao/08-docker-nginx.md",
+            "00-Fundamentos/programacao/09-projetos.md",
+            "00-Fundamentos/programacao/projetos/taskboard/README.md"
+          ]
+        }
+      ],
+      "legacyId": "complementos-programacao-fundamentos",
+      "legacyTitle": "Complementos de programação fundamental"
+    },
+  {
+    "moduleId": "01",
+    "courseRoot": "01-Recon/programacao-avancada",
+    "overviewPath": "01-Recon/README.md",
+    "documentOverrides": [
+      {
+        "sourcePath": "01-Recon/README.md",
+        "order": 0,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/README.md",
+        "order": 1,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/00-arquitetura-dados.md",
+        "order": 2,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/01-modelagem-relacional.md",
+        "order": 3,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/02-sql-fundamentos.md",
+        "order": 4,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/laboratorios/lab-01-modelagem-sql.md",
+        "order": 5,
+        "required": true,
+        "prerequisitePaths": [
+          "01-Recon/programacao-avancada/00-arquitetura-dados.md",
+          "01-Recon/programacao-avancada/01-modelagem-relacional.md",
+          "01-Recon/programacao-avancada/02-sql-fundamentos.md"
+        ]
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/03-sql-avancado.md",
+        "order": 6,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/04-transacoes-concorrencia.md",
+        "order": 7,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/05-indices-performance.md",
+        "order": 8,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/laboratorios/lab-02-transacoes-indices.md",
+        "order": 9,
+        "required": true,
+        "prerequisitePaths": [
+          "01-Recon/programacao-avancada/03-sql-avancado.md",
+          "01-Recon/programacao-avancada/04-transacoes-concorrencia.md",
+          "01-Recon/programacao-avancada/05-indices-performance.md"
+        ]
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/06-nosql-modelos.md",
+        "order": 10,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/07-mongodb.md",
+        "order": 11,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/laboratorios/lab-03-mongodb-documentos.md",
+        "order": 12,
+        "required": true,
+        "prerequisitePaths": [
+          "01-Recon/programacao-avancada/06-nosql-modelos.md",
+          "01-Recon/programacao-avancada/07-mongodb.md"
+        ]
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/08-anatomia-api.md",
+        "order": 13,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/09-design-api-http.md",
+        "order": 14,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/10-implementacao-api.md",
+        "order": 15,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/11-seguranca-api.md",
+        "order": 16,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/12-testes-observabilidade.md",
+        "order": 17,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/15-stacks-multilinguagem.md",
+        "order": 18,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/exemplos/README.md",
+        "order": 19,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/laboratorios/lab-04-contrato-api.md",
+        "order": 20,
+        "required": true,
+        "prerequisitePaths": [
+          "01-Recon/programacao-avancada/08-anatomia-api.md",
+          "01-Recon/programacao-avancada/09-design-api-http.md",
+          "01-Recon/programacao-avancada/10-implementacao-api.md",
+          "01-Recon/programacao-avancada/11-seguranca-api.md",
+          "01-Recon/programacao-avancada/12-testes-observabilidade.md",
+          "01-Recon/programacao-avancada/15-stacks-multilinguagem.md",
+          "01-Recon/programacao-avancada/exemplos/README.md"
+        ]
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/13-dados-distribuidos.md",
+        "order": 21,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/GUIA-DIAGNOSTICO.md",
+        "order": 22,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/CADERNO-PRATICAS.md",
+        "order": 23,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/projetos/inventory-api/README.md",
+        "order": 24,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/14-projetos-avaliacao.md",
+        "order": 25,
+        "required": true
+      },
+      {
+        "sourcePath": "01-Recon/programacao-avancada/laboratorios/lab-05-inventory-capstone.md",
+        "order": 26,
+        "required": true,
+        "prerequisitePaths": [
+          "01-Recon/programacao-avancada/laboratorios/lab-01-modelagem-sql.md",
+          "01-Recon/programacao-avancada/laboratorios/lab-02-transacoes-indices.md",
+          "01-Recon/programacao-avancada/laboratorios/lab-03-mongodb-documentos.md",
+          "01-Recon/programacao-avancada/laboratorios/lab-04-contrato-api.md",
+          "01-Recon/programacao-avancada/12-testes-observabilidade.md",
+          "01-Recon/programacao-avancada/13-dados-distribuidos.md",
+          "01-Recon/programacao-avancada/15-stacks-multilinguagem.md",
+          "01-Recon/programacao-avancada/GUIA-DIAGNOSTICO.md",
+          "01-Recon/programacao-avancada/projetos/inventory-api/README.md",
+          "01-Recon/programacao-avancada/14-projetos-avaliacao.md"
+        ]
+      }
+    ],
+    "legacyId": "complementos-dados-apis",
+    "legacyTitle": "Complementos de dados e APIs"
+  },
+    {
+      "moduleId": "02",
+      "courseRoot": "02-OSINT/engenharia-software",
+      "overviewPath": "02-OSINT/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "02-OSINT/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/00-como-pensar-problemas.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/01-complexidade.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/laboratorios/README.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/laboratorios/lab-01-contrato-complexidade.md",
+          "order": 5,
+          "required": true,
+          "prerequisitePaths": [
+            "02-OSINT/engenharia-software/00-como-pensar-problemas.md",
+            "02-OSINT/engenharia-software/01-complexidade.md"
+          ]
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/02-estruturas-lineares.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/03-arvores-heaps-tries.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/04-grafos.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/05-busca-ordenacao.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/exemplos/README.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/laboratorios/lab-02-estruturas-grafos.md",
+          "order": 11,
+          "required": true,
+          "prerequisitePaths": [
+            "02-OSINT/engenharia-software/laboratorios/lab-01-contrato-complexidade.md",
+            "02-OSINT/engenharia-software/02-estruturas-lineares.md",
+            "02-OSINT/engenharia-software/03-arvores-heaps-tries.md",
+            "02-OSINT/engenharia-software/04-grafos.md",
+            "02-OSINT/engenharia-software/05-busca-ordenacao.md",
+            "02-OSINT/engenharia-software/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/06-recursao-backtracking.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/07-programacao-dinamica-gulosa.md",
+          "order": 13,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/08-paradigmas-tipos.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/09-design-modular.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/10-solid-patterns.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/projetos/dependency-planner/README.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/laboratorios/lab-03-estrategias-design.md",
+          "order": 18,
+          "required": true,
+          "prerequisitePaths": [
+            "02-OSINT/engenharia-software/laboratorios/lab-02-estruturas-grafos.md",
+            "02-OSINT/engenharia-software/06-recursao-backtracking.md",
+            "02-OSINT/engenharia-software/07-programacao-dinamica-gulosa.md",
+            "02-OSINT/engenharia-software/08-paradigmas-tipos.md",
+            "02-OSINT/engenharia-software/09-design-modular.md",
+            "02-OSINT/engenharia-software/10-solid-patterns.md",
+            "02-OSINT/engenharia-software/projetos/dependency-planner/README.md"
+          ]
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/11-refatoracao-legado.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/12-requisitos-modelagem.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/13-arquitetura.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/14-testes-qualidade.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/15-colaboracao-documentacao.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/GUIA-DIAGNOSTICO.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/laboratorios/lab-04-evolucao-arquitetura-testes.md",
+          "order": 25,
+          "required": true,
+          "prerequisitePaths": [
+            "02-OSINT/engenharia-software/laboratorios/lab-03-estrategias-design.md",
+            "02-OSINT/engenharia-software/11-refatoracao-legado.md",
+            "02-OSINT/engenharia-software/12-requisitos-modelagem.md",
+            "02-OSINT/engenharia-software/13-arquitetura.md",
+            "02-OSINT/engenharia-software/14-testes-qualidade.md",
+            "02-OSINT/engenharia-software/15-colaboracao-documentacao.md",
+            "02-OSINT/engenharia-software/GUIA-DIAGNOSTICO.md"
+          ]
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/CADERNO-PRATICAS.md",
+          "order": 26,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/16-projetos-avaliacao.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "02-OSINT/engenharia-software/laboratorios/lab-05-dependency-planner.md",
+          "order": 28,
+          "required": true,
+          "prerequisitePaths": [
+            "02-OSINT/engenharia-software/laboratorios/lab-01-contrato-complexidade.md",
+            "02-OSINT/engenharia-software/laboratorios/lab-02-estruturas-grafos.md",
+            "02-OSINT/engenharia-software/laboratorios/lab-03-estrategias-design.md",
+            "02-OSINT/engenharia-software/laboratorios/lab-04-evolucao-arquitetura-testes.md",
+            "02-OSINT/engenharia-software/GUIA-DIAGNOSTICO.md",
+            "02-OSINT/engenharia-software/CADERNO-PRATICAS.md",
+            "02-OSINT/engenharia-software/projetos/dependency-planner/README.md",
+            "02-OSINT/engenharia-software/16-projetos-avaliacao.md"
+          ]
+        }
+      ],
+      "legacyId": "complementos-engenharia-software",
+      "legacyTitle": "Complementos de engenharia de software"
+    },
+    {
+      "moduleId": "03",
+      "courseRoot": "03-AD-Notes/desenvolvimento-aplicacoes",
+      "overviewPath": "03-AD-Notes/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "03-AD-Notes/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/00-do-codigo-ao-produto.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/01-cli-profissional.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/02-configuracao-ambientes-segredos.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/exemplos/README.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/03-validacao-erros-feedback.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/README.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-01-contrato-cli-configuracao.md",
+          "order": 8,
+          "required": true,
+          "prerequisitePaths": [
+            "03-AD-Notes/desenvolvimento-aplicacoes/00-do-codigo-ao-produto.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/01-cli-profissional.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/02-configuracao-ambientes-segredos.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/03-validacao-erros-feedback.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/04-arquivos-serializacao-dados-locais.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/05-estado-eventos.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/06-gui-desktop.md",
+          "order": 11,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/projetos/study-desk/README.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-02-dados-estado-gui.md",
+          "order": 13,
+          "required": true,
+          "prerequisitePaths": [
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-01-contrato-cli-configuracao.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/04-arquivos-serializacao-dados-locais.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/05-estado-eventos.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/06-gui-desktop.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/projetos/study-desk/README.md"
+          ]
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/07-interfaces-web.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/08-acessibilidade-responsividade.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/09-clientes-api-offline.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/10-internacionalizacao-tempo-dinheiro.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-03-web-acessivel-offline-i18n.md",
+          "order": 18,
+          "required": true,
+          "prerequisitePaths": [
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-02-dados-estado-gui.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/07-interfaces-web.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/08-acessibilidade-responsividade.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/09-clientes-api-offline.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/10-internacionalizacao-tempo-dinheiro.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/projetos/study-desk/README.md"
+          ]
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/11-logs-diagnostico.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/12-plugins-extensibilidade.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/13-empacotamento-distribuicao.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/14-desempenho-profiling.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/15-qualidade-release-suporte.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/GUIA-DIAGNOSTICO.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-04-diagnostico-distribuicao-desempenho.md",
+          "order": 25,
+          "required": true,
+          "prerequisitePaths": [
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-03-web-acessivel-offline-i18n.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/11-logs-diagnostico.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/12-plugins-extensibilidade.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/13-empacotamento-distribuicao.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/14-desempenho-profiling.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/15-qualidade-release-suporte.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/GUIA-DIAGNOSTICO.md"
+          ]
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/CADERNO-PRATICAS.md",
+          "order": 26,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/16-projetos-avaliacao.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-05-capstone-aplicacao-profissional.md",
+          "order": 28,
+          "required": true,
+          "prerequisitePaths": [
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-01-contrato-cli-configuracao.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-02-dados-estado-gui.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-03-web-acessivel-offline-i18n.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/laboratorios/lab-04-diagnostico-distribuicao-desempenho.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/GUIA-DIAGNOSTICO.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/CADERNO-PRATICAS.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/projetos/study-desk/README.md",
+            "03-AD-Notes/desenvolvimento-aplicacoes/16-projetos-avaliacao.md"
+          ]
+        }
+      ],
+      "legacyId": "complementos-desenvolvimento-aplicacoes",
+      "legacyTitle": "Complementos de desenvolvimento de aplicações"
+    },
+    {
+      "moduleId": "04",
+      "courseRoot": "04-Automation/automacao-profissional",
+      "overviewPath": "04-Automation/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "04-Automation/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/00-o-que-automatizar.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/01-contratos-idempotencia-dry-run.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/02-arquivos-caminhos-seguros.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/exemplos/README.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/laboratorios/README.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/laboratorios/lab-01-contrato-plan-apply.md",
+          "order": 7,
+          "required": true,
+          "prerequisitePaths": [
+            "04-Automation/automacao-profissional/00-o-que-automatizar.md",
+            "04-Automation/automacao-profissional/01-contratos-idempotencia-dry-run.md",
+            "04-Automation/automacao-profissional/02-arquivos-caminhos-seguros.md",
+            "04-Automation/automacao-profissional/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/03-pipelines-dados.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/04-integracoes-http-webhooks.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/05-jobs-agendamento-checkpoints.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/laboratorios/lab-02-pipeline-job-checkpoint.md",
+          "order": 11,
+          "required": true,
+          "prerequisitePaths": [
+            "04-Automation/automacao-profissional/laboratorios/lab-01-contrato-plan-apply.md",
+            "04-Automation/automacao-profissional/03-pipelines-dados.md",
+            "04-Automation/automacao-profissional/04-integracoes-http-webhooks.md",
+            "04-Automation/automacao-profissional/05-jobs-agendamento-checkpoints.md"
+          ]
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/06-retry-backoff-rate-limit.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/07-lotes-paralelismo.md",
+          "order": 13,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/08-navegador-documentos.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/laboratorios/lab-03-resiliencia-concorrencia-documentos.md",
+          "order": 15,
+          "required": true,
+          "prerequisitePaths": [
+            "04-Automation/automacao-profissional/laboratorios/lab-02-pipeline-job-checkpoint.md",
+            "04-Automation/automacao-profissional/06-retry-backoff-rate-limit.md",
+            "04-Automation/automacao-profissional/07-lotes-paralelismo.md",
+            "04-Automation/automacao-profissional/08-navegador-documentos.md"
+          ]
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/09-seguranca-segredos.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/10-observabilidade-auditoria.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/11-testes-automacao.md",
+          "order": 18,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/12-cicd-orquestracao.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/GUIA-DIAGNOSTICO.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/laboratorios/lab-04-seguranca-observabilidade-ci.md",
+          "order": 21,
+          "required": true,
+          "prerequisitePaths": [
+            "04-Automation/automacao-profissional/laboratorios/lab-03-resiliencia-concorrencia-documentos.md",
+            "04-Automation/automacao-profissional/09-seguranca-segredos.md",
+            "04-Automation/automacao-profissional/10-observabilidade-auditoria.md",
+            "04-Automation/automacao-profissional/11-testes-automacao.md",
+            "04-Automation/automacao-profissional/12-cicd-orquestracao.md",
+            "04-Automation/automacao-profissional/GUIA-DIAGNOSTICO.md"
+          ]
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/13-distribuicao-operacao.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/CADERNO-PRATICAS.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/14-projetos-avaliacao.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/projetos/fileflow/README.md",
+          "order": 25,
+          "required": true
+        },
+        {
+          "sourcePath": "04-Automation/automacao-profissional/laboratorios/lab-05-capstone-fileflow.md",
+          "order": 26,
+          "required": true,
+          "prerequisitePaths": [
+            "04-Automation/automacao-profissional/laboratorios/lab-01-contrato-plan-apply.md",
+            "04-Automation/automacao-profissional/laboratorios/lab-02-pipeline-job-checkpoint.md",
+            "04-Automation/automacao-profissional/laboratorios/lab-03-resiliencia-concorrencia-documentos.md",
+            "04-Automation/automacao-profissional/laboratorios/lab-04-seguranca-observabilidade-ci.md",
+            "04-Automation/automacao-profissional/GUIA-DIAGNOSTICO.md",
+            "04-Automation/automacao-profissional/CADERNO-PRATICAS.md",
+            "04-Automation/automacao-profissional/13-distribuicao-operacao.md",
+            "04-Automation/automacao-profissional/14-projetos-avaliacao.md",
+            "04-Automation/automacao-profissional/projetos/fileflow/README.md"
+          ]
+        }
+      ],
+      "legacyId": "complementos-automacao-profissional",
+      "legacyTitle": "Complementos de automação profissional"
+    },
+    {
+      "moduleId": "05",
+      "courseRoot": "05-DFIR/engenharia-apis",
+      "overviewPath": "05-DFIR/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "05-DFIR/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/00-mapa-das-apis.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/01-http-semantica.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/02-estilos-e-decisoes.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/03-design-rest.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/04-representacoes-validacao.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/05-erros-problem-details.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/laboratorios/README.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/laboratorios/lab-01-contrato-http.md",
+          "order": 9,
+          "required": true,
+          "prerequisitePaths": [
+            "05-DFIR/engenharia-apis/00-mapa-das-apis.md",
+            "05-DFIR/engenharia-apis/01-http-semantica.md",
+            "05-DFIR/engenharia-apis/02-estilos-e-decisoes.md",
+            "05-DFIR/engenharia-apis/03-design-rest.md",
+            "05-DFIR/engenharia-apis/04-representacoes-validacao.md",
+            "05-DFIR/engenharia-apis/05-erros-problem-details.md"
+          ]
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/06-colecoes-paginacao.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/07-idempotencia-cache.md",
+          "order": 11,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/08-versionamento-evolucao.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/09-autenticacao.md",
+          "order": 13,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/10-autorizacao.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/11-seguranca-owasp.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/12-openapi-contract-first.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/laboratorios/lab-02-contrato-seguranca.md",
+          "order": 17,
+          "required": true,
+          "prerequisitePaths": [
+            "05-DFIR/engenharia-apis/laboratorios/lab-01-contrato-http.md",
+            "05-DFIR/engenharia-apis/06-colecoes-paginacao.md",
+            "05-DFIR/engenharia-apis/07-idempotencia-cache.md",
+            "05-DFIR/engenharia-apis/08-versionamento-evolucao.md",
+            "05-DFIR/engenharia-apis/09-autenticacao.md",
+            "05-DFIR/engenharia-apis/10-autorizacao.md",
+            "05-DFIR/engenharia-apis/11-seguranca-owasp.md",
+            "05-DFIR/engenharia-apis/12-openapi-contract-first.md"
+          ]
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/13-arquitetura-implementacao.md",
+          "order": 18,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/14-dados-consistencia.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/15-resiliencia-desempenho.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/16-observabilidade.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/17-testes.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/GUIA-DIAGNOSTICO.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/laboratorios/lab-03-servico-operavel.md",
+          "order": 24,
+          "required": true,
+          "prerequisitePaths": [
+            "05-DFIR/engenharia-apis/laboratorios/lab-02-contrato-seguranca.md",
+            "05-DFIR/engenharia-apis/13-arquitetura-implementacao.md",
+            "05-DFIR/engenharia-apis/14-dados-consistencia.md",
+            "05-DFIR/engenharia-apis/15-resiliencia-desempenho.md",
+            "05-DFIR/engenharia-apis/16-observabilidade.md",
+            "05-DFIR/engenharia-apis/17-testes.md",
+            "05-DFIR/engenharia-apis/GUIA-DIAGNOSTICO.md"
+          ]
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/18-webhooks.md",
+          "order": 25,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/19-apis-assincronas.md",
+          "order": 26,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/20-graphql.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/21-grpc.md",
+          "order": 28,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/22-streaming-tempo-real.md",
+          "order": 29,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/23-clientes-sdks.md",
+          "order": 30,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/24-governanca-dx.md",
+          "order": 31,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/exemplos/README.md",
+          "order": 32,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/laboratorios/lab-04-integracoes-clientes.md",
+          "order": 33,
+          "required": true,
+          "prerequisitePaths": [
+            "05-DFIR/engenharia-apis/laboratorios/lab-03-servico-operavel.md",
+            "05-DFIR/engenharia-apis/18-webhooks.md",
+            "05-DFIR/engenharia-apis/19-apis-assincronas.md",
+            "05-DFIR/engenharia-apis/20-graphql.md",
+            "05-DFIR/engenharia-apis/21-grpc.md",
+            "05-DFIR/engenharia-apis/22-streaming-tempo-real.md",
+            "05-DFIR/engenharia-apis/23-clientes-sdks.md",
+            "05-DFIR/engenharia-apis/24-governanca-dx.md",
+            "05-DFIR/engenharia-apis/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/CADERNO-PRATICAS.md",
+          "order": 34,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/25-projeto-avaliacao.md",
+          "order": 35,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/projetos/contract-lab-api/README.md",
+          "order": 36,
+          "required": true
+        },
+        {
+          "sourcePath": "05-DFIR/engenharia-apis/laboratorios/lab-05-capstone-contract-lab.md",
+          "order": 37,
+          "required": true,
+          "prerequisitePaths": [
+            "05-DFIR/engenharia-apis/laboratorios/lab-01-contrato-http.md",
+            "05-DFIR/engenharia-apis/laboratorios/lab-02-contrato-seguranca.md",
+            "05-DFIR/engenharia-apis/laboratorios/lab-03-servico-operavel.md",
+            "05-DFIR/engenharia-apis/laboratorios/lab-04-integracoes-clientes.md",
+            "05-DFIR/engenharia-apis/GUIA-DIAGNOSTICO.md",
+            "05-DFIR/engenharia-apis/CADERNO-PRATICAS.md",
+            "05-DFIR/engenharia-apis/25-projeto-avaliacao.md",
+            "05-DFIR/engenharia-apis/projetos/contract-lab-api/README.md"
+          ]
+        }
+      ],
+      "legacyId": "complementos-engenharia-apis",
+      "legacyTitle": "Complementos de engenharia de APIs"
+    },
+    {
+      "moduleId": "06",
+      "courseRoot": "06-Cheatsheets/linux-do-zero-ao-avancado",
+      "overviewPath": "06-Cheatsheets/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "06-Cheatsheets/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/00-como-estudar-laboratorio.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/01-distribuicoes.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/02-instalacao.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/03-arquitetura-linux.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/04-terminal-ajuda.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/05-sistema-arquivos.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/06-manipulacao-arquivos.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/07-texto-fluxos-editores.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/08-permissoes.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/exemplos/README.md",
+          "order": 11,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/README.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-01-shell-arquivos-permissoes.md",
+          "order": 13,
+          "required": true,
+          "prerequisitePaths": [
+            "06-Cheatsheets/linux-do-zero-ao-avancado/00-como-estudar-laboratorio.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/01-distribuicoes.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/02-instalacao.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/03-arquitetura-linux.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/04-terminal-ajuda.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/05-sistema-arquivos.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/06-manipulacao-arquivos.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/07-texto-fluxos-editores.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/08-permissoes.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/09-usuarios-autenticacao.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/10-pacotes-software.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/11-processos-sinais.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/12-memoria.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-02-identidades-processos-memoria.md",
+          "order": 18,
+          "required": true,
+          "prerequisitePaths": [
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-01-shell-arquivos-permissoes.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/09-usuarios-autenticacao.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/10-pacotes-software.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/11-processos-sinais.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/12-memoria.md"
+          ]
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/13-armazenamento.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/14-lvm-raid-criptografia.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/15-boot.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/16-systemd.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-03-armazenamento-boot-systemd.md",
+          "order": 23,
+          "required": true,
+          "prerequisitePaths": [
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-02-identidades-processos-memoria.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/13-armazenamento.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/14-lvm-raid-criptografia.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/15-boot.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/16-systemd.md"
+          ]
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/17-redes-linux.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/18-ssh-remoto.md",
+          "order": 25,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/19-bash-automacao.md",
+          "order": 26,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/20-observabilidade.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/21-backup-recuperacao.md",
+          "order": 28,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/22-hardening.md",
+          "order": 29,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/23-isolamento-containers.md",
+          "order": 30,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/GUIA-DIAGNOSTICO.md",
+          "order": 31,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-04-operacao-hardening-isolamento.md",
+          "order": 32,
+          "required": true,
+          "prerequisitePaths": [
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-03-armazenamento-boot-systemd.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/17-redes-linux.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/18-ssh-remoto.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/19-bash-automacao.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/20-observabilidade.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/21-backup-recuperacao.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/22-hardening.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/23-isolamento-containers.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/GUIA-DIAGNOSTICO.md"
+          ]
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/24-kernel.md",
+          "order": 33,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/25-modulos-dispositivos.md",
+          "order": 34,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/26-kernel-build-debug.md",
+          "order": 35,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/27-desempenho.md",
+          "order": 36,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/28-desktop.md",
+          "order": 37,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/29-servicos.md",
+          "order": 38,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-05-kernel-desempenho-servicos.md",
+          "order": 39,
+          "required": true,
+          "prerequisitePaths": [
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-04-operacao-hardening-isolamento.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/24-kernel.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/25-modulos-dispositivos.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/26-kernel-build-debug.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/27-desempenho.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/28-desktop.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/29-servicos.md"
+          ]
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/CADERNO-PRATICAS.md",
+          "order": 40,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/30-projeto-final.md",
+          "order": 41,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/projetos/host-observer/README.md",
+          "order": 42,
+          "required": true
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-06-capstone-linux.md",
+          "order": 43,
+          "required": true,
+          "prerequisitePaths": [
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-01-shell-arquivos-permissoes.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-02-identidades-processos-memoria.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-03-armazenamento-boot-systemd.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-04-operacao-hardening-isolamento.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/lab-05-kernel-desempenho-servicos.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/GUIA-DIAGNOSTICO.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/CADERNO-PRATICAS.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/30-projeto-final.md",
+            "06-Cheatsheets/linux-do-zero-ao-avancado/projetos/host-observer/README.md"
+          ]
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/CHEATSHEET.md",
+          "order": 44,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/GLOSSARIO.md",
+          "order": 45,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/REFERENCIAS.md",
+          "order": 46,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/RESPOSTAS.md",
+          "order": 47,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/armazenamento-loop.md",
+          "order": 48,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/boot-recovery.md",
+          "order": 49,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/kernel.md",
+          "order": 50,
+          "required": false
+        },
+        {
+          "sourcePath": "06-Cheatsheets/linux-do-zero-ao-avancado/laboratorios/projeto.md",
+          "order": 51,
+          "required": false
+        }
+      ],
+      "legacyId": "complementos-linux-fundamentos",
+      "legacyTitle": "Complementos de Linux fundamental"
+    },
+    {
+      "moduleId": "07",
+      "courseRoot": "07-Web-AppSec/linux-avancado",
+      "overviewPath": "07-Web-AppSec/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "07-Web-AppSec/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/00-metodo-laboratorio.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/01-fonte-kernel.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/02-build-kernel.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/03-abi-syscalls.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/04-elf-loader.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/05-processos-internals.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/06-namespaces-locais.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/exemplos/README.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/README.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/01-fonte-abi-elf.md",
+          "order": 11,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/00-metodo-laboratorio.md",
+            "07-Web-AppSec/linux-avancado/01-fonte-kernel.md",
+            "07-Web-AppSec/linux-avancado/02-build-kernel.md",
+            "07-Web-AppSec/linux-avancado/03-abi-syscalls.md",
+            "07-Web-AppSec/linux-avancado/04-elf-loader.md",
+            "07-Web-AppSec/linux-avancado/05-processos-internals.md",
+            "07-Web-AppSec/linux-avancado/06-namespaces-locais.md",
+            "07-Web-AppSec/linux-avancado/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/07-scheduler.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/08-smp-interrupcoes.md",
+          "order": 13,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/09-concorrencia.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/10-rcu.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/11-mm-internals.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/12-numa-pressao.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/02-scheduler-memoria.md",
+          "order": 18,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/01-fonte-abi-elf.md",
+            "07-Web-AppSec/linux-avancado/07-scheduler.md",
+            "07-Web-AppSec/linux-avancado/08-smp-interrupcoes.md",
+            "07-Web-AppSec/linux-avancado/09-concorrencia.md",
+            "07-Web-AppSec/linux-avancado/10-rcu.md",
+            "07-Web-AppSec/linux-avancado/11-mm-internals.md",
+            "07-Web-AppSec/linux-avancado/12-numa-pressao.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/13-vfs-page-cache.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/14-filesystems.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/15-block-layer.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/16-device-mapper.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/17-io-assincrona.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/18-drivers-iommu.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/03-filesystems-bloco.md",
+          "order": 25,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/02-scheduler-memoria.md",
+            "07-Web-AppSec/linux-avancado/13-vfs-page-cache.md",
+            "07-Web-AppSec/linux-avancado/14-filesystems.md",
+            "07-Web-AppSec/linux-avancado/15-block-layer.md",
+            "07-Web-AppSec/linux-avancado/16-device-mapper.md",
+            "07-Web-AppSec/linux-avancado/17-io-assincrona.md",
+            "07-Web-AppSec/linux-avancado/18-drivers-iommu.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/19-boot-confiavel.md",
+          "order": 26,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/20-systemd-avancado.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/21-cgroups-recursos.md",
+          "order": 28,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/04-boot-systemd-cgroups.md",
+          "order": 29,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/03-filesystems-bloco.md",
+            "07-Web-AppSec/linux-avancado/19-boot-confiavel.md",
+            "07-Web-AppSec/linux-avancado/20-systemd-avancado.md",
+            "07-Web-AppSec/linux-avancado/21-cgroups-recursos.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/22-perf-metodologia.md",
+          "order": 30,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/23-tracing.md",
+          "order": 31,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/24-ebpf-local.md",
+          "order": 32,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/GUIA-EXPERIMENTOS-DIAGNOSTICO.md",
+          "order": 33,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/05-tracing-ebpf.md",
+          "order": 34,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/04-boot-systemd-cgroups.md",
+            "07-Web-AppSec/linux-avancado/22-perf-metodologia.md",
+            "07-Web-AppSec/linux-avancado/23-tracing.md",
+            "07-Web-AppSec/linux-avancado/24-ebpf-local.md",
+            "07-Web-AppSec/linux-avancado/GUIA-EXPERIMENTOS-DIAGNOSTICO.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/25-debug-userspace.md",
+          "order": 35,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/26-debug-kernel.md",
+          "order": 36,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/06-debug-kdump.md",
+          "order": 37,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/05-tracing-ebpf.md",
+            "07-Web-AppSec/linux-avancado/25-debug-userspace.md",
+            "07-Web-AppSec/linux-avancado/26-debug-kernel.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/27-kvm-qemu.md",
+          "order": 38,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/28-tempo-real.md",
+          "order": 39,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/29-embarcado.md",
+          "order": 40,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/07-kvm-offline.md",
+          "order": 41,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/06-debug-kdump.md",
+            "07-Web-AppSec/linux-avancado/27-kvm-qemu.md",
+            "07-Web-AppSec/linux-avancado/28-tempo-real.md",
+            "07-Web-AppSec/linux-avancado/29-embarcado.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/30-seguranca-internals.md",
+          "order": 42,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/31-integridade.md",
+          "order": 43,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/32-engenharia-distribuicao.md",
+          "order": 44,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/33-contribuicao-kernel.md",
+          "order": 45,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/08-distribuicao.md",
+          "order": 46,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/07-kvm-offline.md",
+            "07-Web-AppSec/linux-avancado/30-seguranca-internals.md",
+            "07-Web-AppSec/linux-avancado/31-integridade.md",
+            "07-Web-AppSec/linux-avancado/32-engenharia-distribuicao.md",
+            "07-Web-AppSec/linux-avancado/33-contribuicao-kernel.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/CADERNO-PRATICAS.md",
+          "order": 47,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/34-projeto-final.md",
+          "order": 48,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/projetos/offline-appliance/README.md",
+          "order": 49,
+          "required": true
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/laboratorios/09-projeto-final.md",
+          "order": 50,
+          "required": true,
+          "prerequisitePaths": [
+            "07-Web-AppSec/linux-avancado/laboratorios/01-fonte-abi-elf.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/02-scheduler-memoria.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/03-filesystems-bloco.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/04-boot-systemd-cgroups.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/05-tracing-ebpf.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/06-debug-kdump.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/07-kvm-offline.md",
+            "07-Web-AppSec/linux-avancado/laboratorios/08-distribuicao.md",
+            "07-Web-AppSec/linux-avancado/GUIA-EXPERIMENTOS-DIAGNOSTICO.md",
+            "07-Web-AppSec/linux-avancado/CADERNO-PRATICAS.md",
+            "07-Web-AppSec/linux-avancado/34-projeto-final.md",
+            "07-Web-AppSec/linux-avancado/projetos/offline-appliance/README.md"
+          ]
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/CHEATSHEET.md",
+          "order": 51,
+          "required": false
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/GLOSSARIO.md",
+          "order": 52,
+          "required": false
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/REFERENCIAS.md",
+          "order": 53,
+          "required": false
+        },
+        {
+          "sourcePath": "07-Web-AppSec/linux-avancado/RESPOSTAS.md",
+          "order": 54,
+          "required": false
+        }
+      ],
+      "legacyId": "complementos-linux-avancado",
+      "legacyTitle": "Complementos de Linux avançado"
+    },
+    {
+      "moduleId": "08",
+      "courseRoot": "08-Cloud-RedTeam/windows-domestico-fundamentos",
+      "overviewPath": "08-Cloud-RedTeam/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "08-Cloud-RedTeam/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/00-metodo-laboratorio.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/01-familia-edicoes-ciclo.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/02-hardware-firmware.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/03-instalacao-oobe.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/04-interface-configuracoes.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/exemplos/README.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/README.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/01-instalacao-inventario.md",
+          "order": 9,
+          "required": true,
+          "prerequisitePaths": [
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/00-metodo-laboratorio.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/01-familia-edicoes-ciclo.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/02-hardware-firmware.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/03-instalacao-oobe.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/04-interface-configuracoes.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/05-arquivos-caminhos.md",
+          "order": 10,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/06-discos-volumes-bitlocker.md",
+          "order": 11,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/07-contas-permissoes-uac.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/02-arquivos-permissoes.md",
+          "order": 13,
+          "required": true,
+          "prerequisitePaths": [
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/01-instalacao-inventario.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/05-arquivos-caminhos.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/06-discos-volumes-bitlocker.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/07-contas-permissoes-uac.md"
+          ]
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/08-processos-servicos.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/09-aplicativos-pacotes.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/10-windows-update.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/11-registro.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/12-eventos-confiabilidade.md",
+          "order": 18,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/13-backup-recuperacao.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/GUIA-DIAGNOSTICO-RECUPERACAO.md",
+          "order": 20,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/03-disco-recuperacao.md",
+          "order": 21,
+          "required": true,
+          "prerequisitePaths": [
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/02-arquivos-permissoes.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/08-processos-servicos.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/09-aplicativos-pacotes.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/10-windows-update.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/11-registro.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/12-eventos-confiabilidade.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/13-backup-recuperacao.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/GUIA-DIAGNOSTICO-RECUPERACAO.md"
+          ]
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/04-eventos-diagnostico.md",
+          "order": 22,
+          "required": true,
+          "prerequisitePaths": [
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/03-disco-recuperacao.md"
+          ]
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/14-defender-seguranca.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/15-terminal-powershell.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/16-diagnostico-reparo.md",
+          "order": 25,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/05-defender-integridade.md",
+          "order": 26,
+          "required": true,
+          "prerequisitePaths": [
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/04-eventos-diagnostico.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/14-defender-seguranca.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/15-terminal-powershell.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/16-diagnostico-reparo.md"
+          ]
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/CADERNO-PRATICAS.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/17-projeto-final.md",
+          "order": 28,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/projetos/computador-recuperavel/README.md",
+          "order": 29,
+          "required": true
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/06-projeto-recuperacao.md",
+          "order": 30,
+          "required": true,
+          "prerequisitePaths": [
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/01-instalacao-inventario.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/02-arquivos-permissoes.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/03-disco-recuperacao.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/04-eventos-diagnostico.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/laboratorios/05-defender-integridade.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/GUIA-DIAGNOSTICO-RECUPERACAO.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/CADERNO-PRATICAS.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/17-projeto-final.md",
+            "08-Cloud-RedTeam/windows-domestico-fundamentos/projetos/computador-recuperavel/README.md"
+          ]
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/CHEATSHEET.md",
+          "order": 31,
+          "required": false
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/GLOSSARIO.md",
+          "order": 32,
+          "required": false
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/REFERENCIAS.md",
+          "order": 33,
+          "required": false
+        },
+        {
+          "sourcePath": "08-Cloud-RedTeam/windows-domestico-fundamentos/RESPOSTAS.md",
+          "order": 34,
+          "required": false
+        }
+      ],
+      "legacyId": "complementos-windows-domestico-fundamentos",
+      "legacyTitle": "Complementos de Windows doméstico fundamental"
+    },
+    {
+      "moduleId": "09",
+      "courseRoot": "09-C2-Evasion/windows-domestico-avancado",
+      "overviewPath": "09-C2-Evasion/README.md",
+      "documentOverrides": [
+        {
+          "sourcePath": "09-C2-Evasion/README.md",
+          "order": 0,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/README.md",
+          "order": 1,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/00-laboratorio-avancado.md",
+          "order": 2,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/01-arquitetura-nt.md",
+          "order": 3,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/02-user-kernel-syscalls.md",
+          "order": 4,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/03-processos-threads-objetos.md",
+          "order": 5,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/04-tokens-sessoes-integridade.md",
+          "order": 6,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/05-memoria-virtual.md",
+          "order": 7,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/exemplos/README.md",
+          "order": 8,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/README.md",
+          "order": 9,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/01-processo-token-memoria.md",
+          "order": 10,
+          "required": true,
+          "prerequisitePaths": [
+            "09-C2-Evasion/windows-domestico-avancado/00-laboratorio-avancado.md",
+            "09-C2-Evasion/windows-domestico-avancado/01-arquitetura-nt.md",
+            "09-C2-Evasion/windows-domestico-avancado/02-user-kernel-syscalls.md",
+            "09-C2-Evasion/windows-domestico-avancado/03-processos-threads-objetos.md",
+            "09-C2-Evasion/windows-domestico-avancado/04-tokens-sessoes-integridade.md",
+            "09-C2-Evasion/windows-domestico-avancado/05-memoria-virtual.md",
+            "09-C2-Evasion/windows-domestico-avancado/exemplos/README.md"
+          ]
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/06-pe-coff.md",
+          "order": 11,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/07-dll-loader.md",
+          "order": 12,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/02-pe-dll.md",
+          "order": 13,
+          "required": true,
+          "prerequisitePaths": [
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/01-processo-token-memoria.md",
+            "09-C2-Evasion/windows-domestico-avancado/06-pe-coff.md",
+            "09-C2-Evasion/windows-domestico-avancado/07-dll-loader.md"
+          ]
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/08-registro-internals.md",
+          "order": 14,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/09-ntfs-internals.md",
+          "order": 15,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/10-io-drivers.md",
+          "order": 16,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/11-servicos-tarefas-startup.md",
+          "order": 17,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/12-powershell-avancado.md",
+          "order": 18,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/13-powershell-modulos-testes.md",
+          "order": 19,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/03-procmon-registro.md",
+          "order": 20,
+          "required": true,
+          "prerequisitePaths": [
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/02-pe-dll.md",
+            "09-C2-Evasion/windows-domestico-avancado/08-registro-internals.md",
+            "09-C2-Evasion/windows-domestico-avancado/09-ntfs-internals.md",
+            "09-C2-Evasion/windows-domestico-avancado/10-io-drivers.md",
+            "09-C2-Evasion/windows-domestico-avancado/11-servicos-tarefas-startup.md",
+            "09-C2-Evasion/windows-domestico-avancado/12-powershell-avancado.md",
+            "09-C2-Evasion/windows-domestico-avancado/13-powershell-modulos-testes.md"
+          ]
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/14-etw-eventlog-wer.md",
+          "order": 21,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/15-sysinternals.md",
+          "order": 22,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/16-performance-tracing.md",
+          "order": 23,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/GUIA-TRACING-DEBUG.md",
+          "order": 24,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/04-etw-performance.md",
+          "order": 25,
+          "required": true,
+          "prerequisitePaths": [
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/03-procmon-registro.md",
+            "09-C2-Evasion/windows-domestico-avancado/14-etw-eventlog-wer.md",
+            "09-C2-Evasion/windows-domestico-avancado/15-sysinternals.md",
+            "09-C2-Evasion/windows-domestico-avancado/16-performance-tracing.md",
+            "09-C2-Evasion/windows-domestico-avancado/GUIA-TRACING-DEBUG.md"
+          ]
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/17-defender-mitigacoes.md",
+          "order": 26,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/18-vbs-integridade.md",
+          "order": 27,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/05-defesa-local.md",
+          "order": 28,
+          "required": true,
+          "prerequisitePaths": [
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/04-etw-performance.md",
+            "09-C2-Evasion/windows-domestico-avancado/17-defender-mitigacoes.md",
+            "09-C2-Evasion/windows-domestico-avancado/18-vbs-integridade.md"
+          ]
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/CADERNO-PRATICAS.md",
+          "order": 29,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/19-windbg-projeto.md",
+          "order": 30,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/projetos/diagnostic-workbench/README.md",
+          "order": 31,
+          "required": true
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/laboratorios/06-dump-projeto.md",
+          "order": 32,
+          "required": true,
+          "prerequisitePaths": [
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/01-processo-token-memoria.md",
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/02-pe-dll.md",
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/03-procmon-registro.md",
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/04-etw-performance.md",
+            "09-C2-Evasion/windows-domestico-avancado/laboratorios/05-defesa-local.md",
+            "09-C2-Evasion/windows-domestico-avancado/GUIA-TRACING-DEBUG.md",
+            "09-C2-Evasion/windows-domestico-avancado/CADERNO-PRATICAS.md",
+            "09-C2-Evasion/windows-domestico-avancado/19-windbg-projeto.md",
+            "09-C2-Evasion/windows-domestico-avancado/projetos/diagnostic-workbench/README.md"
+          ]
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/CHEATSHEET.md",
+          "order": 33,
+          "required": false
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/GLOSSARIO.md",
+          "order": 34,
+          "required": false
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/REFERENCIAS.md",
+          "order": 35,
+          "required": false
+        },
+        {
+          "sourcePath": "09-C2-Evasion/windows-domestico-avancado/RESPOSTAS.md",
+          "order": 36,
+          "required": false
+        }
+      ],
+      "legacyId": "complementos-windows-domestico-avancado",
+      "legacyTitle": "Complementos de Windows doméstico avançado"
+    },
+    {
+      "moduleId": "10",
+      "courseRoot": "10-Container-Sec/windows-empresarial-fundamentos",
+      "overviewPath": "10-Container-Sec/README.md",
+      "legacyId": "complementos-windows-empresarial-fundamentos",
+      "legacyTitle": "Complementos de Windows empresarial fundamental"
+    },
+    {
+      "moduleId": "11",
+      "courseRoot": "11-Python-Tools/windows-empresarial-avancado",
+      "overviewPath": "11-Python-Tools/README.md",
+      "legacyId": "complementos-windows-empresarial-avancado",
+      "legacyTitle": "Complementos de Windows empresarial avançado"
+    },
+    {
+      "moduleId": "12",
+      "courseRoot": "12-Java-Tools/macos-fundamentos",
+      "overviewPath": "12-Java-Tools/README.md",
+      "legacyId": "complementos-macos-fundamentos",
+      "legacyTitle": "Complementos de macOS fundamental"
+    },
+    {
+      "moduleId": "13",
+      "courseRoot": "13-Initial-Access/macos-avancado",
+      "overviewPath": "13-Initial-Access/README.md",
+      "legacyId": "complementos-macos-avancado",
+      "legacyTitle": "Complementos de macOS avançado"
+    },
+    {
+      "moduleId": "14",
+      "courseRoot": "14-Post-Exploitation/redes-fundamentos",
+      "overviewPath": "14-Post-Exploitation/README.md",
+      "legacyId": "complementos-redes-fundamentos",
+      "legacyTitle": "Complementos de fundamentos de redes"
+    },
+    {
+      "moduleId": "15",
+      "courseRoot": "15-Hybrid-Identity/redes-domesticas",
+      "overviewPath": "15-Hybrid-Identity/README.md",
+      "legacyId": "complementos-redes-domesticas",
+      "legacyTitle": "Complementos de redes domésticas"
+    },
+    {
+      "moduleId": "16",
+      "courseRoot": "16-CICD-Supply-Chain/switching-vlans",
+      "overviewPath": "16-CICD-Supply-Chain/README.md",
+      "legacyId": "complementos-switching-vlans",
+      "legacyTitle": "Complementos de switching e VLANs"
+    },
+    {
+      "moduleId": "17",
+      "courseRoot": "17-macOS-Security/roteamento-vpns",
+      "overviewPath": "17-macOS-Security/README.md",
+      "legacyId": "complementos-roteamento-vpns",
+      "legacyTitle": "Complementos de roteamento e VPNs"
+    },
+    {
+      "moduleId": "18",
+      "courseRoot": "18-Mobile-Security/redes-empresariais-protocolos",
+      "overviewPath": "18-Mobile-Security/README.md",
+      "legacyId": "complementos-redes-empresariais-protocolos",
+      "legacyTitle": "Complementos de redes empresariais e protocolos"
+    },
+    {
+      "moduleId": "19",
+      "courseRoot": "19-Wireless-Security/criptografia-fundamentos",
+      "overviewPath": "19-Wireless-Security/README.md",
+      "legacyId": "complementos-criptografia-fundamentos",
+      "legacyTitle": "Complementos de fundamentos de criptografia"
+    },
+    {
+      "moduleId": "20",
+      "courseRoot": "20-Offensive-Labs/criptografia-moderna",
+      "overviewPath": "20-Offensive-Labs/README.md",
+      "legacyId": "complementos-criptografia-moderna",
+      "legacyTitle": "Complementos de criptografia moderna"
+    },
+    {
+      "moduleId": "21",
+      "courseRoot": "21-Network-Pivoting/criptografia-aplicada",
+      "overviewPath": "21-Network-Pivoting/README.md",
+      "legacyId": "complementos-criptografia-aplicada",
+      "legacyTitle": "Complementos de criptografia aplicada"
+    },
+    {
+      "moduleId": "22",
+      "courseRoot": "22-Secure-Code-Review/engenharia-criptografica",
+      "overviewPath": "22-Secure-Code-Review/README.md",
+      "legacyId": "complementos-engenharia-criptografica",
+      "legacyTitle": "Complementos de engenharia criptográfica"
+    },
+    {
+      "moduleId": "23",
+      "courseRoot": "23-Threat-Intel-Emulation/privacidade-anonimato-fundamentos",
+      "overviewPath": "23-Threat-Intel-Emulation/README.md",
+      "legacyId": "complementos-privacidade-anonimato",
+      "legacyTitle": "Complementos de privacidade e anonimato"
+    },
+    {
+      "moduleId": "24",
+      "courseRoot": "24-Lateral-Movement/vpn-propria-operacao-segura",
+      "overviewPath": "24-Lateral-Movement/README.md",
+      "legacyId": "complementos-vpn-operacao-segura",
+      "legacyTitle": "Complementos de VPN própria e operação segura"
+    },
+    {
+      "moduleId": "25",
+      "courseRoot": "25-Cursos/atribuicao-defensiva",
+      "overviewPath": "25-Cursos/README.md",
+      "legacyId": "complementos-atribuicao-defensiva",
+      "legacyTitle": "Complementos de atribuição defensiva"
+    },
+    {
+      "moduleId": "26",
+      "courseRoot": "26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes",
+      "overviewPath": "26-Ofensivo-Defensivo/README.md",
+      "legacyId": "complementos-defesa-perimetro-aplicacoes",
+      "legacyTitle": "Complementos de defesa de perímetro e aplicações"
+    },
+    {
+      "moduleId": "27",
+      "courseRoot": "27-Operacoes-Seguranca-Avancadas/governanca-laboratorio-evidencia",
+      "overviewPath": "27-Operacoes-Seguranca-Avancadas/README.md",
+      "contentPaths": [
+        "27-Operacoes-Seguranca-Avancadas/acervo/governanca/etica-escopo-roe.md",
+        "27-Operacoes-Seguranca-Avancadas/acervo/governanca/laboratorio-seguro.md",
+        "27-Operacoes-Seguranca-Avancadas/acervo/governanca/redes-sistemas-identidade.md",
+        "27-Operacoes-Seguranca-Avancadas/acervo/historico/LEGADO-CATALOGO-CURSOS.md",
+        "27-Operacoes-Seguranca-Avancadas/acervo/historico/LEGADO-OFENSIVO-DEFENSIVO.md",
+        "27-Operacoes-Seguranca-Avancadas/acervo/historico/PLANO-DE-DESBLOQUEIO.md",
+        "27-Operacoes-Seguranca-Avancadas/acervo/ferramentas/roe_scope_guard.py"
+      ],
+      "legacyId": "complementos-governanca-avancada",
+      "legacyTitle": "Complementos de governança, laboratório e evidência"
+    },
+    {
+      "moduleId": "28",
+      "courseRoot": "28-Engenharia-Ferramentas-Seguranca/automacao-e-ferramentas",
+      "overviewPath": "28-Engenharia-Ferramentas-Seguranca/README.md",
+      "contentPaths": [
+        "28-Engenharia-Ferramentas-Seguranca/acervo/automacao/ad_recon.sh",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/automacao/linux_postinstall.sh",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/automacao/organize_logs.ps1",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/automacao/windows_setup_clean.ps1",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/python/LEGADO-PYTHON-TOOLS.md",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/python/hash_identifier.py",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/python/jwt_analyzer.py",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/python/port_scanner.py",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/python/subdomain_enum.py",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/java/LEGADO-JAVA.md",
+        "28-Engenharia-Ferramentas-Seguranca/acervo/java/src"
+      ],
+      "legacyId": "complementos-engenharia-ferramentas",
+      "legacyTitle": "Complementos de automação e ferramentas de segurança"
+    },
+    {
+      "moduleId": "29",
+      "courseRoot": "29-Reconhecimento-OSINT/reconhecimento-osint",
+      "overviewPath": "29-Reconhecimento-OSINT/README.md",
+      "contentPaths": [
+        "29-Reconhecimento-OSINT/passive_recon_cheatsheet.md",
+        "29-Reconhecimento-OSINT/web_recon_notes.md",
+        "29-Reconhecimento-OSINT/dns_enum.ps1",
+        "29-Reconhecimento-OSINT/dns_enum.sh",
+        "29-Reconhecimento-OSINT/acervo/osint/osint-tools-list.md",
+        "29-Reconhecimento-OSINT/acervo/osint/osint_automation.ps1"
+      ],
+      "legacyId": "complementos-reconhecimento-osint",
+      "legacyTitle": "Complementos de reconhecimento e OSINT"
+    },
+    {
+      "moduleId": "30",
+      "courseRoot": "30-Web-API-AppSec/web-api-code-review",
+      "overviewPath": "30-Web-API-AppSec/README.md",
+      "contentPaths": [
+        "30-Web-API-AppSec/docker-lab",
+        "30-Web-API-AppSec/acervo/labs/lab-01-dvwa-sqli.md",
+        "30-Web-API-AppSec/acervo/labs/lab-02-juice-xss.md",
+        "30-Web-API-AppSec/acervo/labs/lab-03-vampi-api.md",
+        "30-Web-API-AppSec/acervo/labs/answers/README.md",
+        "30-Web-API-AppSec/acervo/web/api-moderna-oauth-graphql-grpc.md",
+        "30-Web-API-AppSec/acervo/web/api-security-checklist.md",
+        "30-Web-API-AppSec/acervo/web/auth-bypass-patterns.md",
+        "30-Web-API-AppSec/acervo/web/enum-web-avancado.md",
+        "30-Web-API-AppSec/acervo/web/LEGADO-WEB-APPSEC.md",
+        "30-Web-API-AppSec/acervo/web/owasp-top10-2021.md",
+        "30-Web-API-AppSec/acervo/web/path-traversal-lfi.md",
+        "30-Web-API-AppSec/acervo/web/recon-web-pratico.md",
+        "30-Web-API-AppSec/acervo/web/sqli-deep-dive.md",
+        "30-Web-API-AppSec/acervo/web/ssrf-deep-dive.md",
+        "30-Web-API-AppSec/acervo/web/xss-deep-dive.md",
+        "30-Web-API-AppSec/acervo/code-review/LEGADO-SECURE-CODE-REVIEW.md"
+      ],
+      "legacyId": "complementos-web-api-appsec",
+      "legacyTitle": "Complementos de Web, APIs e revisão segura de código"
+    },
+    {
+      "moduleId": "31",
+      "courseRoot": "31-Active-Directory-Identidade/active-directory-identidade-hibrida",
+      "overviewPath": "31-Active-Directory-Identidade/README.md",
+      "legacyId": "complementos-active-directory-identidade",
+      "legacyTitle": "Complementos de Active Directory e identidade híbrida"
+    },
+    {
+      "moduleId": "32",
+      "courseRoot": "32-Cloud-Security/cloud-red-team",
+      "overviewPath": "32-Cloud-Security/README.md",
+      "legacyId": "complementos-cloud-security",
+      "legacyTitle": "Complementos de segurança em nuvem"
+    },
+    {
+      "moduleId": "33",
+      "courseRoot": "33-Containers-Supply-Chain/containers-kubernetes-cicd",
+      "overviewPath": "33-Containers-Supply-Chain/README.md",
+      "legacyId": "complementos-containers-supply-chain",
+      "legacyTitle": "Complementos de containers, Kubernetes e supply chain"
+    },
+    {
+      "moduleId": "34",
+      "courseRoot": "34-Seguranca-Plataformas/macos-mobile-wireless",
+      "overviewPath": "34-Seguranca-Plataformas/README.md",
+      "legacyId": "complementos-seguranca-plataformas",
+      "legacyTitle": "Complementos de segurança de plataformas"
+    },
+    {
+      "moduleId": "35",
+      "courseRoot": "35-Acesso-Inicial-C2/acesso-inicial-c2-opsec",
+      "overviewPath": "35-Acesso-Inicial-C2/README.md",
+      "legacyId": "complementos-acesso-inicial-c2",
+      "legacyTitle": "Complementos de acesso inicial, C2 e OPSEC"
+    },
+    {
+      "moduleId": "36",
+      "courseRoot": "36-Escalacao-Privilegios/privesc-linux-windows",
+      "overviewPath": "36-Escalacao-Privilegios/README.md",
+      "contentPaths": [
+        "36-Escalacao-Privilegios/acervo/LEGADO-CHEATSHEETS.md",
+        "36-Escalacao-Privilegios/acervo/linux/linux_path_hijacking.md",
+        "36-Escalacao-Privilegios/acervo/linux/linux_privesc_modern.md",
+        "36-Escalacao-Privilegios/acervo/linux/linux_privesc_teoria.md",
+        "36-Escalacao-Privilegios/acervo/windows/powershell_cheatsheet.md",
+        "36-Escalacao-Privilegios/acervo/windows/windows_privesc_cheatsheet.md",
+        "36-Escalacao-Privilegios/acervo/windows/windows_privesc_metodologia.md",
+        "36-Escalacao-Privilegios/acervo/windows/windows_privesc_teoria.md"
+      ],
+      "legacyId": "complementos-escalacao-privilegios",
+      "legacyTitle": "Complementos de elevação de privilégios"
+    },
+    {
+      "moduleId": "37",
+      "courseRoot": "37-Pos-Exploracao-Movimento-Lateral/pos-exploracao-pivoting-lateral",
+      "overviewPath": "37-Pos-Exploracao-Movimento-Lateral/README.md",
+      "contentPaths": [
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/pos-exploracao/LEGADO-POST-EXPLOITATION.md",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/pos-exploracao/collection-exfil.md",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/pos-exploracao/persistence-overview.md",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/pivoting/LEGADO-NETWORK-PIVOTING.md",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/pivoting/path_analyzer.py",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/pivoting/fixtures/topology.json",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/movimento-lateral/LEGADO-LATERAL-MOVEMENT.md",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/movimento-lateral/linux-lateral-movement.md",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/movimento-lateral/lateral_path_analyzer.py",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/movimento-lateral/fixtures/lateral-graph.json",
+        "37-Pos-Exploracao-Movimento-Lateral/acervo/movimento-lateral/windows_lateral_movement_teoria.md"
+      ],
+      "legacyId": "complementos-pos-exploracao-lateral",
+      "legacyTitle": "Complementos de pós-exploração, pivoting e movimentação lateral"
+    },
+    {
+      "moduleId": "38",
+      "courseRoot": "38-DFIR-Resposta-Incidentes/dfir-resposta-incidentes",
+      "overviewPath": "38-DFIR-Resposta-Incidentes/README.md",
+      "contentPaths": [
+        "38-DFIR-Resposta-Incidentes/acervo/FORENSIC_REPORT_TEMPLATE.md",
+        "38-DFIR-Resposta-Incidentes/acervo/LEGADO-DFIR.md",
+        "38-DFIR-Resposta-Incidentes/acervo/PLAYBOOK_RANSOMWARE.md",
+        "38-DFIR-Resposta-Incidentes/acervo/forensics_artifacts.md",
+        "38-DFIR-Resposta-Incidentes/acervo/labs",
+        "38-DFIR-Resposta-Incidentes/acervo/memory_analysis_teoria.md",
+        "38-DFIR-Resposta-Incidentes/acervo/windows_event_logs.md"
+      ],
+      "legacyId": "complementos-dfir-resposta-incidentes",
+      "legacyTitle": "Complementos de DFIR e resposta a incidentes"
+    },
+    {
+      "moduleId": "39",
+      "courseRoot": "39-Threat-Intel-Emulacao/threat-intel-adversary-emulation",
+      "overviewPath": "39-Threat-Intel-Emulacao/README.md",
+      "contentPaths": [
+        "39-Threat-Intel-Emulacao/acervo/LEGADO-THREAT-INTEL-EMULATION.md"
+      ],
+      "legacyId": "complementos-threat-intel-emulacao",
+      "legacyTitle": "Complementos de threat intelligence e adversary emulation"
+    },
+    {
+      "moduleId": "40",
+      "courseRoot": "40-Capstone-Purple-Team/operacoes-integradas",
+      "overviewPath": "40-Capstone-Purple-Team/README.md",
+      "contentPaths": [
+        "40-Capstone-Purple-Team/acervo/LEGADO-OFFENSIVE-LABS.md",
+        "40-Capstone-Purple-Team/acervo/tools/recon_correlator.py",
+        "40-Capstone-Purple-Team/acervo/tools/api_auth_matrix.py",
+        "40-Capstone-Purple-Team/acervo/fixtures/recon.json",
+        "40-Capstone-Purple-Team/acervo/fixtures/api-auth-results.json"
+      ],
+      "legacyId": "complementos-capstone-purple-team",
+      "legacyTitle": "Complementos de operações Purple Team integradas"
+    }
+  ],
+  "globalDocuments": {
+    "includeAllOutsideModules": true,
+    "collectionId": "documentacao-global",
+    "includePaths": [
+      "study-app/README.md"
+    ]
+  },
+  "resources": {
+    "includeAllSafeFiles": true,
+    "collectionId": "ferramentas-codigo",
+    "includePaths": [
+      "04-Automation/automacao-profissional/projetos/fileflow/fixtures/inbox/ignored.bin"
+    ]
+  },
+  "exclusions": {
+    "roots": [
+      ".agents",
+      ".aws",
+      ".codex",
+      ".git",
+      ".github",
+      ".mypy_cache",
+      ".pytest_cache",
+      ".ruff_cache",
+      ".tox",
+      ".venv",
+      "scripts",
+      "study-app",
+      "tests",
+      "venv"
+    ],
+    "paths": [
+      ".coverage",
+      ".gitignore",
+      ".markdownlint.json",
+      "MODULE-CATALOG.json",
+      "STUDY-CONTENT.json",
+      "estudo.sh",
+      "pyproject.toml"
+    ],
+    "reason": "Infraestrutura interna, build, CI e testes do próprio repositório não são material didático. Testes e fixtures dentro dos cursos continuam incluídos."
+  }
+}

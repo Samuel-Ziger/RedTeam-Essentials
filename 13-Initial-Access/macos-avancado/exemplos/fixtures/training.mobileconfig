@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>PayloadContent</key>
+  <array>
+    <dict>
+      <key>PayloadDescription</key>
+      <string>Inert training payload; never install.</string>
+      <key>PayloadDisplayName</key>
+      <string>RTE Training Fixture</string>
+      <key>PayloadIdentifier</key>
+      <string>org.example.rte.training.settings</string>
+      <key>PayloadType</key>
+      <string>org.example.rte.training</string>
+      <key>PayloadUUID</key>
+      <string>6FB67B45-19B1-45A4-AC3B-80D6D73703F4</string>
+      <key>PayloadVersion</key>
+      <integer>1</integer>
+    </dict>
+  </array>
+  <key>PayloadDescription</key>
+  <string>Offline structural fixture. Do not install.</string>
+  <key>PayloadDisplayName</key>
+  <string>RTE macOS Training</string>
+  <key>PayloadIdentifier</key>
+  <string>org.example.rte.training</string>
+  <key>PayloadOrganization</key>
+  <string>RedTeam Essentials Lab</string>
+  <key>PayloadScope</key>
+  <string>System</string>
+  <key>PayloadType</key>
+  <string>Configuration</string>
+  <key>PayloadUUID</key>
+  <string>376AA8EF-EF21-49DF-9E0E-69F889AC3C40</string>
+  <key>PayloadVersion</key>
+  <integer>1</integer>
+</dict>
+</plist>

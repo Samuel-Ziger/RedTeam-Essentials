@@ -110,8 +110,10 @@ Siga os padrões de código e documentação (veja seções abaixo).
 
 #### Passo 4: Commit
 ```bash
-# Adicione os arquivos modificados
-git add .
+# Revise e adicione somente os arquivos pretendidos
+git status --short
+git diff --check
+git add caminho/do/arquivo
 
 # Commit com mensagem descritiva
 git commit -m "tipo: descrição breve"
@@ -509,6 +511,26 @@ Observações adicionais, dicas ou contexto.
 
 ## 🧪 Testes e Validação
 
+Antes de abrir um PR, execute a porta de entrada canônica:
+
+```bash
+python3 rte.py validate --all
+bash 00-Fundamentos/programacao/testar-curso.sh
+bash 01-Recon/programacao-avancada/testar-curso.sh
+bash 02-OSINT/engenharia-software/testar-curso.sh
+bash 03-AD-Notes/desenvolvimento-aplicacoes/testar-curso.sh
+bash 04-Automation/automacao-profissional/testar-curso.sh
+bash 05-DFIR/engenharia-apis/testar-curso.sh
+```
+
+Mudancas Python também devem passar por Ruff e manter pelo menos 70% de
+cobertura em `lib/python`. Mudanças de módulo exigem atualização coerente de
+`MODULE-CATALOG.json`; mudanças ATT&CK devem preservar o snapshot oficial usado
+pelo validador.
+
+Nunca inclua credenciais, hashes reais, relatórios de cliente ou evidências sem
+sanitização. O scanner reduz o risco, mas não substitui a revisão do diff.
+
 ### Scripts PowerShell
 
 Crie arquivo de teste: `script.Tests.ps1`
@@ -537,11 +559,12 @@ Describe "Nome do Script" {
 ### Validação Manual
 
 Antes de submeter PR:
-1. Execute em ambiente limpo (VM fresca)
-2. Teste com diferentes parâmetros
-3. Verifique mensagens de erro
-4. Valide outputs gerados
-5. Confirme que disclaimer aparece
+
+1. Execute em ambiente limpo (VM fresca).
+2. Teste sucesso, entrada inválida e `--dry-run`, quando aplicável.
+3. Verifique mensagens de erro e códigos de saída.
+4. Valide outputs gerados e permissões dos artefatos.
+5. Confirme que autorização, escopo e cleanup estão claros.
 
 ---
 
@@ -550,8 +573,8 @@ Antes de submeter PR:
 Ao adicionar novo conteúdo, siga a estrutura:
 
 ```
-01-Recon/
-├── README.md                    # Visão geral do módulo
+29-Reconhecimento-OSINT/
+├── README.md                    # Visão geral da especialização
 ├── passive_recon_cheatsheet.md  # Documentação
 ├── dns_enum.ps1                 # Script
 ├── dns_enum.Tests.ps1           # Testes (opcional)

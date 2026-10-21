@@ -1,0 +1,378 @@
+:root {
+  color-scheme: light dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  --background: #f4f7f5;
+  --surface: #ffffff;
+  --surface-muted: #eef3f0;
+  --text: #17211b;
+  --text-muted: #536158;
+  --border: #c6d1ca;
+  --accent: #147d3f;
+  --accent-hover: #0e6331;
+  --focus: #0f62fe;
+  --danger: #b4232c;
+  --danger-surface: #fff0f1;
+  --shadow: 0 12px 32px rgb(23 33 27 / 8%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #101713;
+    --surface: #18211c;
+    --surface-muted: #202b24;
+    --text: #f0f5f2;
+    --text-muted: #b6c3bb;
+    --border: #405047;
+    --accent: #42be65;
+    --accent-hover: #65d985;
+    --focus: #78a9ff;
+    --danger: #ff8389;
+    --danger-surface: #351b1d;
+    --shadow: 0 12px 32px rgb(0 0 0 / 24%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  color: inherit;
+  font: inherit;
+}
+
+button,
+select,
+input {
+  min-height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.skip-link:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+input,
+select {
+  background: var(--surface);
+}
+
+input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.7rem 0.8rem;
+}
+
+select {
+  padding: 0.55rem 2.25rem 0.55rem 0.75rem;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.4rem;
+  background: var(--text);
+  color: var(--surface);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.container {
+  width: min(48rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3.5rem 0 5rem;
+}
+
+.hero {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.4rem;
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.hero-copy {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.panel {
+  margin-top: 1rem;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.field-heading,
+.form-row,
+.section-heading,
+.toolbar,
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.field-heading {
+  justify-content: space-between;
+}
+
+.field-heading label {
+  font-weight: 750;
+}
+
+.field-heading output,
+.field-help,
+.summary,
+.task-metadata {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.field-help {
+  margin-bottom: 0.65rem;
+}
+
+.message {
+  min-height: 1.5rem;
+  margin: 1rem 0;
+}
+
+.message.error {
+  padding: 0.75rem 0.9rem;
+  border-left: 4px solid var(--danger);
+  border-radius: 0.3rem;
+  background: var(--danger-surface);
+  color: var(--danger);
+}
+
+.message[hidden] {
+  display: none;
+}
+
+.section-heading {
+  justify-content: space-between;
+}
+
+.section-heading h2 {
+  margin-bottom: 0.1rem;
+}
+
+.summary {
+  margin-bottom: 0;
+}
+
+.secondary {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.toolbar {
+  margin: 1.25rem 0 0.75rem;
+}
+
+.toolbar label {
+  font-weight: 700;
+}
+
+.task-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-list[aria-busy="true"] {
+  opacity: 0.72;
+}
+
+.task {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--surface-muted);
+}
+
+.task[aria-busy="true"] {
+  opacity: 0.65;
+}
+
+.task > input[type="checkbox"] {
+  width: 1.25rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  min-height: 1.25rem;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.task-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.task-content label {
+  display: block;
+  overflow-wrap: anywhere;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.task.done .task-content label {
+  opacity: 0.72;
+  text-decoration: line-through;
+}
+
+.task-metadata {
+  margin-top: 0.2rem;
+}
+
+.badge {
+  color: var(--accent);
+  font-weight: 750;
+}
+
+.delete {
+  border-color: currentColor;
+  background: transparent;
+  color: var(--danger);
+}
+
+.delete:hover:not(:disabled) {
+  border-color: var(--danger);
+  background: var(--danger-surface);
+  color: var(--danger);
+}
+
+.empty-state {
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.65rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.load-more-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 36rem) {
+  .container {
+    padding-top: 2rem;
+  }
+
+  .form-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .task {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .task-content {
+    width: calc(100% - 2rem);
+  }
+
+  .delete {
+    width: 100%;
+    margin-left: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button,
+  .skip-link,
+  .task-list {
+    transition: background-color 120ms ease, border-color 120ms ease, opacity 120ms ease,
+      transform 120ms ease;
+  }
+}

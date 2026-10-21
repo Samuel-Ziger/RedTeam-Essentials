@@ -1,59 +1,57 @@
-# 23 - Threat intelligence e adversary emulation
+# 23 — Privacidade e anonimato: fundamentos e limites
 
-> Converter inteligência em hipóteses testáveis, sem copiar malware, infraestrutura
-> de ameaça ou procedimentos destrutivos.
+Este módulo inicia uma trilha de três partes sobre privacidade digital,
+anonimato e investigação defensiva. Ele ensina a modelar quem observa cada
+trecho de uma comunicação, quais metadados continuam expostos e por que VPN,
+Tor, proxy ou janela privativa não tornam alguém invisível.
+
+Não é um manual para fugir de investigação. Técnicas associadas a agentes de
+ameaça aparecem apenas como modelos conceituais e são ligadas aos rastros que
+interessam à defesa. Não há instruções para apagar logs, falsificar identidade,
+fraudar serviços ou ocultar crimes.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | Red/Purple Team, CTI e detection engineering avançados. |
-| Pré-requisitos | Módulos 05, 09, 15 e 20; MITRE ATT&CK. |
-| Tempo estimado | 8 horas de planejamento e 6 horas de microemulação. |
-| Ambiente | Fixtures, Atomic/Caldera autorizado ou lab descartável. |
-| Evidência final | Intelligence requirement, plano, execução e debrief. |
-| Critério de conclusão | Testar hipótese ligada a objetivo, não só técnica. |
+|---|---|
+| Público | Estudantes de redes, segurança, desenvolvimento e privacidade. |
+| Pré-requisitos | Módulos 14–18 de redes e 19–22 de criptografia. |
+| Tempo estimado | 140–220 horas. |
+| Ambiente | Fixtures sintéticas e observação do próprio navegador/rede; nenhuma coleta sobre terceiros. |
+| Evidência final | Modelo de ameaça, matriz de observadores, plano de privacidade e relatório de limitações. |
+| Critério de conclusão | Explicar o que cada intermediário vê, escolher controles proporcionais e declarar riscos residuais. |
 
-## Ciclo
+## Comece aqui
 
-1. **Direção:** defina pergunta, crown jewel e decisão que o teste apoiará.
-2. **Coleta:** priorize fontes primárias, data do comportamento e confiança.
-3. **Análise:** separe fato, avaliação e lacuna; evite atribuição por ferramenta.
-4. **Planejamento:** escolha comportamento seguro, precondição e success criteria.
-5. **Emulação:** use canários/fixtures e logging integral do operador.
-6. **Debrief:** compare prevenção, observação, detecção e resposta.
+- [Curso completo](privacidade-anonimato-fundamentos/README.md)
+- [Laboratórios](privacidade-anonimato-fundamentos/laboratorios/README.md)
+- [Ferramentas offline](privacidade-anonimato-fundamentos/exemplos/README.md)
+- [Consulta rápida](privacidade-anonimato-fundamentos/CHEATSHEET.md)
 
-## Plano mínimo
+## Progressão
 
-| Campo | Exemplo sintético |
-|-------|-------------------|
-| Objetivo | Validar detecção de concessão IAM administrativa. |
-| Hipótese | Audit log contém ator, alvo, role e sucesso. |
-| Técnica | Account Manipulation, conforme layer revisado. |
-| Execução | Fixture AWS/Azure/GCP do módulo 08. |
-| Positivo | Concessão administrativa gera alerta. |
-| Negativo | Leitura legítima não gera alerta. |
-| Parada | Qualquer credencial/API real detectada. |
-| Cleanup | Remover somente resultados derivados. |
+1. **Módulo 23:** identidade, metadados, rota, observadores, VPN, Tor,
+   fingerprinting, vazamentos e modelagem de ameaça.
+2. **[Módulo 24](../24-Lateral-Movement/README.md):** VPN própria em VPS,
+   WireGuard, firewall, DNS, IPv4/IPv6, clientes, operação e recuperação.
+3. **[Módulo 25](../25-Cursos/README.md):** telemetria, correlação, atribuição
+   defensiva, evidência, privacidade e resposta a incidentes.
 
-## Regras de qualidade
+## Princípio central
 
-- ATT&CK descreve comportamento, não comprova atribuição.
-- Uma técnica executada sem objetivo não mede risco operacional.
-- Emulação deve registrar desvios do plano e ações do operador.
-- Não baixe amostras, use IoCs ativos ou replique infraestrutura criminosa.
-
-## Próximo passo
-
-Execute a [microemulação Purple Team](../docs/PURPLE-TEAM-MICRO-EMULATION.md),
-adicione um intelligence requirement e registre confiança/limitações no debrief.
+Anonimato não é um botão. Um túnel muda o ponto de confiança e o endereço IP
+visível ao destino, mas contas, pagamentos, cookies, características do
+dispositivo, horários, volume de tráfego e comportamento podem religar
+atividades. O objetivo profissional é reduzir exposição de modo verificável,
+sem prometer anonimato absoluto.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Os vídeos complementam o material autocontido; compare afirmações comerciais
+com as fontes oficiais registradas no curso.
 
-1. [USANDO MITRE ATT&CK - TUTORIAL COMPLETO!](https://www.youtube.com/watch?v=1mf3De-UZkA) — **Gustavo Bessa**.
-2. [O que é o MITRE ATT&CK? TTPs & A Pirâmide da Dor - Parte 1/3](https://www.youtube.com/watch?v=TYlx5JSLC-s) — **Flávio Costa - Segurança Descomplicada**.
-3. [MITRE ATT&CK® Framework, Com o Prof. Thiago Cunha](https://www.youtube.com/watch?v=BKNNlqxbiS4) — **Academia de Forense Digital**.
-4. [Cyber Kill Chain e MITRE ATT&CK na Prática: Como Usar no Dia a Dia](https://www.youtube.com/watch?v=DCzgq9SYte4) — **SecDay**.
-5. [Cyber Threat Intelligence e Threat Hunting: O que Aprendi em 10 Dias?](https://www.youtube.com/watch?v=TV6d17bfO1k) — **Kraken Academy**.
+1. [Privacidade na Internet: roteamento aleatorizado com Tor](https://www.youtube.com/watch?v=J2jzgYwMDhk) — **NIC.br**.
+2. [Como ficar anônimo na internet? VPN vs Proxy vs Tor](https://www.youtube.com/watch?v=YH_zrhtDJOQ) — **Gabriel Pato**.
+3. [VPN: você pode ser rastreado?](https://www.youtube.com/watch?v=1Ppxzy1v37w) — **CanalJMS**.
+4. [DNS — Sistema de Nomes de Domínio](https://www.youtube.com/watch?v=xlAgp6PHKsY) — **NIC.br**.
+5. [IP, DNS, DHCP e roteamento](https://www.youtube.com/watch?v=z2vnQcb8nGI) — **Cyber Security Br**.

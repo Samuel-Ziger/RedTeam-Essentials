@@ -1,0 +1,170 @@
+###############################################################################
+# RedTeam Essentials - Lab local docker-compose
+#
+# Sobe uma rede interna de alvos, um gateway HTTP local e uma rede de egress
+# exclusiva do atacante. Somente o gateway publica portas em 127.0.0.1.
+#
+# Uso:
+#   cd 30-Web-API-AppSec/docker-lab
+#   docker compose up -d --build
+#   docker compose ps
+#   docker compose down -v   # destruir tudo
+#
+# AVISO: isolamento reduz exposicao acidental; use somente em LAB autorizado.
+###############################################################################
+networks:
+  rte-lab:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+  rte-egress:
+    driver: bridge
+    internal: false
+  rte-access:
+    driver: bridge
+    internal: false
+
+services:
+
+  # ---- Gateway local: unico ponto com portas publicadas no host ----
+  gateway:
+    image: nginx:1.29.1-alpine@sha256:42a516af16b852e33b7682d5ef8acbd5d13fe08fecadc7ed98605ba5e3b26ab8
+    networks:
+      rte-lab: {}
+      rte-access: {}
+    ports:
+      - "127.0.0.1:8081:8081"
+      - "127.0.0.1:8082:8082"
+      - "127.0.0.1:8083:8083"
+      - "127.0.0.1:8084:8084"
+      - "127.0.0.1:8087:8087"
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./nginx-lab.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy_params:/etc/nginx/proxy_params:ro
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:8090/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+    mem_limit: 128m
+    cpus: 0.25
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+
+  # ---- DVWA: Damn Vulnerable Web Application ----
+  dvwa:
+    image: vulnerables/web-dvwa@sha256:dae203fe11646a86937bf04db0079adef295f426da68a92b40e3b181f337daa7
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.10
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://127.0.0.1/') === false ? 1 : 0);"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    mem_limit: 512m
+    cpus: 0.75
+    restart: "no"
+
+  # ---- OWASP Juice Shop ----
+  juiceshop:
+    image: bkimminich/juice-shop@sha256:73c53fbf442e8337b3ea3d98c7e8550308854701ebdfce4cc39768f36b75430e
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.11
+    healthcheck:
+      test: ["CMD", "/nodejs/bin/node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 45s
+    mem_limit: 768m
+    cpus: 1.0
+    restart: "no"
+
+  # ---- bWAPP ----
+  bwapp:
+    image: raesene/bwapp@sha256:2f41183ea9f9e8fb36678d7a2a0c8a9db9a59f4569cee02fe6664b419b2600ee
+    profiles: ["extended", "full"]
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.12
+    healthcheck:
+      test: ["CMD-SHELL", "php -r \"exit(@file_get_contents('http://127.0.0.1/') === false ? 1 : 0);\""]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    mem_limit: 512m
+    cpus: 0.75
+    restart: "no"
+
+  # ---- WebGoat (Java) ----
+  webgoat:
+    image: webgoat/webgoat@sha256:d4ac9fc2b0a41b68d64dedde684f4783aa60cc785838435a6d5bd5a25b387497
+    profiles: ["extended", "full"]
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.13
+    environment:
+      - TZ=America/Sao_Paulo
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/127.0.0.1/8080'"]
+      interval: 20s
+      timeout: 5s
+      retries: 15
+      start_period: 90s
+    mem_limit: 1536m
+    cpus: 1.5
+    restart: "no"
+
+  # ---- VAmPI: Vulnerable API (OWASP API Top 10) ----
+  vampi:
+    image: erev0s/vampi@sha256:0a5a224b6e14ae7da6a6ea265178ff71286ff903aec74adee98f660bb0e4ca12
+    profiles: ["api", "full"]
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.16
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    mem_limit: 512m
+    cpus: 0.75
+    restart: "no"
+
+  # ---- Estacao atacante (imagem custom) ----
+  attacker:
+    build:
+      context: .
+      dockerfile: Dockerfile.kali-pentest
+    networks:
+      rte-lab:
+        ipv4_address: 172.28.0.100
+      rte-egress: {}
+    volumes:
+      - ./shared:/shared
+    command: tail -f /dev/null
+    healthcheck:
+      test: ["CMD-SHELL", "test -d /shared && command -v curl >/dev/null"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    mem_limit: 2048m
+    cpus: 2.0
+    tty: true
+    restart: "no"

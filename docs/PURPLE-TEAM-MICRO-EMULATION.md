@@ -19,8 +19,8 @@ em infraestrutura real.
 ## Execução
 
 ```bash
-python3 08-Cloud-RedTeam/labs/analyze_events.py \
-  08-Cloud-RedTeam/labs/fixtures/aws-cloudtrail.jsonl
+python3 32-Cloud-Security/cloud-red-team/labs/analyze_events.py \
+  32-Cloud-Security/cloud-red-team/labs/fixtures/aws-cloudtrail.jsonl
 pytest -q tests/python/test_cloud_lab.py tests/python/test_lab_fixtures.py
 ```
 
@@ -29,4 +29,3 @@ pytest -q tests/python/test_cloud_lab.py tests/python/test_lab_fixtures.py
 Registre cobertura observada, falso positivo, dado ausente, tempo de decisão,
 controle preventivo e próximo teste. Não use contagem de técnicas ATT&CK como
 substituto para resultado operacional.
-

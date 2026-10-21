@@ -144,10 +144,20 @@ def export_json(data: Any, output_dir: Path | str, basename: str) -> Path:
     """Salva `data` como JSON com timestamp em `output_dir`."""
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    path = out / f"{basename}_{stamp}.json"
-    with path.open("w", encoding="utf-8") as fh:
+    safe_basename = re.sub(r"[^A-Za-z0-9._-]+", "_", basename).strip("._")
+    if not safe_basename:
+        raise ValueError("basename deve conter ao menos um caractere seguro")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    path = out / f"{safe_basename}_{stamp}.json"
+    temporary = path.with_suffix(".json.tmp")
+    with temporary.open("x", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=2, default=str)
+        fh.write("\n")
+    try:
+        temporary.chmod(0o600)
+    except OSError:
+        pass
+    temporary.replace(path)
     return path
 
 

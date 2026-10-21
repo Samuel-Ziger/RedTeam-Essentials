@@ -1,0 +1,14 @@
+{
+  "schema": "rte-vlan-plan/v1",
+  "vlans": [
+    {"id": 10, "name": "users", "prefix": "10.10.10.0/24", "purpose": "managed endpoints"},
+    {"id": 20, "name": "voice", "prefix": "10.10.20.0/24", "purpose": "IP telephony"},
+    {"id": 30, "name": "guest", "prefix": "10.10.30.0/24", "purpose": "Internet-only guests"},
+    {"id": 999, "name": "native-unused", "prefix": "10.10.99.0/24", "purpose": "tagging consistency; no endpoints"}
+  ],
+  "ports": [
+    {"name": "edge-01", "mode": "access", "vlans": [10], "native_vlan": null},
+    {"name": "phone-01", "mode": "access", "vlans": [20], "native_vlan": null},
+    {"name": "uplink-01", "mode": "trunk", "vlans": [10, 20, 30, 999], "native_vlan": 999}
+  ]
+}

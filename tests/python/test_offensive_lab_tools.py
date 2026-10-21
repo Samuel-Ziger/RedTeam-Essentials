@@ -7,7 +7,24 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def load(name: str):
-    path = ROOT / "20-Offensive-Labs" / "tools" / f"{name}.py"
+    paths = {
+        "roe_scope_guard": ROOT
+        / "27-Operacoes-Seguranca-Avancadas"
+        / "acervo"
+        / "ferramentas"
+        / "roe_scope_guard.py",
+        "recon_correlator": ROOT
+        / "40-Capstone-Purple-Team"
+        / "acervo"
+        / "tools"
+        / "recon_correlator.py",
+        "api_auth_matrix": ROOT
+        / "40-Capstone-Purple-Team"
+        / "acervo"
+        / "tools"
+        / "api_auth_matrix.py",
+    }
+    path = paths[name]
     spec = importlib.util.spec_from_file_location(f"test_{name}", path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
@@ -49,3 +66,21 @@ def test_api_matrix_finds_bola_and_bfla_but_ignores_denied_request() -> None:
     ]
     findings = matrix.analyze(rows)
     assert [item["type"] for item in findings] == ["BOLA", "BFLA"]
+
+
+def test_api_matrix_ignores_malformed_rows() -> None:
+    rows = [None, {"status": "invalid"}, {"status": None}, {"status": 403}]
+    assert matrix.analyze(rows) == []
+
+
+def test_recon_ignores_malformed_rows() -> None:
+    assert recon.correlate([None, {}, {"host": "app.lab", "source": "dns"}]) == [
+        {
+            "host": "app.lab",
+            "ips": [],
+            "asns": [],
+            "sources": ["dns"],
+            "technologies": [],
+            "priority": 1,
+        }
+    ]

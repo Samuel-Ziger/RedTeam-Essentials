@@ -1,81 +1,58 @@
 #!/usr/bin/env sh
-#
-# Gera PDF (+ arquivo 7z) a partir de Markdown ou Org.
-#
-# Adaptado para RedTeam-Essentials a partir do generate.sh HexSec
-# (Leonardo Tamiano), inspirado no trabalho de Alexandre ZANNI / noraj
-# (OSERT — OSCP Exam Report Template Markdown).
-#
-# Uso:
-#   ./generate-pdf.sh
-#   ./generate-pdf.sh ../caminho/meu-relatorio.md
-#   REPORT_ID=ACME-2026 ./generate-pdf.sh relatorio.md
-#   OSID=12345678 ./generate-pdf.sh exam.md   # nome estilo OffSec
-#
-# Conteudo sugerido: copie/adapte ../REPORT-TEMPLATE.md
-#
+# Gera PDF e arquivo 7z a partir de Markdown ou Org.
+set -eu
 
-ROOT=$(dirname $(realpath "$0"))
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+REPORT_ID=${REPORT_ID:-LAB}
+OSID=${OSID:-}
+INPUT_PATH=${ROOT}/relatorio.md
 
-# Identificador padrao do relatorio (labs / clientes)
-REPORT_ID="${REPORT_ID:-LAB}"
+die() {
+	printf '[ERRO] %s\n' "$1" >&2
+	exit 1
+}
 
-# Input default: relatorio.md na pasta report/ (crie a partir do template)
-INPUT_PATH="${ROOT}/relatorio.md"
+validate_identifier() {
+	name=$1
+	value=$2
+	case "$value" in
+		''|*[!A-Za-z0-9._-]*) die "$name deve conter somente letras, numeros, ponto, sublinhado ou hifen" ;;
+	esac
+}
 
-# Nomes de saida:
-# - Se OSID estiver definido: OSCP-OS-$OSID-Exam-Report.pdf (conveniencia exame)
-# - Caso contrario: RTE-Report-$REPORT_ID.pdf
-if [ -n "${OSID}" ]; then
-	REPORT_PDF_PATH="${ROOT}/OSCP-OS-${OSID}-Exam-Report.pdf"
-	ARCHIVE_NAME="${ROOT}/OSCP-OS-${OSID}-Exam-Report.7z"
+validate_identifier REPORT_ID "$REPORT_ID"
+if [ -n "$OSID" ]; then
+	validate_identifier OSID "$OSID"
+	BASENAME=OSCP-OS-${OSID}-Exam-Report
 else
-	REPORT_PDF_PATH="${ROOT}/RTE-Report-${REPORT_ID}.pdf"
-	ARCHIVE_NAME="${ROOT}/RTE-Report-${REPORT_ID}.7z"
+	BASENAME=RTE-Report-${REPORT_ID}
 fi
-
-RED='\033[0;31m'
-NC='\033[0m'
-
-# ----------------------------
+REPORT_PDF_PATH=${ROOT}/${BASENAME}.pdf
+ARCHIVE_NAME=${ROOT}/${BASENAME}.7z
 
 check_requirements() {
-	if [ $# -eq 1 ] && [ -f "$1" ]; then
-		filename=$(basename -- "$1")
-		extension="${filename##*.}"
-		[ ! "$extension" = "org" ] && [ ! "$extension" = "md" ] \
-			&& echo "[ERROR]: Input file can only be '.org' or '.md'" && exit 1
-
+	if [ "$#" -eq 1 ]; then
+		[ -f "$1" ] || die "arquivo de entrada inexistente: $1"
 		INPUT_PATH=$1
-	elif [ $# -gt 1 ]; then
-		echo "[ERROR]: use no maximo um argumento (caminho do .md/.org)" && exit 1
+	elif [ "$#" -gt 1 ]; then
+		die 'use no maximo um argumento (caminho do .md/.org)'
 	fi
-
-	[ ! -f "$INPUT_PATH" ] && echo "[ERROR]: missing input report: $INPUT_PATH" && \
-		echo "[HINT]: passe o path ou copie ../REPORT-TEMPLATE.md para $ROOT/relatorio.md" && exit 1
-
-	which pandoc >/dev/null 2>&1
-	[ $? -eq 1 ] && echo "[ERROR]: missing pandoc!" && exit 1
-
-	which 7z >/dev/null 2>&1
-	[ $? -eq 1 ] && echo "[ERROR]: missing 7z!" && exit 1
-
-	# eisvogel: template LaTeX do pandoc (instalacao tipica em ~/.pandoc/templates)
-	if [ ! -f "${HOME}/.pandoc/templates/eisvogel.latex" ] && \
-	   [ ! -f "/usr/share/pandoc/data/templates/eisvogel.latex" ]; then
-		echo "[WARN]: template eisvogel nao encontrado nos paths comuns."
-		echo "        Instale eisvogel e garanta que pandoc o resolva com --template eisvogel"
-	fi
+	[ -f "$INPUT_PATH" ] || die "relatorio ausente: $INPUT_PATH (copie ../REPORT-TEMPLATE.md)"
+	case "${INPUT_PATH##*.}" in
+		md|org) ;;
+		*) die "o arquivo de entrada deve terminar em .md ou .org" ;;
+	esac
+	command -v pandoc >/dev/null 2>&1 || die 'pandoc nao encontrado'
+	command -v 7z >/dev/null 2>&1 || die '7z nao encontrado'
 }
 
-# -----
-
-md2pdf() {
-	REPORT_MD_PATH=$1
-	REPORT_PDF_OUT=$2
-
-	pandoc "$REPORT_MD_PATH" -o "$REPORT_PDF_OUT" \
-		--from markdown+yaml_metadata_block+raw_html \
+convert_report() {
+	input=$1
+	output=$2
+	format=$3
+	resource_dir=$(CDPATH= cd -- "$(dirname -- "$input")" && pwd)
+	pandoc "$input" -o "$output" \
+		--from "$format" \
 		--template eisvogel \
 		--listing \
 		-V colorlinks=true \
@@ -87,81 +64,26 @@ md2pdf() {
 		--number-sections \
 		--top-level-division=chapter \
 		--highlight-style zenburn \
-		--resource-path=.:src \
-		--resource-path=.:/usr/share/osert/src
-
-	[ $? -eq 1 ] && echo "[ERROR]: Problems during generation of PDF!" && exit 1
+		--resource-path="${resource_dir}:${resource_dir}/src:${ROOT}/src"
 }
-
-# -----
-
-org2pdf() {
-	REPORT_ORG_PATH=$1
-	REPORT_PDF_OUT=$2
-
-	pandoc "$REPORT_ORG_PATH" -o "$REPORT_PDF_OUT" \
-		--from org \
-		--template eisvogel \
-		--listing \
-		-V colorlinks=true \
-		-V linkcolor=orange \
-		-V urlcolor=orange \
-		-V toccolor=black \
-		-V titlepage=true \
-		-V titlepage-color="F2F3F5" \
-		-V titlepage-text-color="000000" \
-		-V titlepage-rule-color="000000" \
-		-V titlepage-rule-height=2 \
-		-V book=true \
-		-V classoption=oneside \
-		-V code-block-font-size=\\scriptsize \
-		--table-of-contents \
-		--toc-depth 6 \
-		--number-sections \
-		--top-level-division=chapter \
-		--highlight-style zenburn \
-		--resource-path=.:src \
-		--resource-path=.:/usr/share/osert/src
-
-	[ $? -eq 1 ] && echo "[ERROR]: Problems during generation of PDF!" && exit 1
-}
-
-# -----
 
 main() {
-	echo "[INFO]: Checking requirements"
-
 	check_requirements "$@"
-
-	echo "[INFO]: input=$INPUT_PATH"
-	echo "[INFO]: output=$REPORT_PDF_PATH"
-	echo "[INFO]: All good, we're ready to generate!"
-
-	[ "${INPUT_PATH##*.}" = "org" ] && \
-		echo "[INFO]: org->pdf" && \
-		org2pdf "$INPUT_PATH" "$REPORT_PDF_PATH"
-
-	[ "${INPUT_PATH##*.}" = "md" ] && \
-		echo "[INFO]: md->pdf" && \
-		md2pdf "$INPUT_PATH" "$REPORT_PDF_PATH"
-
-	echo "[INFO]: Generated succesfully, creating 7z archive!"
-	7z a "$ARCHIVE_NAME" "$REPORT_PDF_PATH" >/dev/null 2>/dev/null
-	[ $? -eq 1 ] && echo "[ERROR]: Problems during 7z archive creation!" && exit 1
-
-	if which md5sum >/dev/null 2>&1; then
-		MD5=$(md5sum "$ARCHIVE_NAME" | awk -F '  ' '{print $1}')
-		[ $? -eq 1 ] && echo "[ERROR]: Problems during computation of MD5" && exit 1
-		printf "[INFO]: MD5 of archive (${RED}${MD5}${NC})\n"
-	elif which md5 >/dev/null 2>&1; then
-		MD5=$(md5 -q "$ARCHIVE_NAME")
-		printf "[INFO]: MD5 of archive (${RED}${MD5}${NC})\n"
+	printf '[INFO] entrada: %s\n' "$INPUT_PATH"
+	printf '[INFO] saida:   %s\n' "$REPORT_PDF_PATH"
+	case "${INPUT_PATH##*.}" in
+		md) convert_report "$INPUT_PATH" "$REPORT_PDF_PATH" markdown+yaml_metadata_block+raw_html ;;
+		org) convert_report "$INPUT_PATH" "$REPORT_PDF_PATH" org ;;
+	esac
+	7z a -y "$ARCHIVE_NAME" "$REPORT_PDF_PATH" >/dev/null
+	if command -v sha256sum >/dev/null 2>&1; then
+		sha256sum "$ARCHIVE_NAME"
+	elif command -v shasum >/dev/null 2>&1; then
+		shasum -a 256 "$ARCHIVE_NAME"
+	else
+		printf '[AVISO] utilitario SHA-256 nao encontrado.\n' >&2
 	fi
-
-	echo "[INFO]: PDF: $REPORT_PDF_PATH"
-	echo "[INFO]: 7z:  $ARCHIVE_NAME"
+	printf '[OK] PDF: %s\n[OK] 7z:  %s\n' "$REPORT_PDF_PATH" "$ARCHIVE_NAME"
 }
-
-# ----------------------------
 
 main "$@"

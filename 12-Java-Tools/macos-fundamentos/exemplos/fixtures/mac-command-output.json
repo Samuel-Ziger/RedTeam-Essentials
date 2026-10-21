@@ -1,0 +1,9 @@
+{
+  "csrutil status": "System Integrity Protection status: enabled.",
+  "fdesetup status": "FileVault is On.",
+  "spctl --status": "assessments enabled",
+  "sw_vers -buildVersion": "25A000",
+  "sw_vers -productVersion": "26.0",
+  "sysctl -n hw.model": "Mac16,1",
+  "uname -m": "arm64"
+}

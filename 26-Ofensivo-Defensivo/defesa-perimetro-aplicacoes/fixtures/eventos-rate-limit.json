@@ -1,0 +1,13 @@
+{
+  "authorized": true,
+  "capacity": 3,
+  "refill_per_second": 1,
+  "events": [
+    {"key": "tenant-a", "at": 0, "cost": 1},
+    {"key": "tenant-a", "at": 0, "cost": 2},
+    {"key": "tenant-a", "at": 0, "cost": 1},
+    {"key": "tenant-a", "at": 1, "cost": 1},
+    {"key": "tenant-b", "at": 0, "cost": 3},
+    {"key": "tenant-b", "at": 0, "cost": 1}
+  ]
+}

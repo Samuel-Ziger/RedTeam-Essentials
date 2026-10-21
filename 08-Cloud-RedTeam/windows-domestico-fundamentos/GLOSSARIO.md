@@ -1,0 +1,49 @@
+# Glossário
+
+- **ACL:** lista de entradas que permitem ou negam direitos a identidades.
+- **ACE:** uma entrada individual em uma ACL.
+- **Arquitetura:** conjunto/plataforma de instruções, como x64 ou Arm64.
+- **Autenticação:** processo de provar uma identidade.
+- **Autorização:** decisão sobre o que uma identidade pode fazer.
+- **Baseline:** estado inicial registrado para comparação.
+- **BitLocker:** criptografia de volume do Windows.
+- **Build:** identificação da compilação/linha de binários do Windows.
+- **Canal de eventos:** contêiner lógico no Windows Event Log.
+- **Component Store:** repositório de componentes usado pelo servicing e reparo.
+- **DWORD/QWORD:** tipos inteiros de 32 e 64 bits usados no Registro.
+- **EFI System Partition (ESP):** partição que armazena componentes de boot UEFI.
+- **Elevação:** criação/uso de contexto com token administrativo autorizado.
+- **Feature update:** atualização que move o produto para uma nova versão funcional.
+- **Fixture:** dado sintético criado apenas para um teste controlado.
+- **GPT:** formato de tabela de partições usado em instalações modernas.
+- **Handle:** referência de um processo a um objeto do sistema.
+- **Hash:** resumo determinístico usado para comparar bytes.
+- **Hive:** conjunto superior de dados do Registro exposto por uma raiz.
+- **Integridade de memória:** proteção baseada em virtualização disponível em hardware compatível.
+- **Manifesto:** lista de caminhos, tamanhos e hashes esperados.
+- **MSI:** pacote gerenciado pelo Windows Installer.
+- **MSIX:** formato de pacote com identidade e modelo de implantação controlado.
+- **NTFS:** sistema de arquivos padrão do Windows com ACL e journaling.
+- **OOBE:** experiência de configuração após o Windows Setup.
+- **Partição:** intervalo de blocos descrito na tabela de um disco.
+- **Privilégio:** capacidade específica presente/habilitada num token.
+- **Processo:** instância de programa com espaço de memória e recursos.
+- **Provider de eventos:** componente que publica eventos em um canal.
+- **Quality update:** atualização cumulativa de segurança e qualidade.
+- **Recovery key:** segredo usado para recuperar acesso a volume BitLocker.
+- **Reparse point:** objeto do filesystem que pode redirecionar resolução de caminho.
+- **RPO:** ponto máximo aceitável de perda de dados.
+- **RTO:** tempo máximo aceitável para restaurar o serviço.
+- **Secure Boot:** validação de assinatura na cadeia de inicialização UEFI.
+- **Servicing:** mecanismos que instalam, mantêm e reparam componentes do Windows.
+- **Serviço:** unidade gerenciada pelo Service Control Manager.
+- **SID:** identificador de segurança estável de conta ou grupo.
+- **Snapshot:** estado revertível de VM; não é backup independente.
+- **TPM:** componente que protege chaves e fornece medições/operações criptográficas.
+- **Token:** contexto de segurança de um processo com SIDs e privilégios.
+- **UAC:** mecanismo de controle/consentimento para elevação administrativa.
+- **UEFI:** interface de firmware moderna usada antes do sistema operacional.
+- **UTC:** referência de tempo útil para correlacionar fontes.
+- **Volume:** unidade lógica formatável e montável apresentada ao sistema.
+- **WinRE:** ambiente de recuperação do Windows.
+- **Working set:** páginas de memória física atualmente associadas a um processo.

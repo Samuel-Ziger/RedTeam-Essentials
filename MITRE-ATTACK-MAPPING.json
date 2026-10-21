@@ -1,12 +1,12 @@
 {
   "name": "RedTeam-Essentials Coverage",
   "versions": {
-    "attack": "14",
-    "navigator": "4.9.4",
+    "attack": "19.2",
+    "navigator": "5.3.2",
     "layer": "4.5"
   },
   "domain": "enterprise-attack",
-  "description": "Mapeamento MITRE ATT&CK (v2.1) — cobertura RedTeam-Essentials modulos 01-14",
+  "description": "Mapeamento MITRE ATT&CK 19.2 — cobertura RedTeam-Essentials, revisado em 2026-09-29",
   "filters": {
     "platforms": [
       "windows",
@@ -32,12 +32,12 @@
       "tactic": "reconnaissance",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 01-Recon: dns_enum.ps1, passive_recon_cheatsheet.md",
+      "comment": "Módulo 29-Reconhecimento-OSINT: dns_enum.ps1, passive_recon_cheatsheet.md",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "01-Recon"
+          "value": "29-Reconhecimento-OSINT"
         },
         {
           "name": "Recursos",
@@ -50,12 +50,12 @@
       "tactic": "reconnaissance",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 01-Recon: Reconhecimento passivo de hosts e infraestrutura",
+      "comment": "Módulo 29-Reconhecimento-OSINT: reconhecimento passivo de hosts e infraestrutura",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "01-Recon"
+          "value": "29-Reconhecimento-OSINT"
         }
       ]
     },
@@ -64,12 +64,12 @@
       "tactic": "reconnaissance",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 01-Recon: DNS enumeration, consultas públicas",
+      "comment": "Módulo 29-Reconhecimento-OSINT: DNS enumeration, consultas públicas",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "01-Recon"
+          "value": "29-Reconhecimento-OSINT"
         }
       ]
     },
@@ -78,12 +78,12 @@
       "tactic": "reconnaissance",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 02-OSINT: osint_automation.ps1, osint-tools-list.md",
+      "comment": "Módulo 29-Reconhecimento-OSINT: osint_automation.ps1, osint-tools-list.md",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "02-OSINT"
+          "value": "29-Reconhecimento-OSINT"
         },
         {
           "name": "Recursos",
@@ -96,12 +96,12 @@
       "tactic": "reconnaissance",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 02-OSINT: Pesquisa em sites de organizações alvo",
+      "comment": "Módulo 29-Reconhecimento-OSINT: Pesquisa em sites de organizações alvo",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "02-OSINT"
+          "value": "29-Reconhecimento-OSINT"
         }
       ]
     },
@@ -110,12 +110,12 @@
       "tactic": "reconnaissance",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulos 02-OSINT + 13-Initial-Access: phishing for information",
+      "comment": "Módulos 29-Reconhecimento-OSINT + 35-Acesso-Inicial-C2: phishing for information",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "13-Initial-Access"
+          "value": "35-Acesso-Inicial-C2"
         },
         {
           "name": "Recursos",
@@ -128,12 +128,12 @@
       "tactic": "discovery",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 03-AD-Notes: ad_enum_commands.md - Enumeração de contas",
+      "comment": "Módulo 31-Active-Directory-Identidade: ad_enum_commands.md - Enumeração de contas",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "03-AD-Notes"
+          "value": "31-Active-Directory-Identidade"
         },
         {
           "name": "Recursos",
@@ -146,12 +146,12 @@
       "tactic": "discovery",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 03-AD-Notes: Discovery de grupos e permissões",
+      "comment": "Módulo 31-Active-Directory-Identidade: Discovery de grupos e permissões",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "03-AD-Notes"
+          "value": "31-Active-Directory-Identidade"
         }
       ]
     },
@@ -160,12 +160,12 @@
       "tactic": "discovery",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 03-AD-Notes: Domain trust discovery",
+      "comment": "Módulo 31-Active-Directory-Identidade: Domain trust discovery",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "03-AD-Notes"
+          "value": "31-Active-Directory-Identidade"
         }
       ]
     },
@@ -174,12 +174,12 @@
       "tactic": "credential-access",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 03-AD-Notes: kerberoasting_teoria.md - Kerberoasting completo",
+      "comment": "Módulo 31-Active-Directory-Identidade: kerberoasting_teoria.md - Kerberoasting completo",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "03-AD-Notes"
+          "value": "31-Active-Directory-Identidade"
         },
         {
           "name": "Recursos",
@@ -192,12 +192,12 @@
       "tactic": "credential-access",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 03-AD-Notes: AS-REP Roasting (parcial)",
+      "comment": "Módulo 31-Active-Directory-Identidade: AS-REP Roasting (parcial)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "03-AD-Notes"
+          "value": "31-Active-Directory-Identidade"
         }
       ]
     },
@@ -206,12 +206,12 @@
       "tactic": "persistence",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 06-Cheatsheets: Uso de credenciais válidas",
+      "comment": "Módulo 37-Pos-Exploracao-Movimento-Lateral: uso de credenciais válidas em caminhos laterais autorizados",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
@@ -220,12 +220,12 @@
       "tactic": "privilege-escalation",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06: linux_privesc + windows_privesc_teoria.md",
+      "comment": "Módulo 36: linux_privesc + windows_privesc_teoria.md",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "36-Escalacao-Privilegios"
         },
         {
           "name": "Recursos",
@@ -238,12 +238,12 @@
       "tactic": "privilege-escalation",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06: UAC/sudo abuse (Linux+Windows)",
+      "comment": "Módulo 36: UAC/sudo abuse (Linux+Windows)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "36-Escalacao-Privilegios"
         },
         {
           "name": "Recursos",
@@ -256,12 +256,12 @@
       "tactic": "lateral-movement",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: windows_lateral_movement_teoria.md - RDP",
+      "comment": "Módulo 37-Pos-Exploracao-Movimento-Lateral: windows_lateral_movement_teoria.md - RDP",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         },
         {
           "name": "Recursos",
@@ -274,12 +274,12 @@
       "tactic": "lateral-movement",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: SMB/Admin Shares",
+      "comment": "Módulo 37-Pos-Exploracao-Movimento-Lateral: SMB/Admin Shares",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
@@ -288,12 +288,12 @@
       "tactic": "lateral-movement",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: Windows Remote Management (WinRM)",
+      "comment": "Módulo 37-Pos-Exploracao-Movimento-Lateral: Windows Remote Management (WinRM)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
@@ -302,12 +302,12 @@
       "tactic": "lateral-movement",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: Pass-the-Hash, Pass-the-Ticket",
+      "comment": "Módulo 37-Pos-Exploracao-Movimento-Lateral: Pass-the-Hash e Pass-the-Ticket em laboratório",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
@@ -316,12 +316,12 @@
       "tactic": "credential-access",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 05-DFIR: Teoria de dump de credenciais (perspectiva forense)",
+      "comment": "Módulo 38-DFIR-Resposta-Incidentes: Teoria de dump de credenciais (perspectiva forense)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "05-DFIR"
+          "value": "38-DFIR-Resposta-Incidentes"
         },
         {
           "name": "Tipo",
@@ -334,12 +334,12 @@
       "tactic": "execution",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: powershell_cheatsheet.md - Execução via PowerShell",
+      "comment": "Módulo 36-Escalacao-Privilegios: powershell_cheatsheet.md - Execução via PowerShell",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "36-Escalacao-Privilegios"
         },
         {
           "name": "Recursos",
@@ -352,12 +352,12 @@
       "tactic": "execution",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulo 06-Cheatsheets: Execução via Bash/Shell",
+      "comment": "Módulo 36-Escalacao-Privilegios: Execução via Bash/Shell",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "36-Escalacao-Privilegios"
         }
       ]
     },
@@ -366,12 +366,12 @@
       "tactic": "discovery",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 04-Automation: organize_logs.ps1 - File and Directory Discovery",
+      "comment": "Módulo 28-Engenharia-Ferramentas-Seguranca: organize_logs.ps1 - File and Directory Discovery",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "04-Automation"
+          "value": "28-Engenharia-Ferramentas-Seguranca"
         }
       ]
     },
@@ -380,26 +380,26 @@
       "tactic": "collection",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulos 04 + 14: automated collection / staging",
+      "comment": "Módulos 28 + 37: automated collection / staging",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
     {
       "techniqueID": "T1070",
-      "tactic": "defense-evasion",
+      "tactic": "stealth",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 05-DFIR: Teoria de limpeza de artefatos (perspectiva defensiva)",
+      "comment": "Módulos 38 e 25: remoção de indicadores estudada somente para detecção, preservação e resposta",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "05-DFIR"
+          "value": "38-DFIR-Resposta-Incidentes; 25-Cursos/atribuicao-defensiva"
         },
         {
           "name": "Tipo",
@@ -408,16 +408,16 @@
       ]
     },
     {
-      "techniqueID": "T1562",
-      "tactic": "defense-evasion",
+      "techniqueID": "T1685",
+      "tactic": "defense-impairment",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 09-C2-Evasion: evasion-fundamentals.md / opsec-checklist.md",
+      "comment": "Módulo 35-Acesso-Inicial-C2: evasion-fundamentals.md / opsec-checklist.md",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "09-C2-Evasion"
+          "value": "35-Acesso-Inicial-C2"
         },
         {
           "name": "Recursos",
@@ -427,29 +427,29 @@
     },
     {
       "techniqueID": "T1027",
-      "tactic": "defense-evasion",
+      "tactic": "stealth",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 09-C2-Evasion: ofuscacao (teoria)",
+      "comment": "Módulo 35-Acesso-Inicial-C2: ofuscacao (teoria)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "09-C2-Evasion"
+          "value": "35-Acesso-Inicial-C2"
         }
       ]
     },
     {
       "techniqueID": "T1055",
-      "tactic": "defense-evasion",
+      "tactic": "stealth",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 09-C2-Evasion: process injection (teoria)",
+      "comment": "Módulo 35-Acesso-Inicial-C2: process injection (teoria)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "09-C2-Evasion"
+          "value": "35-Acesso-Inicial-C2"
         }
       ]
     },
@@ -458,12 +458,12 @@
       "tactic": "command-and-control",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 09/14: ingress tool transfer (teoria/lab tunnels)",
+      "comment": "Módulo 35/37: ingress tool transfer (teoria/lab tunnels)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "09-C2-Evasion"
+          "value": "35-Acesso-Inicial-C2"
         }
       ]
     },
@@ -472,12 +472,12 @@
       "tactic": "exfiltration",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 14-Post-Exploitation: collection-exfil.md",
+      "comment": "Módulo 37-Pos-Exploracao-Movimento-Lateral: collection-exfil.md",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         },
         {
           "name": "Recursos",
@@ -490,12 +490,12 @@
       "tactic": "initial-access",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 13: phishing-teoria.md (sem weaponization)",
+      "comment": "Módulo 35: phishing-teoria.md (sem weaponization)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "13-Initial-Access"
+          "value": "35-Acesso-Inicial-C2"
         },
         {
           "name": "Recursos",
@@ -508,12 +508,12 @@
       "tactic": "initial-access",
       "score": 100,
       "color": "#31a354",
-      "comment": "Módulos 07/13: exploit public-facing + labs docker",
+      "comment": "Módulos 30/35: exploit public-facing + labs docker",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "07-Web-AppSec"
+          "value": "30-Web-API-AppSec"
         },
         {
           "name": "Recursos",
@@ -526,12 +526,12 @@
       "tactic": "initial-access",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 13: external-services.md (VPN/RDP/OWA)",
+      "comment": "Módulo 35: external-services.md (VPN/RDP/OWA)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "13-Initial-Access"
+          "value": "35-Acesso-Inicial-C2"
         },
         {
           "name": "Recursos",
@@ -544,12 +544,12 @@
       "tactic": "privilege-escalation",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 06: token privileges / potato family (teoria)",
+      "comment": "Módulo 36: token privileges / potato family (teoria)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "06-Cheatsheets"
+          "value": "36-Escalacao-Privilegios"
         },
         {
           "name": "Recursos",
@@ -562,12 +562,12 @@
       "tactic": "persistence",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 14: scheduled tasks persistence overview",
+      "comment": "Módulo 37: scheduled tasks persistence overview",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         },
         {
           "name": "Recursos",
@@ -580,12 +580,12 @@
       "tactic": "persistence",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 14: registry Run keys overview",
+      "comment": "Módulo 37: registry Run keys overview",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         },
         {
           "name": "Recursos",
@@ -598,12 +598,12 @@
       "tactic": "persistence",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 14: services persistence overview",
+      "comment": "Módulo 37: services persistence overview",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
@@ -612,12 +612,12 @@
       "tactic": "collection",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 14: data from local system / loot OPSEC",
+      "comment": "Módulo 37: data from local system / loot OPSEC",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         },
         {
           "name": "Recursos",
@@ -630,12 +630,12 @@
       "tactic": "exfiltration",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 14: exfil over alt protocol (DNS/HTTPS concepts)",
+      "comment": "Módulo 37: exfil over alt protocol (DNS/HTTPS concepts)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral"
         }
       ]
     },
@@ -644,16 +644,16 @@
       "tactic": "command-and-control",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 14: tunnels/proxy (chisel, ligolo-ng overview)",
+      "comment": "Módulos 37 e 25: proxies/túneis no acervo e detecção defensiva por telemetria correlacionada",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "14-Post-Exploitation"
+          "value": "37-Pos-Exploracao-Movimento-Lateral; 25-Cursos/atribuicao-defensiva"
         },
         {
           "name": "Recursos",
-          "value": "collection-exfil.md"
+          "value": "collection-exfil.md; 14-deteccao-evasao.md"
         }
       ]
     },
@@ -662,12 +662,12 @@
       "tactic": "command-and-control",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 09: C2 over app protocols (teoria)",
+      "comment": "Módulo 35: C2 over app protocols (teoria)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "09-C2-Evasion"
+          "value": "35-Acesso-Inicial-C2"
         },
         {
           "name": "Recursos",
@@ -680,12 +680,12 @@
       "tactic": "command-and-control",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 09: encrypted channel (teoria)",
+      "comment": "Módulo 35: encrypted channel (teoria)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "09-C2-Evasion"
+          "value": "35-Acesso-Inicial-C2"
         }
       ]
     },
@@ -694,12 +694,12 @@
       "tactic": "credential-access",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulos 07/10: unsecured credentials (JWT, container)",
+      "comment": "Módulos 30/33: unsecured credentials (JWT, container)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "07-Web-AppSec"
+          "value": "30-Web-API-AppSec"
         }
       ]
     },
@@ -708,12 +708,12 @@
       "tactic": "credential-access",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 13: password spraying concepts (rate/lockout)",
+      "comment": "Módulo 35: password spraying concepts (rate/lockout)",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "13-Initial-Access"
+          "value": "35-Acesso-Inicial-C2"
         },
         {
           "name": "Recursos",
@@ -726,12 +726,12 @@
       "tactic": "discovery",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 08: cloud infrastructure discovery",
+      "comment": "Módulo 32: cloud infrastructure discovery",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "08-Cloud-RedTeam"
+          "value": "32-Cloud-Security"
         }
       ]
     },
@@ -740,12 +740,12 @@
       "tactic": "collection",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 08: data from cloud storage",
+      "comment": "Módulo 32: data from cloud storage",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "08-Cloud-RedTeam"
+          "value": "32-Cloud-Security"
         }
       ]
     },
@@ -754,12 +754,12 @@
       "tactic": "initial-access",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 08: valid cloud accounts",
+      "comment": "Módulo 32: valid cloud accounts",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "08-Cloud-RedTeam"
+          "value": "32-Cloud-Security"
         }
       ]
     },
@@ -768,12 +768,12 @@
       "tactic": "persistence",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 08: account manipulation cloud",
+      "comment": "Módulo 32: account manipulation cloud",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "08-Cloud-RedTeam"
+          "value": "32-Cloud-Security"
         }
       ]
     },
@@ -782,12 +782,12 @@
       "tactic": "execution",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 10: deploy container",
+      "comment": "Módulo 33: deploy container",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "10-Container-Sec"
+          "value": "33-Containers-Supply-Chain"
         }
       ]
     },
@@ -796,12 +796,12 @@
       "tactic": "privilege-escalation",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 10: escape to host",
+      "comment": "Módulo 33: escape to host",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "10-Container-Sec"
+          "value": "33-Containers-Supply-Chain"
         },
         {
           "name": "Recursos",
@@ -814,12 +814,12 @@
       "tactic": "discovery",
       "score": 75,
       "color": "#74c476",
-      "comment": "Módulo 10: container and resource discovery",
+      "comment": "Módulo 33: container and resource discovery",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "10-Container-Sec"
+          "value": "33-Containers-Supply-Chain"
         }
       ]
     },
@@ -828,12 +828,12 @@
       "tactic": "credential-access",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 10: container API credentials",
+      "comment": "Módulo 33: container API credentials",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "10-Container-Sec"
+          "value": "33-Containers-Supply-Chain"
         }
       ]
     },
@@ -842,12 +842,12 @@
       "tactic": "initial-access",
       "score": 50,
       "color": "#addd8e",
-      "comment": "Módulo 08: trusted relationship / federation",
+      "comment": "Módulo 32: trusted relationship / federation",
       "enabled": true,
       "metadata": [
         {
           "name": "Módulo",
-          "value": "08-Cloud-RedTeam"
+          "value": "32-Cloud-Security"
         }
       ]
     }

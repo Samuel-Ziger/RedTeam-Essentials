@@ -1,0 +1,106 @@
+name: Windows Courses
+
+on:
+  push:
+    paths:
+      - '08-Cloud-RedTeam/windows-domestico-fundamentos/**'
+      - '08-Cloud-RedTeam/README.md'
+      - '09-C2-Evasion/windows-domestico-avancado/**'
+      - '10-Container-Sec/windows-empresarial-fundamentos/**'
+      - '11-Python-Tools/windows-empresarial-avancado/**'
+      - 'scripts/validate_windows_courses.py'
+      - 'MODULE-CATALOG.json'
+      - 'STUDY-CONTENT.json'
+      - 'study-app/scripts/build_catalog.py'
+      - 'study-app/scripts/tests/test_module08_curriculum.py'
+      - 'study-app/scripts/tests/test_module09_curriculum.py'
+      - '.github/workflows/windows-courses.yml'
+  pull_request:
+    paths:
+      - '08-Cloud-RedTeam/windows-domestico-fundamentos/**'
+      - '08-Cloud-RedTeam/README.md'
+      - '09-C2-Evasion/windows-domestico-avancado/**'
+      - '10-Container-Sec/windows-empresarial-fundamentos/**'
+      - '11-Python-Tools/windows-empresarial-avancado/**'
+      - 'scripts/validate_windows_courses.py'
+      - 'MODULE-CATALOG.json'
+      - 'STUDY-CONTENT.json'
+      - 'study-app/scripts/build_catalog.py'
+      - 'study-app/scripts/tests/test_module08_curriculum.py'
+      - 'study-app/scripts/tests/test_module09_curriculum.py'
+      - '.github/workflows/windows-courses.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-courses-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.13"
+
+      - name: Validate structure, links and scope
+        run: python scripts/validate_windows_courses.py
+
+      - name: Validate module 08 curriculum route and gates
+        run: python -m unittest study-app/scripts/tests/test_module08_curriculum.py -v
+
+      - name: Validate module 09 curriculum route and gates
+        run: python -m unittest study-app/scripts/tests/test_module09_curriculum.py -v
+
+      - name: Install pinned PowerShell test tools
+        shell: pwsh
+        run: |
+          Install-Module Pester -RequiredVersion 5.7.1 -Scope CurrentUser -Force -SkipPublisherCheck
+          Install-Module PSScriptAnalyzer -RequiredVersion 1.24.0 -Scope CurrentUser -Force -SkipPublisherCheck
+
+      - name: Analyze course PowerShell
+        shell: pwsh
+        run: |
+          $roots = @(
+            '08-Cloud-RedTeam/windows-domestico-fundamentos',
+            '09-C2-Evasion/windows-domestico-avancado',
+            '10-Container-Sec/windows-empresarial-fundamentos',
+            '11-Python-Tools/windows-empresarial-avancado'
+          )
+          $issues = foreach ($root in $roots) {
+            Invoke-ScriptAnalyzer -Path $root -Recurse -Severity Error
+          }
+          if ($issues) {
+            $issues | Format-Table -AutoSize
+            exit 1
+          }
+
+      - name: Run offline Pester suites
+        shell: pwsh
+        run: |
+          $paths = @(
+            '08-Cloud-RedTeam/windows-domestico-fundamentos/exemplos/tests',
+            '09-C2-Evasion/windows-domestico-avancado/exemplos/tests',
+            '10-Container-Sec/windows-empresarial-fundamentos/exemplos/tests',
+            '11-Python-Tools/windows-empresarial-avancado/exemplos/tests'
+          )
+          foreach ($path in $paths) {
+            Invoke-Pester -Path $path -CI
+          }
+
+      - name: Build and run the safe native DLL example
+        shell: cmd
+        run: |
+          call "%ProgramFiles%\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          cd /d "09-C2-Evasion\windows-domestico-avancado\exemplos\dll"
+          cl /nologo /W4 /WX /LD /DRTE_MATH_EXPORTS rte_math.c /link /out:rte_math.dll
+          cl /nologo /W4 /WX dll_consumer.c /link /out:dll_consumer.exe
+          dll_consumer.exe > output.txt
+          findstr /x "api_version=1" output.txt
+          findstr /x "sum=42" output.txt

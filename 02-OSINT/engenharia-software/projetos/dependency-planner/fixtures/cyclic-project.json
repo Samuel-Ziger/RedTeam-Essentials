@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "A",
+      "title": "Primeira tarefa",
+      "duration": 1,
+      "dependencies": ["C"]
+    },
+    {
+      "id": "B",
+      "title": "Segunda tarefa",
+      "duration": 1,
+      "dependencies": ["A"]
+    },
+    {
+      "id": "C",
+      "title": "Terceira tarefa",
+      "duration": 1,
+      "dependencies": ["B"]
+    }
+  ]
+}

@@ -145,14 +145,32 @@ rte::run() {
     "$@"
 }
 
+rte::run_sensitive() {
+    local label="${1:-comando sensivel}"
+    shift
+    if [[ "$RTE_DRYRUN" == "1" ]]; then
+        rte::warn "[DRY-RUN] $label (argumentos redigidos)"
+        return 0
+    fi
+    rte::debug "$label (argumentos redigidos)"
+    "$@"
+}
+
 # --- Cleanup / trap --------------------------------------------------------
+# Cleanup aceita somente nomes de funcoes previamente declaradas. Isso evita
+# interpretar strings arbitrarias com eval durante o encerramento.
 declare -a RTE_CLEANUP=()
-rte::add_cleanup() { RTE_CLEANUP+=("$*"); }
+rte::add_cleanup() {
+    local fn="${1:-}"
+    declare -F "$fn" >/dev/null 2>&1 || rte::fatal "Cleanup invalido: $fn"
+    RTE_CLEANUP+=("$fn")
+}
 rte::__run_cleanup() {
     local rc=$?
-    for c in "${RTE_CLEANUP[@]}"; do
-        rte::debug "cleanup: $c"
-        eval "$c" || true
+    local fn
+    for fn in "${RTE_CLEANUP[@]}"; do
+        rte::debug "cleanup: $fn"
+        "$fn" || true
     done
     return $rc
 }

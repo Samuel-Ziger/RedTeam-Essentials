@@ -1,0 +1,8 @@
+# Módulo 30: contexto mínimo da imagem atacante local.
+shared/
+docker-compose.yml
+lab-doctor.sh
+README.md
+IMAGE-PINS.md
+*.tmp
+*.log

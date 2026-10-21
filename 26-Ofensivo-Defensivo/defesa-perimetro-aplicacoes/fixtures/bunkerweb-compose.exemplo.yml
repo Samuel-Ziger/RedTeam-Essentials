@@ -1,0 +1,24 @@
+# Modelo didático: revise a documentação e fixe a imagem por digest antes do uso.
+# O perfil manual-only impede inicialização acidental pelo Compose padrão.
+services:
+  bunkerweb-lab:
+    image: bunkerity/bunkerweb-all-in-one:1.6.15
+    profiles: ["manual-only"]
+    ports:
+      - "127.0.0.1:8088:8080/tcp"
+      - "127.0.0.1:8448:8443/tcp"
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - bunkerweb-data:/data
+    networks:
+      - edge-lab
+    restart: "no"
+
+networks:
+  edge-lab:
+    internal: true
+
+volumes:
+  bunkerweb-data: {}

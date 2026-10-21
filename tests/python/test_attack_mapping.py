@@ -13,7 +13,7 @@ SPEC.loader.exec_module(validator)
 def valid_layer() -> dict:
     return {
         "name": "test",
-        "versions": {"attack": "14", "navigator": "4.9", "layer": "4.5"},
+        "versions": {"attack": "19.2", "navigator": "5.3.2", "layer": "4.5"},
         "domain": "enterprise-attack",
         "techniques": [{"techniqueID": "T1590.001", "tactic": "reconnaissance", "score": 50, "enabled": True}],
     }
@@ -23,7 +23,8 @@ def test_repository_layer_is_valid() -> None:
     import json
 
     layer = json.loads((ROOT / "MITRE-ATTACK-MAPPING.json").read_text(encoding="utf-8"))
-    assert validator.validate_layer(layer) == []
+    snapshot = json.loads((ROOT / "scripts/attack-enterprise-19.2.json").read_text(encoding="utf-8"))
+    assert validator.validate_layer(layer, snapshot["techniques"]) == []
 
 
 def test_validator_reports_duplicate_and_bad_score() -> None:
@@ -36,3 +37,9 @@ def test_validator_reports_duplicate_and_bad_score() -> None:
 
 def test_validator_requires_expected_metadata() -> None:
     assert validator.validate_layer({})
+
+
+def test_validator_rejects_tactic_not_allowed_by_official_snapshot() -> None:
+    layer = valid_layer()
+    errors = validator.validate_layer(layer, {"T1590.001": ["resource-development"]})
+    assert any("nao pertence" in error for error in errors)

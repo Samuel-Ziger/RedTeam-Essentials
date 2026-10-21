@@ -1,0 +1,68 @@
+name: Cryptography Courses
+
+on:
+  push:
+    paths:
+      - '19-Wireless-Security/criptografia-fundamentos/**'
+      - '20-Offensive-Labs/criptografia-moderna/**'
+      - '21-Network-Pivoting/criptografia-aplicada/**'
+      - '22-Secure-Code-Review/engenharia-criptografica/**'
+      - 'requirements-crypto.txt'
+      - 'scripts/validate_crypto_courses.py'
+      - '.github/workflows/cryptography-courses.yml'
+  pull_request:
+    paths:
+      - '19-Wireless-Security/criptografia-fundamentos/**'
+      - '20-Offensive-Labs/criptografia-moderna/**'
+      - '21-Network-Pivoting/criptografia-aplicada/**'
+      - '22-Secure-Code-Review/engenharia-criptografica/**'
+      - 'requirements-crypto.txt'
+      - 'scripts/validate_crypto_courses.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cryptography-courses-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned cryptography dependency
+        run: python -m pip install -r requirements-crypto.txt ruff==0.13.2
+
+      - name: Lint and format-check course code
+        run: |
+          ruff check scripts/validate_crypto_courses.py \
+            19-Wireless-Security/criptografia-fundamentos/exemplos \
+            20-Offensive-Labs/criptografia-moderna/exemplos \
+            21-Network-Pivoting/criptografia-aplicada/exemplos \
+            22-Secure-Code-Review/engenharia-criptografica/exemplos
+          ruff format --check scripts/validate_crypto_courses.py \
+            19-Wireless-Security/criptografia-fundamentos/exemplos \
+            20-Offensive-Labs/criptografia-moderna/exemplos \
+            21-Network-Pivoting/criptografia-aplicada/exemplos \
+            22-Secure-Code-Review/engenharia-criptografica/exemplos
+
+      - name: Validate structure, links and offline scope
+        run: python scripts/validate_crypto_courses.py
+
+      - name: Run all four courses
+        run: |
+          bash 19-Wireless-Security/criptografia-fundamentos/testar-curso.sh
+          bash 20-Offensive-Labs/criptografia-moderna/testar-curso.sh
+          bash 21-Network-Pivoting/criptografia-aplicada/testar-curso.sh
+          bash 22-Secure-Code-Review/engenharia-criptografica/testar-curso.sh
+
+      - name: Parse Bash scripts
+        run: |
+          find 19-Wireless-Security/criptografia-fundamentos +            20-Offensive-Labs/criptografia-moderna +            21-Network-Pivoting/criptografia-aplicada +            22-Secure-Code-Review/engenharia-criptografica +            -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n

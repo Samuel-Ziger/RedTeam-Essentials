@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+readonly state_directory=${STATE_DIRECTORY:-/var/lib/curso-observador}
+readonly output="$state_directory/ultima-execucao.txt"
+
+install -d -m 0750 -- "$state_directory"
+temporary=$(mktemp -- "$state_directory/.ultima-execucao.XXXXXX")
+trap 'rm -f -- "$temporary"' EXIT
+
+{
+    printf 'schema=curso-observador/v1\n'
+    printf 'timestamp_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    printf 'kernel=%s\n' "$(uname -r)"
+    printf 'uid=%s\n' "$(id -u)"
+} > "$temporary"
+
+chmod 0640 -- "$temporary"
+mv -f -- "$temporary" "$output"
+trap - EXIT
+logger --tag curso-observador -- 'observacao concluida'

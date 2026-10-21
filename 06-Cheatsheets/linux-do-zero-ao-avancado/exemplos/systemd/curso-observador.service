@@ -1,0 +1,22 @@
+[Unit]
+Description=Observador didatico do curso Linux
+Documentation=file:/usr/local/share/doc/curso-linux/README.md
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/curso-observador
+DynamicUser=yes
+StateDirectory=curso-observador
+UMask=0027
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictRealtime=yes

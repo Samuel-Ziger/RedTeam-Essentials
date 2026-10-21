@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "asset": "public-web-tls",
+      "owner": "platform",
+      "use": "key-agreement",
+      "algorithm": "X25519",
+      "status": "current",
+      "dataYears": 2,
+      "externallyExposed": true,
+      "migrationTarget": "standardized hybrid TLS profile",
+      "deadline": "2028-12-31"
+    },
+    {
+      "asset": "long-term-archive",
+      "owner": "records",
+      "use": "key-encapsulation",
+      "algorithm": "RSA-OAEP",
+      "status": "current",
+      "dataYears": 15,
+      "externallyExposed": false,
+      "migrationTarget": "ML-KEM approved profile",
+      "deadline": "2027-12-31"
+    },
+    {
+      "asset": "release-signing",
+      "owner": "engineering",
+      "use": "signature",
+      "algorithm": "Ed25519",
+      "status": "current",
+      "dataYears": 10,
+      "externallyExposed": true,
+      "migrationTarget": "ML-DSA approved profile",
+      "deadline": "2028-06-30"
+    },
+    {
+      "asset": "legacy-download-checksum",
+      "owner": "web",
+      "use": "collision-resistant-integrity",
+      "algorithm": "SHA-1",
+      "status": "deprecated",
+      "dataYears": 1,
+      "externallyExposed": true,
+      "migrationTarget": "SHA-256 plus signed manifest",
+      "deadline": "2026-12-31"
+    },
+    {
+      "asset": "database-fields",
+      "owner": "data",
+      "use": "authenticated-encryption",
+      "algorithm": "AES-256-GCM",
+      "status": "current",
+      "dataYears": 5,
+      "externallyExposed": false,
+      "migrationTarget": "",
+      "deadline": ""
+    }
+  ]
+}

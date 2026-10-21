@@ -1,56 +1,34 @@
-# 18 - Segurança mobile
+# 18 — Redes V: infraestrutura empresarial e engenharia de protocolos
 
-> Fundamentos defensivos para Android e iOS alinhados a armazenamento, tráfego,
-> identidade e privacidade. Use somente apps deliberadamente vulneráveis.
+Conclusão da rota de redes: arquitetura de campus, filial, datacenter e nuvem;
+serviços centrais; observabilidade; automação; disponibilidade; capacidade; e
+o ciclo completo para especificar, implementar e testar um protocolo próprio.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | AppSec e desenvolvedores mobile intermediários. |
-| Pré-requisitos | Módulos 00 e 07; HTTP/TLS e autenticação. |
-| Tempo estimado | 8 horas de leitura e 6 horas em emulador descartável. |
-| Ambiente | Emulador/simulador e aplicação própria ou vulnerável de treinamento. |
-| Evidência final | Threat model, três achados sanitizados e correções testáveis. |
-| Critério de conclusão | Cobrir armazenamento, transporte e identidade com cleanup. |
+|---|---|
+| Público | Engenheiros de redes, plataforma, SRE e arquitetura. |
+| Pré-requisitos | Módulos 14–17 e programação dos módulos 00–05. |
+| Tempo estimado | 240–360 horas. |
+| Ambiente | Fixtures e serviços exclusivamente em loopback |
+| Evidência final | HLD/LLD, SLOs, plano operacional e protocolo RNP/1 implementado. |
+| Critério de conclusão | Projetar uma infraestrutura operável e evoluir um protocolo com segurança. |
 
-## Checklist por superfície
+## Comece aqui
 
-1. **Dados locais:** preferências, bancos, backups, screenshots, clipboard, logs
-   e Keychain/Keystore; segredos não devem ficar em texto claro.
-2. **Transporte:** TLS, trust configuration, cleartext, hostname validation e
-   tratamento de falhas; pinning é defesa adicional, não substituto para TLS.
-3. **Identidade:** OAuth/OIDC, PKCE, biometria como desbloqueio local, expiração,
-   revogação e autorização sempre validada no servidor.
-4. **Plataforma:** permissions, intents/deep links, exported components, URL
-   schemes, WebViews e atualizações.
-5. **Privacidade:** minimização, consentimento, retenção e exclusão verificável.
-
-## Exercício seguro
-
-Use dados canário em um emulador. Mapeie onde o app armazena o canário, quais
-requests o transportam e qual identidade o acessa. Não tente interceptar apps de
-terceiros nem contornar proteções de dispositivo real.
-
-## Referência metodológica
-
-Use OWASP MASVS/MASTG como catálogo de requisitos e testes, registrando a versão
-consultada durante o exercício. Um checklist sem modelo de ameaça não determina
-risco de negócio.
-
-## Cleanup
-
-Apague dados do app, destrua o emulador/snapshot, revogue tokens de laboratório
-e confirme que nenhum proxy ou certificado de teste permaneceu instalado.
-
+- [Curso completo empresarial e de protocolos](redes-empresariais-protocolos/README.md)
+- [Laboratórios](redes-empresariais-protocolos/laboratorios/README.md)
+- [Implementação de protocolo](redes-empresariais-protocolos/exemplos/README.md)
+- [Consulta rápida](redes-empresariais-protocolos/CHEATSHEET.md)
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Os exemplos externos são complementares; a especificação e o código local
+são suficientes para concluir o módulo.
 
-1. [iPhone vs Android: Qual é o mais seguro? #hardwarehacking](https://www.youtube.com/watch?v=0tAamNaPGAg) — **Cortes TecMundo [OFICIAL]**.
-2. [Android ou iPhone (iOS): Qual é o MAIS SEGURO?](https://www.youtube.com/watch?v=T4lLXfJLIew) — **Cyber Novas**.
-3. [Android ou iPhone: qual é mais seguro? Hacker responde](https://www.youtube.com/watch?v=vpKMEg-Nja4) — **Cortes TecMundo [OFICIAL]**.
-4. [Como Proteger seu Celular de Hackers – 10 Dicas Essenciais para Android e iPhone](https://www.youtube.com/watch?v=t_EMKgIoGx8) — **Cyber Alerta**.
-5. [🤔É Realmente NECESSÁRIO usar Antivírus no Celular? (Android e iOS)](https://www.youtube.com/watch?v=bZVr2m6cj4o) — **Mestres da Informática**.
-
+1. [Fundamentos de redes de computadores — curso completo](https://www.youtube.com/watch?v=vqrvOz1zSgY) — **Hardware Redes Brasil**.
+2. [Protocolo TCP/IP — curso completo](https://www.youtube.com/watch?v=kP1kktlbUTs) — **Hardware Redes Brasil**.
+3. [IP, DNS, DHCP e roteamento](https://www.youtube.com/watch?v=z2vnQcb8nGI) — **Cyber Security Br**.
+4. [Automação de redes com Python](https://www.youtube.com/watch?v=VAx9g35QQbQ) — **Python4Networking**.
+5. [Introdução ao gRPC](https://www.youtube.com/watch?v=QyyMjF764mo) — **Full Cycle**.

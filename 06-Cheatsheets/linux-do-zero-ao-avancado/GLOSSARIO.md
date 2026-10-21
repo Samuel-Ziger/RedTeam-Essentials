@@ -1,0 +1,66 @@
+# Glossário Linux
+
+- **ABI:** contrato binário entre componentes, incluindo chamadas e formatos.
+- **ACL:** lista adicional de permissões para usuários e grupos nomeados.
+- **ASLR:** randomiza endereços para dificultar dependência em posições fixas.
+- **Block device:** dispositivo que oferece acesso a blocos endereçáveis.
+- **Bootloader:** carrega kernel/initramfs e fornece parâmetros de boot.
+- **Capability:** parte granular da autoridade tradicional do UID 0.
+- **cgroup:** contabiliza, organiza e controla recursos de tarefas.
+- **Context switch:** troca do contexto executado por uma CPU.
+- **Copy-on-write:** compartilha estado até que uma escrita exija cópia.
+- **Daemon:** processo de serviço, normalmente sem terminal interativo.
+- **Dentry:** objeto/cache que relaciona nome a inode no VFS.
+- **Descritor de arquivo:** inteiro que referencia um objeto aberto no processo.
+- **Distro:** integração de kernel, user space, pacotes e políticas.
+- **DKMS:** reconstrói módulos externos para kernels instalados.
+- **ESP:** partição de sistema EFI usada no boot UEFI.
+- **ELF:** formato comum de executáveis, bibliotecas e objetos Linux.
+- **Errno:** código de erro exposto pela libc para várias operações.
+- **Filesystem:** estrutura que organiza dados, nomes e metadados.
+- **Firmware:** código/dados carregados no hardware ou por um driver.
+- **FQDN:** nome de domínio completo de um host.
+- **GPT:** formato moderno de tabela de partições.
+- **Hard link:** entrada de diretório adicional para o mesmo inode.
+- **Init:** primeiro processo de user space, PID 1 em seu PID namespace.
+- **Initramfs:** user space temporário usado antes da raiz real.
+- **Inode:** metadados e referência de dados; o nome fica no diretório.
+- **IPC:** mecanismos de comunicação entre processos.
+- **Journal:** log estruturado do systemd-journald; também pode significar log
+  transacional de um filesystem, conforme contexto.
+- **Kernel:** núcleo privilegiado que administra recursos e interfaces.
+- **LSM:** framework de hooks de segurança do kernel.
+- **LUKS:** formato de metadados para criptografia de bloco Linux.
+- **MAC:** controle de acesso mandatório; em rede também pode significar endereço
+  Media Access Control. O contexto decide.
+- **MMU:** hardware que traduz endereços virtuais/físicos.
+- **Mount:** associa um filesystem a um ponto na árvore.
+- **Namespace:** isola uma visão de recursos para um conjunto de processos.
+- **NSS:** define fontes de nomes/identidades usadas pela libc.
+- **OOM:** situação em que alocação não pode ser satisfeita; pode acionar kill.
+- **Page cache:** páginas de arquivos mantidas em RAM pelo kernel.
+- **Page fault:** evento para resolver uma tradução/página ausente.
+- **PAM:** pilhas modulares de autenticação, conta, senha e sessão.
+- **PID:** identificador de processo dentro de um PID namespace.
+- **Pipe:** canal unidirecional de bytes entre descritores.
+- **PSS:** memória residente compartilhada dividida proporcionalmente.
+- **PSI:** mede tempo de stall por pressão de CPU, memória ou I/O.
+- **RAID:** combina dispositivos para desempenho/disponibilidade; não é backup.
+- **RSS:** conjunto residente atribuído a um processo, com compartilhamento.
+- **Scheduler:** seleciona tarefas para CPU ou ordena I/O, conforme contexto.
+- **Seccomp:** filtro de syscalls por processo.
+- **Signal:** notificação assíncrona entregue a processo/thread.
+- **Socket:** endpoint de comunicação local ou de rede.
+- **Swap:** armazenamento para páginas elegíveis fora da RAM.
+- **Symlink:** arquivo especial cujo conteúdo referencia outro caminho.
+- **Syscall:** entrada controlada de user space em serviço do kernel.
+- **systemd unit:** objeto administrado pelo service manager.
+- **Thread:** fluxo de execução que compartilha recursos com outras threads.
+- **tmpfs:** filesystem volátil apoiado por memória e possivelmente swap.
+- **UEFI:** firmware/interface moderna de inicialização.
+- **UID/GID:** identificadores numéricos de usuário e grupo.
+- **udev:** gerenciador de eventos/dispositivos do user space.
+- **User space:** ambiente não privilegiado onde processos comuns executam.
+- **VFS:** abstração comum sobre filesystems.
+- **VIRT/VSZ:** tamanho do espaço virtual mapeado de um processo.
+- **Zombie:** processo terminado cujo status ainda não foi coletado pelo pai.

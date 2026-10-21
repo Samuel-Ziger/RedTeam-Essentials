@@ -297,7 +297,7 @@ hashcat -m 13100 hashes.txt rockyou.txt
 ```
 
 **Tempo de crack:** 3 horas  
-**Senha descoberta:** `SVC-SQL:Summer2023!`
+**Credencial validada:** `SVC-SQL:<REDACTED>`
 
 4. **Verificação de Privilégios:**
 ```powershell
@@ -319,11 +319,11 @@ net user SVC-SQL /domain
 
 **Evidências:**
 
-![Screenshot da enumeração de SPNs](images/kerberoast_enum.png)
+> Evidência 1: inserir captura sanitizada da enumeração de SPNs.
 
-![Hash capturado](images/kerberoast_hash.png)
+> Evidência 2: inserir somente um trecho não reversível ou redigido do hash.
 
-![Acesso com credencial crackeada](images/kerberoast_access.png)
+> Evidência 3: inserir captura sanitizada da validação de acesso.
 
 **Recomendações:**
 
@@ -410,7 +410,7 @@ net user SVC-SQL /domain
 | Execution | User Execution | T1204.001 | Usuário executou payload |
 | Persistence | Create Account | T1136.002 | Criação de conta de domínio |
 | Privilege Escalation | Valid Accounts | T1078.002 | Uso de credenciais de Domain Admin |
-| Defense Evasion | Obfuscated Files or Information | T1027 | Ofuscação de payload |
+| Stealth | Obfuscated Files or Information | T1027 | Ofuscação de payload |
 | Credential Access | Kerberoasting | T1558.003 | Ataque de Kerberoasting |
 | Discovery | Account Discovery | T1087.002 | Enumeração de AD |
 | Lateral Movement | Remote Services | T1021.001 | RDP para workstations |

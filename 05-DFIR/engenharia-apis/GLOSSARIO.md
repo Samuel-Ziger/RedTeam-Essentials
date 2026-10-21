@@ -1,0 +1,57 @@
+# Glossário de engenharia de APIs
+
+- **API:** contrato observável para interação programática.
+- **adapter:** componente que traduz protocolo/tecnologia para uma porta interna.
+- **at-least-once:** entrega que pode repetir, mas busca não perder.
+- **at-most-once:** entrega que não repete, mas pode perder.
+- **audience:** destinatário para o qual um token foi emitido.
+- **backpressure:** mecanismo para conter produtor mais rápido que consumidor.
+- **BFLA:** autorização quebrada no nível de função.
+- **BOLA:** autorização quebrada no nível do objeto.
+- **BOPLA:** autorização quebrada no nível de propriedades do objeto.
+- **bulkhead:** isolamento de pools para limitar propagação de saturação.
+- **canonicalização:** conversão determinística para uma forma canônica.
+- **capability:** referência/token que concede ação delimitada.
+- **circuit breaker:** controle que suspende chamadas a dependência degradada.
+- **CloudEvents:** especificação de envelope interoperável para eventos.
+- **comando:** mensagem que solicita uma ação.
+- **consumer:** parte que depende do contrato.
+- **correlation ID:** identificador que relaciona operações; não é autorização.
+- **cursor:** token opaco que representa posição numa consulta.
+- **deadline:** instante máximo para a operação inteira.
+- **DLQ:** área de mensagens não processadas após a política de tentativas.
+- **ETag:** validador HTTP de uma representação.
+- **evento:** fato imutável ocorrido no domínio.
+- **error budget:** falha tolerada resultante de um SLO.
+- **idempotência:** repetição da intenção produz o mesmo efeito relevante.
+- **inbox:** registro de mensagens consumidas para deduplicar efeito.
+- **invariante:** condição que precisa permanecer verdadeira.
+- **JWT:** formato de claims protegidas; não é um fluxo de login.
+- **keyset pagination:** paginação baseada na última chave ordenada.
+- **media type:** identificador do formato e semântica de um corpo.
+- **mTLS:** TLS em que cliente e servidor apresentam certificados.
+- **OpenAPI:** especificação para descrever APIs HTTP.
+- **outbox:** eventos pendentes gravados atomicamente com estado de domínio.
+- **owner:** responsável final pelo ciclo de vida e decisões.
+- **PKCE:** extensão que liga authorization code ao cliente que iniciou o fluxo.
+- **porta:** interface interna expressando necessidade do caso de uso.
+- **precondição:** condição HTTP/negócio que precisa ser verdadeira.
+- **Problem Details:** modelo RFC 9457 para erros HTTP legíveis por máquinas.
+- **provider:** parte que implementa e mantém o contrato.
+- **quota:** quantidade total permitida numa janela.
+- **rate limit:** limite de frequência de operações.
+- **reconciliação:** comparação de estados para resolver resultado incerto.
+- **representação:** forma transferível do estado de um recurso.
+- **resource:** conceito identificável exposto pela API.
+- **retry:** nova tentativa controlada após falha potencialmente transitória.
+- **saga:** coordenação de transações locais e compensações de negócio.
+- **schema:** forma, tipos, restrições e parte da semântica da mensagem.
+- **SDK:** biblioteca idiomática para consumir uma API.
+- **SLI:** medida quantitativa de confiabilidade.
+- **SLO:** alvo definido para um SLI numa janela.
+- **SSRF:** indução do servidor a acessar destino controlado pelo atacante.
+- **tenant:** limite lógico de organização/cliente.
+- **trace:** árvore de spans que representa trabalho distribuído.
+- **tolerant reader:** consumidor que tolera extensões compatíveis.
+- **webhook:** callback HTTP iniciado pelo produtor.
+- **watermark:** posição/tempo que delimita dados considerados em processamento.

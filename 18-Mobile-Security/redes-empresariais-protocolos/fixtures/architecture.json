@@ -1,0 +1,16 @@
+{
+  "schema": "rte-architecture/v1",
+  "sites": [
+    {"id": "campus-a", "owner": "network-team", "prefixes": ["10.10.0.0/16", "2001:db8:10::/48"], "failure_domain": "metro-a"},
+    {"id": "branch-b", "owner": "network-team", "prefixes": ["10.20.0.0/16", "2001:db8:20::/48"], "failure_domain": "metro-b"},
+    {"id": "cloud-c", "owner": "platform-team", "prefixes": ["10.30.0.0/16", "2001:db8:30::/48"], "failure_domain": "region-c"}
+  ],
+  "services": [
+    {"id": "employee-api", "owner": "application-team", "sites": ["campus-a", "cloud-c"], "criticality": "high"},
+    {"id": "ddi", "owner": "network-team", "sites": ["campus-a", "branch-b"], "criticality": "critical"}
+  ],
+  "slos": [
+    {"service": "employee-api", "sli": "successful_requests_percent", "target": 99.9, "window_days": 30},
+    {"service": "ddi", "sli": "successful_queries_percent", "target": 99.99, "window_days": 30}
+  ]
+}

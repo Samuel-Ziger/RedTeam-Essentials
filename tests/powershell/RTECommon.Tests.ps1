@@ -25,5 +25,11 @@ Describe 'RTECommon export' {
         Test-Path $path | Should -BeTrue
         (Get-Content $path -Raw | ConvertFrom-Json).ok | Should -BeTrue
     }
-}
 
+    It 'sanitizes export names and keeps output in the requested directory' {
+        $dir = Join-Path $TestDrive 'safe'
+        $path = Export-RTEResult -Data @{ ok = $true } -Path $dir -Name '../../unsafe target' -Format json
+        (Split-Path -Parent $path) | Should -Be $dir
+        (Split-Path -Leaf $path) | Should -Match '^unsafe_target_'
+    }
+}

@@ -6,6 +6,33 @@ Este documento apresenta uma roadmap completa para estudar Red Team de forma gra
 
 ---
 
+## Jornada canônica atual
+
+O currículo possui **41 módulos em sete áreas**. A base obrigatória vai de
+**00 a 26**; somente depois dela começa a especialização em segurança, com
+**14 módulos de 27 a 40**:
+
+1. **27:** governança, laboratório e evidência;
+2. **28:** automação e ferramentas de segurança;
+3. **29:** reconhecimento, OSINT e superfície de ataque;
+4. **30:** Web, APIs e revisão segura de código;
+5. **31:** Active Directory e identidade híbrida;
+6. **32:** segurança em AWS, Azure e GCP;
+7. **33:** containers, Kubernetes, CI/CD e supply chain;
+8. **34:** segurança de macOS, mobile e wireless;
+9. **35:** acesso inicial, C2, evasão e OPSEC;
+10. **36:** elevação de privilégios em Linux e Windows;
+11. **37:** pós-exploração, pivoting e movimentação lateral;
+12. **38:** DFIR e resposta a incidentes;
+13. **39:** threat intelligence e adversary emulation;
+14. **40:** capstone Purple Team de operações integradas.
+
+Os acervos avançados foram realocados fisicamente para essa sequência; os
+módulos 00–26 mantêm apenas seus cursos-base. Os tiers abaixo permanecem como
+referência temática e de proficiência; a ordem curricular oficial é 00–40.
+
+---
+
 ## 📊 Visão Geral do Roadmap
 
 ```
@@ -37,7 +64,7 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
 **Tempo estimado:** 4-6 semanas  
 **Objetivo:** Compreender os fundamentos de reconhecimento e coleta de informações
 
-### Módulo 1.1: Reconhecimento Passivo (01-Recon)
+### Módulo 29: Reconhecimento Passivo e OSINT
 - **Duração:** 1-2 semanas
 - **Objetivos de Aprendizado:**
   - Entender a diferença entre reconhecimento passivo e ativo
@@ -46,9 +73,9 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
   - Compreender footprinting de aplicações web
 
 - **Conteúdo:**
-  - `passive_recon_cheatsheet.md` - Teoria e comandos
-  - `dns_enum.ps1` - Script automatizado de DNS
-  - `web_recon_notes.md` - Reconhecimento web
+  - `29-Reconhecimento-OSINT/passive_recon_cheatsheet.md` - Teoria e comandos
+  - `29-Reconhecimento-OSINT/dns_enum.ps1` - Script automatizado de DNS
+  - `29-Reconhecimento-OSINT/web_recon_notes.md` - Reconhecimento web
 
 - **MITRE ATT&CK Mapping:**
   - TA0043 - Reconnaissance
@@ -68,81 +95,99 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
 
 ---
 
-### Módulo 1.2: OSINT Avançado (02-OSINT)
-- **Duração:** 1-2 semanas
-- **Objetivos de Aprendizado:**
-  - Coletar informações de fontes públicas
-  - Automatizar processos de OSINT
-  - Correlacionar dados de múltiplas fontes
-  - Entender limites éticos e legais
+### Módulo 02: Engenharia de software e algoritmos (`02-OSINT/engenharia-software`)
 
-- **Conteúdo:**
-  - `osint-tools-list.md` - Ferramentas essenciais
-  - `osint_automation.ps1` - Automação de coleta
+- **Duração:** 260–380 horas.
+- **Pré-requisitos:** programação, dados e APIs dos módulos 00 e 01.
+- **Objetivos de aprendizagem:**
+  - transformar problemas ambíguos em contratos e invariantes verificáveis;
+  - analisar tempo, memória e hipóteses de estruturas e algoritmos;
+  - aplicar listas, hashes, árvores, heaps, tries e grafos conscientemente;
+  - dominar busca, ordenação, recursão, backtracking, DP e estratégias gulosas;
+  - projetar módulos, portas, adapters e arquiteturas orientadas por requisitos;
+  - evoluir legado com testes, ADRs, revisão, documentação e rollback.
 
-- **MITRE ATT&CK Mapping:**
-  - TA0043 - Reconnaissance
-    - T1593 - Search Open Websites/Domains
-    - T1594 - Search Victim-Owned Websites
-    - T1598 - Phishing for Information
+- **Prática e evidência:**
+  - exemplos equivalentes em Python, Java, C17, C# e JavaScript;
+  - cinco laboratórios progressivos com gates objetivos;
+  - caderno com 32 experimentos e guia de diagnóstico;
+  - Dependency Planner com CLI, JSON rigoroso, ordem/lotes, caminho crítico,
+    limites de recursos, testes de propriedades, runbook e ADRs.
 
-- **Tarefas Práticas:**
-  1. ✅ Criar perfil de organização usando apenas fontes abertas
-  2. ✅ Automatizar coleta de informações de funcionários
-  3. ✅ Identificar tecnologias utilizadas por um alvo
-  4. ✅ Gerar relatório OSINT profissional
-
-- **Recursos de Prática:**
-  - TryHackMe: "OSINT" learning path
-  - OSINT Framework: https://osintframework.com/
+Reconhecimento e OSINT não fazem parte deste módulo-base. Esses temas pertencem
+exclusivamente ao [módulo 29](29-Reconhecimento-OSINT/README.md), depois da base
+00–26.
 
 ---
 
-### Módulo 1.3: Fundamentos de Scripts e Automação (04-Automation)
-- **Duração:** 1 semana
-- **Objetivos de Aprendizado:**
-  - Entender automação com PowerShell e Bash
-  - Aprender a organizar evidências e logs
-  - Criar scripts seguros e reutilizáveis
+### Módulo 03: Desenvolvimento de aplicações profissionais (`03-AD-Notes/desenvolvimento-aplicacoes`)
 
-- **Conteúdo:**
-  - `windows_setup_clean.ps1` - Setup de ambiente Windows
-  - `linux_postinstall.sh` - Setup de ambiente Linux
-  - `organize_logs.ps1` - Organização de logs
+- **Duração:** 360–520 horas.
+- **Pré-requisitos:** módulos 00, 01 e 02.
+- **Objetivos de aprendizagem:**
+  - converter código e requisitos em contratos de produto verificáveis;
+  - projetar CLI, GUI desktop e web sobre o mesmo núcleo de domínio;
+  - evoluir configuração, estado e documentos locais sem perda silenciosa;
+  - construir acessibilidade, responsividade, offline e i18n como requisitos;
+  - diagnosticar, estender, empacotar, medir, publicar e recuperar aplicações.
 
-- **Tarefas Práticas:**
-  1. ✅ Configurar ambiente de teste automatizado
-  2. ✅ Criar script de organização de evidências
-  3. ✅ Implementar validações e tratamento de erros
-  4. ✅ Documentar scripts criados
+- **Prática e evidência:**
+  - exemplos equivalentes em Python, Java, C17, C# e JavaScript;
+  - cinco laboratórios cumulativos com gates no aplicativo de estudos;
+  - caderno com 32 práticas e guia de diagnóstico por fronteiras;
+  - Study Desk local-first com schema versionado, rollback, 35 testes, ADRs e
+    runbook;
+  - capstone instalável com teclado, migração, diagnóstico, orçamento e rollback.
 
-- **Recursos de Prática:**
-  - PowerShell Gallery: Estudar módulos existentes
-  - GitHub: Analisar scripts de automação
+Active Directory não faz parte deste módulo-base. O acervo histórico foi
+transferido para o [módulo 31](31-Active-Directory-Identidade/README.md), após a
+conclusão da base 00–26.
 
 ---
 
-### Módulo 1.4: Introdução ao DFIR (05-DFIR)
-- **Duração:** 1 semana
+### Módulo 04: Automação profissional
+
+- **Duração:** 220–320 horas
+- **Pré-requisitos:** módulos 00–03
+- **Formação:** 15 capítulos, 30 práticas e cinco laboratórios progressivos
+- **Competências:** decisão de automação, plan/apply, idempotência, arquivos,
+  pipelines, HTTP/webhooks, jobs, checkpoints, retry, backpressure, concorrência,
+  documentos, segurança, observabilidade, testes, CI/CD e distribuição
+- **Projeto:** FileFlow com limites, manifesto/digest, audit JSONL, 16 testes,
+  arquitetura, ADRs e runbook
+- **Conclusão:** artifact operável e game day reproduzível; 75% na rubrica sem
+  zerar dry-run/idempotência, segurança de efeitos, testes de falha ou operação
+
+Ferramentas especializadas de segurança foram transferidas para o módulo 28 e não
+integram esta formação-base.
+
+---
+
+### Módulo 1.4: Engenharia de APIs (05-DFIR/engenharia-apis)
+
+- **Duração:** 300–440 horas
+- **Formação:** 26 capítulos, 45 práticas e cinco laboratórios progressivos
 - **Objetivos de Aprendizado:**
-  - Compreender perspectiva defensiva
-  - Analisar logs e artefatos
-  - Entender detecção de ataques
+  - Projetar contratos HTTP e modelos de erro
+  - Implementar APIs seguras, observáveis e evolutivas
+  - Comparar REST, eventos, GraphQL e gRPC
 
 - **Conteúdo:**
-  - `windows_event_logs.md` - Logs do Windows
-  - `forensics_artifacts.md` - Artefatos forenses
-  - `memory_analysis_teoria.md` - Análise de memória
+  - semântica HTTP, recursos, schemas, paginação e compatibilidade
+  - autenticação, autorização, OWASP API Security e threat modeling
+  - OpenAPI, arquitetura, consistência, resiliência e testes
+  - webhooks, AsyncAPI, GraphQL, gRPC, streaming, SDKs e governança
 
-- **MITRE ATT&CK Mapping (Perspectiva de Detecção):**
-  - Entender como ataques são detectados
-  - Aprender a evitar deixar rastros óbvios
+- **Projeto integrador:**
+  - Contract Lab API com idempotência, ETag, cursor assinado e Problem Details
+  - clientes nas cinco linguagens e contrato OpenAPI
+  - 32 testes de unidade, componente, contrato, abuso e compatibilidade
 
 - **Tarefas Práticas:**
-  1. ✅ Analisar Event Logs de um ataque simulado
-  2. ✅ Identificar artefatos de execução de malware
-  3. ✅ Criar timeline de incidente
-  4. ✅ Estudar como Blue Team detecta Red Team
+  1. ✅ Projetar e revisar um contrato antes do código
+  2. ✅ Testar autorização, limites, concorrência e compatibilidade
+  3. ✅ Definir SLI, SLO, alertas e runbook
+  4. ✅ Entregar cliente, guia de migração e política de retirada
 
 ---
 
@@ -152,7 +197,7 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
 **Tempo estimado:** 8-12 semanas  
 **Objetivo:** Dominar técnicas de exploração e pós-exploração
 
-### Módulo 2.1: Active Directory Fundamentals (03-AD-Notes)
+### Módulo 31: Active Directory e identidade híbrida
 - **Duração:** 3-4 semanas
 - **Objetivos de Aprendizado:**
   - Entender arquitetura do Active Directory
@@ -161,9 +206,9 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
   - Usar BloodHound para mapeamento
 
 - **Conteúdo:**
-  - `ad_enum_commands.md` - Comandos de enumeração
-  - `kerberoasting_teoria.md` - Teoria de Kerberoasting
-  - `bloodhound_teoria.md` - Uso do BloodHound
+  - `31-Active-Directory-Identidade/active-directory-identidade-hibrida/`
+  - comandos de enumeração, teoria de Kerberos e análise de caminhos;
+  - identidade híbrida e controles defensivos no estágio avançado.
 
 - **MITRE ATT&CK Mapping:**
   - TA0007 - Discovery
@@ -188,92 +233,284 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
 
 ---
 
-### Módulo 2.2: Privilege Escalation (06-Cheatsheets)
-- **Duração:** 2-3 semanas
-- **Objetivos de Aprendizado:**
-  - Identificar vetores de escalação
-  - Explorar misconfigurations
-  - Abusar de privilégios
+### Módulo 2.2: Linux do zero ao kernel (06-Cheatsheets)
+
+- **Duração:** 240–360 horas.
+- **Objetivos de aprendizagem:**
+  - escolher, instalar e recuperar uma distribuição;
+  - dominar arquivos, texto, permissões, contas, pacotes e processos;
+  - compreender memória virtual, armazenamento, boot e systemd;
+  - administrar SSH local, serviços, logs, backups e hardening;
+  - explicar namespaces, cgroups, syscalls, kernel, módulos e drivers;
+  - diagnosticar desempenho por evidência.
 
 - **Conteúdo:**
-  - `linux_privesc_teoria.md` / `linux_privesc_modern.md` - Escalação Linux
-  - `windows_privesc_teoria.md` - Escalação Windows (enum, UAC, services, tokens)
+  - `linux-do-zero-ao-avancado/` — 31 capítulos autocontidos;
+  - exemplos seguros em Bash, AWK, Python e C;
+  - unidades systemd e módulo de kernel didáticos;
+  - 64 práticas, guia de diagnóstico e seis laboratórios progressivos;
+  - projeto final reproduzível com restore e defesa das decisões.
 
-- **MITRE ATT&CK Mapping:**
-  - TA0004 - Privilege Escalation
-    - T1068 - Exploitation for Privilege Escalation
-    - T1548 - Abuse Elevation Control Mechanism
-    - T1078 - Valid Accounts
-    - T1134 - Access Token Manipulation
+- **Tarefas práticas:**
+  1. [ ] Instalar e inventariar as VMs do curso.
+  2. [ ] Concluir os cinco marcos intermediários na ordem do catálogo.
+  3. [ ] Administrar serviço local com systemd, SSH e menor privilégio.
+  4. [ ] Praticar armazenamento, boot e kernel somente em clone descartável.
+  5. [ ] Restaurar o capstone em VM vazia e medir RPO/RTO.
+  6. [ ] Encaminhar redes aos módulos 14–18 com evidência do estado local.
 
-- **Tarefas Práticas:**
-  1. [ ] Enumerar sistema para vetores de privesc (Linux e Windows)
-  2. [ ] Explorar SUID/SUDO em Linux
-  3. [ ] Identificar serviços/unquoted paths/AlwaysInstallElevated em Windows
-  4. [ ] Praticar em THM PrivEsc / HTB / GOAD (ambiente autorizado)
-
-- **Recursos de Prática:**
-  - TryHackMe: "Linux PrivEsc", "Windows PrivEsc"
-  - VulnHub: Máquinas de privesc
+O acervo anterior de privilege escalation e movimento lateral permanece fora da
+rota. Uma eventual formação específica deverá ter área própria e não integra o
+escopo de firewalls/WAF do módulo 26.
 
 ---
 
-### Módulo 2.3: Lateral Movement (06-Cheatsheets)
-- **Duração:** 2-3 semanas
-- **Objetivos de Aprendizado:**
-  - Mover-se lateralmente em rede
-  - Usar credenciais obtidas
-  - Evitar detecção durante movimento
+### Módulo 2.3: Linux avançado e engenharia de kernel (07-Web-AppSec)
+
+- **Duração:** 420–620 horas.
+- **Pré-requisito:** concluir os módulos 00–06.
+- **Objetivos de aprendizagem:**
+  - ler fonte, ABI, ELF, syscalls e internals de processos;
+  - explicar scheduler/EEVDF, SMP, atomics, RCU, MM e NUMA;
+  - investigar VFS, filesystems, block layer, I/O e drivers;
+  - operar boot verificável, systemd, cgroup v2 e KVM offline;
+  - diagnosticar com perf, ftrace, eBPF local, core e kdump;
+  - aplicar LSM, seccomp, verity e assinatura;
+  - produzir pacotes, imagens e patches reproduzíveis.
 
 - **Conteúdo:**
-  - `windows_lateral_movement_teoria.md` - Movimento lateral Windows
+  - `linux-avancado/` — 35 capítulos com exercícios e checklists;
+  - 72 práticas, guia de diagnóstico e projeto de referência;
+  - exemplos reais em C/Bash, systemd, eBPF e módulo didático;
+  - nove gates de laboratório por risco e appliance offline como projeto final;
+  - rota semântica na aplicação, validação curricular e workflow dedicado.
 
-- **MITRE ATT&CK Mapping:**
-  - TA0008 - Lateral Movement
-    - T1021.001 - Remote Desktop Protocol
-    - T1021.002 - SMB/Windows Admin Shares
-    - T1021.006 - Windows Remote Management
-    - T1550 - Use Alternate Authentication Material
+- **Limite:** redes não pertencem a este módulo. Roteamento, firewall,
+  namespaces de rede, tráfego e eBPF de rede terão formação própria.
 
-- **Tarefas Práticas:**
-  1. ✅ Executar Pass-the-Hash
-  2. ✅ Usar PsExec para movimento lateral
-  3. ✅ Explorar WMI e WinRM
-  4. ✅ Pivotar através de múltiplos hosts
+- **Tarefas práticas:**
+  1. [ ] Mapear uma syscall da ABI ao código do kernel.
+  2. [ ] Reproduzir um experimento de scheduler/memória com percentis.
+  3. [ ] Diagnosticar um gargalo usando perf e tracing por hipótese.
+  4. [ ] Construir VM KVM/QEMU sem NIC e com imagem verificável.
+  5. [ ] Entregar pacote reproduzível e patch didático revisável.
+  6. [ ] Defender o appliance final com rollback e recuperação.
 
-- **Recursos de Prática:**
-  - HackTheBox: Pro Labs (Dante, Offshore)
-  - CRTP/CRTE labs
+O conteúdo Web AppSec historicamente armazenado em `07-Web-AppSec/` continua
+acessível para preservar links, mas é acervo legado e não integra esta rota.
 
 ---
 
-### Módulo 2.4: Post-Exploitation (14-Post-Exploitation)
-- **Duração:** 2 semanas
-- **Objetivos de Aprendizado:**
-  - Manter acesso de forma documentada e etica
-  - Coletar e staging de evidencias
-  - Exfiltrar dados de forma controlada em lab
+### Módulo 2.4: Windows doméstico I (08-Cloud-RedTeam)
 
-- **Conteúdo:**
-  - `collection-exfil.md` - staging, tunnels (chisel/ligolo), OPSEC de loot
-  - `persistence-overview.md` - Run keys, tasks, cron/systemd; ponte para AD
+- **Duração:** 240–360 horas.
+- **Conteúdo:** 18 capítulos aprofundados em
+  `windows-domestico-fundamentos/`, do ciclo de suporte e boot UEFI/TPM à
+  instalação suportada, NTFS/BitLocker, SID/ACL/UAC, processos/serviços,
+  pacotes, servicing, Registro, Event Log, backup, Defender, PowerShell,
+  diagnóstico, WinRE e projeto final.
+- **Prática:** 48 atividades, guia transversal, três scripts PowerShell reais,
+  seis gates semânticos, restore por manifesto, falha cega e computador local
+  recuperável testado por terceiro.
+- **Qualidade:** capítulos com objetivos/exercícios/checklists, teste curricular,
+  Pester, análise estática e rota intercalada na aplicação.
+- **Limite:** sem redes, compartilhamentos, firewall, identidade empresarial,
+  técnicas ofensivas ou internals reservados ao módulo 09.
 
-- **MITRE ATT&CK Mapping:**
-  - TA0009 - Collection
-  - TA0003 - Persistence
-  - TA0010 - Exfiltration
+### Módulo 2.5: Windows doméstico II (09-C2-Evasion)
 
-- **Tarefas Práticas:**
-  1. [ ] Montar tunnel lab (chisel ou ligolo-ng) entre duas VMs suas
-  2. [ ] Documentar loot com checklist de cleanup
-  3. [ ] Mapear persistencia encontrada vs deteccao (Sysmon)
+- **Duração:** 300–440 horas.
+- **Conteúdo:** 20 capítulos em `windows-domestico-avancado/` sobre Windows NT,
+  processos/threads/tokens, memória, PE/COFF, DLL/loader, NTFS/Registro internals,
+  drivers, PowerShell, ETW/WER, Sysinternals, performance, VBS e WinDbg.
+- **Prática:** 56 atividades, guia transversal de tracing/debugging, seis gates
+  semânticos, DLL nativa C com ABI validada, parser PE com limites, Pester,
+  WPR/WPA, mini dump próprio e Diagnostic Workbench reproduzido por terceiro.
+- **Qualidade:** todos os capítulos possuem objetivos, exercícios e checklists;
+  rota explícita, pré-requisitos dos labs e profundidade são testados em CI.
+- **Limite:** sem injeção, bypass, malware, evasão ou redes.
 
-### Módulo 2.5: Initial Access (13-Initial-Access)
+### Módulo 2.6: Windows empresarial I (10-Container-Sec)
+
+- **Duração:** 180–280 horas.
+- **Conteúdo:** 19 capítulos em `windows-empresarial-fundamentos/` sobre
+  Windows Server, Core, roles/features, identidades locais, baselines,
+  NTFS/ReFS/Storage Spaces/FSRM, Defender, servicing, VSS, backup, Hyper-V,
+  containers locais, DSC e capacidade.
+- **Projeto:** Server Core standalone, sem NIC, reconstruído por estado desejado
+  e recuperado por backup testado.
+
+### Módulo 2.7: Windows empresarial II (11-Python-Tools)
+
+- **Duração:** 240–360 horas.
+- **Conteúdo:** 22 capítulos em `windows-empresarial-avancado/` sobre imagens
+  WIM/WinPE/DISM, unattend, deployment rings, AD/GPO, gMSA/LAPS, PKI, JEA,
+  App Control, Defender, VBS/BitLocker, Sysmon, compliance e continuidade.
+- **Prática:** pipeline read-only, comparador de baseline, validador de modelo
+  de identidade, sete labs e arquitetura empresarial final.
+- **Continuação:** componentes distribuídos são projetados offline e os
+  fundamentos de DNS, roteamento, VPN e infraestrutura estão nos módulos 14–18.
+
+Os acervos Cloud, C2, Container e Python anteriores continuam preservados nos
+diretórios 08–11, mas não fazem parte da rota Windows principal.
+
+---
+
+### Módulo 2.8: macOS I (12-Java-Tools)
+
+- **Duração:** 140–220 horas.
+- **Conteúdo:** 20 capítulos em `macos-fundamentos/` sobre Apple Silicon/Intel,
+  boot/Recovery, Finder, APFS, contas, permissões, bundles, processos, `launchd`,
+  plists, Terminal/zsh, logs, backup e proteções nativas.
+- **Prática:** seis labs, inventário sem identificadores, backup SHA-256,
+  restauração e projeto de Mac local recuperável.
+- **Limite:** nenhuma configuração de rede ou redução de SIP/Gatekeeper/TCC.
+
+### Módulo 2.9: macOS II (13-Initial-Access)
+
+- **Duração:** 260–380 horas.
+- **Conteúdo:** 24 capítulos em `macos-avancado/` sobre Darwin/XNU,
+  Mach/BSD/IOKit, memória, Mach-O/`dyld`, APFS/SSV, assinatura/notarização,
+  sandbox/TCC, Endpoint Security, observabilidade, LLDB, perfis, MDM/DDM,
+  Platform SSO e compliance.
+- **Prática:** sete labs, parser Mach-O, dylib segura em C, auditor de perfis,
+  comparador de baseline e projeto de frota offline.
+- **Continuação:** serviços distribuídos são aprofundados nos módulos 14–18.
+
+O acervo Java anterior no 12 e o material Initial Access anterior no 13 foram
+preservados como legados, fora da rota macOS.
+
+---
+
+### Módulo 2.10: Redes I (14-Post-Exploitation)
+
+- **Duração:** 120–180 horas.
+- **Conteúdo:** 18 capítulos sobre tipos de rede, topologias, OSI/TCP-IP,
+  Ethernet, MAC/ARP/NDP, IPv4/IPv6, CIDR, DNS, DHCP, ICMP, TCP/UDP/QUIC,
+  HTTP/TLS, endereços públicos/privados e NAT.
+- **Prática:** cinco labs, calculadora IP, classificador HTTP e projeto ponta a
+  ponta inteiramente offline.
+
+### Módulo 2.11: Redes II (15-Hybrid-Identity)
+
+- **Duração:** 120–180 horas.
+- **Conteúdo:** 16 capítulos de redes domésticas/SOHO, modem/ONT, roteador,
+  switches/APs, Wi-Fi, WPA2/WPA3, convidados/IoT, firewall, NAT, IPv6,
+  cobertura, performance, privacidade e recuperação.
+- **Prática:** auditor de baseline, cinco labs e projeto residencial/SOHO.
+
+### Módulo 2.12: Redes III (16-CICD-Supply-Chain)
+
+- **Duração:** 150–220 horas.
+- **Conteúdo:** 17 capítulos sobre switching, tabela MAC, VLANs, 802.1Q,
+  inter-VLAN, STP/RSTP/MSTP, LACP, LLDP/PoE, 802.1X/NAC, QoS, multicast,
+  virtualização e campus.
+- **Prática:** validador de plano de VLAN, cinco labs e projeto de campus.
+
+### Módulo 2.13: Redes IV (17-macOS-Security)
+
+- **Duração:** 180–280 horas.
+- **Conteúdo:** 19 capítulos sobre RIB/FIB, rotas, OSPF, BGP/RPKI, ECMP,
+  FHRP, VRF, ACL/firewall, WAN, IPsec, WireGuard, acesso remoto e operações.
+- **Prática:** simulador de longest-prefix/ACL, cinco labs e projeto WAN/VPN.
+
+### Módulo 2.14: Redes V (18-Mobile-Security)
+
+- **Duração:** 240–360 horas.
+- **Conteúdo:** 21 capítulos de arquitetura empresarial, DDI, NTP, PKI, AAA,
+  proxies/load balancers, serviços, observabilidade, SLO/capacidade, HA/DR,
+  zero trust, automação e engenharia de protocolos.
+- **Prática:** seis labs, auditor de arquitetura e especificação/implementação
+  testada do protocolo binário RNP/1.
+
+Os conteúdos anteriores de Post-Exploitation, identidade híbrida, CI/CD,
+segurança macOS e mobile foram preservados nos respectivos arquivos `LEGADO-*`.
+
+### Módulo 2.15: Criptografia I (19-Wireless-Security)
+
+- **Duração:** 120–180 horas.
+- **Conteúdo:** 18 capítulos de representação, matemática modular, entropia,
+  CSPRNG, cifras clássicas, hashes, colisões, HMAC, HKDF, KDFs de senha,
+  compromissos, Merkle e canais laterais.
+- **Prática:** cinco labs e implementações testadas de teoria dos números,
+  SHA-256/HMAC e registros scrypt.
+
+### Módulo 2.16: Criptografia II (20-Offensive-Labs)
+
+- **Duração:** 160–240 horas.
+- **Conteúdo:** 19 capítulos de AES, modos, AEAD, AES-GCM,
+  ChaCha20-Poly1305, RSA-OAEP/PSS, Diffie–Hellman, ECC, X25519, Ed25519,
+  envelopes e agilidade.
+- **Prática:** cinco labs, envelope autenticado, acordo de chaves e assinaturas
+  reais com testes de adulteração.
+
+### Módulo 2.17: Criptografia III (21-Network-Pivoting)
+
+- **Duração:** 180–280 horas.
+- **Conteúdo:** 20 capítulos de PKI/X.509, CAs, validação, revogação, ACME,
+  TLS 1.3, mTLS, HTTPS, SSH, OpenPGP/S/MIME, senhas, dados em repouso, JOSE e
+  gestão de segredos.
+- **Prática:** seis labs, mini-PKI descartável e auditores X.509/TLS offline.
+
+### Módulo 2.18: Criptografia IV (22-Secure-Code-Review)
+
+- **Duração:** 220–340 horas.
+- **Conteúdo:** 21 capítulos de composição, protocolos, replay/downgrade,
+  constant-time, memória, parsing, testes/fuzzing, métodos formais, HSM/KMS,
+  criptoinventário, incidentes, agilidade e padrões pós-quânticos NIST.
+- **Prática:** seis labs, inventário priorizado e protocolo AES-GCM ordenado
+  com proteção contra replay e testes negativos.
+
+Os materiais anteriores de wireless, operações ofensivas, pivoting e code
+review mantêm seus caminhos e integram curricularmente os módulos 34, 40, 37
+e 30, respectivamente.
+
+### Módulo 2.19: Privacidade I (23-Threat-Intel-Emulation)
+
+- **Duração:** 140–220 horas.
+- **Conteúdo:** 19 capítulos sobre modelos de ameaça, metadados, roteamento,
+  NAT/CGNAT, DNS, TLS, VPN, proxies, Tor, navegador, fingerprinting,
+  identidade, dispositivos móveis, vazamentos e correlação de tráfego.
+- **Prática:** cinco labs e analisador offline de risco residual, sem coleta de
+  terceiros nem promessa de anonimato absoluto.
+
+### Módulo 2.20: Privacidade II (24-Lateral-Movement)
+
+- **Duração:** 160–240 horas.
+- **Conteúdo:** 20 capítulos para planejar, implantar e operar WireGuard em
+  VPS própria: chaves, rotas, nftables, DNS, IPv6, kill switch, MTU, logs,
+  rotação, revogação e recuperação.
+- **Prática:** seis labs, gerador de templates sem segredos e auditor de
+  política. O material de movimentação lateral integra o módulo 37.
+
+### Módulo 2.21: Privacidade III (25-Cursos)
+
+- **Duração:** 180–280 horas.
+- **Conteúdo:** 20 capítulos de telemetria, relógio, endpoint, identidade,
+  rede, NAT/CGNAT, VPN/Tor, aplicação, cloud, correlação, integridade,
+  evidência, confiança, privacidade e resposta.
+- **Prática:** seis labs, correlator que nunca atribui por IP isolado e
+  manifesto SHA-256. O catálogo anterior integra o módulo 27.
+
+### Módulo 2.22: Purple Team de borda (26-Ofensivo-Defensivo)
+
+- **Duração:** 220–340 horas.
+- **Conteúdo:** 22 capítulos sobre firewalls L3/L4, host e cloud,
+  segmentação/egress, CDN/origem, DDoS, WAF, parsing HTTP, OWASP CRS,
+  Cloudflare, BunkerWeb, ameaças automatizadas, rate limiting,
+  CAPTCHA/Turnstile, MFA, WebAuthn/passkeys, APIs e resposta.
+- **Prática:** sete labs pareados Red/Blue, score de risco explicável, auditor
+  de controles, simulador token bucket, 12 testes e CI totalmente offline.
+- **Método:** hipótese autorizada, baseline, teste local, evidência, tuning,
+  rollback e reteste. O plano original de ofensiva/defesa integra os módulos
+  27 e 40.
+
+### Referência temática: Initial Access (módulo canônico 35)
 - **Duração:** 1-2 semanas
 - **Objetivos de Aprendizado:**
   - Compreender vetores T1566 / T1190 / T1133 sem weaponization
   - Avaliar superfícies externas (VPN/RDP/OWA) com ética
-  - Ligar web public-facing ao módulo 07
+  - Ligar web public-facing ao acervo Web AppSec legado e ao módulo 22
 
 - **Conteúdo:**
   - `phishing-teoria.md`
@@ -282,11 +519,8 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
 - **MITRE ATT&CK Mapping:**
   - TA0001 - Initial Access (T1566, T1190, T1133, T1078)
 
-- **Tarefas Práticas:**
-  1. ✅ Configurar persistência
-  2. ✅ Dump de credenciais (Mimikatz, LSASS)
-  3. ✅ Simular exfiltração de dados
-  4. ✅ Estabelecer C2 básico
+- **Estado:** preservado em `LEGADO-INITIAL-ACCESS.md`, `phishing-teoria.md` e
+  `external-services.md`; não integra a rota principal e não contém weaponization.
 
 ---
 
@@ -305,11 +539,11 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
   - AMSI/ETW bypass
 
 - **MITRE ATT&CK Mapping:**
-  - TA0005 - Defense Evasion
+  - Stealth / Defense Impairment (ATT&CK 19.2)
     - T1027 - Obfuscated Files or Information
     - T1055 - Process Injection
     - T1140 - Deobfuscate/Decode Files or Information
-    - T1562 - Impair Defenses
+    - T1685 - Disable or Modify Tools
 
 ---
 
@@ -389,23 +623,23 @@ os mesmos conhecimentos de redes, sistemas, identidade, RoE e laboratório segur
 
 Trilhas especializadas implementadas inicialmente:
 
-- [15-Hybrid-Identity](15-Hybrid-Identity/README.md) — AD, Entra ID, federação e workloads.
-- [16-CICD-Supply-Chain](16-CICD-Supply-Chain/README.md) — pipelines, OIDC, artifacts e provenance.
-- [APIs modernas](07-Web-AppSec/api-moderna-oauth-graphql-grpc.md) — OAuth/OIDC, GraphQL e gRPC.
+- [14–18 — Redes](14-Post-Exploitation/README.md) — fundamentos, Wi-Fi,
+  switching/VLANs, roteamento/VPN e infraestrutura/protocolos empresariais.
+- [19–22 — Criptografia](19-Wireless-Security/README.md) — fundamentos,
+  primitivas modernas, PKI/TLS, engenharia e pós-quântica.
+- [APIs modernas](05-DFIR/engenharia-apis/README.md) — OAuth/OIDC, GraphQL e gRPC.
 - [Microemulação Purple Team](docs/PURPLE-TEAM-MICRO-EMULATION.md) — cenário offline reproduzível.
-- [21-Network-Pivoting](21-Network-Pivoting/README.md) — caminhos de rede e segmentação.
-- [22-Secure-Code-Review](22-Secure-Code-Review/README.md) — data-flow e autorização.
-- [23-Threat-Intel-Emulation](23-Threat-Intel-Emulation/README.md) — CTI para hipóteses testáveis.
-- [24-Lateral-Movement](24-Lateral-Movement/README.md) — caminhos laterais, precondições e detecção.
+- [23–25 — Privacidade](23-Threat-Intel-Emulation/README.md) — fundamentos,
+  VPN própria e atribuição defensiva.
 - **Duração:** Variável
-- **Já no repo:**
-  - Cloud Red Teaming → `08-Cloud-RedTeam/`
-  - Web Application Security → `07-Web-AppSec/` (+ labs)
-  - Container Security → `10-Container-Sec/`
+- **Especializações adotadas sem mover os arquivos:**
+  - Cloud Red Teaming → módulo 32, a partir de `08-Cloud-RedTeam/`;
+  - Web Application Security → módulo 30, a partir de `07-Web-AppSec/`;
+  - Container Security → módulo 33, a partir de `10-Container-Sec/`.
+  `contentPaths` preserva esses diretórios, links e histórico enquanto os
+  apresenta na sétima área curricular.
 - **Em aberto (sem modulo ainda):**
-  - Mobile Pentesting
   - IoT / OT Security
-  - Wireless
 
 ---
 
@@ -461,18 +695,34 @@ Este roadmap está totalmente mapeado com o **MITRE ATT&CK Framework**, permitin
 ### Checklist de Progresso
 ```
 TIER 1 - Fundamentos
-[ ] Módulo 1.1: Reconhecimento Passivo
+[ ] Módulo 29: Reconhecimento Passivo e OSINT
 [ ] Módulo 1.2: OSINT Avançado
 [ ] Módulo 1.3: Automação
 [ ] Módulo 1.4: Introdução DFIR
 
 TIER 2 - Intermediário
 [ ] Módulo 2.1: Active Directory
-[ ] Módulo 2.2: Privilege Escalation (Linux + Windows)
-[ ] Módulo 2.3: Lateral Movement
-[ ] Módulo 2.4: Post-Exploitation (14)
-[ ] Módulo 2.5: Initial Access (13)
-[ ] Módulo 2.6: Web AppSec + labs docker (07)
+[ ] Módulo 2.2: Linux do zero ao kernel
+[ ] Módulo 2.3: Linux avançado e engenharia de kernel
+[ ] Módulo 2.4: Windows doméstico I (08)
+[ ] Módulo 2.5: Windows doméstico II (09)
+[ ] Módulo 2.6: Windows empresarial I (10)
+[ ] Módulo 2.7: Windows empresarial II (11)
+[ ] Módulo 2.8: macOS I (12)
+[ ] Módulo 2.9: macOS II (13)
+[ ] Módulo 2.10: Redes I — fundamentos (14)
+[ ] Módulo 2.11: Redes II — domésticas e Wi-Fi (15)
+[ ] Módulo 2.12: Redes III — switching e VLANs (16)
+[ ] Módulo 2.13: Redes IV — roteamento e VPN (17)
+[ ] Módulo 2.14: Redes V — empresa e protocolos (18)
+[ ] Módulo 2.15: Criptografia I — fundamentos (19)
+[ ] Módulo 2.16: Criptografia II — primitivas modernas (20)
+[ ] Módulo 2.17: Criptografia III — PKI e TLS (21)
+[ ] Módulo 2.18: Criptografia IV — engenharia e pós-quântica (22)
+[ ] Módulo 2.19: Privacidade I — fundamentos e anonimato (23)
+[ ] Módulo 2.20: Privacidade II — VPN própria e operação (24)
+[ ] Módulo 2.21: Privacidade III — atribuição defensiva (25)
+[ ] Módulo 2.22: Purple Team — firewalls, WAF, bots e identidade (26)
 
 TIER 3 - Avançado
 [ ] Módulo 3.1: Evasion Techniques
@@ -494,14 +744,26 @@ TIER 4 - Profissional
 ### Feito na v2.0 / v2.1
 - [x] Modulos Cloud, Web, C2 (teoria), Container, Python/Java tools
 - [x] Lab Docker web/API
-- [x] Windows Privesc, Initial Access, Post-Exploitation
+- [x] Windows Privesc; acervos Initial Access e Post-Exploitation preservados
 - [x] Labs guiados Web (DVWA / Juice / VAmPI)
+- [x] Linux avançado no módulo 07, sem redes e com CI dedicada
+- [x] Windows doméstico nos módulos 08–09, do uso básico a NT internals/DLL
+- [x] Windows empresarial nos módulos 10–11, de Server Core a identidade/compliance
+- [x] macOS nos módulos 12–13, do primeiro uso a XNU/Mach-O e gestão empresarial
+- [x] redes nos módulos 14–18, dos fundamentos à infraestrutura empresarial
+  e engenharia de protocolos, com validação offline
+- [x] criptografia nos módulos 19–22, dos fundamentos à engenharia
+  pós-quântica, com 78 capítulos, 22 labs e validação offline
+- [x] privacidade nos módulos 23–25, de modelos de ameaça e VPN própria à
+  correlação defensiva, com 59 capítulos, 17 labs e validação offline
+- [x] Purple Team no módulo 26, com 22 capítulos, sete labs pareados,
+  ferramentas offline, testes e CI para borda de aplicações
 - [x] Sync NetExec + BloodHound CE + MITRE expandido
 
 ### Em aberto
 - [ ] Labs IaC (Terraform/Ansible) quando houver codigo no repo
-- [ ] Mobile / Wireless tracks
-- [ ] Purple-team exercises pareados
+- [ ] Aprofundar mobile e wireless no módulo 34; seus fundamentos continuam nos
+  módulos 15–16
 - [ ] CTF / videos proprios (somente com artefatos versionados)
 
 ---
@@ -549,6 +811,7 @@ TIER 4 - Profissional
 
 ---
 
-**Próximo passo:** Começar pelo **TIER 1 - Módulo 1.1: Reconhecimento Passivo**
+**Próximo passo:** Começar pelo **módulo 00** e seguir a ordem canônica até o
+**módulo 40**.
 
 </div>

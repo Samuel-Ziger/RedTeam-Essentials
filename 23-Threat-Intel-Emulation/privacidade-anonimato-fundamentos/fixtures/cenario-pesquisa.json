@@ -1,0 +1,37 @@
+{
+  "scenario": "pesquisa-publica-autorizada",
+  "objective": "reduzir exposicao do destino para a rede local sem esconder abuso",
+  "authorized": true,
+  "activities": [
+    {
+      "name": "consulta-sem-login",
+      "https": true,
+      "vpn": "self_hosted",
+      "tor_browser": false,
+      "dns": "tunnel",
+      "endpoint_trusted": true,
+      "identifiers": ["browser_fingerprint"],
+      "observer_model": "provider"
+    },
+    {
+      "name": "portal-com-conta",
+      "https": true,
+      "vpn": "none",
+      "tor_browser": false,
+      "dns": "encrypted",
+      "endpoint_trusted": true,
+      "identifiers": ["account", "session_cookie", "browser_fingerprint"],
+      "observer_model": "service"
+    },
+    {
+      "name": "navegacao-tor",
+      "https": true,
+      "vpn": "none",
+      "tor_browser": true,
+      "dns": "tunnel",
+      "endpoint_trusted": true,
+      "identifiers": [],
+      "observer_model": "global"
+    }
+  ]
+}

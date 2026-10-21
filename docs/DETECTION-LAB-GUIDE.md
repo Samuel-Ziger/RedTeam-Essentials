@@ -24,14 +24,14 @@ Cada exercício de detecção deve registrar:
 - **Ação:** falhas 4625 seguidas de 4624 e 4672.
 - **Fontes:** Security Event Log, EDR e logs do serviço de origem.
 - **Contexto:** logon ID, tipo de logon, conta de serviço, workstation e change.
-- **Fixture:** [lab DFIR de autenticação](../05-DFIR/labs/README.md).
+- **Fixture:** [lab DFIR de autenticação](../38-DFIR-Resposta-Incidentes/acervo/labs/README.md).
 
 ### Web e API
 
 - **Ação:** principal A acessa objeto pertencente a B.
 - **Fontes:** access log, application audit e decisão de autorização.
 - **Contexto:** principal, tenant, object owner, ação e correlation ID.
-- **Exercício:** [respostas orientativas Web](../07-Web-AppSec/labs/answers/README.md).
+- **Exercício:** [respostas orientativas Web](../30-Web-API-AppSec/acervo/labs/answers/README.md).
 
 ### Cloud
 
@@ -45,7 +45,7 @@ Cada exercício de detecção deve registrar:
 - **Ação:** criação de pod privilegiado.
 - **Fonte:** Kubernetes audit log e decisão do admission controller.
 - **Contexto:** namespace, usuário, pipeline, securityContext e janela de mudança.
-- **Fixture:** [lab Kubernetes audit](../10-Container-Sec/labs/README.md).
+- **Fixture:** [lab Kubernetes audit](../33-Containers-Supply-Chain/containers-kubernetes-cicd/labs/README.md).
 
 ## Critério de aceite
 
@@ -53,4 +53,3 @@ Uma detecção é verificável quando possui pelo menos um evento positivo, um
 evento negativo, campos de correlação, hipótese de falso positivo, resposta e
 mitigação. Uma busca sem fixture ou resultado esperado é apenas uma ideia de
 detecção, não um controle validado.
-

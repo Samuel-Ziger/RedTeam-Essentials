@@ -339,7 +339,7 @@ IFS=$'\n\t'
 
 ## 📁 5. Templates e Playbooks DFIR
 
-### ✅ [FORENSIC_REPORT_TEMPLATE.md](05-DFIR/FORENSIC_REPORT_TEMPLATE.md)
+### ✅ [FORENSIC_REPORT_TEMPLATE.md](38-DFIR-Resposta-Incidentes/acervo/FORENSIC_REPORT_TEMPLATE.md)
 
 **Propósito:** Template profissional de relatório forense  
 **Baseado em:** NIST SP 800-61, SANS, ISO 27035
@@ -411,7 +411,7 @@ IFS=$'\n\t'
 
 ---
 
-### ✅ [PLAYBOOK_RANSOMWARE.md](05-DFIR/PLAYBOOK_RANSOMWARE.md)
+### ✅ [PLAYBOOK_RANSOMWARE.md](38-DFIR-Resposta-Incidentes/acervo/PLAYBOOK_RANSOMWARE.md)
 
 **Propósito:** Guia passo-a-passo para resposta a ransomware  
 **Severidade:** 🔴 CRÍTICO

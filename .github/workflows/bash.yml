@@ -9,24 +9,32 @@ on:
     paths:
       - '**/*.sh'
 
+permissions:
+  contents: read
+
+concurrency:
+  group: bash-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   shellcheck:
     name: ShellCheck
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: ShellCheck (recursive)
-        uses: ludeeus/action-shellcheck@master
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # 2.0.0
         env:
           SHELLCHECK_OPTS: --severity=warning --shell=bash --external-sources
 
       - name: Bash syntax check
         run: |
-          set -e
-          for f in $(find . -type f -name '*.sh' -not -path './.git/*'); do
+          set -euo pipefail
+          while IFS= read -r -d '' f; do
             bash -n "$f" || { echo "::error file=$f::syntax error"; exit 1; }
-          done
+          done < <(find . -type f -name '*.sh' -not -path './.git/*' -print0)
           echo "Sintaxe Bash OK."
 
       - name: Offline library tests

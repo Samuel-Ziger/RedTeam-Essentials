@@ -1,72 +1,51 @@
-# 03 - Active Directory Notes
+# 03 — Desenvolvimento de aplicações
 
-> Modulo de enumeracao, Kerberoasting, attack paths (BloodHound CE) e tecnicas modernas de AD.
-> Labs: GOAD, DetectionLab, HTB Pro Labs ou AD proprio — **nunca** dominio de terceiros sem RoE.
+> Transforme código em aplicações profissionais: CLI, GUI, interfaces web,
+> acessibilidade, estado, configuração, diagnóstico e distribuição.
+
+> **Transição curricular:** o acervo histórico de Active Directory agora pertence ao
+> [módulo 31](../31-Active-Directory-Identidade/README.md), na especialização avançada.
 
 ## Contrato do módulo
 
 | Campo | Definição |
 |-------|-----------|
-| Público | Estudantes intermediários de Windows e identidade. |
-| Pré-requisitos | Módulos 00 e 06; AD próprio, GOAD ou plataforma autorizada. |
-| Tempo estimado | 12 horas de leitura e 12 horas de laboratório. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Caminho de ataque, evidências mínimas, detecção e remediação. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+| Público | Programadores que concluíram os módulos 00–02 e querem entregar aplicações utilizáveis. |
+| Pré-requisitos | Módulos 00, 01 e 02. |
+| Tempo estimado | 240–360 horas. |
+| Ambiente | Desenvolvimento local com toolchains das cinco linguagens e navegador moderno. |
+| Evidência final | Aplicação local-first empacotável, acessível, testada e documentada. |
+| Critério de conclusão | Atingir pelo menos 75% na rubrica de aplicações e demonstrar instalação, uso e diagnóstico. |
 
-## Conteudo
+## Formação-base
 
-| Documento | Tema |
-|-----------|------|
-| [ad_enum_commands.md](ad_enum_commands.md) | Comandos essenciais de enumeracao AD (PowerShell, LDAP, NetExec). |
-| [kerberoasting_teoria.md](kerberoasting_teoria.md) | Kerberoasting: SPNs, tickets, cracking, deteccao (T1558.003). |
-| [bloodhound_teoria.md](bloodhound_teoria.md) | BloodHound CE: SharpHound, import, queries e paths ate Domain Admin. |
-| [modern-ad-attacks-2026.md](modern-ad-attacks-2026.md) | Ataques modernos: ADCS, RBCD, SCCM, coercion; stack com NetExec. |
+Acesse **[desenvolvimento-aplicacoes/README.md](desenvolvimento-aplicacoes/README.md)**.
+A trilha contém:
 
-## Fluxo recomendado
+- 17 capítulos aprofundados de produto, CLI, GUI, web, estado e distribuição;
+- configuração, validação, arquivos versionados e clientes resilientes;
+- acessibilidade, responsividade, internacionalização e diagnóstico;
+- plugins, empacotamento, atualizações, desempenho, release e suporte;
+- o mesmo contrato executável em Python, Java, C17, C# e JavaScript;
+- cinco laboratórios progressivos com pré-requisitos semânticos;
+- caderno com 32 práticas e guia sistemático de diagnóstico;
+- aplicação local-first Study Desk com 35 testes, ADRs e runbook;
+- exercícios em três níveis, respostas, glossário, referências e CI dedicada.
 
+Esta trilha não antecipa Sistemas Operacionais: o tema terá módulos próprios do
+zero ao avançado.
+
+```bash
+bash 03-AD-Notes/desenvolvimento-aplicacoes/testar-curso.sh
 ```
-enum (ad_enum)  -->  roast (kerberoasting)  -->  paths (BloodHound CE)  -->  modern (ADCS/RBCD/...)
-```
-
-1. **Enum** - usuarios, grupos, SPNs, shares, trusts. Preferir **NetExec (`nxc`)** em vez de CrackMapExec (legado). Ver [ad_enum_commands.md](ad_enum_commands.md).
-2. **Roast** - identificar contas com SPN e praticar Kerberoasting em lab. Ver [kerberoasting_teoria.md](kerberoasting_teoria.md).
-3. **Paths** - coletar com SharpHound e analisar no **BloodHound CE** (nao so a UI antiga). Ver [bloodhound_teoria.md](bloodhound_teoria.md).
-4. **Modern** - ADCS (ESC1–ESC8), RBCD, coercion, SCCM. Ver [modern-ad-attacks-2026.md](modern-ad-attacks-2026.md).
-5. **Report** - evidencias minimas + caminho de ataque; cruzar com [05-DFIR](../05-DFIR/) (o que o blue ve) e [14-Post-Exploitation](../14-Post-Exploitation/).
-
-## Stack recomendada (2026)
-
-| Ferramenta | Uso |
-|------------|-----|
-| **NetExec (`nxc`)** | Enum SMB/LDAP/WinRM; substitui CrackMapExec. |
-| **BloodHound CE** | Grafo + paths (ADCS, RBCD, etc.). |
-| Impacket / Rubeus | Kerberos, secrets, lateral em lab. |
-| Certipy | ADCS abuse em lab. |
-
-## MITRE ATT&CK (parcial)
-
-- T1087.002 - Account Discovery: Domain Account
-- T1069.002 - Permission Groups Discovery: Domain Groups
-- T1482 - Domain Trust Discovery
-- T1558.003 - Steal or Forge Kerberos Tickets: Kerberoasting
-- T1558.001 - Golden Ticket
-- T1649 - Steal or Forge Authentication Certificates (ADCS)
-- T1134.001 / T1134.005 - Access Token Manipulation / SID-History
-
-## Etica e escopo
-
-- Apenas em AD de lab ou engagement com autorizacao escrita.
-- Kerberoasting e coleta BloodHound geram ruido e tickets — alinhar janela com o cliente.
-- Nao dumpar NTDS.dit / hashes fora do RoE; prove impacto com evidencia minima.
-- Preferir contas de teste; cleanup de SPNs, certs e paths criados no lab.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Use os vídeos como revisão opcional; o percurso principal permanece completo nos
+capítulos, exemplos e laboratórios locais.
 
-1. [10 melhores práticas de SEGURANÇA do Active Directory](https://www.youtube.com/watch?v=H95nNr_Inus) — **Daniel Donda**.
-2. [Pentest em Active Directory - Lucas Farias | Faculdade Vincit](https://www.youtube.com/watch?v=NACW_5mJX7c) — **Faculdade Facint**.
-3. [Entenda Microsoft Active Directory | Baseado no curso oficial Microsoft | AD DS](https://www.youtube.com/watch?v=8ppOS_3ld7U) — **Sandro Alex**.
-4. [Auditoria de Segurança no Active Directory: Testando PingCastle e Purple Knight](https://www.youtube.com/watch?v=ktL48yNrPk0) — **Daniel Donda**.
-5. [🎓 CURSO: Hacking Active Directory](https://www.youtube.com/watch?v=7ZVvFvahcuU) — **Empire Cybersecurity TV**.
+1. [JavaScript Web e DOM na prática](https://www.youtube.com/watch?v=DcN49TD7it0) — **DevClub | Programação**.
+2. [Observabilidade com OpenTelemetry](https://www.youtube.com/watch?v=Y0gNpjHwx2M) — **Full Cycle**.
+3. [Observabilidade em APIs](https://www.youtube.com/watch?v=bSU_O9JAibs) — **Full Cycle**.
+4. [Fundamentos da Arquitetura de Software](https://www.youtube.com/watch?v=Xt66rPTAWMs) — **Full Cycle**.
+5. [Design Patterns](https://www.youtube.com/watch?v=arAz2Ff8s88) — **Filipe Deschamps**.

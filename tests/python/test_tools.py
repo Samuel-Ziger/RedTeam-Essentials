@@ -22,6 +22,7 @@ def b64url(value: dict) -> str:
 def test_port_parser_supports_lists_ranges_and_deduplication() -> None:
     assert port_scanner.parse_ports("443,80,80,100-102") == [80, 100, 101, 102, 443]
     assert len(port_scanner.parse_ports("top100")) == 100
+    assert len(port_scanner.parse_ports("top1000")) == 1000
 
 
 @pytest.mark.parametrize("spec", ["abc", "1-x", "22-20"])
@@ -35,6 +36,12 @@ def test_jwt_decode_and_static_findings() -> None:
     header, payload, signature = jwt_analyzer.decode_jwt(token)
     codes = {finding["code"] for finding in jwt_analyzer.analyze(header, payload, signature)}
     assert {"JWT-001", "JWT-002", "JWT-006", "JWT-010"} <= codes
+
+
+def test_jwt_rejects_non_object_segments() -> None:
+    token = f"{base64.urlsafe_b64encode(b'[]').decode().rstrip('=')}.{b64url({'sub': 'lab'})}."
+    with pytest.raises(ValueError, match="objetos JSON"):
+        jwt_analyzer.decode_jwt(token)
 
 
 def test_jwt_secret_check_uses_offline_wordlist(tmp_path) -> None:
@@ -52,6 +59,13 @@ def test_jwt_secret_check_uses_offline_wordlist(tmp_path) -> None:
 def test_hash_identifier_reports_ambiguous_raw_hashes() -> None:
     names = {item.name for item in hash_identifier.identify("d41d8cd98f00b204e9800998ecf8427e")}
     assert {"MD5", "NTLM", "LM"} <= names
+
+
+def test_hash_identifier_distinguishes_netntlm_versions() -> None:
+    v1 = "user::domain:" + "a" * 48 + ":" + "b" * 48 + ":" + "c" * 16
+    v2 = "user::domain:" + "a" * 16 + ":" + "b" * 32 + ":" + "c" * 64
+    assert [item.name for item in hash_identifier.identify(v1)] == ["NetNTLMv1"]
+    assert [item.name for item in hash_identifier.identify(v2)] == ["NetNTLMv2"]
 
 
 def test_subdomain_parsers_with_offline_fixtures(monkeypatch) -> None:

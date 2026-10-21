@@ -1,0 +1,54 @@
+name: Network Courses
+
+on:
+  push:
+    paths:
+      - '14-Post-Exploitation/redes-fundamentos/**'
+      - '15-Hybrid-Identity/redes-domesticas/**'
+      - '16-CICD-Supply-Chain/switching-vlans/**'
+      - '17-macOS-Security/roteamento-vpns/**'
+      - '18-Mobile-Security/redes-empresariais-protocolos/**'
+      - 'scripts/validate_network_courses.py'
+      - '.github/workflows/network-courses.yml'
+  pull_request:
+    paths:
+      - '14-Post-Exploitation/redes-fundamentos/**'
+      - '15-Hybrid-Identity/redes-domesticas/**'
+      - '16-CICD-Supply-Chain/switching-vlans/**'
+      - '17-macOS-Security/roteamento-vpns/**'
+      - '18-Mobile-Security/redes-empresariais-protocolos/**'
+      - 'scripts/validate_network_courses.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: network-courses-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Validate structure, links and offline scope
+        run: python3 scripts/validate_network_courses.py
+
+      - name: Run all five courses
+        run: |
+          bash 14-Post-Exploitation/redes-fundamentos/testar-curso.sh
+          bash 15-Hybrid-Identity/redes-domesticas/testar-curso.sh
+          bash 16-CICD-Supply-Chain/switching-vlans/testar-curso.sh
+          bash 17-macOS-Security/roteamento-vpns/testar-curso.sh
+          bash 18-Mobile-Security/redes-empresariais-protocolos/testar-curso.sh
+
+      - name: Parse Bash scripts
+        run: |
+          find 14-Post-Exploitation/redes-fundamentos \
+            15-Hybrid-Identity/redes-domesticas \
+            16-CICD-Supply-Chain/switching-vlans \
+            17-macOS-Security/roteamento-vpns \
+            18-Mobile-Security/redes-empresariais-protocolos \
+            -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n

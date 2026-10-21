@@ -1,0 +1,16 @@
+{
+  "owned_or_authorized": true,
+  "out_of_band_console_tested": true,
+  "backup_restore_tested": true,
+  "individual_peer_keys": true,
+  "private_keys_outside_repository": true,
+  "minimum_firewall": true,
+  "central_admin_logs": true,
+  "data_retention_days": 30,
+  "peer_review_days": 90,
+  "dns_policy": "tunnel",
+  "ipv6_policy": "explicit_block",
+  "failure_policy": "fail_closed",
+  "patch_process": true,
+  "revocation_runbook": true
+}

@@ -3,28 +3,36 @@ name: Java Build
 on:
   push:
     paths:
-      - '12-Java-Tools/**'
+      - '28-Engenharia-Ferramentas-Seguranca/acervo/java/**'
       - 'tests/java/**'
       - '.github/workflows/java.yml'
   pull_request:
     paths:
-      - '12-Java-Tools/**'
+      - '28-Engenharia-Ferramentas-Seguranca/acervo/java/**'
       - 'tests/java/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: java-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   javac:
     name: Compile (JDK 17)
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6
         with:
           distribution: temurin
           java-version: '17'
 
       - name: Compile
-        working-directory: 12-Java-Tools
+        working-directory: 28-Engenharia-Ferramentas-Seguranca/acervo/java
         run: |
           mkdir -p build
           find src/main/java -name '*.java' > sources.txt
@@ -32,7 +40,7 @@ jobs:
           echo "Compilou com sucesso."
 
       - name: Smoke test (PayloadGenerator --list)
-        working-directory: 12-Java-Tools
+        working-directory: 28-Engenharia-Ferramentas-Seguranca/acervo/java
         run: java -cp build io.redteam.essentials.PayloadGenerator --list
 
       - name: Offline behavior tests

@@ -1,0 +1,48 @@
+name: Purple Team Edge Security Course
+
+on:
+  push:
+    paths:
+      - '26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes/**'
+      - 'scripts/validate_edge_security_course.py'
+      - '.github/workflows/edge-security-course.yml'
+  pull_request:
+    paths:
+      - '26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes/**'
+      - 'scripts/validate_edge_security_course.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: edge-security-course-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.12'
+
+      - name: Install lint tool
+        run: python -m pip install ruff==0.13.2
+
+      - name: Lint and format-check course code
+        run: |
+          ruff check scripts/validate_edge_security_course.py \
+            26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes/exemplos
+          ruff format --check scripts/validate_edge_security_course.py \
+            26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes/exemplos
+
+      - name: Validate and run course
+        run: bash 26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes/testar-curso.sh
+
+      - name: Parse Bash scripts
+        run: |
+          find 26-Ofensivo-Defensivo/defesa-perimetro-aplicacoes \
+            -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n

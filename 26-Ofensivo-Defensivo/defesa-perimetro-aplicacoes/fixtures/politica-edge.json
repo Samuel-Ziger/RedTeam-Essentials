@@ -1,0 +1,47 @@
+{
+  "authorized": true,
+  "policy_version": "2026.10.1-lab",
+  "network": {
+    "ingress_default": "deny",
+    "egress_default": "deny",
+    "ipv6_covered": true,
+    "admin_public": false
+  },
+  "origin": {
+    "direct_access": false,
+    "only_trusted_edge": true,
+    "tls_mode": "strict",
+    "edge_authentication": true
+  },
+  "waf": {
+    "detection_first": true,
+    "managed_rules": true,
+    "change_review": true,
+    "exception_expiry": true
+  },
+  "rate_limits": [
+    {"route": "/login", "key": "account+network", "action": "progressive"},
+    {"route": "/v1/export", "key": "tenant+token", "action": "queue"}
+  ],
+  "challenge": {
+    "server_validation": true,
+    "single_use": true,
+    "hostname_action_binding": true,
+    "max_token_age_seconds": 300
+  },
+  "identity": {
+    "admin_mfa": "phishing-resistant",
+    "recovery_protected": true,
+    "break_glass_monitored": true
+  },
+  "observability": {
+    "request_id_all_layers": true,
+    "secret_redaction": true,
+    "config_audit": true,
+    "retention_days": 30
+  },
+  "operations": {
+    "canary": true,
+    "rollback_tested": true
+  }
+}

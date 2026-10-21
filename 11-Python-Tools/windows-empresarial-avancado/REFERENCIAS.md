@@ -1,0 +1,21 @@
+# Referências
+
+- [Windows deployment](https://learn.microsoft.com/windows/deployment/)
+- [DISM reference](https://learn.microsoft.com/windows-hardware/manufacture/desktop/what-is-dism)
+- [Windows Setup automation](https://learn.microsoft.com/windows-hardware/customize/desktop/automate-windows-setup)
+- [Windows Autopilot](https://learn.microsoft.com/autopilot/overview)
+- [Microsoft Intune fundamentals](https://learn.microsoft.com/mem/intune/fundamentals/what-is-intune)
+- [Group Policy](https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview)
+- [AD DS overview](https://learn.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)
+- [Windows LAPS](https://learn.microsoft.com/windows-server/identity/laps/laps-overview)
+- [Group Managed Service Accounts](https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-managed-service-accounts/group-managed-service-accounts/group-managed-service-accounts-overview)
+- [AD CS](https://learn.microsoft.com/windows-server/identity/ad-cs/active-directory-certificate-services-overview)
+- [Just Enough Administration](https://learn.microsoft.com/powershell/scripting/security/remoting/jea/overview)
+- [Application Control](https://learn.microsoft.com/windows/security/application-security/application-control/)
+- [Attack surface reduction rules](https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference)
+- [Credential Guard](https://learn.microsoft.com/windows/security/identity-protection/credential-guard/)
+- [Sysmon](https://learn.microsoft.com/sysinternals/downloads/sysmon)
+- [Windows Server security baseline](https://learn.microsoft.com/windows-server/security/osconfig/osconfig-how-to-configure-security-baselines)
+- [Failover Clustering](https://learn.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [AD forest recovery](https://learn.microsoft.com/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-guide)
+

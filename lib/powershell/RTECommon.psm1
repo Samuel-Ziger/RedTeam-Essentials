@@ -173,7 +173,8 @@ function Test-RTEAdmin {
     [CmdletBinding()]
     [OutputType([bool])]
     param()
-    if ($IsWindows -or $PSVersionTable.PSEdition -eq 'Desktop') {
+    $isWindowsPlatform = $PSVersionTable.PSEdition -eq 'Desktop' -or $env:OS -eq 'Windows_NT'
+    if ($isWindowsPlatform) {
         $id = [Security.Principal.WindowsIdentity]::GetCurrent()
         return ([Security.Principal.WindowsPrincipal]::new($id)).IsInRole(
             [Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -198,14 +199,18 @@ function Export-RTEResult {
         [ValidateSet('json','csv','txt')][string]$Format = 'json'
     )
     if (-not (Test-Path $Path)) { New-Item -ItemType Directory -Path $Path -Force | Out-Null }
-    $stamp = (Get-Date).ToString('yyyyMMdd_HHmmss')
-    $file  = Join-Path $Path ("{0}_{1}.{2}" -f $Name, $stamp, $Format)
+    $safeName = ($Name -replace '[^A-Za-z0-9._-]', '_').Trim('._')
+    if (-not $safeName) { throw 'Name deve conter ao menos um caractere seguro.' }
+    $stamp = [DateTime]::UtcNow.ToString('yyyyMMdd_HHmmss_fffffffZ')
+    $file  = Join-Path $Path ("{0}_{1}.{2}" -f $safeName, $stamp, $Format)
+    $temporary = "$file.tmp"
 
     switch ($Format) {
-        'json' { $Data | ConvertTo-Json -Depth 8 | Out-File -FilePath $file -Encoding UTF8 -Force }
-        'csv'  { $Data | Export-Csv -Path $file -NoTypeInformation -Encoding UTF8 -Force }
-        'txt'  { $Data | Out-String | Out-File -FilePath $file -Encoding UTF8 -Force }
+        'json' { $Data | ConvertTo-Json -Depth 12 | Out-File -FilePath $temporary -Encoding UTF8 -Force }
+        'csv'  { $Data | Export-Csv -Path $temporary -NoTypeInformation -Encoding UTF8 -Force }
+        'txt'  { $Data | Out-String | Out-File -FilePath $temporary -Encoding UTF8 -Force }
     }
+    Move-Item -LiteralPath $temporary -Destination $file -Force
     Write-RTELog -Level SUCCESS -Message "Resultado exportado: $file"
     return $file
 }

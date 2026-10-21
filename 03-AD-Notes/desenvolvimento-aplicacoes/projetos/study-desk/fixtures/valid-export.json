@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "exportedAt": "2026-09-30T12:00:00.000Z",
+  "sessions": [
+    {
+      "id": "fixture-1",
+      "title": "Arquitetura de interfaces",
+      "minutes": 45,
+      "createdAt": "2026-09-30T11:00:00.000Z"
+    }
+  ]
+}

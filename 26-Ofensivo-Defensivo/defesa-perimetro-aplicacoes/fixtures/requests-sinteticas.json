@@ -1,0 +1,78 @@
+{
+  "authorized": true,
+  "scenario": "laboratório offline de classificação explicável",
+  "events": [
+    {
+      "event_id": "req-001",
+      "timestamp": "2026-10-01T12:00:00Z",
+      "client_type": "browser",
+      "rate_per_minute": 8,
+      "distinct_paths_5m": 3,
+      "auth_failures_10m": 0,
+      "anomaly_score": 0,
+      "verified_bot": false,
+      "challenge_passed": false,
+      "js_state": true
+    },
+    {
+      "event_id": "req-002",
+      "timestamp": "2026-10-01T12:00:01Z",
+      "client_type": "browser",
+      "rate_per_minute": 90,
+      "distinct_paths_5m": 8,
+      "auth_failures_10m": 0,
+      "anomaly_score": 0,
+      "verified_bot": true,
+      "challenge_passed": false,
+      "js_state": false
+    },
+    {
+      "event_id": "req-003",
+      "timestamp": "2026-10-01T12:00:02Z",
+      "client_type": "browser",
+      "rate_per_minute": 140,
+      "distinct_paths_5m": 12,
+      "auth_failures_10m": 11,
+      "anomaly_score": 7,
+      "verified_bot": false,
+      "challenge_passed": false,
+      "js_state": true
+    },
+    {
+      "event_id": "req-004",
+      "timestamp": "2026-10-01T12:00:03Z",
+      "client_type": "browser",
+      "rate_per_minute": 80,
+      "distinct_paths_5m": 31,
+      "auth_failures_10m": 0,
+      "anomaly_score": 0,
+      "verified_bot": false,
+      "challenge_passed": false,
+      "js_state": false
+    },
+    {
+      "event_id": "req-005",
+      "timestamp": "2026-10-01T12:00:04Z",
+      "client_type": "api",
+      "rate_per_minute": 75,
+      "distinct_paths_5m": 4,
+      "auth_failures_10m": 0,
+      "anomaly_score": 0,
+      "verified_bot": false,
+      "challenge_passed": false,
+      "api_authenticated": true
+    },
+    {
+      "event_id": "req-006",
+      "timestamp": "2026-10-01T12:00:05Z",
+      "client_type": "browser",
+      "rate_per_minute": 70,
+      "distinct_paths_5m": 2,
+      "auth_failures_10m": 0,
+      "anomaly_score": 0,
+      "verified_bot": false,
+      "challenge_passed": true,
+      "js_state": true
+    }
+  ]
+}

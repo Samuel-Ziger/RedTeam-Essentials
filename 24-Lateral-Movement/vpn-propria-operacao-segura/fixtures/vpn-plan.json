@@ -1,0 +1,31 @@
+{
+  "server": {
+    "interface": "wg0",
+    "tunnel_ipv4": "10.66.0.1/24",
+    "endpoint": "198.51.100.10:51820",
+    "listen_port": 51820,
+    "egress_interface": "ens3",
+    "dns": "10.66.0.1",
+    "public_key": "<SERVER_PUBLIC_KEY>"
+  },
+  "reserved_networks": [
+    "10.20.0.0/16",
+    "192.168.50.0/24"
+  ],
+  "peers": [
+    {
+      "name": "alice-laptop",
+      "address": "10.66.0.2/32",
+      "public_key": "<ALICE_PUBLIC_KEY>",
+      "client_allowed_ips": ["0.0.0.0/0"],
+      "keepalive": 25
+    },
+    {
+      "name": "bob-phone",
+      "address": "10.66.0.3/32",
+      "public_key": "<BOB_PUBLIC_KEY>",
+      "client_allowed_ips": ["10.20.0.0/16"],
+      "keepalive": 25
+    }
+  ]
+}

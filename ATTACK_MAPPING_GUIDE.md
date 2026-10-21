@@ -39,105 +39,107 @@ Você verá um heatmap com cores:
 
 | Cor | Score | Significado |
 |-----|-------|-------------|
-| 🟢 Verde Escuro | 100 | Cobertura completa - prática e teoria |
-| 🟢 Verde Médio | 75 | Cobertura parcial - maioria implementada |
-| 🟡 Verde Claro | 50 | Cobertura básica - teoria ou exemplos |
+| 🟢 Verde Escuro | 100 | Maior profundidade editorial declarada |
+| 🟢 Verde Médio | 75 | Profundidade intermediária |
+| 🟡 Verde Claro | 50 | Introdução, teoria ou exemplos |
 | 🟡 Amarelo | 25 | Planejado - futuro desenvolvimento |
 | ⚪ Branco | 0 | Não coberto |
 
 ---
 
-## 📊 Técnicas Cobertas (50+)
+## 📊 Técnicas Cobertas (52 entradas validadas)
 
-Layer atualizado na **v2.1** (modulos 01-14). Resumo das areas novas:
+O layer da **v2.1** cobre principalmente os módulos 01–14. Os módulos mais
+novos ainda precisam de revisão técnica antes de ampliar o layer; quantidade de
+técnicas não representa profundidade ou eficácia de detecção.
 
 | Area | Modulos | Exemplos |
 |------|---------|----------|
-| Initial Access | 13, 07 | T1566, T1190, T1133 |
-| Windows Privesc | 06 | T1548, T1134, T1068 |
-| Web AppSec labs | 07 | T1190 (SQLi/SSRF/XSS) |
-| Cloud / Containers | 08, 10 | T1580, T1611, T1610 |
-| Post-Ex / Exfil | 14 | T1041, T1005, T1090 |
-| C2 / Evasion (teoria) | 09 | T1071, T1562, T1027 |
+| Initial Access | 35, 30 | T1566, T1190, T1133 |
+| Windows Privesc | 36 | T1548, T1134, T1068 |
+| Web AppSec labs | 30 | T1190 (SQLi/SSRF/XSS) |
+| Cloud / Containers | 32, 33 | T1580, T1611, T1610 |
+| Post-Ex / Exfil | 37 | T1041, T1005, T1090 |
+| C2 / Stealth (teoria) | 35 | T1071, T1685, T1027 |
 
 ### Reconnaissance (TA0043) - 6 técnicas
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1590** | Gather Victim Network Information | 100% | 01-Recon | dns_enum.ps1, passive_recon_cheatsheet.md |
-| **T1592** | Gather Victim Host Information | 100% | 01-Recon | Reconhecimento passivo |
-| **T1596** | Search Open Technical Databases | 100% | 01-Recon | DNS enumeration |
-| **T1593** | Search Open Websites/Domains | 100% | 02-OSINT | osint_automation.ps1 |
-| **T1594** | Search Victim-Owned Websites | 100% | 02-OSINT | Pesquisa em sites |
-| **T1598** | Phishing for Information | 75% | 02 + 13 | phishing-teoria.md |
+| **T1590** | Gather Victim Network Information | 100% | 29-Reconhecimento-OSINT | dns_enum.ps1, passive_recon_cheatsheet.md |
+| **T1592** | Gather Victim Host Information | 100% | 29-Reconhecimento-OSINT | Reconhecimento passivo |
+| **T1596** | Search Open Technical Databases | 100% | 29-Reconhecimento-OSINT | DNS enumeration |
+| **T1593** | Search Open Websites/Domains | 100% | 29-Reconhecimento-OSINT | osint_automation.ps1 |
+| **T1594** | Search Victim-Owned Websites | 100% | 29-Reconhecimento-OSINT | Pesquisa em sites |
+| **T1598** | Phishing for Information | 75% | 29 + 35 | phishing-teoria.md |
 
 ### Discovery (TA0007) - 4 técnicas
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1087** | Account Discovery | 100% | 03-AD-Notes | ad_enum_commands.md |
-| **T1069** | Permission Groups Discovery | 100% | 03-AD-Notes | Enumeração de grupos |
-| **T1482** | Domain Trust Discovery | 100% | 03-AD-Notes | Trusts de domínio |
-| **T1083** | File and Directory Discovery | 75% | 04-Automation | organize_logs.ps1 |
+| **T1087** | Account Discovery | 100% | 31-Active-Directory-Identidade | ad_enum_commands.md |
+| **T1069** | Permission Groups Discovery | 100% | 31-Active-Directory-Identidade | Enumeração de grupos |
+| **T1482** | Domain Trust Discovery | 100% | 31-Active-Directory-Identidade | Trusts de domínio |
+| **T1083** | File and Directory Discovery | 75% | 28-Engenharia-Ferramentas-Seguranca | organize_logs.ps1 |
 
 ### Credential Access (TA0006) - 3 técnicas
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1558.003** | Kerberoasting | 100% | 03-AD-Notes | kerberoasting_teoria.md |
-| **T1558.004** | AS-REP Roasting | 75% | 03-AD-Notes | Teoria parcial |
-| **T1003** | OS Credential Dumping | 75% | 05-DFIR | Perspectiva forense |
+| **T1558.003** | Kerberoasting | 100% | 31-Active-Directory-Identidade | kerberoasting_teoria.md |
+| **T1558.004** | AS-REP Roasting | 75% | 31-Active-Directory-Identidade | Teoria parcial |
+| **T1003** | OS Credential Dumping | 75% | 38-DFIR-Resposta-Incidentes | Perspectiva forense |
 
 ### Lateral Movement (TA0008) - 4 técnicas
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1021.001** | Remote Desktop Protocol | 100% | 06-Cheatsheets | windows_lateral_movement_teoria.md |
-| **T1021.002** | SMB/Windows Admin Shares | 100% | 06-Cheatsheets | SMB exploitation |
-| **T1021.006** | Windows Remote Management | 100% | 06-Cheatsheets | WinRM usage |
-| **T1550** | Use Alternate Authentication Material | 100% | 06-Cheatsheets | Pass-the-Hash, PtT |
+| **T1021.001** | Remote Desktop Protocol | 100% | 37-Pos-Exploracao-Movimento-Lateral | windows_lateral_movement_teoria.md |
+| **T1021.002** | SMB/Windows Admin Shares | 100% | 37-Pos-Exploracao-Movimento-Lateral | SMB exploitation |
+| **T1021.006** | Windows Remote Management | 100% | 37-Pos-Exploracao-Movimento-Lateral | WinRM usage |
+| **T1550** | Use Alternate Authentication Material | 100% | 37-Pos-Exploracao-Movimento-Lateral | Pass-the-Hash, PtT |
 
 ### Privilege Escalation (TA0004)
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1068** | Exploitation for Privilege Escalation | 100% | 06-Cheatsheets | linux + windows_privesc |
-| **T1548** | Abuse Elevation Control Mechanism | 100% | 06-Cheatsheets | SUDO/UAC |
-| **T1134** | Access Token Manipulation | 75% | 06-Cheatsheets | windows_privesc_teoria.md |
-| **T1611** | Escape to Host | 75% | 10-Container-Sec | docker-escape-techniques.md |
-| **T1078** | Valid Accounts | 50% | 06-Cheatsheets | Uso de credenciais |
+| **T1068** | Exploitation for Privilege Escalation | 100% | 36-Escalacao-Privilegios | linux + windows_privesc |
+| **T1548** | Abuse Elevation Control Mechanism | 100% | 36-Escalacao-Privilegios | SUDO/UAC |
+| **T1134** | Access Token Manipulation | 75% | 36-Escalacao-Privilegios | windows_privesc_teoria.md |
+| **T1611** | Escape to Host | 75% | 33-Containers-Supply-Chain | docker-escape-techniques.md |
+| **T1078** | Valid Accounts | 50% | 37-Pos-Exploracao-Movimento-Lateral | Uso de credenciais |
 
 ### Execution (TA0002) - 2 técnicas
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1059.001** | PowerShell | 100% | 06-Cheatsheets | powershell_cheatsheet.md |
-| **T1059.004** | Unix Shell | 100% | 06-Cheatsheets | Bash scripting |
+| **T1059.001** | PowerShell | 100% | 36-Escalacao-Privilegios | powershell_cheatsheet.md |
+| **T1059.004** | Unix Shell | 100% | 36-Escalacao-Privilegios | Bash scripting |
 
 ### Collection (TA0009) - 1 técnica
 
 | ID | Técnica | Score | Módulo | Recursos |
 |----|---------|-------|--------|----------|
-| **T1119** | Automated Collection | 50% | 04-Automation | organize_logs.ps1 |
+| **T1119** | Automated Collection | 50% | 28-Engenharia-Ferramentas-Seguranca | organize_logs.ps1 |
 
-### Defense Evasion (TA0005) - teoria (09-C2-Evasion)
+### Stealth e Defense Impairment - teoria (35-Acesso-Inicial-C2)
 
 | ID | Técnica | Score | Status |
 |----|---------|-------|--------|
-| **T1070** | Indicator Removal | 50% | Teoria DFIR |
-| **T1562** | Impair Defenses | 75% | 09-C2-Evasion |
-| **T1027** | Obfuscated Files or Information | 50% | 09 (teoria) |
-| **T1055** | Process Injection | 50% | 09 (teoria) |
+| **T1070** | Indicator Removal (Stealth) | 50% | Teoria DFIR |
+| **T1685** | Disable or Modify Tools (Defense Impairment) | 75% | 35-Acesso-Inicial-C2 |
+| **T1027** | Obfuscated Files or Information (Stealth) | 50% | 35 (teoria) |
+| **T1055** | Process Injection (Stealth) | 50% | 35 (teoria) |
 
 ### Initial Access / Exfiltration (novos na v2.1)
 
 | ID | Técnica | Score | Módulo |
 |----|---------|-------|--------|
-| **T1566** | Phishing | 75% | 13-Initial-Access |
-| **T1190** | Exploit Public-Facing Application | 100% | 07-Web-AppSec |
-| **T1133** | External Remote Services | 75% | 13-Initial-Access |
-| **T1041** | Exfiltration Over C2 Channel | 75% | 14-Post-Exploitation |
-| **T1090** | Proxy | 75% | 14 (tunnels) |
+| **T1566** | Phishing | 75% | 35-Acesso-Inicial-C2 |
+| **T1190** | Exploit Public-Facing Application | 100% | 30-Web-API-AppSec |
+| **T1133** | External Remote Services | 75% | 35-Acesso-Inicial-C2 |
+| **T1041** | Exfiltration Over C2 Channel | 75% | acervo legado em 37-Pos-Exploracao-Movimento-Lateral |
+| **T1090** | Proxy | 75% | 37 (tunnels) |
 
 ---
 
@@ -148,15 +150,15 @@ Layer atualizado na **v2.1** (modulos 01-14). Resumo das areas novas:
 **Exemplo:** Você quer aprender sobre Active Directory
 
 1. No Navigator, filtre por tática: **"Credential Access"**
-2. Procure técnicas verdes (100% de cobertura)
+2. Procure técnicas verdes (maior profundidade editorial declarada)
 3. Identifique: **T1558.003 - Kerberoasting**
-4. Veja no layer: Módulo 03-AD-Notes
+4. Veja no layer: Módulo 31-Active-Directory-Identidade
 
 ### 2. Estudar a Técnica
 
 **No Repositório:**
 ```bash
-cd 03-AD-Notes
+cd 31-Active-Directory-Identidade/active-directory-identidade-hibrida
 cat kerberoasting_teoria.md
 ```
 
@@ -263,7 +265,7 @@ Comprometimento de credenciais de contas de serviço privilegiadas.
 
 **Referências:**
 - https://attack.mitre.org/techniques/T1558/003/
-- https://github.com/Samuel-Ziger/RedTeam-Essentials/blob/main/03-AD-Notes/kerberoasting_teoria.md
+- https://github.com/Samuel-Ziger/RedTeam-Essentials/blob/main/31-Active-Directory-Identidade/active-directory-identidade-hibrida/kerberoasting_teoria.md
 ```
 
 ---
@@ -377,7 +379,7 @@ Use o mapeamento para criar cenários:
 - T1550 (Pass-the-Hash/Ticket)
 
 **Como usar:**
-1. Foque no módulo 03-AD-Notes
+1. Foque no módulo 31-Active-Directory-Identidade
 2. Use bloodhound_teoria.md
 3. Pratique em GOAD lab
 

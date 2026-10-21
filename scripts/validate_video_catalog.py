@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Portuguese video sections distributed across modules 00-24."""
+"""Validate the Portuguese video sections in the foundational modules 00-26."""
 
 from __future__ import annotations
 
@@ -27,22 +27,14 @@ def validate_catalog(root: Path, minimum: int = 5) -> list[str]:
     modules = sorted(
         path
         for path in root.iterdir()
-        if path.is_dir()
-        and (match := MODULE_RE.match(path.name))
-        and 0 <= int(match.group(1)) <= 24
+        if path.is_dir() and (match := MODULE_RE.match(path.name)) and 0 <= int(match.group(1)) <= 26
     )
-    expected = [f"{number:02d}" for number in range(25)]
+    expected = [f"{number:02d}" for number in range(27)]
     found = [MODULE_RE.match(module.name).group(1) for module in modules]
     errors: list[str] = []
 
     if found != expected:
         errors.append(f"seções esperadas {expected}; encontradas {found}")
-
-    courses_readme = root / "25-Cursos" / "README.md"
-    if not courses_readme.is_file():
-        errors.append("25-Cursos: README.md não encontrado")
-    elif "youtube.com/watch?v=" in courses_readme.read_text(encoding="utf-8"):
-        errors.append("25-Cursos: vídeos avulsos devem ficar nos módulos temáticos")
 
     for module in modules:
         readme = module / "README.md"
@@ -52,15 +44,11 @@ def validate_catalog(root: Path, minimum: int = 5) -> list[str]:
         content = readme.read_text(encoding="utf-8")
         sections = list(SECTION_RE.finditer(content))
         if len(sections) != 1:
-            errors.append(
-                f"{module.name}: esperada 1 seção de vídeos; encontradas {len(sections)}"
-            )
+            errors.append(f"{module.name}: esperada 1 seção de vídeos; encontradas {len(sections)}")
             continue
         video_ids = VIDEO_RE.findall(sections[0].group("body"))
         if len(video_ids) < minimum:
-            errors.append(
-                f"{module.name}: {len(video_ids)} vídeo(s), mínimo {minimum}"
-            )
+            errors.append(f"{module.name}: {len(video_ids)} vídeo(s), mínimo {minimum}")
         if len(video_ids) != len(set(video_ids)):
             errors.append(f"{module.name}: há vídeos duplicados")
 
@@ -85,7 +73,7 @@ def main() -> int:
             print(f"ERRO: {error}")
         return 1
 
-    print("OK: módulos 00-24 possuem pelo menos 5 vídeos válidos em cada um")
+    print("OK: módulos-base 00-26 possuem pelo menos 5 vídeos válidos em cada um")
     return 0
 
 

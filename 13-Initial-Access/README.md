@@ -1,105 +1,40 @@
-# 13 - Initial Access
+# 13 — macOS II: internals, engenharia e administração empresarial
 
-> Modulo educacional sobre **acesso inicial** (MITRE TA0001): phishing, servicos externos e superficies publicas.
-> Foco em **teoria, deteccao e labs eticos**. Nao inclui malware, implants ou scripts de phishing weaponizados.
+O módulo 13 aprofunda o sistema operacional e transforma conhecimento local em
+engenharia de software segura e administração empresarial modelada offline.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | Estudantes intermediários e equipes de awareness/purple team. |
-| Pré-requisitos | Módulos 00, 01 e 02; contas e SMTP somente de laboratório. |
-| Tempo estimado | 6 horas de teoria e 4 horas de simulação. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Plano de campanha canário, métricas, detecções e debrief. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+|---|---|
+| Público | Administradores Mac, engenheiros de endpoint, desenvolvedores e defesa. |
+| Pré-requisitos | Módulo 12 e fundamentos de C/Python do módulo 00. |
+| Tempo estimado | 260–380 horas. |
+| Ambiente | Mac de teste suportado, Xcode CLT e fixtures offline. |
+| Evidência final | Parser Mach-O, dylib segura, perfis auditados e arquitetura de frota. |
+| Critério de conclusão | Explicar internals e defender uma gestão rastreável e privada. |
 
-## Disclaimer etico
+## Formação principal
 
-Todo conteudo deste modulo e para uso em:
+Acesse [macOS II — internals, engenharia e administração empresarial](macos-avancado/README.md).
+São 24 capítulos, sete laboratórios, parser Mach-O, auditor de perfis,
+comparador de baseline, dylib/consumidor em C e testes offline.
 
-- Labs proprios / isolados
-- Plataformas autorizadas (TryHackMe, HackTheBox, etc.)
-- Engagements com **autorizacao escrita** e RoE (Rules of Engagement) claros
+A rota cobre Darwin/XNU, Mach/BSD/IOKit, arm64, memória, Mach-O/`dyld`, APFS,
+assinatura/notarização, sandbox, TCC, System Extensions, Endpoint Security,
+logs, Instruments, LLDB, MDM, ABM, ADE, DDM, Platform SSO e compliance.
 
-Phishing, password spraying e exploracao de servicos externos **sem autorizacao** sao ilegais. Use apenas com escopo formal.
+Implantações distribuídas aguardam o futuro módulo de redes.
 
-## Conteudo
+## Continuação avançada
 
-| Documento | Tema |
-|-----------|------|
-| [phishing-teoria.md](phishing-teoria.md) | Phishing (T1566): tipos, delivery concepts, deteccao, labs eticos, OPSEC. |
-| [external-services.md](external-services.md) | VPN/RDP/OWA, password spraying (conceitos), T1190, supply chain high-level. |
-
-## Objetivos de aprendizado
-
-Ao concluir este modulo voce deve ser capaz de:
-
-1. Explicar as principais tecnicas de Initial Access do ATT&CK (TA0001).
-2. Diferenciar spear-phishing por link vs anexo vs service (conceitualmente).
-3. Descrever controles de email gateway / Safe Links e como o blue team detecta campanhas.
-4. Avaliar riscos de autenticacao fraca em VPN, RDP e OWA (sem realizar ataque ilegal).
-5. Mapear exploit de aplicacao publica para o modulo [07-Web-AppSec](../07-Web-AppSec/).
-6. Aplicar checklist OPSEC etico em lab ou engagement autorizado.
-
-## Fluxo recomendado
-
-```
-01/02 Recon + OSINT  -->  13 Initial Access  -->  foothold
-                              |                      |
-                              v                      v
-                     07 Web / 08 Cloud          14 Post-Exploitation
-                     (T1190 / cloud)            09 C2 (teoria)
-```
-
-1. **Recon** - identificar emails, portais, VPN, OWA, apps publicas (modulos 01-02).
-2. **Escolher vetor** - phishing (lab), servicos externos, ou exploit publico (07).
-3. **Validar autorizacao** - RoE, escopo, janela, contatos de emergencia.
-4. **Executar em lab / alvo autorizado** - documentar evidencias.
-5. **Hand-off** - apos foothold, seguir para [14-Post-Exploitation](../14-Post-Exploitation/) e [09-C2-Evasion](../09-C2-Evasion/).
-
-## MITRE ATT&CK (TA0001 - Initial Access)
-
-| Tecnica | Nome | Documento |
-|---------|------|-----------|
-| T1566 | Phishing | phishing-teoria.md |
-| T1566.001 | Spearphishing Attachment | phishing-teoria.md |
-| T1566.002 | Spearphishing Link | phishing-teoria.md |
-| T1566.003 | Spearphishing via Service | phishing-teoria.md |
-| T1133 | External Remote Services | external-services.md |
-| T1078 | Valid Accounts | external-services.md |
-| T1110.003 | Password Spraying | external-services.md |
-| T1190 | Exploit Public-Facing Application | external-services.md -> 07 |
-| T1195 | Supply Chain Compromise | external-services.md (high-level) |
-| T1199 | Trusted Relationship | external-services.md |
-
-## Pre-requisitos
-
-- Familiaridade com recon DNS/OSINT ([01-Recon](../01-Recon/), [02-OSINT](../02-OSINT/)).
-- Noções basicas de autenticacao (senha, MFA, SSO).
-- Para labs web: [07-Web-AppSec](../07-Web-AppSec/).
-
-## Etica e escopo (resumo)
-
-- Nunca envie phishing para dominios reais sem contrato e autorizacao.
-- Nunca pulverize senhas contra portais de producao fora do RoE.
-- Rate limit e lockout devem ser respeitados; coordinate com o blue team em purple team.
-- Dados pessoais (LGPD) em campanhas de phishing de engajamento exigem tratamento especial.
-- Persistencia e exfiltracao so apos foothold autorizado -> modulo 14.
-
-## Referencias rapidas
-
-- [MITRE ATT&CK - Initial Access](https://attack.mitre.org/tactics/TA0001/)
-- [GoPhish](https://getgophish.com/) - framework open source para campanhas de awareness (lab proprio)
-- [Microsoft Safe Links](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about)
-- TryHackMe: salas de phishing / social engineering (buscar catalogo atualizado)
+Acesso inicial, C2 e OPSEC são estudados no
+[módulo 35](../35-Acesso-Inicial-C2/README.md), após a formação-base.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
-
-1. [UM FUNCIONÁRIO DO RED TEAM PODE REALIZAR UM ATAQUE DE ENGENHARIA SOCIAL? | CORTES](https://www.youtube.com/watch?v=zkY4Z8IrKJQ) — **Blue Team Academy**.
-2. [O que é Engenharia Social e como se prevenir dessa ameaça de segurança](https://www.youtube.com/watch?v=NI_Kdo443es) — **Bóson Treinamentos**.
-3. [Engenharia Social e Phishing como proteger sua empresa de ataques](https://www.youtube.com/watch?v=8KerwybZfcs) — **Introduce Tecnologia para Crescer**.
-4. [O que é Engenharia Social?](https://www.youtube.com/watch?v=z8pOtf2xCRU) — **David Avelino Consultor**.
-5. [O QUE É ENGENHARIA SOCIAL? VEJA EXEMPLOS DE ENGENHARIA SOCIAL](https://www.youtube.com/watch?v=Ha_r7ArqGEY) — **TI-informa**.
+1. [Comandos básicos de terminal no macOS](https://www.youtube.com/watch?v=dqLSdUG2h70) — **Professor Lau**.
+2. [4 Pilares Importantes de Segurança no Mac](https://www.youtube.com/watch?v=EDvnYX4KmoI) — **Super Apple**.
+3. [Como melhorar a proteção do Mac](https://www.youtube.com/watch?v=BQgAL7ge0Bo) — **Canal da Lu - Magalu**.
+4. [Curso Apple Mac - Navegação Privada](https://www.youtube.com/watch?v=zxLAYaY4gm8) — **Doctor Apple**.
+5. [Tutorial de macOS para iniciantes](https://www.youtube.com/watch?v=JPyVGQ2jtGQ) — **Canal de tecnologia em português**.

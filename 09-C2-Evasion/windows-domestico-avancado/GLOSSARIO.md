@@ -1,0 +1,47 @@
+# Glossário
+
+- **ABI:** contrato binário entre componentes compilados: convenção de chamada, tipos, layout, símbolos e versão.
+- **API:** contrato oferecido por uma biblioteca ou serviço ao código chamador; não revela necessariamente a implementação interna.
+- **ASLR:** aleatorização dos endereços de imagens e regiões para reduzir previsibilidade.
+- **ASR:** regras de redução de superfície que restringem comportamentos de risco.
+- **Authenticode:** infraestrutura de assinatura que associa integridade do conteúdo a uma identidade/cadeia de certificados.
+- **CFG:** Control Flow Guard; mitigação que restringe destinos de chamadas indiretas compatíveis.
+- **COFF:** formato de objetos e parte das estruturas usadas pelo ecossistema PE.
+- **Commit:** memória virtual para a qual o sistema promete backing; não é sinônimo de RAM residente.
+- **Consumer:** componente que lê e interpreta eventos de uma sessão ETW.
+- **Controller:** componente que configura, inicia e encerra uma sessão ETW.
+- **Correlation ID:** identificador sintético que liga eventos de uma execução sem depender de hostname ou usuário.
+- **DEP/NX:** política que impede execução em páginas marcadas como dados quando suportada.
+- **DACL:** lista de entradas que permitem ou negam acessos a um objeto protegido.
+- **ETL:** arquivo que persiste eventos de uma captura ETW.
+- **ETW:** infraestrutura de tracing baseada em providers, sessões, buffers, controllers e consumers.
+- **Handle:** referência numérica em uma tabela de processo para um objeto; não é o objeto em si.
+- **Hard fault:** page fault que exige obter a página de backing mais caro; precisa de contexto para atribuir disco e impacto.
+- **HVCI:** integridade de código protegida pelo hipervisor, frequentemente exposta como Memory Integrity.
+- **IRP:** estrutura usada pelo I/O Manager para representar muitas solicitações que percorrem pilhas de drivers.
+- **Job object:** objeto que agrupa processos e permite aplicar limites ou acompanhar ciclo de vida.
+- **Loader:** conjunto de componentes responsável por mapear imagens, resolver dependências e preparar execução.
+- **Loader lock:** sincronização interna durante carga/descarga; razão para manter `DllMain` mínimo.
+- **MIC:** Mandatory Integrity Control; política baseada em níveis de integridade que complementa ACLs.
+- **MFT:** tabela principal do NTFS cujos registros representam arquivos/diretórios e seus atributos.
+- **Mini dump:** subconjunto do estado de um processo usado para triagem; ainda pode conter informação sensível.
+- **Object Manager:** parte do Executive que fornece namespace e ciclo de vida a muitos objetos do kernel.
+- **Optional header:** região do PE necessária em imagens, apesar do nome histórico; contém entry point, alinhamentos e subsistema.
+- **PDB:** arquivo de símbolos associado a um build; precisa corresponder exatamente ao binário.
+- **PE:** Portable Executable, formato de imagens executáveis e DLLs no Windows.
+- **PEB/TEB:** estruturas de modo usuário relacionadas ao estado de processo e thread; são detalhes sujeitos a versão.
+- **Private bytes:** commit do processo que não pode ser compartilhado dessa forma com outros processos.
+- **Provider:** componente que publica eventos ETW ou Event Log com esquema identificável.
+- **PTE:** entrada de tabela de páginas usada na tradução e nas propriedades de memória virtual.
+- **Reparse point:** metadado NTFS que redireciona ou delega interpretação de um caminho.
+- **RVA:** endereço relativo à base em que a imagem é carregada; não é offset de arquivo.
+- **SID:** identificador estável de principal de segurança no Windows.
+- **Syscall:** transição controlada para serviço do kernel; não deve ser confundida com toda API Win32.
+- **Token:** contexto de segurança associado a processo ou thread, contendo usuário, grupos, privilégios e outras propriedades.
+- **VBS:** Virtualization-Based Security; usa o hipervisor para criar uma fronteira protegida dentro do sistema.
+- **VTL:** Virtual Trust Level, nível de isolamento usado pela arquitetura VBS.
+- **WER:** Windows Error Reporting; infraestrutura que registra falhas e pode coordenar relatórios/dumps.
+- **Working set:** páginas virtuais de um processo residentes em memória física naquele momento.
+- **WPA:** Windows Performance Analyzer, usado para analisar traces e tabelas do WPT.
+- **WPR:** Windows Performance Recorder, usado para produzir capturas ETW segundo perfis.
+

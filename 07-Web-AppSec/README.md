@@ -1,110 +1,149 @@
-# 07 - Web Application Security
+# 07 — Linux avançado: engenharia de sistemas e kernel
 
-> Modulo focado em recon, exploitation e validacao de vulnerabilidades em aplicacoes web modernas (SPA, REST/GraphQL, microsservicos).
+> Especialização prática que começa onde o módulo 06 termina: ler o
+> kernel, investigar subsistemas, medir comportamento e construir mudanças
+> reproduzíveis. O nome histórico da pasta foi mantido para preservar links.
 
 ## Contrato do módulo
 
 | Campo | Definição |
 |-------|-----------|
-| Público | Estudantes intermediários com fundamentos de HTTP, terminal e escopo. |
-| Pré-requisitos | Módulos [00](../00-Fundamentos/README.md) e [01](../01-Recon/README.md). |
-| Tempo estimado | 12 horas de leitura e 8 horas nos três labs guiados. |
-| Ambiente | Exclusivamente os alvos locais do `docker-lab`. |
-| Evidência final | Três achados sanitizados com requisição, resposta, impacto e correção. |
-| Critério de conclusão | Concluir os três labs, relacionar telemetria e executar o reset do ambiente. |
+| Público | Quem concluiu a formação Linux do módulo 06 e quer atuar com sistemas, kernel, desempenho, virtualização ou plataforma. |
+| Pré-requisitos | Módulos 00–06, C, Bash, Git, administração Linux e leitura técnica em inglês. |
+| Tempo estimado | 420–620 horas de estudo, 72 práticas, nove laboratórios e projeto. |
+| Ambiente | Duas VMs locais com snapshots; uma delas descartável para kernel, boot, armazenamento e KVM. |
+| Evidência final | Dossiê técnico, pacote reproduzível, experimento de desempenho, patch didático e appliance Linux offline. |
+| Critério de conclusão | Concluir exercícios, checklists, 72 práticas e nove gates; passar na validação e defender o projeto final com medições. |
 
-## Conteudo
+## Limite deste módulo
 
-| Documento | Tema |
-|-----------|------|
-| [owasp-top10-2021.md](owasp-top10-2021.md) | OWASP Top 10 (2021) com como detectar e mitigar cada item. |
-| [api-security-checklist.md](api-security-checklist.md) | Checklist de pentest para APIs REST/GraphQL (OWASP API Top 10). |
-| [recon-web-pratico.md](recon-web-pratico.md) | Recon web pratico: ffuf, gobuster, katana, nuclei, gowitness. |
-| [enum-web-avancado.md](enum-web-avancado.md) | Enum avancada: dirs/vhosts/params (gobuster/ferox/wfuzz) + AXFR em lab. |
-| [xss-deep-dive.md](xss-deep-dive.md) | XSS: contextos, bypasses de WAF, payloads modernos (Trusted Types). |
-| [sqli-deep-dive.md](sqli-deep-dive.md) | SQL Injection: tipos, deteccao, sqlmap em lab, defesa (T1190). |
-| [ssrf-deep-dive.md](ssrf-deep-dive.md) | SSRF: tipos, risco IMDS, bypass overview, labs e defesa. |
-| [path-traversal-lfi.md](path-traversal-lfi.md) | Path traversal / LFI (wrappers PHP, defesa, lab DVWA/WebGoat). |
-| [auth-bypass-patterns.md](auth-bypass-patterns.md) | Padroes de bypass de autenticacao/autorizacao (BOLA/IDOR). |
-| [api-moderna-oauth-graphql-grpc.md](api-moderna-oauth-graphql-grpc.md) | OAuth/OIDC, GraphQL e gRPC: validação, autorização, limites e telemetria. |
+**Redes não fazem parte do módulo 07.** Não há roteamento, namespaces de
+rede, DNS, firewall, nftables, conntrack, sockets de rede, `tc`, XDP, Wi-Fi ou
+administração remota. Esses assuntos terão um módulo próprio. Exemplos de
+eBPF observam somente processos, escalonamento e arquivos; as VMs usam console
+e imagens locais.
 
-### Labs guiados (`docker-lab`)
+## Resultado da especialização
 
-| Lab | Alvo local | Foco |
-|-----|------------|------|
-| [labs/lab-01-dvwa-sqli.md](labs/lab-01-dvwa-sqli.md) | http://127.0.0.1:8081 | DVWA SQLi Low → Medium |
-| [labs/lab-02-juice-xss.md](labs/lab-02-juice-xss.md) | http://127.0.0.1:8082 | Juice Shop XSS / DOM (Score Board) |
-| [labs/lab-03-vampi-api.md](labs/lab-03-vampi-api.md) | http://127.0.0.1:8087 | VAmPI BOLA / auth bypass |
+Ao concluir, você conseguirá:
 
-Depois da tentativa, use a [rubrica e respostas orientativas](labs/answers/README.md)
-para revisar evidência, causa, mitigação, telemetria e falsos positivos.
+- navegar no código-fonte do kernel e relacioná-lo a eventos observáveis;
+- explicar ABI, ELF, loader, syscalls, tarefas, scheduler, SMP, RCU e MM;
+- diagnosticar page faults, reclaim, NUMA, page cache, VFS e block layer;
+- comparar ext4, XFS e Btrfs por invariantes, falhas e carga de trabalho;
+- projetar boot verificável com initramfs, UKI, Secure Boot e TPM;
+- controlar CPU, memória e I/O com systemd e cgroup v2;
+- investigar gargalos com `perf`, ftrace, tracepoints, kprobes e eBPF local;
+- depurar processos, kernel, oops, panic e dumps sem alterar evidência;
+- operar KVM/QEMU, virtio, qcow2 e libvirt sem depender de rede;
+- aplicar LSM, seccomp, capabilities, IMA, fs-verity e dm-verity;
+- produzir pacotes e imagens reproduzíveis, atualizáveis e reversíveis;
+- preparar, revisar, testar e justificar uma pequena contribuição ao kernel.
 
-> Use a wordlist [`SecLists`](https://github.com/danielmiessler/SecLists) - instalada por `linux_postinstall.sh`.
-> Lab: [`docker-lab/README.md`](../docker-lab/README.md) — `cd docker-lab && docker compose up -d --build`.
+## Rota completa
 
-## Fluxo recomendado
+### Etapa 1 — fonte, ABI e execução (75–105 h)
 
-1. **Recon passivo** - subdominios, JS analysis, Github dorks (modulo 01-02).
-2. **Recon ativo** - port scan, virtual hosts, technology fingerprint (`whatweb`, `wappalyzer`).
-3. **Surface mapping** - crawl com `katana` ou `gospider`; salve URLs unicas. Ver [recon-web-pratico.md](recon-web-pratico.md).
-4. **Enum avancada** - dirs/vhosts/params e (se autorizado) AXFR. Ver [enum-web-avancado.md](enum-web-avancado.md).
-5. **Vuln scan** - `nuclei -t cves/ -t exposures/` em low rate.
-6. **Fundamentos OWASP** - [owasp-top10-2021.md](owasp-top10-2021.md) + [api-security-checklist.md](api-security-checklist.md).
-7. **Deep dives manuais** (teoria → lab):
-   1. XSS → [xss-deep-dive.md](xss-deep-dive.md) → [labs/lab-02-juice-xss.md](labs/lab-02-juice-xss.md)
-   2. SQLi → [sqli-deep-dive.md](sqli-deep-dive.md) → [labs/lab-01-dvwa-sqli.md](labs/lab-01-dvwa-sqli.md) (WebGoat `:8084` no deep dive)
-   3. SSRF → [ssrf-deep-dive.md](ssrf-deep-dive.md) (Juice Shop / VAmPI / rede compose)
-   4. Path traversal / LFI → [path-traversal-lfi.md](path-traversal-lfi.md) (DVWA File Inclusion / WebGoat)
-   5. AuthZ → [auth-bypass-patterns.md](auth-bypass-patterns.md) → [labs/lab-03-vampi-api.md](labs/lab-03-vampi-api.md)
-8. **Manual avancado** - logica de negocio, file upload, encadeamentos.
-9. **Report** - [`REPORT-TEMPLATE.md`](../REPORT-TEMPLATE.md) + PDF via [`report/README.md`](../report/README.md) (evidencias minimas; sem dumps massivos).
+1. [Método, laboratório e evidência](linux-avancado/00-metodo-laboratorio.md).
+2. [Árvore do kernel e leitura de código](linux-avancado/01-fonte-kernel.md).
+3. [Kconfig, kbuild, compilação e cross-build](linux-avancado/02-build-kernel.md).
+4. [ABI, syscalls, vDSO e ioctl](linux-avancado/03-abi-syscalls.md).
+5. [ELF, linking e loader dinâmico](linux-avancado/04-elf-loader.md).
+6. [Tarefas, `clone`, `exec`, sinais e espera](linux-avancado/05-processos-internals.md).
+7. [Namespaces locais e credenciais](linux-avancado/06-namespaces-locais.md).
 
-## MITRE ATT&CK (parcial)
+### Etapa 2 — CPU, concorrência e memória (80–115 h)
 
-- T1190 - Exploit Public-Facing Application
-- T1133 - External Remote Services
-- T1078 - Valid Accounts
-- T1556 - Modify Authentication Process
+1. [Scheduler, EEVDF, RT e deadline](linux-avancado/07-scheduler.md).
+2. [SMP, preempção, interrupções e timers](linux-avancado/08-smp-interrupcoes.md).
+3. [Atomics, locks e modelo de memória](linux-avancado/09-concorrencia.md).
+4. [RCU e estruturas lockless](linux-avancado/10-rcu.md).
+5. [MM, page tables, allocators e reclaim](linux-avancado/11-mm-internals.md).
+6. [NUMA, huge pages, PSI e DAMON](linux-avancado/12-numa-pressao.md).
 
-## Etica e escopo
+### Etapa 3 — arquivos, blocos e dispositivos (80–115 h)
 
-Apenas em aplicacoes com autorizacao formal e escopo definido. Para treino deste modulo, use **somente** o `docker-lab` em `127.0.0.1`. Cuidados especiais com:
+1. [VFS, inodes, dentries e page cache](linux-avancado/13-vfs-page-cache.md).
+2. [ext4, XFS, Btrfs e consistência](linux-avancado/14-filesystems.md).
+3. [Block layer, filas e writeback](linux-avancado/15-block-layer.md).
+4. [Device Mapper, thin provisioning e verity](linux-avancado/16-device-mapper.md).
+5. [I/O assíncrona, epoll e io_uring](linux-avancado/17-io-assincrona.md).
+6. [Dispositivos, drivers, DMA e IOMMU](linux-avancado/18-drivers-iommu.md).
 
-- Dados de usuarios reais - PII/dados sensiveis precisam de tratamento.
-- Endpoints de pagamento - jamais teste em ambiente de producao sem aval.
-- Rate limit - configure no Burp/ffuf para nao derrubar o servico.
-- Dumps - prove impacto com evidencia minima; nao exfiltre bases inteiras.
+### Etapa 4 — inicialização, recursos e diagnóstico (90–130 h)
 
-## Resultado esperado, telemetria e cleanup
+1. [UEFI, initramfs, UKI, TPM e boot medido](linux-avancado/19-boot-confiavel.md).
+2. [systemd avançado e ciclo de vida](linux-avancado/20-systemd-avancado.md).
+3. [cgroup v2, PSI e OOM](linux-avancado/21-cgroups-recursos.md).
+4. [perf, PMU, flame graphs e metodologia](linux-avancado/22-perf-metodologia.md).
+5. [ftrace, tracepoints, kprobes e uprobes](linux-avancado/23-tracing.md).
+6. [eBPF e CO-RE para observabilidade local](linux-avancado/24-ebpf-local.md).
+7. [Depuração de user space](linux-avancado/25-debug-userspace.md).
+8. [Oops, panic, kdump, crash e drgn](linux-avancado/26-debug-kernel.md).
 
-Cada lab deve terminar com uma evidência reproduzível e não destrutiva. Registre
-requisição, resposta, usuário de teste, horário UTC e limitação. Correlacione a
-ação com logs HTTP/reverse proxy, logs da aplicação e eventos de autenticação;
-explique pelo menos um falso positivo possível e uma mitigação verificável.
+### Etapa 5 — plataforma, segurança e engenharia (95–155 h)
+
+1. [KVM, QEMU, libvirt e virtio offline](linux-avancado/27-kvm-qemu.md).
+2. [Tempo real, latência e PREEMPT_RT](linux-avancado/28-tempo-real.md).
+3. [Linux embarcado, Device Tree e Buildroot](linux-avancado/29-embarcado.md).
+4. [LSM, seccomp, capabilities e sandbox](linux-avancado/30-seguranca-internals.md).
+5. [Assinatura, IMA/EVM, fs-verity e dm-verity](linux-avancado/31-integridade.md).
+6. [Pacotes, distribuições e builds reproduzíveis](linux-avancado/32-engenharia-distribuicao.md).
+7. [Desenvolvimento e contribuição ao kernel](linux-avancado/33-contribuicao-kernel.md).
+8. [Projeto final: appliance Linux offline](linux-avancado/34-projeto-final.md).
+
+Use também o [glossário](linux-avancado/GLOSSARIO.md), a
+[folha de consulta](linux-avancado/CHEATSHEET.md), as
+[72 práticas cumulativas](linux-avancado/CADERNO-PRATICAS.md), o
+[guia de experimentos e diagnóstico](linux-avancado/GUIA-EXPERIMENTOS-DIAGNOSTICO.md), o
+[projeto de referência](linux-avancado/projetos/offline-appliance/README.md), as
+[respostas orientativas](linux-avancado/RESPOSTAS.md) e as
+[referências](linux-avancado/REFERENCIAS.md).
+
+## Código e laboratórios
+
+Os exemplos incluem analisadores de ELF e `/proc`, medição de page faults,
+sonda segura de KVM, isolamento com seccomp, scripts de pressão e build
+reproduzível, unidade systemd endurecida, programa eBPF não carregado
+automaticamente e módulo didático para VM. Nenhum teste precisa de `sudo`.
 
 ```bash
-cd docker-lab
-docker compose logs --since=10m <servico>
-docker compose down -v
+bash 07-Web-AppSec/linux-avancado/testar-curso.sh
 ```
 
-### Autoavaliação
+Os [nove laboratórios avaliativos](linux-avancado/laboratorios/README.md)
+funcionam como gates progressivos e classificam o risco:
 
-- [ ] Concluí SQLi, XSS e BOLA somente nos alvos locais indicados.
-- [ ] Diferenciei autenticação de autorização no achado de API.
-- [ ] Coletei evidência mínima e removi tokens/dados desnecessários.
-- [ ] Relacionei cada ação a uma fonte de telemetria e mitigação.
-- [ ] Destruí volumes e confirmei que as portas do lab foram fechadas.
+- **A:** somente leitura ou processo do próprio usuário;
+- **B:** altera apenas arquivo/imagem descartável;
+- **C:** exige snapshot de uma VM de estudo;
+- **D:** exige VM sacrificável e console de recuperação.
 
+## Critério de conclusão
+
+- [ ] Relaciono uma medição de user space ao caminho correspondente no kernel.
+- [ ] Sei separar estabilidade de ABI de detalhes internos que podem mudar.
+- [ ] Explico scheduler, RCU, page tables, reclaim, VFS e block layer.
+- [ ] Investigo desempenho com hipótese, baseline, controle e reversão.
+- [ ] Leio traces sem confundir correlação com causalidade.
+- [ ] Construo uma VM local sem rede, com limites e imagem verificável.
+- [ ] Produzo um artefato reproduzível e documento sua cadeia de confiança.
+- [ ] Entrego um patch didático pequeno, testado e revisável.
+- [ ] Concluo as 72 práticas e os nove gates em ordem.
+- [ ] Concluo e defendo o appliance final.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Os vídeos complementam a leitura. O curso continua autocontido e os trechos que
+fogem do escopo de redes devem ser ignorados nesta etapa.
 
-1. [Metodologia OWASP para Pentest: Garantindo a Segurança das Aplicações Web](https://www.youtube.com/watch?v=DOQdWHtjMT4) — **Perícia Hacker**.
-2. [OWASP TOP 10: As Falhas MAIS CRÍTICAS em Aplicações Web](https://www.youtube.com/watch?v=n8nI_IsH7rM) — **HackStation**.
-3. [OWASP ASVS - O que é e como aumentar a segurança em Aplicações WEB #1](https://www.youtube.com/watch?v=BxeJgKalsiE) — **Sistema Inseguro**.
-4. [Como utilizar o OWASP para realizar pentest](https://www.youtube.com/watch?v=ouERLpaCvbQ) — **Redbelt Security**.
-5. [💀 TOP 10 Ameaças de Segurança em Aplicações Web - DICAS DE PREVENÇÃO!](https://www.youtube.com/watch?v=OzBy8nYLY-I) — **Código Fonte TV**.
-=======
+1. [Hello World como você nunca viu: entendendo C](https://www.youtube.com/watch?v=Gp2m8ZuXoPg) — **Akitando**.
+2. [Só precisamos de 640 kB de memória?](https://www.youtube.com/watch?v=cTVXKfYOYxo) — **Akitando**.
+3. [Como funciona o boot de um Linux?](https://www.youtube.com/watch?v=5F6BbhgvFOE) — **Akitando**.
+4. [Protegendo e recuperando dados: Git, backup e Btrfs](https://www.youtube.com/watch?v=yfEhz9poqW8) — **Akitando**.
+5. [QEMU, KVM, libvirt e passthrough](https://www.youtube.com/watch?v=IDnabc3DjYY) — **Akitando**.
 
+## Continuação avançada
+
+Web, APIs e revisão segura de código continuam no
+[módulo 30](../30-Web-API-AppSec/README.md), após a formação-base.

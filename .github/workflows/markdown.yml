@@ -10,14 +10,22 @@ on:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+
+concurrency:
+  group: markdown-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: markdownlint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
-      - uses: DavidAnson/markdownlint-cli2-action@v16
+      - uses: DavidAnson/markdownlint-cli2-action@30a0e04f1870d58f8d717450cc6134995f993c63 # v21
         with:
           globs: |
             **/*.md
@@ -26,11 +34,12 @@ jobs:
   links:
     name: Link Check
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Lychee link checker
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
           args: --no-progress --max-concurrency 5 --accept 200,206,429,403 './**/*.md'
           fail: true

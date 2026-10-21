@@ -1,0 +1,8 @@
+{
+  "minimumVersion": "TLSv1.3",
+  "maximumVersion": "TLSv1.3",
+  "legacyAllowed": false,
+  "requireClientCertificate": true,
+  "certificateAutomation": true,
+  "validationDisabled": false
+}

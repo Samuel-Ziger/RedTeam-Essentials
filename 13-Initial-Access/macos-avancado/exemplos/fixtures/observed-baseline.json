@@ -1,0 +1,9 @@
+{
+  "facts": {"architecture": "arm64", "osVersion": "26.0"},
+  "schema": "rte.macos.observed-baseline/v1",
+  "settings": {
+    "apple-silicon.policy": "standard",
+    "filevault.enabled": true,
+    "gatekeeper.enabled": false
+  }
+}

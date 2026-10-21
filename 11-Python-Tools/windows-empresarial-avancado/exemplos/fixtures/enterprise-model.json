@@ -1,0 +1,14 @@
+{
+  "schema": "rte.windows.enterprise-model/v1",
+  "identities": [
+    {"id": "user.ana", "owner": "people-ops"},
+    {"id": "service.batch", "owner": "data-platform"}
+  ],
+  "groups": [
+    {"id": "role.data-operators", "owner": "data-platform", "members": ["user.ana"]},
+    {"id": "access.batch-read", "owner": "data-platform", "members": ["role.data-operators", "service.batch"]}
+  ],
+  "permissions": [
+    {"principal": "access.batch-read", "resource": "fixture.batch-input", "access": "read"}
+  ]
+}

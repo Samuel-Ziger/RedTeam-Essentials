@@ -1,59 +1,48 @@
-# 09 - C2 & Evasion (Teoria)
+# 09 — Windows doméstico II: internals, PowerShell e defesa local
 
-> Conteudo **teorico** sobre Command-and-Control (C2) e tecnicas de evasion modernas. **Nao incluimos exploits ou implants prontos** - apenas conceitos, mapeamento ATT&CK e mitigacoes.
+> Aprofundamento seguro do Windows local: arquitetura NT, PE/DLL, automação,
+> tracing, desempenho, proteções modernas e debugging de aplicações próprias.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | Estudantes avançados e equipes purple team. |
-| Pré-requisitos | Módulos 00, 05 e 14; laboratório isolado. |
-| Tempo estimado | 6 horas de teoria e 4 horas de análise defensiva. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Diagrama conceitual, hipótese de detecção e plano de cleanup. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+|---|---|
+| Público | Estudantes que concluíram a administração local básica. |
+| Pré-requisitos | Módulo 08 e fundamentos de C/PowerShell do 00. |
+| Tempo estimado | 300–440 horas, incluindo 56 práticas e seis gates. |
+| Ambiente | Windows 11 Pro/Enterprise em VM isolada, com SDK/Sysinternals/WinDbg. |
+| Evidência final | DLL própria, traces, dump de fixture e diagnóstico causal. |
+| Critério de conclusão | Concluir labs sem manipular terceiros nem reduzir proteções. |
 
-## Sumario
+## Curso principal
 
-| Documento | Tema |
-|-----------|------|
-| [c2-overview.md](c2-overview.md) | Visao geral de frameworks C2 (Cobalt Strike, Sliver, Mythic, Havoc, Brute Ratel). |
-| [evasion-fundamentals.md](evasion-fundamentals.md) | AMSI, ETW, AV/EDR, sandbox detection, unhooking. |
-| [opsec-checklist.md](opsec-checklist.md) | Checklist de OpSec durante engagement (artifacts, logs, beacon traffic). |
+Siga a [rota completa de Windows doméstico avançado](windows-domestico-avancado/README.md).
+Os 20 capítulos estão divididos em seis blocos e intercalados com seis gates.
+O [guia de tracing e debugging](windows-domestico-avancado/GUIA-TRACING-DEBUG.md)
+fornece o método transversal; o
+[caderno](windows-domestico-avancado/CADERNO-PRATICAS.md) reúne 56 práticas com
+critérios de aceite.
 
-## Porque so teoria?
+A pasta `exemplos/dll/` contém DLL nativa em C e consumidor seguro com caminho
+absoluto, `LoadLibraryExW`, contrato de ABI, mitigações de build e testes. O
+parser PowerShell valida limites do PE antes de interpretar seções. O projeto
+final integra esses artefatos em uma bancada de diagnóstico reproduzível.
 
-Implementacao real de implants/loaders fica fora do escopo educacional aberto. O foco e:
+Não existe injeção, hooking, bypass, malware ou manipulação de outro processo.
+Dumps, traces e ferramentas Sysinternals são limitados às fixtures próprias.
 
-1. Entender **como o atacante pensa**.
-2. Mapear ATT&CK para **defesa**.
-3. Preparar conteudo academico/CRTO/OSEP.
+## Fora do escopo
 
-## MITRE ATT&CK relevante
+Redes e administração remota continuam reservadas para os módulos 14–18.
 
-- T1071 - Application Layer Protocol (C2)
-- T1573 - Encrypted Channel
-- T1027 - Obfuscated Files or Information
-- T1055 - Process Injection
-- T1562 - Impair Defenses
-- T1140 - Deobfuscate/Decode Files
-- T1497 - Virtualization/Sandbox Evasion
+## Continuação avançada
 
-## Ferramentas oficialmente publicas (lab apenas)
+Acesso inicial, C2 e OPSEC são estudados no
+[módulo 35](../35-Acesso-Inicial-C2/README.md), após a formação-base.
 
-- [Sliver](https://github.com/BishopFox/sliver) - open source, BSD-3.
-- [Mythic](https://github.com/its-a-feature/Mythic) - open source.
-- [Havoc](https://github.com/HavocFramework/Havoc) - open source.
-- [Caldera](https://github.com/mitre/caldera) - MITRE oficial, defensivo + ofensivo.
+## Recursos complementares
 
-Cobalt Strike, Brute Ratel sao **licenciados** - mencionados para contexto apenas.
-
-## Vídeos em português
-
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
-
-1. [Live - Evasão de defesas com C2](https://www.youtube.com/watch?v=OsYdo9H1tNE) — **Ricardo Longatto**.
-2. [SISTEMAS DE C2: O QUE OS ATACANTES UTILIZAM,A EVOLUÇÃO DAS FERRAMTENTAS E PROCEDIMENTOS DE DETECÇÃO](https://www.youtube.com/watch?v=ppxiWMvpJrY) — **SecurityCast**.
-3. [Parte 2 - Simulando a técnica do adversário](https://www.youtube.com/watch?v=VrbJUbop6aM) — **CMD & Controle**.
-4. [C2 e Beacons: O Segredo das Operações de Ataque Persistente](https://www.youtube.com/watch?v=ql0ijCvO7q8) — **Daniel Donda**.
-5. [RTVcron | C2 para Red Team: Uma Introdução Prática com Sliver](https://www.youtube.com/watch?v=qRYYJhaRC6U) — **Red Team Village**.
+O curso é autocontido; referências e vídeos servem para aprofundamento e para
+confirmar detalhes que variam por versão. Consulte a
+[bibliografia comentada](windows-domestico-avancado/REFERENCIAS.md) depois de
+formar sua própria hipótese, não como substituto dos exercícios.

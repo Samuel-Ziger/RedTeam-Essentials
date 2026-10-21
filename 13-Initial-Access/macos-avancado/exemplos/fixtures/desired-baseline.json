@@ -1,0 +1,10 @@
+{
+  "schema": "rte.macos.desired-baseline/v1",
+  "settings": [
+    {"id": "filevault.enabled", "severity": "high", "value": true},
+    {"id": "gatekeeper.enabled", "severity": "high", "value": true},
+    {"id": "screenlock.minutes", "severity": "medium", "value": 5},
+    {"id": "apple-silicon.policy", "requiresArchitecture": "arm64", "severity": "low", "value": "standard"},
+    {"id": "intel-only.setting", "requiresArchitecture": "x86_64", "severity": "low", "value": true}
+  ]
+}

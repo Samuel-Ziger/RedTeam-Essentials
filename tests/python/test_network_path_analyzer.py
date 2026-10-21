@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = ROOT / "21-Network-Pivoting" / "path_analyzer.py"
+SCRIPT = ROOT / "37-Pos-Exploracao-Movimento-Lateral" / "acervo" / "pivoting" / "path_analyzer.py"
 SPEC = importlib.util.spec_from_file_location("path_analyzer", SCRIPT)
 assert SPEC and SPEC.loader
 analyzer = importlib.util.module_from_spec(SPEC)
@@ -13,7 +13,14 @@ SPEC.loader.exec_module(analyzer)
 
 
 def topology() -> dict:
-    path = ROOT / "21-Network-Pivoting" / "fixtures" / "topology.json"
+    path = (
+        ROOT
+        / "37-Pos-Exploracao-Movimento-Lateral"
+        / "acervo"
+        / "pivoting"
+        / "fixtures"
+        / "topology.json"
+    )
     return json.loads(path.read_text(encoding="utf-8"))
 
 

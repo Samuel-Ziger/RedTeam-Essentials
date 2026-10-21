@@ -5,7 +5,13 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = ROOT / "24-Lateral-Movement" / "lateral_path_analyzer.py"
+SCRIPT = (
+    ROOT
+    / "37-Pos-Exploracao-Movimento-Lateral"
+    / "acervo"
+    / "movimento-lateral"
+    / "lateral_path_analyzer.py"
+)
 SPEC = importlib.util.spec_from_file_location("lateral_path_analyzer", SCRIPT)
 assert SPEC and SPEC.loader
 analyzer = importlib.util.module_from_spec(SPEC)
@@ -13,7 +19,14 @@ SPEC.loader.exec_module(analyzer)
 
 
 def graph() -> dict:
-    path = ROOT / "24-Lateral-Movement" / "fixtures" / "lateral-graph.json"
+    path = (
+        ROOT
+        / "37-Pos-Exploracao-Movimento-Lateral"
+        / "acervo"
+        / "movimento-lateral"
+        / "fixtures"
+        / "lateral-graph.json"
+    )
     return json.loads(path.read_text(encoding="utf-8"))
 
 

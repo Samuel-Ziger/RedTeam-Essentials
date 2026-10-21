@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+state_dir=${STATE_DIRECTORY:?systemd must provide STATE_DIRECTORY}
+output="$state_dir/snapshot.txt"
+
+{
+    printf 'schema=rte-observer/v1\n'
+    printf 'kernel=%s\n' "$(uname -r)"
+    printf 'page_size=%s\n' "$(getconf PAGESIZE)"
+    awk '/^MemAvailable:/ { printf "mem_available_kib=%s\n", $2 }' /proc/meminfo
+    awk '/^Threads:/ { printf "threads=%s\n", $2 }' /proc/self/status
+} > "$output"
+
+chmod 0600 "$output"

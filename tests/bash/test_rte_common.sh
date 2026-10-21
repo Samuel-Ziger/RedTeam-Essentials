@@ -31,6 +31,14 @@ log_dir="$(mktemp -d)"
 rte::set_log_file "$log_dir/rte.log"
 rte::info "teste offline"
 grep -Fq 'teste offline' "$log_dir/rte.log" || failures=$((failures + 1))
+
+cleanup_marker="$log_dir/cleanup"
+cleanup_test() { touch "$cleanup_marker"; }
+assert_success rte::add_cleanup cleanup_test
+assert_success rte::__run_cleanup
+[[ -f "$cleanup_marker" ]] || failures=$((failures + 1))
+assert_failure bash -c "source '$ROOT/lib/bash/rte_common.sh'; rte::add_cleanup 'touch /tmp/nao-deve-executar'"
+
 rm -rf "$log_dir"
 
 if (( failures > 0 )); then
@@ -38,4 +46,3 @@ if (( failures > 0 )); then
   exit 1
 fi
 printf '[OK] testes Bash offline concluídos.\n'
-

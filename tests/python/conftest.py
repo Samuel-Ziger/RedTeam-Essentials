@@ -11,8 +11,8 @@ sys.path.insert(0, str(ROOT / "lib" / "python"))
 
 
 def load_tool(name: str):
-    """Carrega uma ferramenta de ``11-Python-Tools`` sem executar sua CLI."""
-    path = ROOT / "11-Python-Tools" / f"{name}.py"
+    """Carrega uma ferramenta do acervo do módulo 28 sem executar sua CLI."""
+    path = ROOT / "28-Engenharia-Ferramentas-Seguranca" / "acervo" / "python" / f"{name}.py"
     spec = importlib.util.spec_from_file_location(f"rte_test_{name}", path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Nao foi possivel importar {path}")

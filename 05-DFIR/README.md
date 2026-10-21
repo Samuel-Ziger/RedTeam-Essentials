@@ -1,72 +1,42 @@
-# 05 - DFIR
+# 05 — Engenharia de APIs
 
-> Modulo de **Digital Forensics & Incident Response**: artefatos Windows, Event Logs, memoria, playbook de ransomware e template de laudo.
-> Complementa a visao ofensiva dos modulos 03, 09 e 14 — o que o blue team vera apos o ataque.
+> Especialização completa em contratos, implementação, segurança, estilos,
+> testes, operação e evolução de APIs.
 
 ## Contrato do módulo
 
 | Campo | Definição |
 |-------|-----------|
-| Público | Analistas iniciantes/intermediários e praticantes purple team. |
-| Pré-requisitos | Módulo 00; Windows/Linux básico e cópias de evidência. |
-| Tempo estimado | 10 horas de leitura e 8 horas de prática. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Timeline, hashes, hipóteses e relatório forense. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+| Público | Desenvolvedores que concluíram a formação de programação dos módulos 00–04. |
+| Pré-requisitos | Módulos 00, 01, 02, 03 e 04. |
+| Tempo estimado | 300–440 horas de estudo e projetos. |
+| Ambiente | Serviços locais, dados fictícios e laboratório próprio. |
+| Evidência final | Contrato, API, clientes, testes, threat model, SLO e runbook. |
+| Critério de conclusão | Atender à rubrica do projeto final e executar toda a validação automatizada. |
 
-## Conteudo
+## Curso principal
 
-| Documento | Tema |
-|-----------|------|
-| [forensics_artifacts.md](forensics_artifacts.md) | Artefatos forenses Windows (Registry, Prefetch, Amcache, Jump Lists, etc.). |
-| [windows_event_logs.md](windows_event_logs.md) | Event Logs criticos (Security, Sysmon, PowerShell) e IDs uteis. |
-| [memory_analysis_teoria.md](memory_analysis_teoria.md) | Analise de memoria: Volatility, processos, handles, injects. |
-| [PLAYBOOK_RANSOMWARE.md](PLAYBOOK_RANSOMWARE.md) | Playbook de resposta a incidente de ransomware. |
-| [FORENSIC_REPORT_TEMPLATE.md](FORENSIC_REPORT_TEMPLATE.md) | Template de relatorio forense / IR. |
-| [labs/](labs/README.md) | Timeline reproduzível com eventos de autenticação sintéticos e resposta orientativa. |
+Acesse [Engenharia de APIs — do contrato à operação](engenharia-apis/README.md).
+São 26 capítulos tecnicamente aprofundados, 45 práticas, cinco laboratórios,
+guia de diagnóstico, exemplos equivalentes em Python, Java, C, C# e JavaScript
+e uma API de referência em FastAPI com contrato OpenAPI, 32 testes e CI dedicada.
 
-## Fluxo forense recomendado
-
-```
-1. Contencao / isolamento
-2. Preservacao (imagem disco + memoria + logs)
-3. Triagem (Event Logs + artefatos volatilidade media)
-4. Analise profunda (memoria, timeline, IOCs)
-5. Contencao avancada / eradicação
-6. Relatorio (FORENSIC_REPORT_TEMPLATE)
+```bash
+bash 05-DFIR/engenharia-apis/testar-curso.sh
 ```
 
-1. **Preservar** - nao "consertar" antes de coletar; hash e chain of custody.
-2. **Triagem rapida** - [windows_event_logs.md](windows_event_logs.md) + artefatos de [forensics_artifacts.md](forensics_artifacts.md).
-3. **Memoria** - dump e analise com Volatility. Ver [memory_analysis_teoria.md](memory_analysis_teoria.md).
-4. **Cenario ransomware** - seguir [PLAYBOOK_RANSOMWARE.md](PLAYBOOK_RANSOMWARE.md).
-5. **Documentar** - [FORENSIC_REPORT_TEMPLATE.md](FORENSIC_REPORT_TEMPLATE.md); cruzar com ATT&CK do ataque.
+## Continuação avançada
 
-## MITRE ATT&CK (visao defesa / deteccao)
-
-Tecnicas frequentemente evidenciadas nos artefatos deste modulo:
-
-- T1059.001 - PowerShell
-- T1003 - OS Credential Dumping
-- T1021 - Remote Services (lateral)
-- T1547.001 - Registry Run Keys / Startup Folder
-- T1053 - Scheduled Task/Job
-- T1486 - Data Encrypted for Impact (ransomware)
-- T1070 - Indicator Removal
-
-## Etica e escopo
-
-- Trate evidencias reais com confidencialidade (LGPD / PII).
-- Nao altere sistema em producao sem processo de IR acordado.
-- Em labs, use VMs descartaveis; preserve snapshots para repetir a analise.
-- Red Team: use este modulo para entender deteccao e reduzir ruido desnecessario no engagement.
+DFIR e resposta a incidentes são estudados no
+[módulo 38](../38-DFIR-Resposta-Incidentes/README.md), depois da formação-base.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Use estes materiais como complemento à leitura e aos exercícios. Confirme
+detalhes normativos nas especificações oficiais listadas no curso.
 
-1. [Resposta a Incidentes: O Papel do CSIRT e do DFIR na Defesa Cibernética](https://www.youtube.com/watch?v=9boBUPsvkUk) — **Daniel Donda**.
-2. [Tsurugi Linux para dar suporte a investigações de Forense Digital e Resposta a Incidentes (DFIR)](https://www.youtube.com/watch?v=wItPe0EldzM) — **Fetha Tutoriais ⭐**.
-3. [Webinar: Resposta a Incidentes de segurança da informação, Com o Prof.  Marcelo Nagy e Prof. Renan](https://www.youtube.com/watch?v=qgKQPh9sZwk) — **Academia de Forense Digital**.
-4. [Resposta a Incidente e Forense Digital - Um estudo de Caso | Jefferson Sampaio](https://www.youtube.com/watch?v=bGQu4x8FTgI) — **Roadsec**.
-5. [Sobre o treinamento - Resposta a Incidentes](https://www.youtube.com/watch?v=q-tdsm2JlM4) — **Academia de Forense Digital**.
+1. [O que é API? REST e RESTful?](https://www.youtube.com/watch?v=ghTrp1x_1As) — **Mayk Brito**.
+2. [O que é uma API REST? Entenda API, HTTP e RESTful](https://www.youtube.com/watch?v=9SbUPqKEWcY) — **Mateus Battisti - Hora de Codar**.
+3. [Schemas no Swagger Editor com OpenAPI 3](https://www.youtube.com/watch?v=DF4fjWsNiV4) — **Mauro de Boni**.
+4. [Explicando OAuth: como funciona e onde usar](https://www.youtube.com/watch?v=yatIEMepqqk) — **Mayk Brito**.
+5. [Introdução ao gRPC](https://www.youtube.com/watch?v=QyyMjF764mo) — **Full Cycle**.

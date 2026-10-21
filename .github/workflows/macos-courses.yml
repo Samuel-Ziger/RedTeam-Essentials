@@ -1,0 +1,42 @@
+name: macOS Courses
+
+on:
+  push:
+    paths:
+      - '12-Java-Tools/macos-fundamentos/**'
+      - '13-Initial-Access/macos-avancado/**'
+      - 'scripts/validate_macos_courses.py'
+      - '.github/workflows/macos-courses.yml'
+  pull_request:
+    paths:
+      - '12-Java-Tools/macos-fundamentos/**'
+      - '13-Initial-Access/macos-avancado/**'
+      - 'scripts/validate_macos_courses.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-courses-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Validate structure, links and scope
+        run: python3 scripts/validate_macos_courses.py
+
+      - name: Run macOS I
+        run: bash 12-Java-Tools/macos-fundamentos/testar-curso.sh
+
+      - name: Run macOS II
+        run: bash 13-Initial-Access/macos-avancado/testar-curso.sh
+
+      - name: Parse zsh scripts
+        run: |
+          find 12-Java-Tools/macos-fundamentos 13-Initial-Access/macos-avancado \
+            -type f -name '*.zsh' -print0 | xargs -0 -n1 zsh -n

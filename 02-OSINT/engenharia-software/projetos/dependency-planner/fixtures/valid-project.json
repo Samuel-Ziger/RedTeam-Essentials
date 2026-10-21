@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "id": "discovery",
+      "title": "Descobrir requisitos",
+      "duration": 2,
+      "dependencies": []
+    },
+    {
+      "id": "model",
+      "title": "Modelar dominio",
+      "duration": 3,
+      "dependencies": ["discovery"]
+    },
+    {
+      "id": "api",
+      "title": "Implementar API",
+      "duration": 5,
+      "dependencies": ["model"]
+    },
+    {
+      "id": "docs",
+      "title": "Escrever documentacao",
+      "duration": 2,
+      "dependencies": ["model"]
+    },
+    {
+      "id": "tests",
+      "title": "Validar integracao",
+      "duration": 3,
+      "dependencies": ["api"]
+    },
+    {
+      "id": "release",
+      "title": "Publicar versao",
+      "duration": 1,
+      "dependencies": ["tests", "docs"]
+    }
+  ]
+}

@@ -32,6 +32,12 @@ def test_export_json_creates_utf8_document(tmp_path) -> None:
     assert json.loads(path.read_text(encoding="utf-8")) == {"mensagem": "autorização"}
 
 
+def test_export_json_sanitizes_basename_and_stays_in_output(tmp_path) -> None:
+    path = export_json({"ok": True}, tmp_path, "../../unsafe target")
+    assert path.parent == tmp_path
+    assert path.name.startswith("unsafe_target_")
+
+
 def test_context_creates_output_directory(tmp_path) -> None:
     output = tmp_path / "new" / "output"
     context = RTEContext(tool="Teste", output_dir=output)

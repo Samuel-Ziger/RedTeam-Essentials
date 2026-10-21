@@ -1,0 +1,10 @@
+{
+  "schema": "rte-routes/v1",
+  "routes": [
+    {"prefix": "0.0.0.0/0", "next_hop": "192.0.2.1", "preference": 10, "metric": 1, "source": "static"},
+    {"prefix": "10.0.0.0/8", "next_hop": "192.0.2.10", "preference": 110, "metric": 100, "source": "ospf"},
+    {"prefix": "10.20.0.0/16", "next_hop": "192.0.2.20", "preference": 110, "metric": 50, "source": "ospf"},
+    {"prefix": "10.20.0.0/16", "next_hop": "192.0.2.2", "preference": 5, "metric": 900, "source": "static"},
+    {"prefix": "10.20.30.0/24", "next_hop": "192.0.2.3", "preference": 200, "metric": 999, "source": "bgp"}
+  ]
+}

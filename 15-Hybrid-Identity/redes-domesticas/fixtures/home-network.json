@@ -1,0 +1,29 @@
+{
+  "schema": "rte-home-network/v1",
+  "lan": {
+    "prefix": "192.168.50.0/24",
+    "dhcp_start": "192.168.50.100",
+    "dhcp_end": "192.168.50.199"
+  },
+  "wifi": {
+    "security": "WPA3-SAE",
+    "wps_enabled": true,
+    "guest_isolation": false
+  },
+  "management": {
+    "wan_admin": false,
+    "supported_firmware": true
+  },
+  "exposure": {
+    "upnp_enabled": true,
+    "port_forwards": []
+  },
+  "recovery": {
+    "encrypted_backup": true,
+    "restore_tested": false
+  },
+  "ipv6": {
+    "prefix_delegation": true,
+    "firewall_inbound": true
+  }
+}

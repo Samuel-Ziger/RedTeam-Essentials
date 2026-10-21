@@ -49,6 +49,9 @@ logs/
 
 # ===== Credenciais e Dados Sensíveis =====
 # NUNCA commitar credenciais!
+.env
+.env.*
+!.env.example
 credentials.txt
 passwords.txt
 *.hashes
@@ -87,6 +90,7 @@ dist/
 build/
 venv/
 env/
+.venv/
 
 # ===== PowerShell =====
 *.ps1xml
@@ -117,21 +121,35 @@ PSReadLine*/
 # Manter apenas exemplos públicos
 private_notes/
 client_reports/
+report/relatorio.md
+report/relatorio.org
+report/src/
 
-# ===== Java (12-Java-Tools) =====
-12-Java-Tools/build/
-12-Java-Tools/target/
+# ===== Java (módulo 28) =====
+28-Engenharia-Ferramentas-Seguranca/acervo/java/build/
+28-Engenharia-Ferramentas-Seguranca/acervo/java/target/
 *.class
 
+# ===== Curso de programação (módulo 00) =====
+00-Fundamentos/programacao/**/bin/
+00-Fundamentos/programacao/**/obj/
+00-Fundamentos/programacao/projetos/taskboard/api/data/
+00-Fundamentos/programacao/projetos/taskboard/api/*.db
+
 # ===== Docker Lab =====
-docker-lab/shared/*
-!docker-lab/shared/.gitkeep
+30-Web-API-AppSec/docker-lab/shared/*
+!30-Web-API-AppSec/docker-lab/shared/.gitkeep
 
 # ===== Output das ferramentas (v2.0) =====
 output/
 **/output/
 *.session
 *.dat
+
+# ===== Aplicacao local de estudos =====
+study-app/node_modules/
+study-app/dist/
+study-app/public/generated/
 
 # ===== Exceções (forçar inclusão) =====
 # Se precisar incluir algum arquivo específico:

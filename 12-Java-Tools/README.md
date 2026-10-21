@@ -1,51 +1,42 @@
-# 12 - Java Tools
+# 12 — macOS I: fundamentos e administração local
 
-> Utilitarios em Java 17+ que complementam Python/PowerShell/Bash.
+O módulo 12 inicia a formação macOS desde o primeiro contato com um Mac até
+administração, diagnóstico, proteção e recuperação local.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | Desenvolvedores com Java básico e contexto de AppSec. |
-| Pré-requisitos | Módulos 00 e 07; JDK 17+. |
-| Tempo estimado | 3 horas de leitura, build e testes. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Build limpo, teste offline e saída sanitizada explicada. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+|---|---|
+| Público | Iniciantes, suporte técnico, desenvolvedores e administradores em formação. |
+| Pré-requisitos | Módulo 00; nenhuma experiência anterior com Mac. |
+| Tempo estimado | 140–220 horas. |
+| Ambiente | Mac suportado ou VM autorizada, sem dados pessoais e com backup. |
+| Evidência final | Inventário, labs, restauração e projeto local recuperável. |
+| Critério de conclusão | Administrar e recuperar sem reduzir proteções nem depender de rede. |
 
-## Sumario
+## Formação principal
 
-| Classe | Descricao |
-|--------|-----------|
-| [`PayloadGenerator`](src/main/java/io/redteam/essentials/PayloadGenerator.java) | Gera payloads de teste para XSS, SQLi, command injection, SSTI, SSRF, LFI e XXE. Suporta URL/Base64 encoding e amostragem aleatoria. |
+Acesse [macOS I — fundamentos e administração local](macos-fundamentos/README.md).
+São 20 capítulos, seis laboratórios, exemplos Python executáveis, testes,
+glossário, consulta rápida, respostas e fontes oficiais.
 
-## Build & Run (sem Maven/Gradle)
+O curso cobre Apple Silicon/Intel, boot e Recovery, Finder, APFS, contas,
+permissões/ACL/xattrs, bundles, processos, `launchd`, plists, Terminal/zsh,
+Unified Log, Time Machine, FileVault, Gatekeeper, XProtect, SIP e TCC.
 
-```bash
-cd 12-Java-Tools
-mkdir -p build
-javac -d build src/main/java/io/redteam/essentials/PayloadGenerator.java
-java  -cp build io.redteam.essentials.PayloadGenerator --list
-java  -cp build io.redteam.essentials.PayloadGenerator --type xss --count 20 --encode url
-java  -cp build io.redteam.essentials.PayloadGenerator --type sqli --out payloads.txt
-```
+Redes não fazem parte deste módulo.
 
-## Por que Java?
+## Continuação avançada
 
-Muitos engagements de AppSec encontram alvos Java (Spring, Tomcat, JBoss, Java APIs). Ter um arsenal portavel em Java facilita rodar dentro de pipelines corporativos onde apenas JDK esta disponivel. O `PayloadGenerator` e didatico, mas se integra bem com Burp (Intruder) e ferramentas como ffuf via wordlist gerada.
-
-## Roadmap
-
-- `BurpExt` - extensao Burp Suite minima.
-- `JndiPocServer` - laboratorio local de Log4Shell (apenas em rede isolada).
-- `JwtCracker` - HMAC bruteforce em paralelo com `Runtime.availableProcessors()`.
+A engenharia de ferramentas de segurança continua no
+[módulo 28](../28-Engenharia-Ferramentas-Seguranca/README.md), após a formação-base.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Os vídeos complementam; toda a formação necessária está nos textos e labs.
 
-1. [Proteja suas aplicações Java com Spring Security](https://www.youtube.com/watch?v=ptcjeehUbz8) — **AlgaWorks**.
-2. [O que é AppSec?](https://www.youtube.com/watch?v=R49E7efhoDA) — **AppSecBR**.
-3. [Segurança de Aplicações Web Java: Tudo o que Você Precisa Saber](https://www.youtube.com/watch?v=Ac5mvR892zE) — **SaM Solutions**.
-4. [Mercado e Carreira de AppSec (Segurança de Aplicações) com Wagner Elias - Conviso](https://www.youtube.com/watch?v=WniXyKTkxi4) — **Eduardo Santos - WarmSec**.
-5. [Introdução ao Spring Boot Security! Tutorial para Aplicações Java Seguras!](https://www.youtube.com/watch?v=S8dNt0cYYRs) — **Carreira Dev Internacional**.
+1. [Novo no Mac? Tutorial 2026 para iniciantes!](https://www.youtube.com/watch?v=JPyVGQ2jtGQ) — **Tutorial de macOS**.
+2. [Comandos básicos de terminal no macOS](https://www.youtube.com/watch?v=dqLSdUG2h70) — **Professor Lau**.
+3. [Como melhorar a proteção do Mac](https://www.youtube.com/watch?v=BQgAL7ge0Bo) — **Canal da Lu - Magalu**.
+4. [4 Pilares Importantes de Segurança no Mac](https://www.youtube.com/watch?v=EDvnYX4KmoI) — **Super Apple**.
+5. [Curso Apple Mac - Navegar com Segurança no Safari](https://www.youtube.com/watch?v=7P3n1Fadq5M) — **Doctor Apple**.

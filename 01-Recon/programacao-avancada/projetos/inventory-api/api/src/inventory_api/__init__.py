@@ -1,0 +1,1 @@
+"""Inventory API educational package."""

@@ -12,18 +12,26 @@ on:
       - '**/*.ps1'
       - '**/*.psm1'
 
+permissions:
+  contents: read
+
+concurrency:
+  group: powershell-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pssa:
     name: PSScriptAnalyzer
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Install PSScriptAnalyzer
         shell: pwsh
         run: |
-          Install-Module PSScriptAnalyzer -Scope CurrentUser -Force -SkipPublisherCheck
-          Install-Module Pester -MinimumVersion 5.0 -Scope CurrentUser -Force -SkipPublisherCheck
+          Install-Module PSScriptAnalyzer -RequiredVersion 1.24.0 -Scope CurrentUser -Force -SkipPublisherCheck
+          Install-Module Pester -RequiredVersion 5.7.1 -Scope CurrentUser -Force -SkipPublisherCheck
 
       - name: Lint all PowerShell files
         shell: pwsh

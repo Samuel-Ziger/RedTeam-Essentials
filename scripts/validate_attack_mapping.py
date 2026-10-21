@@ -18,7 +18,8 @@ TACTICS = {
     "execution",
     "persistence",
     "privilege-escalation",
-    "defense-evasion",
+    "stealth",
+    "defense-impairment",
     "credential-access",
     "discovery",
     "lateral-movement",
@@ -29,7 +30,7 @@ TACTICS = {
 }
 
 
-def validate_layer(layer: Any) -> list[str]:
+def validate_layer(layer: Any, reference: dict[str, list[str]] | None = None) -> list[str]:
     """Retorna erros estruturais e semânticos encontrados no layer."""
     errors: list[str] = []
     if not isinstance(layer, dict):
@@ -62,6 +63,11 @@ def validate_layer(layer: Any) -> list[str]:
             errors.append(f"{prefix}.techniqueID inválido: {technique_id!r}")
         if tactic not in TACTICS:
             errors.append(f"{prefix}.tactic inválida: {tactic!r}")
+        if reference is not None:
+            if technique_id not in reference:
+                errors.append(f"{prefix}.techniqueID ausente da referencia ATT&CK: {technique_id!r}")
+            elif tactic not in reference[technique_id]:
+                errors.append(f"{prefix}: {technique_id} nao pertence a tatica {tactic} na referencia")
         pair = (str(technique_id), str(tactic))
         if pair in seen:
             errors.append(f"técnica/tática duplicada: {pair[0]} / {pair[1]}")
@@ -79,14 +85,28 @@ def validate_layer(layer: Any) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("path", nargs="?", default="MITRE-ATTACK-MAPPING.json")
+    parser.add_argument(
+        "--reference",
+        type=Path,
+        default=Path(__file__).with_name("attack-enterprise-19.2.json"),
+        help="snapshot oficial reduzido usado para validar IDs e taticas",
+    )
     args = parser.parse_args()
     path = Path(args.path)
     try:
         layer = json.loads(path.read_text(encoding="utf-8"))
+        snapshot = json.loads(args.reference.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         print(f"[ERRO] Não foi possível ler {path}: {exc}", file=sys.stderr)
         return 1
-    errors = validate_layer(layer)
+    if not isinstance(snapshot, dict) or snapshot.get("attackVersion") != layer.get("versions", {}).get("attack"):
+        print("[ERRO] versao do snapshot ATT&CK diverge do layer", file=sys.stderr)
+        return 1
+    reference = snapshot.get("techniques")
+    if not isinstance(reference, dict):
+        print("[ERRO] snapshot ATT&CK sem mapa de tecnicas", file=sys.stderr)
+        return 1
+    errors = validate_layer(layer, reference)
     if errors:
         for error in errors:
             print(f"[ERRO] {error}", file=sys.stderr)

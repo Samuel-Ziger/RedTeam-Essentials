@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'">
+    <meta name="description" content="Registro local e acessível de sessões de estudo.">
+    <title>Study Desk</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="src/app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Aplicação local-first</p>
+        <h1>Study Desk</h1>
+        <p class="subtitle">Registre sessões sem enviar seus dados para um servidor.</p>
+      </div>
+      <button id="theme-toggle" class="secondary" type="button" aria-pressed="false">
+        Usar tema escuro
+      </button>
+    </header>
+
+    <main id="main-content" class="layout" tabindex="-1">
+      <section class="panel" aria-labelledby="new-session-title">
+        <h2 id="new-session-title">Nova sessão</h2>
+        <form id="session-form" novalidate>
+          <div class="field">
+            <label for="title">Assunto</label>
+            <input id="title" name="title" maxlength="80" required
+              aria-describedby="title-hint title-error" autocomplete="off">
+            <p id="title-hint" class="hint">Até 80 posições de texto; alguns símbolos usam duas.</p>
+            <p id="title-error" class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="minutes">Duração em minutos</label>
+            <input id="minutes" name="minutes" type="number" min="1" max="1440"
+              inputmode="numeric" required aria-describedby="minutes-hint minutes-error">
+            <p id="minutes-hint" class="hint">Use um número inteiro de 1 a 1440.</p>
+            <p id="minutes-error" class="field-error" aria-live="polite"></p>
+          </div>
+
+          <button type="submit">Registrar sessão</button>
+        </form>
+      </section>
+
+      <section class="panel history" aria-labelledby="history-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="history-title">Histórico</h2>
+            <p id="summary" class="summary">Nenhuma sessão registrada.</p>
+          </div>
+          <label class="search" for="filter">
+            <span>Filtrar</span>
+            <input id="filter" type="search" maxlength="200" placeholder="Digite um assunto">
+          </label>
+        </div>
+
+        <p id="empty-state" class="empty-state">Registre sua primeira sessão de estudo.</p>
+        <ul id="session-list" class="session-list" aria-label="Sessões de estudo"></ul>
+      </section>
+
+      <section class="panel data-tools" aria-labelledby="data-title">
+        <h2 id="data-title">Seus dados</h2>
+        <p>Exporte uma cópia ou importe um documento do Study Desk.</p>
+        <div class="actions">
+          <button id="export-button" class="secondary" type="button">Exportar JSON</button>
+          <label class="file-button">
+            <span>Importar JSON</span>
+            <input id="import-input" class="visually-hidden" type="file"
+              accept="application/json,.json">
+          </label>
+          <button id="clear-button" class="danger" type="button">Excluir todas</button>
+        </div>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </main>
+
+    <footer>
+      <p>Study Desk 1.1 · Dados armazenados somente neste navegador.</p>
+    </footer>
+  </body>
+</html>

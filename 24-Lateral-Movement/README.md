@@ -1,109 +1,50 @@
-# 24 - Movimentação lateral
+# 24 — VPN própria e operação segura
 
-> Planejamento, validação e detecção de movimento entre identidades e hosts em
-> topologias sintéticas ou labs autorizados. Não executa comandos remotos.
+Este módulo transforma os fundamentos de privacidade em uma implantação
+administrável: uma VPN WireGuard em uma VPS própria, com chaves por dispositivo,
+firewall mínimo, roteamento, DNS, IPv4/IPv6, monitoramento, atualização e plano
+de recuperação. A VPS e as contas usadas devem pertencer ao estudante ou à
+organização que autorizou o laboratório.
+
+Uma VPN própria oferece controle do servidor, não anonimato automático. O
+provedor da VPS, o provedor de acesso, o serviço de destino e aplicações ainda
+podem observar partes diferentes da sessão. O curso trata essa troca de
+confiança explicitamente.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | Estudantes intermediários de Windows, Linux, AD e redes. |
-| Pré-requisitos | Módulos 00, 03, 06, 20 e 21. |
-| Tempo estimado | 8 horas de teoria e 6 horas em fixture/lab. |
-| Ambiente | Grafo sintético, GOAD próprio ou engagement autorizado. |
-| Evidência final | Caminho lateral, precondições, telemetria e cleanup. |
-| Critério de conclusão | Comparar três caminhos e rejeitar um fora do RoE. |
+|---|---|
+| Público | Administradores, desenvolvedores e estudantes de segurança com base em Linux e redes. |
+| Pré-requisitos | Módulos 06, 14–18, 21 e 23. |
+| Tempo estimado | 160–240 horas. |
+| Ambiente | VPS própria ou VM local equivalente; endereços de documentação nas fixtures; mudanças somente após revisão. |
+| Evidência final | Arquitetura, configurações sem segredos, checklist de hardening, testes e runbook de recuperação. |
+| Critério de conclusão | Implantar e manter um túnel autorizado, explicar rotas e confiança e recuperar uma falha simulada. |
 
-## Modelo mental
+## Comece aqui
 
-Movimentação lateral não é sinônimo de execução remota. Um caminho exige:
+- [Curso completo](vpn-propria-operacao-segura/README.md)
+- [Laboratórios](vpn-propria-operacao-segura/laboratorios/README.md)
+- [Planejador e auditor offline](vpn-propria-operacao-segura/exemplos/README.md)
+- [Consulta rápida](vpn-propria-operacao-segura/CHEATSHEET.md)
 
-1. **principal** autenticável;
-2. **material permitido** pelo RoE, preferencialmente conta canário;
-3. **direito** no host ou serviço de destino;
-4. **protocolo e porta** alcançáveis;
-5. **controle de escopo** para destino e intermediários;
-6. **evidência e cleanup** proporcionais ao objetivo.
+## Entregáveis
 
-## Técnicas e precondições
-
-| Família | Precondição típica | Telemetria principal | Controle |
-|---------|--------------------|-----------------------|----------|
-| RDP | direito de logon remoto + TCP/3389 | 4624 tipo 10, 4778/4779, EDR | MFA, NLA, PAW, segmentação |
-| SMB/Admin Shares | admin local + TCP/445 | 4624 tipo 3, 5140/5145, serviço/processo | firewall, LAPS, deny lateral |
-| WinRM | grupo/ACL + 5985/5986 | PowerShell/WinRM Operational, 4624 | HTTPS, JEA, allowlist |
-| WMI/DCOM | permissão remota + RPC | WMI Activity, 4688, RPC/firewall | ACL, firewall, EDR |
-| SSH | conta/chave + TCP/22 | auth.log/journal, process tree | chaves curtas, bastion, MFA |
-| Kerberos/NTLM | material aceito e serviço compatível | 4768/4769/4776 e logon | AES, NTLM reduction, Credential Guard |
-
-O módulo aprofunda e organiza o conteúdo existente em
-[`windows_lateral_movement_teoria.md`](../06-Cheatsheets/windows_lateral_movement_teoria.md),
-mas usa apenas análise offline para os exercícios automatizados.
-
-Para Linux, siga o guia dedicado de [movimentação lateral em
-Linux](linux-lateral-movement.md), cobrindo SSH, sudo, NFS, automação e sockets.
-
-## Lab offline de attack paths
-
-A fixture [`fixtures/lateral-graph.json`](fixtures/lateral-graph.json) modela
-principals, hosts, direitos, protocolos e restrições de escopo:
-
-```bash
-python3 24-Lateral-Movement/lateral_path_analyzer.py \
-  24-Lateral-Movement/fixtures/lateral-graph.json student fileserver
-```
-
-O resultado mostra o menor caminho e cada precondição utilizada. Compare:
-
-- `student → fileserver`: permitido por sessão intermediária e WinRM/SMB;
-- `student → dc01`: bloqueado por direito/escopo;
-- `helpdesk → workstation`: permitido por RDP canário;
-- `linux-operator → backup-linux`: permitido por certificado SSH, bastion e NFS read-only;
-- `app-linux → prod-secrets`: desabilitado e fora do escopo;
-- origem inexistente: rejeitada.
-
-## Execução controlada em lab real
-
-Se o RoE permitir validar um protocolo, use uma conta canário, um único destino
-e uma ação inócua como consultar hostname/identidade. Não habilite serviços,
-altere registro, crie scheduled task, despeje credenciais ou copie executáveis
-para “facilitar” o teste. Registre exatamente o processo e a sessão esperados.
-
-## Evidência mínima
-
-- principal e conta canário (sem senha/token);
-- origem, destino, protocolo, porta e horário UTC;
-- direito que tornou o caminho possível;
-- resultado inócuo e correlation/logon ID;
-- eventos observados e eventos esperados ausentes;
-- kill list e confirmação de encerramento da sessão.
-
-## Detecção e falsos positivos
-
-Correlacione autenticação remota, administração do recurso e processo no destino.
-Ferramentas administrativas, deployment, inventário e help desk são falsos
-positivos comuns. Baseline deve considerar identidade, origem habitual, janela,
-sequência de hosts e privilégio, sem allowlists permanentes amplas.
-
-## Cleanup
-
-Encerre sessões, remova somente artefatos canário criados, reverta regras/ACLs de
-lab, valide listeners e entregue a kill list. Não apague logs do alvo.
-
-## Autoavaliação
-
-- [ ] Diferenciei alcance de rede, autenticação e autorização.
-- [ ] Expliquei por que o caminho existe usando precondições do grafo.
-- [ ] Um destino bloqueado permaneceu bloqueado.
-- [ ] Relacionei protocolo a fontes de telemetria e falsos positivos.
-- [ ] Usei evidência mínima, conta canário e cleanup verificável.
+- diagrama de fluxo e fronteiras de confiança;
+- plano de endereçamento sem sobreposição;
+- configuração WireGuard revisada, sem chaves privadas no Git;
+- política de firewall e encaminhamento com rollback;
+- testes de DNS, IPv4, IPv6, MTU e queda do túnel;
+- inventário de peers, rotação, revogação, atualização e backup.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Use os vídeos como demonstração complementar e mantenha as chaves do seu
+laboratório fora de gravações, repositórios e capturas de tela.
 
-1. [5 Ataques ao Active Directory e suas ferramentas](https://www.youtube.com/watch?v=UmTJy46Y9Yk) — **Daniel Donda**.
-2. [Como reduzir ataques laterais em ambientes Windows com o ADAudit Plus | Descomplica TI](https://www.youtube.com/watch?v=LqgIMXsuSXw) — **ManageEngine Brasil**.
-3. [Pentest de Active Directory Ep. 1: Arquitetura do AD e Configuração de Laboratório Hacker](https://www.youtube.com/watch?v=Rgn35OXzDAY) — **BountyShell**.
-4. [Invadindo o Game Of Active Directory Parte 5 | Persistência e Movimentação Lateral](https://www.youtube.com/watch?v=e9YquqY2EYQ) — **I.T Security Labs**.
-5. [EP.2 — Pentest em Active Directory | Resolução máquina Administrator do HTB [RETIRED]](https://www.youtube.com/watch?v=C8SalvkKhzw) — **Avocado Toast with $hell**.
+1. [Configurando VPN Client to Site — Windows e WireGuard](https://www.youtube.com/watch?v=zxqHlXJXi2g) — **Hackone — Lucas Palma**.
+2. [Conexão VPN em laboratório](https://www.youtube.com/watch?v=EMH5dL3KoAQ) — **Cybersecurity With Mateus Novaes**.
+3. [Protocolo TCP/IP — curso completo](https://www.youtube.com/watch?v=kP1kktlbUTs) — **Hardware Redes Brasil**.
+4. [IP, DNS, DHCP e roteamento](https://www.youtube.com/watch?v=z2vnQcb8nGI) — **Cyber Security Br**.
+5. [Privacidade na Internet: roteamento aleatorizado com Tor](https://www.youtube.com/watch?v=J2jzgYwMDhk) — **NIC.br**.

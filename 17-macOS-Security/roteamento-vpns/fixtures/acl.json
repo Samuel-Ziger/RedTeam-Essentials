@@ -1,0 +1,8 @@
+{
+  "schema": "rte-acl/v1",
+  "default_action": "deny",
+  "rules": [
+    {"id": "users-to-app-https", "action": "allow", "source": "10.1.10.0/24", "destination": "10.2.20.0/24", "protocol": "tcp", "ports": [443]},
+    {"id": "dns-udp", "action": "allow", "source": "10.0.0.0/8", "destination": "10.2.53.53/32", "protocol": "udp", "ports": [53]}
+  ]
+}

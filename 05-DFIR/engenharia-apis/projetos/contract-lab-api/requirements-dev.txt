@@ -1,0 +1,7 @@
+fastapi==0.142.2
+httpx2==2.13.1
+openapi-spec-validator==0.7.2
+pytest==8.4.2
+PyYAML==6.0.3
+ruff==0.13.2
+uvicorn==0.54.0

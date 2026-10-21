@@ -1,0 +1,270 @@
+openapi: 3.1.0
+info:
+  title: Contract Lab API
+  version: 1.1.0
+  description: >-
+    API local educacional. X-Lab-Actor, X-Lab-Tenant e X-Lab-Role injetam uma
+    identidade fictícia e não representa autenticação de produção.
+servers:
+  - url: http://127.0.0.1:8000
+    description: laboratório local
+tags:
+  - name: operation
+  - name: items
+  - name: events
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      tags: [operation]
+      responses:
+        "200":
+          description: processo disponível
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: {const: ok}
+  /v1/items:
+    get:
+      operationId: listItems
+      tags: [items]
+      parameters:
+        - $ref: "#/components/parameters/LabActor"
+        - $ref: "#/components/parameters/LabTenant"
+        - $ref: "#/components/parameters/LabRole"
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100, default: 20}
+        - name: after
+          in: query
+          description: Cursor assinado, opaco e vinculado ao filtro status.
+          schema: {type: string, maxLength: 512}
+        - name: status
+          in: query
+          schema: {$ref: "#/components/schemas/ItemStatus"}
+      responses:
+        "200":
+          description: página de itens do tenant
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/ItemCollection"}
+        "400": {$ref: "#/components/responses/Problem"}
+        "401": {$ref: "#/components/responses/Problem"}
+    post:
+      operationId: createItem
+      tags: [items]
+      parameters:
+        - $ref: "#/components/parameters/LabActor"
+        - $ref: "#/components/parameters/LabTenant"
+        - $ref: "#/components/parameters/LabRole"
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema: {type: string, minLength: 8, maxLength: 128}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: "#/components/schemas/CreateItem"}
+      responses:
+        "201":
+          description: item criado ou resultado idempotente original
+          headers:
+            Location: {schema: {type: string}}
+            ETag: {schema: {type: string}}
+            Cache-Control: {schema: {type: string, const: no-store}}
+            Idempotency-Replayed:
+              description: true quando a resposta foi recuperada do registro idempotente.
+              schema: {type: string, enum: ["true", "false"]}
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Item"}
+        "400": {$ref: "#/components/responses/Problem"}
+        "401": {$ref: "#/components/responses/Problem"}
+        "403": {$ref: "#/components/responses/Problem"}
+        "409": {$ref: "#/components/responses/Problem"}
+        "422": {$ref: "#/components/responses/Problem"}
+  /v1/items/{item_id}:
+    parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema: {type: string, pattern: "^itm_[a-f0-9]{32}$"}
+      - $ref: "#/components/parameters/LabActor"
+      - $ref: "#/components/parameters/LabTenant"
+      - $ref: "#/components/parameters/LabRole"
+    get:
+      operationId: getItem
+      tags: [items]
+      parameters:
+        - name: If-None-Match
+          in: header
+          required: false
+          schema: {type: string}
+      responses:
+        "200":
+          description: item encontrado
+          headers:
+            ETag: {schema: {type: string}}
+            Cache-Control: {schema: {type: string, const: "private, no-cache"}}
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Item"}
+        "304":
+          description: a representação ainda corresponde ao ETag enviado
+          headers:
+            ETag: {schema: {type: string}}
+            Cache-Control: {schema: {type: string, const: "private, no-cache"}}
+        "401": {$ref: "#/components/responses/Problem"}
+        "404": {$ref: "#/components/responses/Problem"}
+        "422": {$ref: "#/components/responses/Problem"}
+    patch:
+      operationId: updateItem
+      tags: [items]
+      parameters:
+        - name: If-Match
+          in: header
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: "#/components/schemas/UpdateItem"}
+      responses:
+        "200":
+          description: item atualizado
+          headers:
+            ETag: {schema: {type: string}}
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Item"}
+        "401": {$ref: "#/components/responses/Problem"}
+        "403": {$ref: "#/components/responses/Problem"}
+        "404": {$ref: "#/components/responses/Problem"}
+        "409": {$ref: "#/components/responses/Problem"}
+        "412": {$ref: "#/components/responses/Problem"}
+        "422": {$ref: "#/components/responses/Problem"}
+  /v1/events:
+    get:
+      operationId: listEvents
+      tags: [events]
+      description: Outbox em memória visível apenas ao papel writer.
+      parameters:
+        - $ref: "#/components/parameters/LabActor"
+        - $ref: "#/components/parameters/LabTenant"
+        - $ref: "#/components/parameters/LabRole"
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+      responses:
+        "200":
+          description: eventos do tenant
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/Event"}
+        "401": {$ref: "#/components/responses/Problem"}
+        "403": {$ref: "#/components/responses/Problem"}
+components:
+  parameters:
+    LabActor:
+      name: X-Lab-Actor
+      in: header
+      required: true
+      description: Identidade sintética; não usar em produção.
+      schema: {type: string, pattern: "^[A-Za-z0-9_-]{1,64}$"}
+    LabTenant:
+      name: X-Lab-Tenant
+      in: header
+      required: true
+      description: Tenant sintético; não usar como limite confiável em produção.
+      schema: {type: string, pattern: "^[A-Za-z0-9_-]{1,64}$"}
+    LabRole:
+      name: X-Lab-Role
+      in: header
+      required: true
+      description: Papel sintético; produção deve derivá-lo de identidade validada.
+      schema: {type: string, enum: [reader, writer]}
+  responses:
+    Problem:
+      description: erro padronizado
+      content:
+        application/problem+json:
+          schema: {$ref: "#/components/schemas/Problem"}
+  schemas:
+    ItemStatus:
+      type: string
+      enum: [active, archived]
+    CreateItem:
+      type: object
+      additionalProperties: false
+      required: [title]
+      properties:
+        title: {type: string, minLength: 3, maxLength: 80}
+    UpdateItem:
+      type: object
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        title: {type: string, minLength: 3, maxLength: 80}
+        status: {$ref: "#/components/schemas/ItemStatus"}
+    Item:
+      type: object
+      additionalProperties: false
+      required: [item_id, title, status, version, created_at, updated_at]
+      properties:
+        item_id: {type: string}
+        title: {type: string}
+        status: {$ref: "#/components/schemas/ItemStatus"}
+        version: {type: integer, minimum: 1}
+        created_at: {type: string, format: date-time}
+        updated_at: {type: string, format: date-time}
+    ItemCollection:
+      type: object
+      additionalProperties: false
+      required: [items, page]
+      properties:
+        items:
+          type: array
+          items: {$ref: "#/components/schemas/Item"}
+        page:
+          type: object
+          additionalProperties: false
+          required: [limit, next]
+          properties:
+            limit: {type: integer}
+            next: {type: [string, "null"]}
+    Event:
+      type: object
+      required: [event_id, event_type, item_id, actor_id, occurred_at]
+      properties:
+        event_id: {type: string}
+        event_type: {type: string, enum: [item.created, item.updated]}
+        item_id: {type: string}
+        actor_id: {type: string}
+        occurred_at: {type: string, format: date-time}
+    Problem:
+      type: object
+      required: [type, title, status, detail, instance, code, requestId]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer, minimum: 400, maximum: 599}
+        detail: {type: string}
+        instance: {type: string}
+        code: {type: string, pattern: "^[a-z0-9-]+$"}
+        requestId: {type: string, pattern: "^req_[A-Za-z0-9_-]+$"}
+        errors:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [field, code]
+            properties:
+              field: {type: string}
+              code: {type: string}

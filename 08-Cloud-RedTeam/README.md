@@ -1,73 +1,80 @@
-# 08 - Cloud Red Team
+# 08 — Windows doméstico I: fundamentos e administração local
 
-> Tecnicas, comandos e mapeamentos para Red Team em AWS, Azure e GCP. Conteudo educacional.
+> Primeiro dos quatro módulos Windows. Forma uma base técnica do primeiro boot
+> à recuperação, em laboratório local, antes de internals e ambiente empresarial.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | Estudantes intermediários de IAM e APIs. |
-| Pré-requisitos | Módulo 00; conta sandbox com billing limitado. |
-| Tempo estimado | 12 horas por provedor escolhido. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Attack path, logs, mitigação e confirmação de teardown. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+|---|---|
+| Público | Iniciantes, usuários avançados e suporte local em formação |
+| Pré-requisitos | Módulo 00; nenhuma administração prévia de Windows |
+| Tempo estimado | 240–360 horas |
+| Ambiente | Windows 11 oficial e suportado em VM descartável, com dois discos |
+| Escopo | Computador doméstico local; sem redes ou identidade empresarial |
+| Evidência final | Baseline, restore validado, falha cega e runbook executado por terceiro |
+| Critério de conclusão | Seis gates aprovados e computador recuperável entregue |
 
-## Sumario
+## O que foi construído
 
-| Documento | Tema |
-|-----------|------|
-| [aws-attack-paths.md](aws-attack-paths.md) | Vetores comuns: IMDSv1 SSRF, IAM privilege escalation, S3 misconfig. Inclui **Exercicios praticos** e checklist (LocalStack / conta propria). |
-| [azure-attack-paths.md](azure-attack-paths.md) | Entra ID (Azure AD), device code phishing, App roles, Storage SAS. Inclui **Exercicios praticos** (tenant / Azure free). |
-| [gcp-attack-paths.md](gcp-attack-paths.md) | Service account impersonation, IAM bindings, metadata, Workload Identity. Inclui **Exercicios praticos** (projeto proprio / GCPGoat). |
-| [cloud-recon-tools.md](cloud-recon-tools.md) | Pacu, CloudFox, ScoutSuite, ROADtools, BloodHound for Azure. |
-| [labs/](labs/README.md) | Fixtures IAM sintéticas AWS/Azure/GCP, analisador offline e respostas orientativas. |
+O curso principal em
+[windows-domestico-fundamentos/](windows-domestico-fundamentos/README.md) possui:
 
-## Fluxo recomendado
+- 18 capítulos aprofundados, com objetivos, exercícios e checklists;
+- 48 práticas atômicas e um guia transversal de diagnóstico;
+- seis laboratórios progressivos com pré-requisitos semânticos;
+- scripts PowerShell reais para inventário, backup e comparação de manifests;
+- projeto de referência e capstone com falha cega;
+- glossário, consulta rápida, respostas e referências oficiais.
 
-1. Escolher um cloud (AWS / Azure / GCP) e ler o attack-paths correspondente.
-2. Fazer os **Exercicios praticos** no final de cada arquivo — so em conta/lab proprio.
-3. Usar [cloud-recon-tools.md](cloud-recon-tools.md) para enum defensiva/ofensiva em lab.
-4. Documentar paths e mitigacoes; cruzar com [07-Web-AppSec](../07-Web-AppSec/) (SSRF→IMDS) quando aplicavel.
+A progressão cobre edição/build e suporte, UEFI/TPM/Secure Boot, instalação e
+OOBE, interface e acessibilidade, arquivos, NTFS, discos e BitLocker, contas,
+SIDs, ACL/UAC, processos, serviços, pacotes, Windows Update, Registro, eventos,
+backup, Defender, PowerShell, diagnóstico e WinRE.
 
-## Labs sugeridos
+## Princípio operacional
 
-| Lab | Uso |
-|-----|-----|
-| **LocalStack** / conta AWS sandbox | Exercicios de [aws-attack-paths.md](aws-attack-paths.md) |
-| **Azure free** / Learn sandbox | Exercicios de [azure-attack-paths.md](azure-attack-paths.md) |
-| **GCP free tier** / GCPGoat | Exercicios de [gcp-attack-paths.md](gcp-attack-paths.md) |
+O aluno aprende um ciclo único e reaplicável:
 
-Nunca atacar contas, buckets ou tenants de terceiros.
+```text
+pergunta → baseline → hipótese → risco → observação → mudança única
+        → validação funcional/técnica → rollback → conclusão
+```
 
-## MITRE ATT&CK Cloud Matrix
+Snapshots protegem os experimentos; não substituem backup. Toda evidência é
+sanitizada. O curso não ensina bypass de OOBE, ativação ou requisitos, imagens
+modificadas, debloaters, limpadores de Registro, desativação de segurança ou uso
+cotidiano de conta administrativa.
 
-Tecnicas mais relevantes:
+## Limite curricular
 
-- T1078.004 - Valid Accounts: Cloud Accounts
-- T1098.001/.003 - Account Manipulation
-- T1538 - Cloud Service Dashboard
-- T1580 - Cloud Infrastructure Discovery
-- T1199 - Trusted Relationship (Cross-tenant, federation)
-- T1199.002 - Cloud Service Provider
-- T1530 - Data from Cloud Storage Object
+Endereçamento, protocolos, DNS, Wi-Fi, compartilhamentos, firewall e acesso
+remoto pertencem aos módulos 14–18. Windows internals, DLL, ETW, Sysinternals e
+depuração pertencem ao módulo 09. Windows Server, domínio, GPO e identidade
+empresarial pertencem aos módulos 10–11. Conteúdo ofensivo avançado começa
+somente depois da base, nos módulos 27–40.
 
-## Pre-requisitos
+## Começar e validar
 
-- Conhecer pelo menos um IAM (AWS IAM, Azure RBAC ou GCP IAM).
-- Familiaridade com APIs REST / SDK.
-- Conta de teste isolada com billing limitado.
+Leia a [rota do curso](windows-domestico-fundamentos/README.md), prepare a VM e
+execute:
 
-## Etica
+```bash
+bash 08-Cloud-RedTeam/windows-domestico-fundamentos/testar-curso.sh
+```
 
-Cloud red team sem autorizacao escrita pode ser violacao do ToS do provider e crime (LGPD/GDPR/CFAA). Sempre confirme escopo e RoE antes de qualquer comando. Use apenas os labs da secao acima e o checklist no final de cada attack-paths.
+O teste local valida estrutura e escopo; PowerShell/Pester roda quando disponível.
+A CI Windows executa a suíte completa.
 
-## Vídeos em português
+## Vídeos complementares em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+O material é autocontido. Vídeos servem para observar interfaces que mudam:
 
-1. [[COMPARATIVO] AWS vs Azure vs GCP - Qual nuvem utilizar?](https://www.youtube.com/watch?v=A523278CPxo) — **Pena Rocks | Cloud. Code. Conquer.**.
-2. [Como funciona a Segurança de Dados na nuvem? - Português](https://www.youtube.com/watch?v=FA4_nzMiK0g) — **AWS Developers LATAM**.
-3. [Cloud Security Engineer: a profissão mais disputada de 2026 (e como entrar nela)](https://www.youtube.com/watch?v=2WtN_OO59Vw) — **Tech with Guilherme Teles**.
-4. [Qual é o Melhor Provedor de Nuvem AWS, Azure, GCP ou OCI?](https://www.youtube.com/watch?v=6zz7wmARw0g) — **EdsInfoBR - Tecnologia e Informação**.
-5. [Segurança na AWS | Fundamentos de proteção e compliance na nuvem](https://www.youtube.com/watch?v=CIabKd1bcd0) — **AWS Developers LATAM**.
+1. [Windows 11 — aulas práticas](https://www.youtube.com/watch?v=5tsjVjPNlZY) — TechTodos.
+2. [Arquivos, diretórios e pastas](https://www.youtube.com/watch?v=NMm-ChbYRiw) — TechTodos.
+3. [Configurações de segurança](https://www.youtube.com/watch?v=aMmlvhqUZdM) — Dell Brasil.
+4. [Ponto de restauração](https://www.youtube.com/watch?v=pPMosd3oFmM) — ASUS Brasil.
+5. [Introdução ao PowerShell](https://www.youtube.com/watch?v=u-raJ1cGDgY) — Bóson Treinamentos.
+
+Confirme ações e nomes na documentação oficial da sua build antes de reproduzir
+qualquer vídeo.

@@ -4,40 +4,50 @@ on:
   push:
     paths:
       - '**/*.py'
+      - 'pyproject.toml'
+      - 'MODULE-CATALOG.json'
       - '.github/workflows/python.yml'
   pull_request:
     paths:
       - '**/*.py'
+      - 'pyproject.toml'
+      - 'MODULE-CATALOG.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ruff-and-compile:
     name: Ruff + py_compile
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install tooling
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest ruff
+        run: python -m pip install pytest==8.4.2 pytest-cov==7.0.0 ruff==0.13.2
 
       - name: Ruff check
-        run: ruff check 11-Python-Tools lib/python scripts tests/python
+        run: ruff check rte.py 23-Threat-Intel-Emulation 24-Lateral-Movement 27-Operacoes-Seguranca-Avancadas 28-Engenharia-Ferramentas-Seguranca 32-Cloud-Security 37-Pos-Exploracao-Movimento-Lateral 40-Capstone-Purple-Team lib/python scripts tests/python
 
       - name: Ruff format check
-        run: ruff format --check 11-Python-Tools lib/python scripts tests/python
+        run: ruff format --check rte.py 23-Threat-Intel-Emulation 24-Lateral-Movement 27-Operacoes-Seguranca-Avancadas 28-Engenharia-Ferramentas-Seguranca 32-Cloud-Security 37-Pos-Exploracao-Movimento-Lateral 40-Capstone-Purple-Team lib/python scripts tests/python
 
       - name: Compile all Python files
         run: |
-          python -m compileall -q 11-Python-Tools lib/python scripts tests/python
+          python -m compileall -q rte.py 23-Threat-Intel-Emulation 24-Lateral-Movement 27-Operacoes-Seguranca-Avancadas 28-Engenharia-Ferramentas-Seguranca 32-Cloud-Security 37-Pos-Exploracao-Movimento-Lateral 40-Capstone-Purple-Team lib/python scripts tests/python
           echo "Compilou sem erros."
 
       - name: Offline unit tests
-        run: pytest
+        run: pytest --cov=lib/python --cov-report=term-missing --cov-fail-under=70

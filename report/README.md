@@ -67,7 +67,7 @@ Se `OSID` e `REPORT_ID` estiverem ambos setados, **OSID tem prioridade** no nome
 1. Copie [`REPORT-TEMPLATE.md`](../REPORT-TEMPLATE.md) e preencha achados do engagement/lab.
 2. Inclua evidencias minimas (screenshots em `src/` ou pasta relativa; o script passa `--resource-path=.:src`).
 3. Rode `./generate-pdf.sh [arquivo.md|arquivo.org]`.
-4. Confira o PDF; o `.7z` e o MD5 sao impressos no final (util para entrega).
+4. Confira o PDF; o `.7z` e seu SHA-256 sao impressos no final (util para entrega).
 
 ---
 
@@ -88,4 +88,4 @@ Para o conteudo textual do relatorio Red Team, o canone do repo e o template na 
 | `missing pandoc` / `missing 7z` | Instale as ferramentas e garanta que estao no `PATH` |
 | Erro de template eisvogel | Instale eisvogel e teste `pandoc --template eisvogel -o /tmp/t.pdf minimal.md` |
 | `missing input report` | Passe o path ou crie `report/relatorio.md` |
-| Imagens quebradas no PDF | Coloque assets sob `report/src/` ou ajuste paths relativos |
+| Imagens quebradas no PDF | Coloque assets ao lado do documento, em `src/`, ou ajuste os paths relativos |

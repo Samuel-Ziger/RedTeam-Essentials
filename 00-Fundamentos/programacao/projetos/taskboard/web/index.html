@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TaskBoard educacional do curso de programação">
+    <meta name="color-scheme" content="light dark">
+    <title>TaskBoard</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+    <main id="main-content" class="container">
+      <header class="hero">
+        <p class="eyebrow">Projeto integrador</p>
+        <h1>TaskBoard</h1>
+        <p class="hero-copy">
+          Uma aplicação local para praticar frontend, HTTP, Python, SQLite,
+          Docker e Nginx observando cada fronteira do sistema.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="new-task-heading">
+        <h2 id="new-task-heading">Criar tarefa</h2>
+        <form id="task-form" class="task-form">
+          <div class="field-heading">
+            <label for="task-title">Título</label>
+            <output id="title-count" for="task-title">0/120</output>
+          </div>
+          <p id="title-help" class="field-help">
+            Use de 1 a 120 caracteres. Espaços consecutivos serão normalizados.
+          </p>
+          <div class="form-row">
+            <input
+              id="task-title"
+              name="title"
+              autocomplete="off"
+              aria-describedby="title-help title-count"
+              required
+            >
+            <button id="submit-task" type="submit">Adicionar</button>
+          </div>
+        </form>
+      </section>
+
+      <p id="message" class="message" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p id="error-message" class="message error" role="alert" hidden></p>
+
+      <section class="panel" aria-labelledby="task-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="task-heading">Tarefas</h2>
+            <p id="task-summary" class="summary">Carregando…</p>
+          </div>
+          <button id="refresh" type="button" class="secondary">Atualizar</button>
+        </div>
+
+        <div class="toolbar">
+          <label for="task-filter">Mostrar</label>
+          <select id="task-filter" name="done">
+            <option value="all">Todas</option>
+            <option value="open">Pendentes</option>
+            <option value="done">Concluídas</option>
+          </select>
+        </div>
+
+        <ul
+          id="tasks"
+          class="task-list"
+          aria-labelledby="task-heading"
+          aria-busy="true"
+        ></ul>
+        <p id="empty-state" class="empty-state" hidden>
+          Nenhuma tarefa corresponde ao filtro. Adicione uma tarefa ou escolha outro filtro.
+        </p>
+        <div class="load-more-row">
+          <button id="load-more" type="button" class="secondary" hidden>
+            Carregar mais
+          </button>
+        </div>
+      </section>
+
+      <noscript>
+        <p class="message error">Ative JavaScript para usar o TaskBoard.</p>
+      </noscript>
+    </main>
+  </body>
+</html>

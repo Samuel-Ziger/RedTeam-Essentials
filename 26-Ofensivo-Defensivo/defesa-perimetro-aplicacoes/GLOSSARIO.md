@@ -1,0 +1,30 @@
+# Glossário
+
+- **ACL:** lista de decisões de acesso, frequentemente sem estado.
+- **Anomaly score:** soma ponderada de detecções usada para decidir uma transação.
+- **Borda/edge:** camada que recebe tráfego antes da origem.
+- **Bot verificado:** automação cuja identidade foi confirmada por mecanismo do provedor.
+- **CAPTCHA:** desafio para aumentar a confiança de que uma jornada é humana.
+- **CDN:** rede distribuída de entrega e cache de conteúdo.
+- **CRS:** OWASP Core Rule Set, regras genéricas para WAFs compatíveis.
+- **Default deny:** tudo é negado exceto o que foi explicitamente permitido.
+- **Egress:** tráfego iniciado de dentro para fora de uma zona.
+- **Fail-closed/open:** negar/permitir quando o controle não consegue decidir.
+- **Fingerprint:** conjunto de características usado para agrupar clientes, não identidade forte.
+- **Firewall stateful:** filtro que acompanha o estado de fluxos.
+- **Falso negativo:** atividade de interesse não detectada.
+- **Falso positivo:** atividade legítima classificada como indesejada.
+- **JA3/JA4:** formatos de fingerprint de cliente/conexão TLS e HTTP.
+- **mTLS:** TLS com autenticação por certificado também do cliente.
+- **Origem:** servidor ou serviço para o qual a borda encaminha a requisição.
+- **Paranoia level:** nível de rigor de detecção do OWASP CRS.
+- **Passkey:** credencial WebAuthn descoberta/sincronizada ou vinculada a dispositivo.
+- **Rate limit:** limitação de operações por chave e tempo.
+- **Reverse proxy:** servidor que recebe pelo backend e inicia conexão até ele.
+- **Ruleset:** conjunto ordenado/versionado de regras.
+- **Step-up:** exigência de evidência adicional diante de risco ou operação sensível.
+- **Token bucket:** algoritmo de limite com capacidade e reposição de tokens.
+- **Turnstile:** serviço de desafio da Cloudflare, validado no servidor.
+- **Virtual patch:** regra temporária que reduz exposição sem corrigir a causa.
+- **WAF:** firewall de aplicação web que avalia tráfego HTTP(S).
+- **WebAuthn:** API web para autenticação com criptografia de chave pública.

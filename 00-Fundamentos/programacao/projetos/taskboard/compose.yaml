@@ -1,0 +1,87 @@
+services:
+  api:
+    build:
+      context: ./api
+    init: true
+    environment:
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8000
+      APP_DB_PATH: /data/tasks.db
+      LOG_LEVEL: INFO
+    expose:
+      - "8000"
+    volumes:
+      - task-data:/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=2).read()"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 3s
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: 0.50
+    pids_limit: 64
+    stop_grace_period: 15s
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: "no"
+
+  gateway:
+    build:
+      context: ./web
+    init: true
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${TASKBOARD_PORT:-8099}:8080"
+    networks:
+      - backend
+      - access
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:8080/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 3s
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 128m
+    cpus: 0.25
+    pids_limit: 64
+    stop_grace_period: 10s
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: "no"
+
+networks:
+  backend:
+    internal: true
+  access:
+    internal: false
+
+volumes:
+  task-data:
+    labels:
+      app: taskboard
+      purpose: sqlite-data

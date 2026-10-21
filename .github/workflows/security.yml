@@ -1,0 +1,36 @@
+name: Supply Chain Security
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 6 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline-security:
+    name: Secrets + SBOM
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.12'
+      - run: python scripts/scan_secrets.py
+      - run: python scripts/validate_supply_chain.py
+      - run: python scripts/generate_sbom.py --output /tmp/redteam-essentials.cdx.json
+      - run: python -m json.tool /tmp/redteam-essentials.cdx.json >/dev/null
+      - name: Publish CycloneDX SBOM
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: redteam-essentials-sbom
+          path: /tmp/redteam-essentials.cdx.json
+          if-no-files-found: error
+          retention-days: 30

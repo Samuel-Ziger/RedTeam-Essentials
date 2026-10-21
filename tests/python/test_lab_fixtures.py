@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_dfir_auth_fixture_is_ordered_and_synthetic() -> None:
-    path = ROOT / "05-DFIR" / "labs" / "fixtures" / "auth-events.csv"
+    path = ROOT / "38-DFIR-Resposta-Incidentes" / "acervo" / "labs" / "fixtures" / "auth-events.csv"
     with path.open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     assert len(rows) >= 5
@@ -20,7 +20,14 @@ def test_dfir_auth_fixture_is_ordered_and_synthetic() -> None:
 
 
 def test_kubernetes_fixture_contains_positive_and_negative_examples() -> None:
-    path = ROOT / "10-Container-Sec" / "labs" / "fixtures" / "k8s-audit.jsonl"
+    path = (
+        ROOT
+        / "33-Containers-Supply-Chain"
+        / "containers-kubernetes-cicd"
+        / "labs"
+        / "fixtures"
+        / "k8s-audit.jsonl"
+    )
     events = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line]
     assert len(events) == 2
     assert any(event["verb"] == "get" for event in events)

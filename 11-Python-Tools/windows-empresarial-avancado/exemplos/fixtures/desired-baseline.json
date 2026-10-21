@@ -1,0 +1,10 @@
+{
+  "schema": "rte.windows.baseline/v1",
+  "profile": "endpoint-standard",
+  "settings": {
+    "BitLocker.SystemVolume": true,
+    "Defender.RealTimeProtection": true,
+    "PowerShell.ScriptBlockLogging": true,
+    "Windows.UpdateRing": "pilot"
+  }
+}

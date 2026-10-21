@@ -1,377 +1,191 @@
-# 🔍 Módulo 01: Reconhecimento (Reconnaissance)
+# Módulo 01 — dados, bancos de dados e APIs avançadas
 
-> **Fundamentos de coleta de informações sobre alvos**
+> A ponte entre saber programar e construir um serviço que preserva dados,
+> concorrência e contratos sob falhas reais.
 
----
+> **Separação curricular:** reconhecimento e OSINT foram realocados para o
+> [módulo 29](../29-Reconhecimento-OSINT/README.md), e o laboratório Web/AppSec
+> para o [módulo 30](../30-Web-API-AppSec/README.md). Este módulo contém somente
+> dados, bancos de dados e APIs.
 
-## 📚 Sobre Este Módulo
+## Papel na formação
 
-O **reconhecimento** (recon) é a primeira fase de qualquer operação Red Team ou penetration test. Nesta etapa, você coleta o máximo de informações possíveis sobre o alvo **sem interagir diretamente** com seus sistemas.
+O Módulo 00 termina com uma aplicação local completa. O Módulo 01 pergunta o
+que acontece quando o estado deixa de caber em memória, dois clientes alteram o
+mesmo recurso, uma consulta degrada, uma resposta se perde ou dois bancos
+precisam convergir.
+
+Aqui, banco não é apenas lugar para “salvar JSON” e API não é apenas uma rota.
+Você aprenderá a transformar regras em invariantes verificáveis no schema, em
+transações, no contrato HTTP, nos testes e na telemetria.
+
+O foco deste módulo é a fronteira **dados ↔ aplicação ↔ API**. A especialização
+exclusiva em estilos, governança e operação de APIs continua no
+[Módulo 05](../05-DFIR/engenharia-apis/README.md).
+
+| Neste Módulo 01 | No Módulo 05 |
+|------------------|---------------|
+| Aplica HTTP a uma API orientada a dados e invariantes. | Compara REST, webhooks, eventos, GraphQL, gRPC e streaming. |
+| Liga idempotência, ETag e erros à transação e ao estado persistido. | Aprofunda contrato, compatibilidade, segurança e resiliência por estilo. |
+| Usa OpenAPI, testes e telemetria para provar o projeto integrador. | Trabalha contract-first, SDKs, SLOs, developer experience e governança. |
+| Entrega uma mudança vertical na Inventory API. | Projeta e governa um ecossistema de APIs. |
+
+Assim, a repetição de vocabulário é deliberada: aqui ele protege dados; no
+Módulo 05, torna-se o objeto principal de engenharia.
 
 ## Contrato do módulo
 
 | Campo | Definição |
 |-------|-----------|
-| Público | Iniciantes que concluíram o módulo 00 ou dominam DNS, HTTP e terminal. |
-| Pré-requisitos | [Módulo 00](../00-Fundamentos/README.md), Bash ou PowerShell básico. |
-| Tempo estimado | 4 horas de leitura e 4 horas de prática. |
-| Ambiente | Domínio próprio/documental para passivo; lab local para ações ativas. |
-| Evidência final | Mapa de infraestrutura e relatório com fontes, horários e limitações. |
-| Critério de conclusão | Executar os três exercícios sem sair do escopo e explicar passivo versus ativo. |
+| Público | Quem concluiu programação fundamental e quer projetar sistemas orientados a dados. |
+| Pré-requisitos | [Módulo 00](../00-Fundamentos/README.md) concluído ou competência equivalente demonstrável. |
+| Tempo estimado | 230–350 horas, incluindo leitura, implementação, experimentos, diagnóstico e projeto. |
+| Ambiente | Host local e Docker Compose, somente com dados sintéticos. |
+| Projeto integrador | Inventory API com PostgreSQL, MongoDB, FastAPI, Nginx e outbox transacional. |
+| Evidência final | Contrato, schemas, testes, planos, telemetria, backup/restore, runbook e defesa técnica. |
+| Critério de conclusão | Cinco labs comprovados, projeto reproduzível e nota mínima 75/100 sem falha crítica. |
+| Fora do escopo | Exploração de sistemas, coleta em terceiros, rede avançada e implantação pública. |
 
-### 🎯 Objetivos de Aprendizado
+## O que você dominará
 
-Ao completar este módulo, você será capaz de:
-- [ ] Diferenciar reconhecimento passivo de ativo
-- [ ] Realizar enumeração DNS completa
-- [ ] Identificar subdomínios e infraestrutura
-- [ ] Coletar informações de forma ética e legal
-- [ ] Documentar achados de reconhecimento
-- [ ] Usar ferramentas automatizadas de recon
+Ao concluir, você conseguirá:
 
----
+- partir de requisitos e produzir modelo conceitual, lógico e físico;
+- escolher chaves, cardinalidades, normalização, constraints e migrations;
+- escrever e explicar SQL com joins, CTEs, subconsultas e window functions;
+- prever anomalias concorrentes e escolher isolamento, lock ou compare-and-set;
+- ler `EXPLAIN (ANALYZE, BUFFERS)` sem confundir estimativa com execução;
+- justificar banco relacional, documento, chave-valor, colunar ou grafo pelos
+  acessos e invariantes, não por moda;
+- modelar MongoDB com validação, índices e aggregation pipelines;
+- projetar recursos HTTP, erros, paginação, cache, idempotência e concorrência;
+- separar transporte, caso de uso, domínio, repositório e driver;
+- consumir o mesmo contrato em Python, Java, C, C# e JavaScript;
+- testar regra, contrato, integração, concorrência e comportamento de falha;
+- correlacionar request, query e evento por logs, métricas e traces;
+- explicar consistência eventual e implementar o padrão transactional outbox;
+- operar o laboratório com health/readiness, backup, restore e cleanup seguro.
 
-## 📋 Pré-requisitos
+## Arquitetura de aprendizagem
 
-### Conhecimentos Necessários
-- ✅ Fundamentos de redes (TCP/IP, DNS, HTTP)
-- ✅ Conhecimento básico de PowerShell ou Bash
-- ✅ Compreensão de protocolos de internet
-
-### Ferramentas Requeridas
-- PowerShell 5.1+ (Windows) ou Bash (Linux)
-- Acesso à internet
-- Opcional: Kali Linux com ferramentas nativas
-
----
-
-## 📁 Conteúdo do Módulo
-
-### 1. Teoria e Conceitos
-
-#### [`passive_recon_cheatsheet.md`](passive_recon_cheatsheet.md)
-**Descrição:** Guia completo sobre reconhecimento passivo  
-**Tópicos:**
-- Diferença entre recon passivo e ativo
-- Fontes de informação pública
-- Técnicas de OSINT
-- Ferramentas recomendadas
-- Boas práticas
-
-**Tempo estimado:** 2-3 horas de leitura
-
----
-
-#### [`web_recon_notes.md`](web_recon_notes.md)
-**Descrição:** Reconhecimento focado em aplicações web  
-**Tópicos:**
-- Enumeração de tecnologias web
-- Identificação de frameworks
-- Análise de cabeçalhos HTTP
-- Mapeamento de estrutura de sites
-
-**Tempo estimado:** 1-2 horas de leitura
-
----
-
-### 2. Scripts e Automação (v2)
-
-#### [`dns_enum.ps1`](dns_enum.ps1)
-**Descrição:** Enumeração DNS cross-platform (PS 5.1 / 7+) com crt.sh e export JSON.  
-**Parâmetros principais:** `-Domain`, `-IncludeSubdomains`, `-OutputDir`, `-Format json|txt`, `-DnsServer`, `-DryRun`, `-RecordTypes`.
-
-```powershell
-Import-Module ../lib/powershell/RTECommon.psm1
-.\dns_enum.ps1 -Domain "exemplo.com" -IncludeSubdomains -Format json
-.\dns_enum.ps1 -Domain "exemplo.com" -RecordTypes A,MX,TXT -DnsServer 1.1.1.1 -DryRun
+```text
+requisito
+   |
+   v
+modelo e invariantes ---> schema PostgreSQL ---> transação
+   |                                               |
+   |                                               v
+   +----------------> contrato HTTP ---> caso de uso/outbox
+                                                |          |
+                                                v          v
+                                             resposta   MongoDB
+                                                |
+                                                v
+                                      teste + telemetria + runbook
 ```
 
-#### [`dns_enum.sh`](dns_enum.sh)
-**Descrição:** Alternativa Bash (`dig` + crt.sh + WHOIS opcional).
+Cada etapa exige quatro perguntas:
+
+1. qual estado válido precisa ser preservado?
+2. qual componente é a fonte de verdade dessa regra?
+3. como a operação falha ou concorre?
+4. qual evidência permite provar o comportamento?
+
+## Rota oficial
+
+Siga a ordem da [formação completa](programacao-avancada/README.md). A aplicação
+de estudos intercala cinco checkpoints práticos:
+
+1. modelagem e SQL verificável;
+2. transações, concorrência e planos;
+3. modelagem documental e MongoDB;
+4. contrato e clientes de API;
+5. Inventory API, falhas e operação.
+
+Não marque um laboratório como concluído por ter lido sua instrução. Concluir
+significa executar, guardar evidência sintética e explicar por que o resultado
+confirma ou rejeita sua hipótese.
+
+## Diagnóstico de entrada
+
+Antes de começar, confirme que você consegue, sem copiar uma solução:
+
+- escrever função, coleção, tratamento de erro e teste automatizado;
+- usar Git em branch e interpretar diff;
+- explicar request, response, JSON, status HTTP e timeout;
+- executar programa por terminal e investigar stack trace;
+- distinguir memória do processo de persistência;
+- construir e encerrar o TaskBoard do Módulo 00.
+
+Se dois ou mais itens ainda forem incertos, retorne ao
+[curso fundamental](../00-Fundamentos/programacao/README.md). O objetivo não é
+decorar sintaxe, mas reduzir a quantidade de conceitos novos simultâneos.
+
+## Ambiente seguro e reproduzível
+
+Todos os exemplos usam produtos, livros, usuários e eventos fictícios. Os
+bancos dos laboratórios não publicam portas no host; no projeto integrador,
+somente o gateway liga uma porta em `127.0.0.1`.
+
+Antes de executar:
 
 ```bash
-./dns_enum.sh -d exemplo.com --subs --whois -o ./output
-./dns_enum.sh -d exemplo.com --dry-run
+python3 --version
+docker --version
+docker compose version
+git status --short
 ```
 
-**MITRE ATT&CK:** T1590 / T1596
+Use diretório e projeto Compose conferidos. `docker compose down --volumes`
+remove os dados daquele laboratório; comandos globais de `prune` não fazem
+parte do curso.
 
-**Relacionado:** recon web avançado em [`07-Web-AppSec/recon-web-pratico.md`](../07-Web-AppSec/recon-web-pratico.md).
+## Como validar
 
----
+Validação local disponível:
 
-## 🧪 Exercícios Práticos
-
-### Exercício 1: Reconhecimento DNS Básico
-**Objetivo:** Enumerar DNS de um domínio público
-
-**Passos:**
-1. Escolha um domínio público (ex: `example.com`)
-2. Execute o script `dns_enum.ps1`
-3. Analise os resultados
-4. Documente os achados
-
-**Validação:**
-- ✅ Identificou servidores DNS autoritativos?
-- ✅ Encontrou registros MX (email)?
-- ✅ Identificou registros SPF/DMARC?
-
----
-
-### Exercício 2: Mapeamento de Infraestrutura
-**Objetivo:** Criar mapa visual de infraestrutura de domínio
-
-**Passos:**
-1. Execute reconhecimento DNS completo
-2. Identifique todos os IPs associados
-3. Use WHOIS para informações de registro
-4. Crie diagrama de infraestrutura
-
-**Ferramentas:**
-- `dns_enum.ps1` (incluído)
-- WHOIS online
-- Draw.io para diagrama
-
----
-
-### Exercício 3: Comparação de Técnicas
-**Objetivo:** Comparar reconhecimento passivo vs ativo
-
-**Passos:**
-1. **Passivo:** Use apenas DNS e WHOIS
-2. **Ativo:** Use `nmap` para scan
-3. Compare informações obtidas
-4. Documente diferenças
-
-**Questões para responder:**
-- Qual método revelou mais informações?
-- Qual é mais sigiloso?
-- Qual é mais rápido?
-
----
-
-## 🛡️ Considerações de Segurança
-
-### ⚠️ Limites Éticos
-
-**PERMITIDO (Reconhecimento Passivo):**
-- ✅ Consultas DNS públicas
-- ✅ Pesquisa WHOIS
-- ✅ Busca em motores de pesquisa
-- ✅ Certificate Transparency logs
-- ✅ Informações em redes sociais públicas
-
-**REQUER AUTORIZAÇÃO (Reconhecimento Ativo):**
-- ❌ Port scanning (nmap, masscan)
-- ❌ Enumeração de diretórios web
-- ❌ Tentativas de conexão direta
-- ❌ Fingerprinting de serviços
-- ❌ Exploração de vulnerabilidades
-
-### 🔒 Melhores Práticas
-
-1. **Sempre documente:** Mantenha registro de todas as consultas
-2. **Use VPN/Tor quando apropriado:** Privacidade é importante
-3. **Respeite rate limits:** Não sobrecarregue servidores
-4. **Obtenha autorização:** Mesmo para recon passivo em contextos corporativos
-
-### Resultado esperado, detecção e cleanup
-
-- O resultado separa dados observados, inferências e fontes que falharam.
-- Consultas ativas ficam visíveis em DNS, proxy, firewall e logs do serviço;
-  registre essa telemetria quando usar o lab.
-- Não mantenha PII ou segredos coletados por engano. Remova saídas do diretório
-  de trabalho após produzir uma evidência sanitizada e confirme que nenhum
-  processo de enumeração permaneceu ativo.
-
-### Autoavaliação
-
-- [ ] Diferenciei consulta pública de interação direta com o alvo.
-- [ ] Registrei escopo, horário UTC, fonte e limitações.
-- [ ] Produzi uma evidência mínima sem dados pessoais desnecessários.
-- [ ] Expliquei quais logs uma ação ativa poderia gerar.
-- [ ] Concluí o cleanup das saídas e processos do exercício.
-
----
-
-## 📚 Recursos Adicionais
-
-### Ferramentas Recomendadas
-
-#### DNS Enumeration
-- **dnsrecon** (Python): https://github.com/darkoperator/dnsrecon
-- **DNSdumpster** (Web): https://dnsdumpster.com/
-- **Sublist3r** (Python): https://github.com/aboul3la/Sublist3r
-
-#### WHOIS
-- **whois** (Linux): `apt install whois`
-- **who.is** (Web): https://who.is/
-
-#### Certificate Transparency
-- **crt.sh** (Web): https://crt.sh/
-- **Censys** (Web): https://censys.io/
-
-#### Search Engines
-- **Google Dorking:** `site:exemplo.com filetype:pdf`
-- **Shodan:** https://www.shodan.io/
-- **Censys:** https://search.censys.io/
-
----
-
-### Leituras Recomendadas
-
-📖 **Livros:**
-- "The Web Application Hacker's Handbook" - Capítulo sobre Reconnaissance
-- "Red Team Field Manual (RTFM)" - Seção de Recon
-
-📺 **Vídeos:**
-- IppSec (YouTube): Análise de máquinas HTB com foco em recon
-- STÖK (YouTube): Bug bounty reconnaissance
-
-🔗 **Artigos:**
-- OWASP Testing Guide: Information Gathering
-- PTES: Intelligence Gathering
-
----
-
-## 🎯 MITRE ATT&CK Mapping
-
-Este módulo cobre as seguintes táticas e técnicas:
-
-### TA0043 - Reconnaissance
-- **T1590:** Gather Victim Network Information
-  - T1590.001 - Domain Properties
-  - T1590.002 - DNS
-  - T1590.005 - IP Addresses
-
-- **T1592:** Gather Victim Host Information
-  - T1592.002 - Software
-
-- **T1593:** Search Open Websites/Domains
-  - T1593.001 - Social Media
-  - T1593.002 - Search Engines
-
-- **T1596:** Search Open Technical Databases
-  - T1596.001 - DNS/Passive DNS
-  - T1596.003 - Digital Certificates
-
----
-
-## ✅ Checklist de Progresso
-
-### Teoria
-- [ ] Li `passive_recon_cheatsheet.md` completamente
-- [ ] Entendi diferença entre recon passivo e ativo
-- [ ] Li `web_recon_notes.md`
-- [ ] Compreendi fontes de informação pública
-
-### Prática
-- [ ] Executei `dns_enum.ps1` com sucesso
-- [ ] Fiz reconhecimento de 3+ domínios diferentes
-- [ ] Documentei achados de forma organizada
-- [ ] Criei diagrama de infraestrutura
-
-### Ferramentas
-- [ ] Instalei e testei dnsrecon
-- [ ] Usei crt.sh para encontrar subdomínios
-- [ ] Realizei consultas WHOIS
-- [ ] Pratiquei Google Dorking
-
----
-
-## 📝 Anotações e Dicas
-
-### Dica 1: Automatize Tudo
-> "Se você faz algo mais de 2 vezes, automatize."
-
-Crie scripts para:
-- Coletar dados de múltiplas fontes
-- Consolidar resultados
-- Gerar relatórios automáticos
-
-### Dica 2: Organize Seus Dados
-Estrutura recomendada:
-```
-Recon/
-├── Target_Name/
-│   ├── DNS/
-│   │   ├── dns_records.txt
-│   │   └── subdomains.txt
-│   ├── WHOIS/
-│   │   └── whois_info.txt
-│   ├── Web/
-│   │   ├── technologies.txt
-│   │   └── screenshots/
-│   └── Notes/
-│       └── findings.md
+```bash
+bash 01-Recon/programacao-avancada/testar-curso.sh
 ```
 
-### Dica 3: Correlacione Informações
-Não apenas colete dados, **correlacione**:
-- IPs → ASN → Organização
-- Emails → Funcionários → LinkedIn
-- Subdomínios → Tecnologias → Vulnerabilidades
+Validação completa do projeto integrador:
 
----
-
-## 🔄 Próximos Passos
-
-### Depois de completar este módulo:
-
-1. **Prosseguir para:** [Módulo 02 - OSINT](../02-OSINT/README.md)
-2. **Aprofundar:** Estudar OSINT para complementar recon
-3. **Praticar:** TryHackMe room "Passive Reconnaissance"
-4. **Certificações:** eJPT (basic recon)
-
----
-
-## 📞 Suporte e Dúvidas
-
-### Recursos de Ajuda
-- 💬 **Discord:** Comunidades de InfoSec
-- 🐦 **Twitter:** @_JohnHammond, @IppSec
-- 📺 **YouTube:** Busque por "DNS enumeration tutorial"
-
-### Contribuições
-Encontrou um erro ou quer melhorar este módulo?
-- Abra uma issue no GitHub
-- Envie um Pull Request
-- Consulte [CONTRIBUTING.md](../CONTRIBUTING.md)
-
----
-
-## 📊 Status do Módulo
-
-```
-[████████████████████] 100% Completo
-
-✅ Teoria documentada
-✅ Scripts funcionais
-✅ Exercícios criados
-✅ Mapeamento MITRE ATT&CK
-✅ Recursos adicionais listados
+```bash
+cd 01-Recon/programacao-avancada/projetos/inventory-api
+docker compose up --build --detach --wait
+bash smoke-test.sh
+docker compose down --volumes
 ```
 
----
+O primeiro comando precisa distinguir aprovação de verificação pulada. A CI
+instala todas as toolchains exigidas e trata qualquer skip como falha.
 
-<div align="center">
+## Definição de concluído
 
-**🎯 Lembre-se: Reconnaissance é a base de um ataque bem-sucedido**
+O módulo termina quando você consegue apresentar, sem depender do texto:
 
-*"Give me six hours to chop down a tree and I will spend the first four sharpening the axe." - Abraham Lincoln*
+- o modelo e as invariantes protegidas por cada constraint;
+- consultas e planos antes/depois de índices justificados;
+- evidência de rollback, conflito e retry seguro;
+- decisão documentada entre relação, embed e reference;
+- um contrato HTTP versionado com Problem Details e precondições;
+- testes unitários e integração com PostgreSQL/MongoDB reais;
+- clientes funcionais nas cinco linguagens;
+- falha do MongoDB seguida de convergência do outbox;
+- backup restaurado em destino limpo;
+- runbook que outra pessoa consegue executar.
 
----
-
-**Próximo:** [02-OSINT →](../02-OSINT/README.md)
-
-</div>
+Use a [rubrica de projetos](programacao-avancada/14-projetos-avaliacao.md). A
+conclusão exige pelo menos 75/100, nenhuma invariante crítica quebrada e todas
+as evidências obrigatórias reproduzíveis.
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Estes vídeos complementam a formação autocontida. Conceitos e comandos
+dependentes de versão devem ser confirmados nas referências oficiais do curso.
 
-1. [Como usar o Nmap como um hacker de verdade](https://www.youtube.com/watch?v=UjM8NBs_NiY) — **Solyd Offensive Security**.
-2. [Aula 5 - Reconhecimento com Nmap - Analisando o alvo](https://www.youtube.com/watch?v=wG9u-gd78KY) — **Solyd Offensive Security**.
-3. [Aula05 - Executando um Pentest - Fase de Reconhecimento](https://www.youtube.com/watch?v=2RBirahlaoE) — **Ricardo Longatto**.
-4. [Escaneando Redes e Vulnerabilidades com NMAP - Ethical Hacker](https://www.youtube.com/watch?v=SbTmxD1aUgs) — **Francisco G P Neto**.
-5. [Nmap - Brasil Pentest](https://www.youtube.com/watch?v=V4lIVAd8i1o) — **Brasil Pentest**.
+1. [Curso completo de SQL com PostgreSQL — do zero ao avançado](https://www.youtube.com/watch?v=9cAKQWodpvM) — **Stack Mobile**.
+2. [O que é um banco de dados?](https://www.youtube.com/watch?v=Ofktsne-utM) — **Curso em Vídeo**.
+3. [Como criar API em Python usando FastAPI](https://www.youtube.com/watch?v=R26iojTwUv8) — **Hashtag Programação**.
+4. [Curso de MongoDB fundamental](https://www.youtube.com/watch?v=x9tC0eK0GtA) — **Matheus Battisti - Hora de Codar**.
+5. [Curso API REST completo](https://www.youtube.com/watch?v=5mMuX8AWxxs) — **While True**.

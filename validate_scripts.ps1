@@ -19,7 +19,7 @@
     ./validate_scripts.ps1
 
 .EXAMPLE
-    ./validate_scripts.ps1 -Path ./01-Recon/dns_enum.ps1 -Severity Warning
+    ./validate_scripts.ps1 -Path ./29-Reconhecimento-OSINT/dns_enum.ps1 -Severity Warning
 
 .NOTES
     Autor:   Samuel Ziger - RedTeam Essentials

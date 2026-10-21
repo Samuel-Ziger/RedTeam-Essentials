@@ -1,3 +1,9 @@
+[project]
+name = "redteam-essentials"
+version = "2.1.0"
+requires-python = ">=3.10"
+description = "Material educacional e ferramentas offline para laboratorios autorizados de seguranca"
+
 [tool.pytest.ini_options]
 addopts = "--strict-config --strict-markers -q"
 testpaths = ["tests/python"]
@@ -12,3 +18,10 @@ select = ["E", "F", "I", "UP"]
 [tool.ruff.format]
 quote-style = "double"
 
+[tool.coverage.run]
+branch = true
+source = ["lib/python"]
+
+[tool.coverage.report]
+fail_under = 70
+show_missing = true

@@ -1,0 +1,9 @@
+{
+  "schema": "rte.windows.observation/v1",
+  "asset": "synthetic-endpoint-001",
+  "settings": {
+    "BitLocker.SystemVolume": true,
+    "Defender.RealTimeProtection": true,
+    "PowerShell.ScriptBlockLogging": false
+  }
+}

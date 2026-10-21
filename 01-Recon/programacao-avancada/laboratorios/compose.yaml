@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:18.6-alpine3.23@sha256:885cf05d376c7cf27afef02073e6bdac3841252537f16e244fd1c1e6a7c99fb1
+    environment:
+      POSTGRES_DB: course
+      POSTGRES_USER: course
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres-data:/var/lib/postgresql
+      - ./sql:/course:ro
+    networks:
+      - data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U course -d course"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run/postgresql
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 0.75
+    restart: "no"
+
+  mongo:
+    image: mongo:8.3.11-noble@sha256:02eb14a1130c6d060847c4169eccd4d79d9f172a584da7aea8f160c492537b02
+    command: ["mongod", "--bind_ip_all", "--quiet"]
+    volumes:
+      - mongo-data:/data/db
+      - ./mongodb:/course:ro
+    networks:
+      - data
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 0.75
+    restart: "no"
+
+networks:
+  data:
+    internal: true
+
+volumes:
+  postgres-data:
+  mongo-data:

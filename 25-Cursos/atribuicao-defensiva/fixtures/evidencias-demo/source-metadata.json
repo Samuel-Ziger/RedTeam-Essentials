@@ -1,0 +1,7 @@
+{
+  "case_id": "CASE-DEMO-2026-001",
+  "source": "fixture",
+  "collected_at": "2026-10-01T14:00:00Z",
+  "collector": "course-generator",
+  "synthetic": true
+}

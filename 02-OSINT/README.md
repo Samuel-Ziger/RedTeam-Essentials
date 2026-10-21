@@ -1,74 +1,53 @@
-# 02 - OSINT
+# 02 — Engenharia de software e algoritmos
 
-> Modulo de **Open Source Intelligence**: coleta etica de informacoes publicas, ferramentas e automacao leve em PowerShell.
-> Complementa [01-Recon](../01-Recon/) e alimenta vetores de [13-Initial-Access](../13-Initial-Access/).
+> Formação em algoritmos, estruturas de dados, design, arquitetura, testes e
+> colaboração para construir software sustentável.
+
+> **Transição curricular:** o material histórico de OSINT foi promovido ao
+> [módulo 29](../29-Reconhecimento-OSINT/README.md), depois da conclusão da base 00–26.
 
 ## Contrato do módulo
 
 | Campo | Definição |
 |-------|-----------|
-| Público | Iniciantes após os módulos 00 e 01. |
-| Pré-requisitos | Módulos 00 e 01; fontes públicas e conta de laboratório. |
-| Tempo estimado | 3 horas de leitura e 3 horas de prática. |
-| Ambiente | Somente laboratório próprio/isolado ou engagement autorizado. |
-| Evidência final | Dossiê sintético com fontes, limitações e PII minimizada. |
-| Critério de conclusão | Demonstrar o objetivo, explicar limitações e registrar o cleanup. |
+| Público | Estudantes que concluíram a formação de programação dos módulos 00 e 01. |
+| Pré-requisitos | Módulos 00 e 01; Git e toolchains das linguagens estudadas. |
+| Tempo estimado | 260–380 horas. |
+| Ambiente | Desenvolvimento local com repositório Git e toolchains isoladas. |
+| Evidência final | Aplicação autoral com algoritmos adequados, arquitetura justificável, testes e documentação. |
+| Critério de conclusão | Atingir pelo menos 75% na rubrica de engenharia e demonstrar o projeto funcionando. |
 
-## Conteudo
+## Formação-base
 
-| Documento / Script | Tema |
-|--------------------|------|
-| [osint-tools-list.md](osint-tools-list.md) | Catalogo de ferramentas OSINT (dominios, pessoas, redes sociais, leaks, geo). |
-| [osint_automation.ps1](osint_automation.ps1) | Script PowerShell para automacao basica de coleta (WHOIS, DNS, headers). |
+Acesse o curso completo em
+**[engenharia-software/README.md](engenharia-software/README.md)**. Ele contém:
 
-## Fluxo recomendado
+- 17 capítulos do raciocínio algorítmico à arquitetura;
+- estruturas lineares, hash, árvores, heaps, tries e grafos;
+- busca, ordenação, recursão, backtracking, programação dinâmica e gulosa;
+- paradigmas, modularidade, SOLID, padrões e refatoração;
+- requisitos, modelagem, arquitetura, testes, Git e documentação;
+- exemplos executáveis em Python, Java, C17, C# e JavaScript;
+- cinco laboratórios progressivos com pré-requisitos semânticos;
+- caderno com 32 práticas e guia sistemático de diagnóstico;
+- projeto Dependency Planner com CLI, JSON, caminho crítico e testes;
+- testes por propriedades, entrada limitada, runbook e ADRs executáveis;
+- rubrica, exercícios, glossário, referências e CI dedicada.
 
+Validação local:
+
+```bash
+bash 02-OSINT/engenharia-software/testar-curso.sh
 ```
-01 Recon (DNS/portas)  -->  02 OSINT (pessoas, org, leaks)
-                                    |
-                                    v
-                           13 Initial Access (phishing / servicos)
-```
-
-1. **Escopo e etica** - confirmar que a coleta e so de fontes publicas e autorizada no engagement.
-2. **Dominio e infraestrutura** - WHOIS, DNS, certificados, historico (Wayback, crt.sh). Ver [osint-tools-list.md](osint-tools-list.md).
-3. **Pessoas e org** - emails, cargos, redes sociais, vazamentos publicos (haveibeenpwned-style, sem credential stuffing).
-4. **Automacao** - rodar [osint_automation.ps1](osint_automation.ps1) em lab e documentar saidas.
-5. **Hand-off** - cruzar achados com [01-Recon](../01-Recon/) e preparar narrativa para [13-Initial-Access](../13-Initial-Access/).
-
-## Exercicios
-
-1. Escolher um **dominio proprio** ou de lab (TryHackMe / HackTheBox / CTF) e montar um dossier OSINT de 1 pagina.
-2. Executar `osint_automation.ps1` contra alvo autorizado e comparar com coleta manual.
-3. Listar 5 ferramentas da [osint-tools-list.md](osint-tools-list.md) e registrar o que cada uma adiciona ao relatório.
-4. Mapear pelo menos um email ou cargo publico encontrado para um cenario de phishing **apenas em lab** (modulo 13).
-
-## MITRE ATT&CK (parcial)
-
-- T1592 - Gather Victim Host Information
-- T1589 - Gather Victim Identity Information
-- T1590 - Gather Victim Network Information
-- T1591 - Gather Victim Org Information
-- T1593 - Search Open Websites/Domains
-- T1596 - Search Open Technical Databases
-
-## Etica e escopo
-
-OSINT usa fontes **publicas**, mas ainda exige:
-
-- Autorizacao / RoE quando feito em nome de cliente.
-- Nao atravessar paywalls, contas hackeadas ou engenharia social sem escopo.
-- Nao publicar PII desnecessaria; minimize no report.
-- Nunca usar achados para atacar sistemas sem autorizacao escrita.
-
-Links uteis: [01-Recon](../01-Recon/) · [13-Initial-Access](../13-Initial-Access/).
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Use estes materiais para revisar algoritmos, arquitetura e padrões depois de
+estudar os capítulos correspondentes.
 
-1. [Introdução à OSINT: Inteligência de Fontes Abertas e Investigação Digital.](https://www.youtube.com/watch?v=nWsOw63AWRY) — **O Igor Doin**.
-2. [Caso Real de Investigação Digital e OSINT | Aulão 03](https://www.youtube.com/watch?v=-eaoa6KJyek) — **Aulão com Bruno Fraga**.
-3. [Encontrando informações de um site | Desafio de Investigação Digital | Ep 01](https://www.youtube.com/watch?v=RkT4GQJeuLY) — **Bruno Fraga**.
-4. [4 Segredos para uma Investigação Digital em Fontes Abertas (OSINT) | Aulão 01](https://www.youtube.com/watch?v=gFT_PdHTgMg) — **Aulão com Bruno Fraga**.
-5. [Como Usar Ferramentas OSINT na Prática | Aulão 039](https://www.youtube.com/watch?v=PHdstrh6SNU) — **Aulão com Bruno Fraga**.
+1. [Estruturas de Dados e Algoritmos com Java](https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi) — **Loiane Groner**.
+2. [Notação Big O](https://www.youtube.com/watch?v=vhvocEO3t74) — **CFB Cursos**.
+3. [Fundamentos da Arquitetura de Software](https://www.youtube.com/watch?v=Xt66rPTAWMs) — **Full Cycle**.
+4. [Arquitetura de código, software e solução](https://www.youtube.com/watch?v=6Q_uxdQJjJE) — **Full Cycle**.
+5. [Design Patterns](https://www.youtube.com/watch?v=arAz2Ff8s88) — **Filipe Deschamps**.
+6. [Git, backup e recuperação de dados](https://www.youtube.com/watch?v=yfEhz9poqW8) — **Akitando**.

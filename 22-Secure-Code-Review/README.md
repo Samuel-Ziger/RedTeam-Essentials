@@ -1,58 +1,33 @@
-# 22 - Code review ofensivo e análise de dados
+# 22 — Criptografia IV: engenharia, operação e pós-quântica
 
-> Identificação manual de trust boundaries, fontes, sinks e falhas de autorização
-> em código próprio ou fornecido para treinamento. Não analise código vazado.
+Conclusão da formação. Trata composição de protocolos, implementação robusta,
+canais laterais, testes, gestão corporativa de chaves, HSM/KMS, inventário,
+agilidade criptográfica, resposta a incidentes e migração pós-quântica.
 
 ## Contrato do módulo
 
 | Campo | Definição |
-|-------|-----------|
-| Público | AppSec, desenvolvedores e pentesters intermediários. |
-| Pré-requisitos | Módulos 00, 07, 11 e uma linguagem de programação. |
-| Tempo estimado | 8 horas de leitura e 6 horas de exercícios. |
-| Ambiente | Código deliberadamente vulnerável e sem segredos reais. |
-| Evidência final | Data-flow, prova local, patch e teste de regressão. |
-| Critério de conclusão | Revisar três classes e justificar severidade/limitações. |
+|---|---|
+| Público | Engenheiros de segurança, plataforma, software e arquitetura. |
+| Pré-requisitos | Módulos 02, 05, 18, 19, 20 e 21. |
+| Tempo estimado | 220–340 horas. |
+| Ambiente | Inventários e protocolos locais com chaves descartáveis; nenhuma produção. |
+| Evidência final | Criptoinventário, plano de migração e protocolo de registros versionado. |
+| Critério de conclusão | Revisar, operar e migrar sistemas criptográficos justificando ameaças e garantias. |
 
-## Método
+## Comece aqui
 
-1. Mapeie entrypoints, identidades, assets e trust boundaries.
-2. Marque **sources** não confiáveis e transformações aplicadas.
-3. Encontre **sinks**: SQL, shell, template, filesystem, URL, parser e logs.
-4. Verifique autorização por função, objeto e tenant.
-5. Revise erros, concorrência, limites, criptografia e secret management.
-6. Confirme a hipótese em teste unitário/local, não em produção.
-7. Corrija na causa e escreva teste negativo.
-
-## Catálogo prático
-
-| Classe | Source | Sink/decisão | Correção |
-|--------|--------|---------------|----------|
-| SQLi | parâmetro | query construída | parâmetros tipados |
-| Command injection | input/job | shell | API sem shell + allowlist |
-| SSRF | URL | cliente HTTP | allowlist + resolução/redirect seguros |
-| Path traversal | filename | filesystem | raiz fixa + canonicalização |
-| SSTI | template | render dinâmico | templates estáticos/dados separados |
-| Deserialização | bytes | object construction | formato simples + schema |
-| BOLA | object ID | policy | autorização por objeto/tenant |
-
-## Evidência e severidade
-
-Separe alcançabilidade, controle do atacante, impacto e controles compensatórios.
-Um padrão perigoso não é automaticamente explorável. Redate segredos e forneça
-somente o trecho mínimo, teste e patch necessários.
-
-## Cleanup
-
-Remova branches/fixtures temporárias, tokens canário e builds; confirme que o
-teste vulnerável falha após o patch e que nenhuma credencial entrou no histórico.
+- [Curso completo de engenharia criptográfica](engenharia-criptografica/README.md)
+- [Laboratórios](engenharia-criptografica/laboratorios/README.md)
+- [Ferramentas e protocolo](engenharia-criptografica/exemplos/README.md)
+- [Consulta rápida](engenharia-criptografica/CHEATSHEET.md)
 
 ## Vídeos em português
 
-Use estes materiais como complemento à leitura e aos exercícios do módulo. Execute demonstrações somente no laboratório ou em ativos formalmente autorizados.
+Pós-quântica é apresentada como migração de engenharia, não como previsão de datas.
 
-1. [Como Começar em AppSec do Zero | Guia Rápido de Segurança da Informação](https://www.youtube.com/watch?v=j6OKF3DFzi8) — **HackSafeBR**.
-2. [Você confia nos seus logs? Código Seguro #082 | Cássio B. Pereira](https://www.youtube.com/watch?v=SvMTUKlKdsQ) — **Cássio Batista Pereira**.
-3. [Tendências de AppSec para 2026 | AppSec Webinar](https://www.youtube.com/watch?v=5xgHsnhc7As) — **Conviso Application Security**.
-4. [O profissional de appsec programa no dia a dia?](https://www.youtube.com/watch?v=IZjie0THS50) — **Ben-Hur Ott**.
-5. [O que é AppSec?](https://www.youtube.com/watch?v=R49E7efhoDA) — **AppSecBR**.
+1. [Criptografia Aplicada](https://www.youtube.com/watch?v=r1i514Zk4vA) — **Rede RNP**.
+2. [Criptografia na prática](https://www.youtube.com/watch?v=iAA8NrfQtHo) — **Fabio Akita**.
+3. [Introdução à criptografia RSA](https://www.youtube.com/watch?v=rvdI-uhvQgc) — **eSecurity**.
+4. [Certificado digital, X.509 e PKI](https://www.youtube.com/watch?v=s3ufY_gLe6M) — **Prof. Sergio Villarreal**.
+5. [Computação quântica](https://www.youtube.com/watch?v=fLN1zQOPT2E) — **Nerdologia Tech**.

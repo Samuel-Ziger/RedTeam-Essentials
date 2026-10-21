@@ -19,24 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-## ⚠️ DISCLAIMER - USO EDUCACIONAL
-
-Este repositório foi criado exclusivamente para fins educacionais e de pesquisa
-em segurança da informação. Todo o conteúdo deve ser utilizado apenas em:
-
-✅ Ambientes de laboratório controlados
-✅ Sistemas que você possui ou tem autorização explícita para testar
-✅ Aprendizado e desenvolvimento de habilidades em cibersegurança
-✅ Preparação para certificações (OSCP, CRTP, etc.)
-
-❌ NUNCA utilize estas técnicas:
-- Sem autorização por escrito
-- Em sistemas que não são seus
-- Para atividades ilegais ou maliciosas
-- Violando leis locais ou internacionais
-
-O autor não se responsabiliza pelo uso indevido deste material.
-Sempre respeite as leis e aja de forma ética e responsável.

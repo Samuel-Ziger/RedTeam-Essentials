@@ -4,27 +4,49 @@ on:
   push:
     paths:
       - 'MITRE-ATTACK-MAPPING.json'
+      - 'scripts/attack-enterprise-19.2.json'
       - 'scripts/validate_attack_mapping.py'
       - 'tests/python/test_attack_mapping.py'
-      - 'docker-lab/docker-compose.yml'
+      - '30-Web-API-AppSec/docker-lab/docker-compose.yml'
+      - 'MODULE-CATALOG.json'
+      - '**/README.md'
+      - 'scripts/scan_secrets.py'
+      - 'scripts/validate_local_links.py'
       - 'scripts/validate_compose_policy.py'
       - '.github/workflows/metadata.yml'
   pull_request:
     paths:
       - 'MITRE-ATTACK-MAPPING.json'
+      - 'scripts/attack-enterprise-19.2.json'
       - 'scripts/validate_attack_mapping.py'
       - 'tests/python/test_attack_mapping.py'
-      - 'docker-lab/docker-compose.yml'
+      - '30-Web-API-AppSec/docker-lab/docker-compose.yml'
+      - 'MODULE-CATALOG.json'
+      - '**/README.md'
+      - 'scripts/scan_secrets.py'
+      - 'scripts/validate_local_links.py'
       - 'scripts/validate_compose_policy.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: metadata-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   attack-layer:
     name: Validate ATT&CK Navigator layer
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.12'
       - run: python scripts/validate_attack_mapping.py
       - run: python scripts/validate_compose_policy.py
+      - run: python scripts/validate_module_catalog.py
+      - run: python scripts/validate_video_catalog.py
+      - run: python scripts/validate_local_links.py
+      - run: python scripts/scan_secrets.py

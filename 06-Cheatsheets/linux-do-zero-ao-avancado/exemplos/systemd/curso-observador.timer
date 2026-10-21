@@ -1,0 +1,11 @@
+[Unit]
+Description=Executa o observador didatico diariamente
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=15m
+Persistent=true
+Unit=curso-observador.service
+
+[Install]
+WantedBy=timers.target
